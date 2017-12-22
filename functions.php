@@ -69,7 +69,7 @@ function set_session_cookie($sessid, $cookietime, $cookiename, $cookiepath, $coo
 
 	// This sets a cookie that will persist until the user closes their browser window.
 	// since session expiry is handled on the server-side, cookie expiry time isn't a big deal.
-	setcookie($cookiename,$sessid,'',$cookiepath,$cookiedomain,$cookiesecure);
+	setcookie($cookiename,$sessid,0,$cookiepath,$cookiedomain,$cookiesecure);
 
 } // set_session_cookie()
 
