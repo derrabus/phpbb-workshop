@@ -82,24 +82,6 @@ if(strstr($PHP_SELF, "admin"))
 	}
 }
 
-if(@fopen($config_file_name, "a"))
-{
-	?>
-	The config file is writeable by the webserver. This is a major security risk
-	because anyone can change your server settings now by using the install script.<br><br>
-
-	phpBB will not be able to run until this is fixed. On unix systems this can be done
-	with the following command:<br><br>
-
-	<pre>chmod 644 config.<?php echo $phpEx?></pre>
-
-	Or use your FTP program to do this.<br>
-	Switch on the 'read-only' attribute if you are running the script on a Windows machine.<br>
-
-	<?php
-	exit();
-}
-
 // Make a database connection.
 if(!$db = @mysql_connect("$dbhost", "$dbuser", "$dbpasswd"))
 	die('<font size=+1>An Error Occured</font><hr>phpBB was unable to connect to the database. <BR>Please check $dbhost, $dbuser, and $dbpasswd in config.php.');
