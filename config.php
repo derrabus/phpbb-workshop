@@ -28,7 +28,7 @@
 // Change this to:
 // $url_phpbb = "/forums";
 // Once this is set you should not need to modify anything else in this file.
-$url_phpbb = "/phpBB";
+$url_phpbb = "";
 
 // -- Edit the following ONLY if you cannot login and $url_phpbb is set correclty --
 // You shouldn't have to change any of these 5.
@@ -60,17 +60,6 @@ $sesscookiename = "phpBBsession";
 // The session will exprire if the user dosan't view a page on the forum within
 // this amount of time.
 $sesscookietime = 3600;
-
-/**
- * This setting is only for people running Microsoft IIS.
- * If you're running IIS and your users cannot login using
- * the "login" link on the main page, but they CAN login
- * through other pages like preferences, then you should
- * change this setting to 1. Otherwise, leave at set
- * to 0, because this is an ugly hack around some IIS junk.
- */
-// Change to "define('USE_IIS_LOGIN_HACK', 1);" if you need to.
-define('USE_IIS_LOGIN_HACK', 0);
 
 /* Stuff for priv msgs - not in DB yet: */
 // Allow BBCode in private messages?
@@ -113,3 +102,7 @@ $images_msnm = "$url_images/msnm.gif";
 
 /* -- Other Settings -- */
 $phpbbversion = "1.4.4";
+$dbhost = "192.168.56.101";
+$dbname = "phpBB";
+$dbuser = "bb";
+$dbpasswd = "";
