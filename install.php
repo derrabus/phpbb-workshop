@@ -59,13 +59,13 @@ if($next) {
 	 echo "Creating phpBB tables an inserting default data...<BR>";
 	 flush();
 	 $tables = array ("cat" => "CREATE TABLE catagories (
-							     cat_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							     cat_id int(10) NOT NULL auto_increment,
 							     cat_title varchar(100),
 							     cat_order varchar(10),
 							     PRIMARY KEY (cat_id)
 							     )",
 			  "config" => "CREATE TABLE config (
-							    config_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							    config_id int(10) NOT NULL auto_increment,
 							    sitename varchar(100),
 							    allow_html int(2),
 							    allow_bbcode int(2),
@@ -85,12 +85,12 @@ if($next) {
 							    PRIMARY KEY (config_id)
 							    )",
 			  "disallow" => "CREATE TABLE disallow (
-								disallow_id int(10) DEFAULT '0' NOT NULL AUTO_INCREMENT,
+								disallow_id int(10) NOT NULL AUTO_INCREMENT,
 								disallow_username varchar(50),
 								PRIMARY KEY(disallow_id)
 								)",
 			  "forums" => "CREATE TABLE forums (   
-							    forum_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							    forum_id int(10) NOT NULL auto_increment,
 							    forum_name varchar(150),
 							    forum_desc text, 
 							    forum_access int(10) DEFAULT '1',
@@ -109,7 +109,7 @@ if($next) {
 								   footer text
 								   )",
 			  "ranks" => "CREATE TABLE ranks (
-							  rank_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							  rank_id int(10) NOT NULL auto_increment,
 							  rank_title varchar(50) NOT NULL,
 							  rank_min int(10) NOT NULL,
 							  rank_max int(10) NOT NULL,
@@ -120,7 +120,7 @@ if($next) {
 							  KEY (rank_max) 
 							  )",
 			  "posts" => "CREATE TABLE posts (
-							  post_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							  post_id int(10) NOT NULL auto_increment,
 							  topic_id int(10) DEFAULT '0' NOT NULL,
 							  forum_id int(10) DEFAULT '0' NOT NULL,
 							  poster_id int(10) NOT NULL,
@@ -138,7 +138,7 @@ if($next) {
 			  						PRIMARY KEY(post_id)
 			  						)",
 			  "pmsg" => "CREATE TABLE priv_msgs (
-							     msg_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							     msg_id int(10) NOT NULL auto_increment,
 							     from_userid int(10) DEFAULT '0' NOT NULL,
 							     to_userid int(10) DEFAULT '0' NOT NULL,
 							     msg_time varchar(20),
@@ -160,7 +160,7 @@ if($next) {
 								KEY remote_ip (remote_ip)
 								)",
 			  "themes" => "CREATE TABLE themes (
-							    theme_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							    theme_id int(10) NOT NULL auto_increment,
 							    theme_name varchar(35),
 							    bgcolor varchar(10),
 							    textcolor varchar(10),
@@ -183,7 +183,7 @@ if($next) {
 							    PRIMARY KEY (theme_id)
 							    )",
 			  "topics" => "CREATE TABLE topics (
-							    topic_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							    topic_id int(10) NOT NULL auto_increment,
 							    topic_title varchar(100),
 							    topic_poster int(10),
 							    topic_time varchar(20),
@@ -199,7 +199,7 @@ if($next) {
 							    PRIMARY KEY (topic_id) 
 							    )",
 			  "users" => "CREATE TABLE users (
-							  user_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							  user_id int(10) NOT NULL auto_increment,
 							  username varchar(40) DEFAULT '' NOT NULL,
 							  user_regdate varchar(20) NOT NULL,
 							  user_password varchar(32) DEFAULT '' NOT NULL,
@@ -228,7 +228,7 @@ if($next) {
 							  PRIMARY KEY (user_id)
 							  )",
 			  "online" => "CREATE TABLE whosonline (
-								id int(3) DEFAULT '0' NOT NULL auto_increment,
+								id int(3) NOT NULL auto_increment,
 								ip varchar(255),
 								name varchar(255),   
 								count varchar(255),
@@ -238,25 +238,25 @@ if($next) {
 								PRIMARY KEY (id)
 								)",
 			  "acess" => "CREATE TABLE access (   
-							   access_id int(10) DEFAULT '0' NOT NULL auto_increment,
+							   access_id int(10) NOT NULL auto_increment,
 							   access_title varchar(20),
 							   PRIMARY KEY (access_id)
 							   )",
 
 			  "smiles" => "CREATE TABLE smiles (
-							    id int(10) DEFAULT '0' NOT NULL AUTO_INCREMENT,
+							    id int(10) NOT NULL AUTO_INCREMENT,
 							    code varchar(50),
 							    smile_url varchar(100),
 							    emotion varchar(75),
 							    PRIMARY KEY(id)
 							    )",
 			  "words" => "CREATE TABLE words (
-							  word_id int(10) NOT NULL AUTO_INCREMENT DEFAULT '0',
+							  word_id int(10) NOT NULL AUTO_INCREMENT,
 							  word varchar(100),
 							  replacement varchar(100),
 							  PRIMARY KEY(word_id))",
 			  "banlist" => "CREATE TABLE banlist(
-							     ban_id int(10) NOT NULL AUTO_INCREMENT DEFAULT '0',
+							     ban_id int(10) NOT NULL AUTO_INCREMENT,
 							     ban_userid int(10),
 							     ban_ip varchar(16),
 							     ban_start int(32),
