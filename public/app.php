@@ -1,5 +1,7 @@
 <?php
 
+require dirname(__DIR__).'/vendor/autoload.php';
+
 $targetFile = $_SERVER['REDIRECT_URL'];
 if ($targetFile === '/') {
     $targetFile = '/index.php';

@@ -1,0 +1,12 @@
+{
+    "name": "acme/my-bb",
+    "description": "A forum.",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Alexander M. Turek",
+            "email": "me@derrabus.de"
+        }
+    ]
+}
