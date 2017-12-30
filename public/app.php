@@ -4,7 +4,8 @@ $targetFile = $_SERVER['REDIRECT_URL'];
 if ($targetFile === '/') {
     $targetFile = '/index.php';
 }
-if (!file_exists(__DIR__.$targetFile)) {
+$scriptsDir = dirname(__DIR__).'/scripts';
+if (!file_exists($scriptsDir.$targetFile)) {
     header('HTTP/1.1 404 Not Found');
     echo 'Not Found';
     exit;
@@ -13,9 +14,12 @@ if (!file_exists(__DIR__.$targetFile)) {
 $PHP_SELF = $targetFile;
 
 extract($_REQUEST);
+extract($_SERVER);
 
 $HTTP_GET_VARS = $_GET;
 $HTTP_POST_VARS = $_POST;
 $HTTP_COOKIE_VARS = $_COOKIE;
 
-require __DIR__.$targetFile;
+chdir(dirname($scriptsDir.$targetFile));
+
+require $scriptsDir.$targetFile;
