@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1043bb0b4cecf592ce123b82ffdc646f",
+    "content-hash": "6e018f5cf9626c9d3b420cc20dabdef0",
     "packages": [
         {
             "name": "derrabus/ereg-shim",
@@ -375,9 +375,11 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.2"
+    },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "5.3.10"
+        "php": "7.2.0"
     }
 }

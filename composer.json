@@ -10,13 +10,14 @@
         }
     ],
     "require": {
+        "php": "^7.2",
         "derrabus/ereg-shim": "^1",
         "dshafik/php7-mysql-shim": "^1@beta",
         "symfony/http-foundation": "^2.8"
     },
     "config": {
         "platform": {
-            "php": "5.3.10"
+            "php": "7.2.0"
         },
         "sort-packages": true
     }
