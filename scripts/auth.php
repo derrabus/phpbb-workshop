@@ -71,6 +71,7 @@ if (strstr($PHP_SELF, "admin")) {
 if (!$db = @mysql_connect("$dbhost", "$dbuser", "$dbpasswd")) {
     die('<font size=+1>An Error Occured</font><hr>phpBB was unable to connect to the database. <BR>Please check $dbhost, $dbuser, and $dbpasswd in config.php.');
 }
+mysql_query('SET NAMES utf8;', $db);
 if (!@mysql_select_db("$dbname", $db)) {
     die("<font size=+1>An Error Occured</font><hr>phpBB was unable to find the database <b>$dbname</b> on your MySQL server. <br>Please make sure you ran the phpBB installation script.");
 }

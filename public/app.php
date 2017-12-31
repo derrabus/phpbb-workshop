@@ -34,6 +34,5 @@ $HTTP_COOKIE_VARS = $_COOKIE;
 chdir(dirname($scriptsDir.$targetFile));
 
 ini_set('display_errors', false);
-ini_set('default_charset', 'iso-8859-15');
 
 require $scriptsDir.$targetFile;

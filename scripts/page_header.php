@@ -42,15 +42,14 @@ if ($pagetype == "admin") {
 
 $login_logout_link = make_login_logout_link($user_logged_in, $url_phpbb);
 
+header('Content-Type: text/html; charset=UTF8');
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <TITLE><?php echo "$sitename $l_forums - $pagetitle" ?></TITLE>
 <?php
-if ($l_special_meta) {
-    echo $l_special_meta . "\n";
-}
 if ($forward) {
     echo "<META HTTP-EQUIV=\"refresh\" content=\"3;URL=$url_phpbb/viewtopic.$phpEx?topic=$topic&forum=$forum&$total_topic\">";
 }

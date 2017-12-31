@@ -8,7 +8,7 @@
  *
  *     $Id: lang_portuguese_brazil.php,v 1.5 2001/04/13 06:09:50 thefinn Exp $
  *        Translation of the original english file by James Atkinson
- *        Tradução do arquivo original em inglÊs de James Atkinson
+ *        TraduÃ§Ã£o do arquivo original em inglÃŠs de James Atkinson
  *
  *  ***************************************************************************/
 
@@ -21,10 +21,10 @@
  *
  ***************************************************************************/
 
-$l_forum 	= "Fórum";
-$l_forums	= "Fóruns";
-$l_topic	= "Tópico";
-$l_topics 	= "Tópicos";
+$l_forum 	= "FÃ³rum";
+$l_forums	= "FÃ³runs";
+$l_topic	= "TÃ³pico";
+$l_topics 	= "TÃ³picos";
 $l_replies	= "Respostas";
 $l_poster	= "Mensageiro";
 $l_author	= "Autor";
@@ -37,26 +37,26 @@ $l_subject	= "Assunto";
 $l_body		= "Corpo da $l_message";
 $l_from		= "De";   // Message from
 $l_moderator 	= "Moderador";
-$l_username 	= "Nome de usuário";
+$l_username 	= "Nome de usuÃ¡rio";
 $l_password 	= "Senha";
 $l_email 	= "Email";
-$l_emailaddress	= "Endereço de Email";
-$l_preferences	= "Preferências";
+$l_emailaddress	= "EndereÃ§o de Email";
+$l_preferences	= "PreferÃªncias";
 
-$l_anonymous	= "Anônimo";  // Post
+$l_anonymous	= "AnÃ´nimo";  // Post
 $l_guest	= "Visitante"; // Whosonline
 $l_noposts	= "Sem $l_posts";
 $l_joined	= "Entrou";
-$l_gotopage	= "Ir para a página";
-$l_nextpage 	= "Próxima Página";
-$l_prevpage     = "Página Anterior";
+$l_gotopage	= "Ir para a pÃ¡gina";
+$l_nextpage 	= "PrÃ³xima PÃ¡gina";
+$l_prevpage     = "PÃ¡gina Anterior";
 $l_go		= "Ir";
 $l_selectforum	= "Selecione um $l_forum";
 
 $l_date		= "Data";
-$l_number	= "Número";
+$l_number	= "NÃºmero";
 $l_name		= "Nome";
-$l_options 	= "Opções";
+$l_options 	= "OpÃ§Ãµes";
 $l_submit	= "Enviar";
 $l_confirm 	= "Confirmar";
 $l_enter 	= "Entrar";
@@ -70,45 +70,45 @@ $l_smilies	= "Sorrisos";
 $l_on		= "Ligado";
 $l_off		= "Desligado";
 $l_yes		= "Sim";
-$l_no		= "Não";
+$l_no		= "NÃ£o";
 
 $l_click 	= "Clique";
 $l_here 	= "aqui";
 $l_toreturn	= "para retornar";
-$l_returnindex	= "$l_toreturn ao index do fórum";
-$l_returntopic	= "$l_toreturn à lista de tópicos do fórum.";
+$l_returnindex	= "$l_toreturn ao index do fÃ³rum";
+$l_returntopic	= "$l_toreturn Ã  lista de tÃ³picos do fÃ³rum.";
 
 $l_error	= "Erro";
 $l_tryagain	= "Por favor volte e tente novamente.";
-$l_mismatch 	= "As senhas não combinam.";
-$l_userremoved 	= "Esse usuário foi removido do banco de dados de Usuários";
-$l_wrongpass	= "Você colocou a senha errada.";
-$l_userpass	= "Por favor coloque seu nome de usuário e senha.";
-$l_banned 	= "Você foi banido deste fórum. Contate o administrador se você tem quaisquer perguntas.";
-$l_enterpassword= "Você precisa colocar sua senha.";
+$l_mismatch 	= "As senhas nÃ£o combinam.";
+$l_userremoved 	= "Esse usuÃ¡rio foi removido do banco de dados de UsuÃ¡rios";
+$l_wrongpass	= "VocÃª colocou a senha errada.";
+$l_userpass	= "Por favor coloque seu nome de usuÃ¡rio e senha.";
+$l_banned 	= "VocÃª foi banido deste fÃ³rum. Contate o administrador se vocÃª tem quaisquer perguntas.";
+$l_enterpassword= "VocÃª precisa colocar sua senha.";
 
-$l_nopost	= "Você não tem acesso para colocar mensagens nesse fórum.";
-$l_noread	= "Você não tem acesso para ler esse fórum.";
+$l_nopost	= "VocÃª nÃ£o tem acesso para colocar mensagens nesse fÃ³rum.";
+$l_noread	= "VocÃª nÃ£o tem acesso para ler esse fÃ³rum.";
 
-$l_lastpost 	= "Última $l_post";
-$l_sincelast	= "desde sua última visita";
+$l_lastpost 	= "Ãšltima $l_post";
+$l_sincelast	= "desde sua Ãºltima visita";
 $l_newposts 	= "Novas $l_posts $l_sincelast";
 $l_nonewposts 	= "Sem novas $l_posts $l_sincelast";
 
-// Página de Index
-$l_indextitle	= "Index do Fórum";
+// PÃ¡gina de Index
+$l_indextitle	= "Index do FÃ³rum";
 
 // Membros e perfil
 $l_profile	= "Perfil";
 $l_register	= "Registrar";
-$l_onlyreq 	= "Apenas necessário se está sendo mudado";
+$l_onlyreq 	= "Apenas necessÃ¡rio se estÃ¡ sendo mudado";
 $l_location 	= "De";
-$l_viewpostuser	= "Olhar mensagens deste usuário";
+$l_viewpostuser	= "Olhar mensagens deste usuÃ¡rio";
 $l_perday       = "$l_messages por dia";
 $l_oftotal      = "do total";
 $l_url 		= "URL";
 $l_icq 		= "ICQ";
-$l_icqnumber	= "Número do ICQ";
+$l_icqnumber	= "NÃºmero do ICQ";
 $l_icqadd	= "Adicionar";
 $l_icqpager	= "Pager";
 $l_aim 		= "AIM";
@@ -116,32 +116,32 @@ $l_yim 		= "YIM";
 $l_yahoo 	= "Yahoo Messenger";
 $l_msn 		= "MSN";
 $l_messenger 	= "MSN Messenger";
-$l_website 	= "Endereço do Web Site";
-$l_occupation 	= "Ocupação";
+$l_website 	= "EndereÃ§o do Web Site";
+$l_occupation 	= "OcupaÃ§Ã£o";
 $l_interests 	= "Interesses";
 $l_signature 	= "Assinatura";
-$l_sigexplain 	= "Este é um bloco de texto que pode ser adicionado às mensagens quevocê coloca.<BR>Máximo de 255 caracteres!";
-$l_usertaken	= "O $l_username que você escolheu já foi pego.";
-$l_userdisallowed= "O $l_username que você escolheu foi desabilitado pelo admistrador. $l_tryagain";
-$l_infoupdated	= "Sua informação foi atualizada";
+$l_sigexplain 	= "Este Ã© um bloco de texto que pode ser adicionado Ã s mensagens quevocÃª coloca.<BR>MÃ¡ximo de 255 caracteres!";
+$l_usertaken	= "O $l_username que vocÃª escolheu jÃ¡ foi pego.";
+$l_userdisallowed= "O $l_username que vocÃª escolheu foi desabilitado pelo admistrador. $l_tryagain";
+$l_infoupdated	= "Sua informaÃ§Ã£o foi atualizada";
 $l_publicmail	= "Permitir que outras pessoas vejam meu $l_emailaddress";
-$l_itemsreq	= "Itens marcados com * são obrigatórios";
+$l_itemsreq	= "Itens marcados com * sÃ£o obrigatÃ³rios";
 
-// Ver Fórum
-$l_viewforum	= "Ver Fórum";
-$l_notopics	= "Não existem tópicos neste fórum. Você pode colocar um.";
+// Ver FÃ³rum
+$l_viewforum	= "Ver FÃ³rum";
+$l_notopics	= "NÃ£o existem tÃ³picos neste fÃ³rum. VocÃª pode colocar um.";
 $l_hotthres	= "Mais de $hot_threshold $l_posts";
-$l_islocked	= "$l_topic está Travado (Proibido novas $l_posts serem feitas nele)";
+$l_islocked	= "$l_topic estÃ¡ Travado (Proibido novas $l_posts serem feitas nele)";
 $l_moderatedby	= "Moderado por";
 
-// Fóruns Privados
-$l_privateforum	= "Este é um <b>Fórum Privado</b>.";
-$l_private 	= "$l_privateforum<br>Nota: você precisa ter cookies habilitados para usar os fóruns privados.";
-$l_noprivatepost = "$l_privateforum Você não tem acesso para colocar mensagens nesse fórum.";
+// FÃ³runs Privados
+$l_privateforum	= "Este Ã© um <b>FÃ³rum Privado</b>.";
+$l_private 	= "$l_privateforum<br>Nota: vocÃª precisa ter cookies habilitados para usar os fÃ³runs privados.";
+$l_noprivatepost = "$l_privateforum VocÃª nÃ£o tem acesso para colocar mensagens nesse fÃ³rum.";
 
-// Ver tópico
+// Ver tÃ³pico
 $l_topictitle	= "Ver $l_topic";
-$l_unregistered	= "Usuário Não-Registrado";
+$l_unregistered	= "UsuÃ¡rio NÃ£o-Registrado";
 $l_posted	= "Colocado";
 $l_profileof	= "Ver Perfil de";
 $l_viewsite	= "Ir para o website de";
@@ -154,14 +154,14 @@ $l_unlocktopic	= "Destravar este $l_topic";
 $l_movetopic	= "Mover este $l_topic";
 $l_deletetopic	= "Apagar este $l_topic";
 
-// Funções
+// FunÃ§Ãµes
 $l_loggedinas	= "Entrou como";
-$l_notloggedin	= "Não entrou";
+$l_notloggedin	= "NÃ£o entrou";
 $l_logout	= "Sair";
 $l_login	= "Entrar";
 
-// Cabeçalho da página
-$l_separator	= "» »";  // Included here because some languages have
+// CabeÃ§alho da pÃ¡gina
+$l_separator	= "Â» Â»";  // Included here because some languages have
                   // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Editar Perfil";
 $l_editprefs	= "Editar $l_preferences";
@@ -170,25 +170,25 @@ $l_memberslist	= "Lista de Membros";
 $l_faq		= "LPF";
 $l_privmsgs	= "$l_messages Privadas";
 $l_sendpmsg	= "Envie uma Mensagem Privada";
-$l_statsblock   = '$statsblock = "Nossos usuários colocaram um total de -$total_posts- $l_messages.<br>
-Temos um total de -$total_users- Usuários Registrados.<br>
-O mais novo Usuário Registrado é -<a href=\"$profile_url\">$newest_user</a>-.<br>
--$users_online- ". ($users_online==1?"usuário está":"usuários estão") ." <a href=\"$online_url\">atualmente navegando</a> pelos fóruns.<br>";';
-$l_privnotify   = '$privnotify = "<br>Você tem $new_message <a href=\"$privmsg_url\">novas ".($new_message>1?"mensagens":"mensagem")."</a> privadas.";';
+$l_statsblock   = '$statsblock = "Nossos usuÃ¡rios colocaram um total de -$total_posts- $l_messages.<br>
+Temos um total de -$total_users- UsuÃ¡rios Registrados.<br>
+O mais novo UsuÃ¡rio Registrado Ã© -<a href=\"$profile_url\">$newest_user</a>-.<br>
+-$users_online- ". ($users_online==1?"usuÃ¡rio estÃ¡":"usuÃ¡rios estÃ£o") ." <a href=\"$online_url\">atualmente navegando</a> pelos fÃ³runs.<br>";';
+$l_privnotify   = '$privnotify = "<br>VocÃª tem $new_message <a href=\"$privmsg_url\">novas ".($new_message>1?"mensagens":"mensagem")."</a> privadas.";';
 
-// Rodapé da Página
-$l_adminpanel	= "Painel de Administração";
+// RodapÃ© da PÃ¡gina
+$l_adminpanel	= "Painel de AdministraÃ§Ã£o";
 $l_poweredby	= "Energizado por";
-$l_version	= "Versão";
+$l_version	= "VersÃ£o";
 
 // Auth
 
 // Registrar
-$l_notfilledin	= "Erro - você não preencheu todos os campos necessários.";
-$l_invalidname	= "O nome de usuário escolhido \"$username\" já foi pego.";
-$l_disallowname	= "O nome de usuário escolhido, \"$username\" foi desabilitado pelo administrador.";
+$l_notfilledin	= "Erro - vocÃª nÃ£o preencheu todos os campos necessÃ¡rios.";
+$l_invalidname	= "O nome de usuÃ¡rio escolhido \"$username\" jÃ¡ foi pego.";
+$l_disallowname	= "O nome de usuÃ¡rio escolhido, \"$username\" foi desabilitado pelo administrador.";
 
-$l_welcomesubj	= "Bem vindo ao $sitename Fóruns";
+$l_welcomesubj	= "Bem vindo ao $sitename FÃ³runs";
 $l_welcomemail	=
 "
 $l_welcomesubj,
@@ -196,102 +196,102 @@ $l_welcomesubj,
 Por favor guarde este email.
 
 
-A informação da sua conta é a seguinte::
+A informaÃ§Ã£o da sua conta Ã© a seguinte::
 
 ----------------------------
-Nome de Usuário: $username
+Nome de UsuÃ¡rio: $username
 Senha: $password
 ----------------------------
 
-Por favor não se esqueça sua senha pois ela foi criptografada em nosso banco de dados e não podemos recuperá-la para você..
-Entretanto, caso você a esqueça nós providenciamos uma maneira fácil que irá gerar e mandará por email uma senha nova e aleatória.
+Por favor nÃ£o se esqueÃ§a sua senha pois ela foi criptografada em nosso banco de dados e nÃ£o podemos recuperÃ¡-la para vocÃª..
+Entretanto, caso vocÃª a esqueÃ§a nÃ³s providenciamos uma maneira fÃ¡cil que irÃ¡ gerar e mandarÃ¡ por email uma senha nova e aleatÃ³ria.
 
 Obrigado por se registrar.
 
 $email_sig
 ";
-$l_beenadded	= "Você foi adicionado ao banco de dados.";
+$l_beenadded	= "VocÃª foi adicionado ao banco de dados.";
 $l_thankregister= "Obrigado por se registrar!";
-$l_useruniq	= "Precisa ser único. Dois usuários não podem ter o mesmo Nome de Usuário.";
-$l_storecookie	= "Gurdar meu Nome de Usuário em um cookie por 1 ano.";
+$l_useruniq	= "Precisa ser Ãºnico. Dois usuÃ¡rios nÃ£o podem ter o mesmo Nome de UsuÃ¡rio.";
+$l_storecookie	= "Gurdar meu Nome de UsuÃ¡rio em um cookie por 1 ano.";
 
-// Preferências
+// PreferÃªncias
 $l_prefupdated	= "$l_preferences atualizadas. $l_click <a href=\"index.$phpEx\">$l_here</a> $l_returnindex";
 $l_editprefs	= "Editar Suas $l_preferences";
-$l_themecookie	= "NOTA: Para usar os TEMAS você PRECISA ter os cookies habilitados.";
+$l_themecookie	= "NOTA: Para usar os TEMAS vocÃª PRECISA ter os cookies habilitados.";
 $l_alwayssig	= "Sempre anexar a minha assinatura";
 $l_alwaysdisable= "Sempre desabilitar"; // Only used for next three strings
 $l_alwayssmile	= "$l_alwaysdisable $l_smilies";
 $l_alwayshtml	= "$l_alwaysdisable $l_html";
 $l_alwaysbbcode	= "$l_alwaysdisable $l_bbcode";
-$l_boardtheme	= "Tema do Fórum";
-$l_boardlang    = "Linguagem do Fórum";
+$l_boardtheme	= "Tema do FÃ³rum";
+$l_boardlang    = "Linguagem do FÃ³rum";
 $l_nothemes	= "Nenhum Tema no banco de dados";
 $l_saveprefs	= "Salvar $l_preferences";
 
 // Procura
 $l_searchterms	= "Palavras-Chave";
-$l_searchany	= "Procurar por QUALQUER um dos termos (Padrão)";
+$l_searchany	= "Procurar por QUALQUER um dos termos (PadrÃ£o)";
 $l_searchall	= "Procurar por TODOS os termos";
-$l_searchallfrm	= "Procurar todos os Fóruns";
+$l_searchallfrm	= "Procurar todos os FÃ³runs";
 $l_sortby	= "Ordenar por";
 $l_searchin	= "Procurar em";
-$l_titletext	= "Título & Texto";
+$l_titletext	= "TÃ­tulo & Texto";
 $l_search	= "Procurar";
-$l_nomatches	= "Nenhuma ocorrência para esta procura. Por favor especifique menos detalhes.";
+$l_nomatches	= "Nenhuma ocorrÃªncia para esta procura. Por favor especifique menos detalhes.";
 
-// Quem está online
-$l_whosonline	= "Quem está online?";
-$l_nousers	= "Nenhum usuário está atualmente navegando os fóruns";
+// Quem estÃ¡ online
+$l_whosonline	= "Quem estÃ¡ online?";
+$l_nousers	= "Nenhum usuÃ¡rio estÃ¡ atualmente navegando os fÃ³runs";
 
 
 // Editar mensagem
-$l_notedit	= "Você não pode editar uma mensagem que não é sua.";
-$l_permdeny	= "Você não forneceu a $l_password correta ou não tem permissão para editar esta mensagem. $l_tryagain";
+$l_notedit	= "VocÃª nÃ£o pode editar uma mensagem que nÃ£o Ã© sua.";
+$l_permdeny	= "VocÃª nÃ£o forneceu a $l_password correta ou nÃ£o tem permissÃ£o para editar esta mensagem. $l_tryagain";
 $l_editedby	= "Esta $l_message foi editada por:";
 $l_stored	= "Sua $l_message foi guardada no banco de dados.";
 $l_viewmsg	= "para ver sua $l_message.";
 $l_deleted	= "Sua $l_post foi apagada.";
-$l_nouser	= "O $l_username não existe.";
+$l_nouser	= "O $l_username nÃ£o existe.";
 $l_passwdlost	= "Eu esqueci a minha senha!";
 $l_delete	= "Apagar esta Mensagem";
 
 $l_disable	= "Desabilitar";
 $l_onthispost	= "nesta Mensagem";
 
-$l_htmlis	= "$l_html está";
-$l_bbcodeis	= "$l_bbcode está";
+$l_htmlis	= "$l_html estÃ¡";
+$l_bbcodeis	= "$l_bbcode estÃ¡";
 
 $l_notify	= "Notificar por email as respostas colocadas";
 
-// Novo Tópico
-$l_emptymsg	= "Você precisa digitar uma $l_message para colocar. Você não pode colocar uma $l_message vazia.";
+// Novo TÃ³pico
+$l_emptymsg	= "VocÃª precisa digitar uma $l_message para colocar. VocÃª nÃ£o pode colocar uma $l_message vazia.";
 $l_aboutpost	= "Sobe Mensagear";
-$l_regusers	= "Todos os usuários <b>registrados</b>";
-$l_anonusers	= "Usuários <b>Anônimos</b>";
+$l_regusers	= "Todos os usuÃ¡rios <b>registrados</b>";
+$l_anonusers	= "UsuÃ¡rios <b>AnÃ´nimos</b>";
 $l_modusers	= "Apenas <B>Moderadores e Administradores</b>";
-$l_anonhint	= "<br>(Para colocar anonimamente simplesmente não coloque um nome de usuário e senha)";
-$l_inthisforum	= "pode colocar novos tópicos e respostas neste fórum";
+$l_anonhint	= "<br>(Para colocar anonimamente simplesmente nÃ£o coloque um nome de usuÃ¡rio e senha)";
+$l_inthisforum	= "pode colocar novos tÃ³picos e respostas neste fÃ³rum";
 $l_attachsig	= "Mostrar assinatura <font size=-2>(Isto pode ser alterado ou adicionado no seu perfil)</font>";
 $l_cancelpost	= "Cancelar Mensagem";
 
 // Reply
-$l_nopostlock	= "Você não pode colocar uma resposta neste tópico, ele foi travado.";
-$l_topicreview  = "Revisar Tópico";
-$l_notifysubj	= "Uma resposta ao seu tópico foi colocada.";
-$l_notifybody	= 'Olá $m[username]\r\nVocê está recebendo este Email porque uma mensagem que
-você colocou no $sitename fóruns recebeu uma resposta, e você
+$l_nopostlock	= "VocÃª nÃ£o pode colocar uma resposta neste tÃ³pico, ele foi travado.";
+$l_topicreview  = "Revisar TÃ³pico";
+$l_notifysubj	= "Uma resposta ao seu tÃ³pico foi colocada.";
+$l_notifybody	= 'OlÃ¡ $m[username]\r\nVocÃª estÃ¡ recebendo este Email porque uma mensagem que
+vocÃª colocou no $sitename fÃ³runs recebeu uma resposta, e vocÃª
 selecionou avisos sobre estes eventos.
 
-Você pode ver o tópico em:
+VocÃª pode ver o tÃ³pico em:
 
 http://$SERVER_NAME$url_phpbb/viewtopic.$phpEx?topic=$topic&forum=$forum
 
-Ou ver o index do fórum $sitename em
+Ou ver o index do fÃ³rum $sitename em
 
 http://$SERVER_NAME$url_phpbb
 
-Obrigado por usar os fóruns $sitename.
+Obrigado por usar os fÃ³runs $sitename.
 
 Tenha uma bom dia.
 
@@ -301,17 +301,17 @@ $email_sig';
 $l_quotemsg	= '[quote]\nEm $m[post_time], $m[username] escreveu:\n$text\n[/quote]';
 
 // Enviar msgpriv
-$l_norecipient	= "Você precisa colocar o nome de usuário para quem você quer enviar a $l_message.";
+$l_norecipient	= "VocÃª precisa colocar o nome de usuÃ¡rio para quem vocÃª quer enviar a $l_message.";
 $l_sendothermsg	= "Enviar outra Mensagem Privada";
 $l_cansend	= "pode enviar $l_privmsgs";  // All registered users can send PM's
 $l_yourname	= "Seu $l_username";
-$l_recptname	= "$l_username do Destinatário";
+$l_recptname	= "$l_username do DestinatÃ¡rio";
 
 // Responder msgpriv
-$l_pmposted	= "Resposta colocada, você pode clicar <a href=\"viewpmsg.$phpEx\">aqui</a> para ver suas $l_privmsgs";
+$l_pmposted	= "Resposta colocada, vocÃª pode clicar <a href=\"viewpmsg.$phpEx\">aqui</a> para ver suas $l_privmsgs";
 
 // Ver msgpriv
-$l_nopmsgs	= "Você não tem $l_privmsgs.";
+$l_nopmsgs	= "VocÃª nÃ£o tem $l_privmsgs.";
 $l_reply	= "Responder";
 
 // Apagar msgpriv
@@ -319,36 +319,36 @@ $l_deletesucces	= "Apagada com sucesso.";
 
 // Sorrisos
 $l_smilesym	= "O que digitar";
-$l_smileemotion	= "Emoção";
+$l_smileemotion	= "EmoÃ§Ã£o";
 $l_smilepict	= "Desenho";
 
 // Enviar Senha
-$l_wrongactiv	= "A chave de ativação fornecida está incorreta. Por favor cheque a $l_message que você recebeu e certifique-se que você copiou a chave de ativação exata.";
-$l_passchange	= "Sua senha foi alterada com sucesso. Você agora pode ir para seu <a href=\"bb_profile.$phpEx?mode=edit\">profile</a> e mudar a senha para algo mais apropriado.";
-$l_wrongmail	= "O endereço de email que você colocou é diferente do guardado em nosso banco de dados.";
+$l_wrongactiv	= "A chave de ativaÃ§Ã£o fornecida estÃ¡ incorreta. Por favor cheque a $l_message que vocÃª recebeu e certifique-se que vocÃª copiou a chave de ativaÃ§Ã£o exata.";
+$l_passchange	= "Sua senha foi alterada com sucesso. VocÃª agora pode ir para seu <a href=\"bb_profile.$phpEx?mode=edit\">profile</a> e mudar a senha para algo mais apropriado.";
+$l_wrongmail	= "O endereÃ§o de email que vocÃª colocou Ã© diferente do guardado em nosso banco de dados.";
 
-$l_passsubj	= "Senha alterada nos Fóruns $sitename";
+$l_passsubj	= "Senha alterada nos FÃ³runs $sitename";
 
-$l_pwdmessage	= 'Olá $checkinfo[username],
-Você está recebendo este email porque você (ou alguém fingindo ser você)
-solicitou uma mudança de senha nos fóruns $sitename. Se você acredita que
-recebeu esta mensagem erroneamente simplesmente a apague e sua senha permanecerá
+$l_pwdmessage	= 'OlÃ¡ $checkinfo[username],
+VocÃª estÃ¡ recebendo este email porque vocÃª (ou alguÃ©m fingindo ser vocÃª)
+solicitou uma mudanÃ§a de senha nos fÃ³runs $sitename. Se vocÃª acredita que
+recebeu esta mensagem erroneamente simplesmente a apague e sua senha permanecerÃ¡
 a mesma.
 
-Sua senha gerada pelos fóruns é: $newpw
+Sua senha gerada pelos fÃ³runs Ã©: $newpw
 
-Para esta mudança ter efeito você precisa visitar esta página:
+Para esta mudanÃ§a ter efeito vocÃª precisa visitar esta pÃ¡gina:
 
    http://$SERVER_NAME$PHP_SELF?actkey=$key
 
-Quando você visitar essa página sua senha será trocada em nosso banco de dados,
-e você pode entrar em seu Perfil e mudá-la conforme desejado.
+Quando vocÃª visitar essa pÃ¡gina sua senha serÃ¡ trocada em nosso banco de dados,
+e vocÃª pode entrar em seu Perfil e mudÃ¡-la conforme desejado.
 
-Obrigado por usar os fóruns $sitename
+Obrigado por usar os fÃ³runs $sitename
 
 $email_sig';
 
-$l_passsent	= "Sua senha mudou para uma nova e aleatória. Por favor cheque seu email para completar o procedimento de troca de senha.";
+$l_passsent	= "Sua senha mudou para uma nova e aleatÃ³ria. Por favor cheque seu email para completar o procedimento de troca de senha.";
 $l_emailpass	= "Email de Senha Perdida";
-$l_passexplain	= "Por favor preencha o formulário, uma nova senha será enviada para seu endereço de Email";
+$l_passexplain	= "Por favor preencha o formulÃ¡rio, uma nova senha serÃ¡ enviada para seu endereÃ§o de Email";
 $l_sendpass	= "Enviar Senha";

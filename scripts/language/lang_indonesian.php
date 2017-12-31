@@ -155,7 +155,7 @@ $l_logout	= "Logout";
 $l_login	= "Login";
 
 // Page_header
-$l_separator	= "» »";  // Included here because some languages have
+$l_separator	= "Â» Â»";  // Included here because some languages have
                   // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Rubah Profile";
 $l_editprefs	= "Rubah $l_preferences";

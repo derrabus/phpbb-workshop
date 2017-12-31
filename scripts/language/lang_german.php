@@ -102,7 +102,7 @@ $l_indextitle	= "Forenindex";
 // Members and profile
 $l_profile	= "Profil";
 $l_register	= "Registrieren";
-$l_onlyreq 	= "Nur bei Žnderung erforderlich";
+$l_onlyreq 	= "Nur bei &Auml;nderung erforderlich";
 $l_location 	= "Wohnort";
 $l_viewpostuser	= "Beitr&auml;ge dieses Benutzers ansehen";
 $l_perday       = "$l_messages pro Tag";
@@ -162,7 +162,7 @@ $l_logout	= "Ausloggen";
 $l_login	= "Einloggen";
 
 // Page_header
-$l_separator	= "¯ ¯";  // Included here because some languages have
+$l_separator	= "Â¯ Â¯";  // Included here because some languages have
                   // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Profil &auml;ndern";
 $l_editprefs	= "$l_preferences &auml;ndern";
@@ -340,7 +340,7 @@ ignorieren Sie diese Email einfach.
 
 Von den Foren wurde folgendes neues Passwort f&uuml;r Sie vergeben: $newpw
 
-Damit diese Žnderungen wirksam werden, m&uuml;ssen Sie folgende Seite besuchen:
+Damit diese &Auml;nderungen wirksam werden, m&uuml;ssen Sie folgende Seite besuchen:
 
    http://$SERVER_NAME$PHP_SELF?actkey=$key
 

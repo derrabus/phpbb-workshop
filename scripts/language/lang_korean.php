@@ -12,56 +12,54 @@
  *                           lang_korean.php  -  description
  *				ver : kor_0.1.24
  *
- *	ÇãÁ¢ ¹ø¿ª:³ëÀ±Å¹ (Âü°í:ÃÖÀÇÁ¾ ´ÔÀÇ È¨ÆäÀÌÁö,µµ¿ò:½ÅÁöÇö ´Ô)
+ *	í—ˆì ‘ ë²ˆì—­:ë…¸ìœ¤íƒ (ì°¸ê³ :ìµœì˜ì¢… ë‹˜ì˜ í™ˆí˜ì´ì§€,ë„ì›€:ì‹ ì§€í˜„ ë‹˜)
  *	email : geogo@hitel.net
  *
- *	À½..¾ÆÁ÷ ¿ÏÀüÈ÷ ¹ø¿ªÇÏÁö ¸øÇÑ ºÎºĞÀÌ ¸¹ÀÌ ÀÖ½À´Ï´Ù.
- *	È¤ Æ²¸° ºÎºĞÀÌ ÀÖ°Å³ª ÀÚ¿¬½º·´Áö ¸øÇÑºÎºĞÀÌ ÀÖÀ¸¸é(¾Æ¸¶..¸¹À»°Í °°Àº..)
- *	¸ŞÀÏÁÖ½Ê½Ã¿ä..Áï½Ã ¼öÁ¤ÇØ ³õ°Ú½À´Ï´Ù.
- *	¾ÆÁ÷ ¹ø¿ªµÇÁö ¾ÊÀº ºÎºĞµµ º¯¿ªÇØ¼­ ¸ŞÀÏ·Î º¸³»ÁÖ½Ã¸é Áï½Ã ¼öÁ¤ÇØ¼­ ¿Ã¸®°Ú½À´Ï´Ù.
- *	ÀÌ ÆÄÀÏÀ» lang_korean.php À¸·Î ÀúÀåÇÏ¿© ./phpBB/language µğ·ºÅä¸®¿¡ ³Ö¾îÁÖ½Ã¸é
- *	µË´Ï´Ù.
+ *	ìŒ..ì•„ì§ ì™„ì „íˆ ë²ˆì—­í•˜ì§€ ëª»í•œ ë¶€ë¶„ì´ ë§ì´ ìˆìŠµë‹ˆë‹¤.
+ *	í˜¹ í‹€ë¦° ë¶€ë¶„ì´ ìˆê±°ë‚˜ ìì—°ìŠ¤ëŸ½ì§€ ëª»í•œë¶€ë¶„ì´ ìˆìœ¼ë©´(ì•„ë§ˆ..ë§ì„ê²ƒ ê°™ì€..)
+ *	ë©”ì¼ì£¼ì‹­ì‹œìš”..ì¦‰ì‹œ ìˆ˜ì •í•´ ë†“ê² ìŠµë‹ˆë‹¤.
+ *	ì•„ì§ ë²ˆì—­ë˜ì§€ ì•Šì€ ë¶€ë¶„ë„ ë³€ì—­í•´ì„œ ë©”ì¼ë¡œ ë³´ë‚´ì£¼ì‹œë©´ ì¦‰ì‹œ ìˆ˜ì •í•´ì„œ ì˜¬ë¦¬ê² ìŠµë‹ˆë‹¤.
+ *	ì´ íŒŒì¼ì„ lang_korean.php ìœ¼ë¡œ ì €ì¥í•˜ì—¬ ./phpBB/language ë””ë ‰í† ë¦¬ì— ë„£ì–´ì£¼ì‹œë©´
+ *	ë©ë‹ˆë‹¤.
  ***************************************************************************/
 
-$l_special_meta = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=EUC-KR\">";
-
-$l_forum 	= "Æ÷·³";
-$l_forums	= "Æ÷·³";
-$l_topic	= "ÁÖÁ¦";
-$l_topics 	= "ÁÖÁ¦";
-$l_replies	= "´äº¯";
-$l_poster	= "±Û¾´ÀÌ";
-$l_author	= "±Û¾´ÀÌ";
-$l_views	= "Á¶È¸";
-$l_post 	= "°Ô½Ã¹°";
-$l_posts 	= "°Ô½Ã¹°";
-$l_message	= "ÂÊÁö";
-$l_messages	= "ÂÊÁö";
-$l_subject	= "Á¦¸ñ";
-$l_body		= "$l_message º»¹®";
+$l_forum 	= "í¬ëŸ¼";
+$l_forums	= "í¬ëŸ¼";
+$l_topic	= "ì£¼ì œ";
+$l_topics 	= "ì£¼ì œ";
+$l_replies	= "ë‹µë³€";
+$l_poster	= "ê¸€ì“´ì´";
+$l_author	= "ê¸€ì“´ì´";
+$l_views	= "ì¡°íšŒ";
+$l_post 	= "ê²Œì‹œë¬¼";
+$l_posts 	= "ê²Œì‹œë¬¼";
+$l_message	= "ìª½ì§€";
+$l_messages	= "ìª½ì§€";
+$l_subject	= "ì œëª©";
+$l_body		= "$l_message ë³¸ë¬¸";
 $l_from		= "From";   // Message from
-$l_moderator 	= "°ü¸®ÀÚ";
-$l_username 	= "¾ÆÀÌµğ";
-$l_password 	= "¾ÏÈ£";
-$l_email 	= "ÀüÀÚ¿ìÆí";
-$l_emailaddress	= "ÀüÀÚ¿ìÆí ÁÖ¼Ò";
-$l_preferences	= "¼³Á¤";
+$l_moderator 	= "ê´€ë¦¬ì";
+$l_username 	= "ì•„ì´ë””";
+$l_password 	= "ì•”í˜¸";
+$l_email 	= "ì „ììš°í¸";
+$l_emailaddress	= "ì „ììš°í¸ ì£¼ì†Œ";
+$l_preferences	= "ì„¤ì •";
 
-$l_anonymous	= "ÀÍ¸í";  // Post
-$l_guest	= "¼Õ´Ô"; // Whosonline
+$l_anonymous	= "ìµëª…";  // Post
+$l_guest	= "ì†ë‹˜"; // Whosonline
 $l_noposts	= "No $l_posts";
-$l_joined	= "°¡ÀÔ³¯Â¥";
-$l_gotopage	= "ÆäÀÌÁö ÀÌµ¿";
-$l_nextpage 	= "´ÙÀ½ ÆäÀÌÁö";
-$l_prevpage     = "ÀÌÀü ÆäÀÌÁö";
-$l_go		= "°¡±â";
-$l_selectforum	= "$l_forum À» ¼±ÅÃÇÏ¼¼¿ä";
+$l_joined	= "ê°€ì…ë‚ ì§œ";
+$l_gotopage	= "í˜ì´ì§€ ì´ë™";
+$l_nextpage 	= "ë‹¤ìŒ í˜ì´ì§€";
+$l_prevpage     = "ì´ì „ í˜ì´ì§€";
+$l_go		= "ê°€ê¸°";
+$l_selectforum	= "$l_forum ì„ ì„ íƒí•˜ì„¸ìš”";
 
-$l_date		= "³¯Â¥";
-$l_number	= "¹øÈ£";
-$l_name		= "ÀÌ¸§";
-$l_options 	= "¿É¼Ç";
-$l_submit	= "È®ÀÎ";
+$l_date		= "ë‚ ì§œ";
+$l_number	= "ë²ˆí˜¸";
+$l_name		= "ì´ë¦„";
+$l_options 	= "ì˜µì…˜";
+$l_submit	= "í™•ì¸";
 $l_confirm 	= "Confirm";
 $l_enter 	= "Enter";
 $l_by		= "by"; // Posted by
@@ -70,7 +68,7 @@ $l_new          = "New";
 
 $l_html		= "HTML";
 $l_bbcode	= "BBcode";
-$l_smilies	= "Ä³¸¯ÅÍ";
+$l_smilies	= "ìºë¦­í„°";
 $l_on		= "On";
 $l_off		= "Off";
 $l_yes		= "Yes";
@@ -78,35 +76,35 @@ $l_no		= "No";
 
 $l_click 	= "Click";
 $l_here 	= "here";
-$l_toreturn	= "µ¹¾Æ°¡±â";
-$l_returnindex	= "Æ÷·³ ¸ñ·ÏÀ¸·Î $l_toreturn ";
-$l_returntopic	= "±Û ¸ñ·Ï À¸·Î $l_toreturn";
+$l_toreturn	= "ëŒì•„ê°€ê¸°";
+$l_returnindex	= "í¬ëŸ¼ ëª©ë¡ìœ¼ë¡œ $l_toreturn ";
+$l_returntopic	= "ê¸€ ëª©ë¡ ìœ¼ë¡œ $l_toreturn";
 
 $l_error	= "Error";
-$l_tryagain	= "µ¹¾Æ°¡¼­ ´Ù½Ã ½ÃµµÇØ º¸½Ê½Ã¿ä.";
-$l_mismatch 	= "¾ÏÈ£ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.";
-$l_userremoved 	= "ÀÔ·ÂÇÏ½Å »ç¿ëÀÚ´Â ¾ÆÀÌµğ°¡ »èÁ¦µÇ¾ú½À´Ï´Ù.";
-$l_wrongpass	= "¾ĞÈ£ÀÔ·ÂÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.";
-$l_userpass	= "¾ÆÀÌµğ¿Í ¾ÏÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.";
-$l_banned 	= "ÀÌ Æ÷·³À¸·Î ºÎÅÍ °ÅÀı´çÇÏ¿´½À´Ï´Ù. ÀÌÀÇÀÖÀ¸½Ã¸é Æ÷·³°ü¸®ÀÚ¿¡°Ô ¿¬¶ôÁÖ½Ê½Ã¿ä.";
-$l_enterpassword= "¾ÏÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.";
+$l_tryagain	= "ëŒì•„ê°€ì„œ ë‹¤ì‹œ ì‹œë„í•´ ë³´ì‹­ì‹œìš”.";
+$l_mismatch 	= "ì•”í˜¸ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.";
+$l_userremoved 	= "ì…ë ¥í•˜ì‹  ì‚¬ìš©ìëŠ” ì•„ì´ë””ê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.";
+$l_wrongpass	= "ì••í˜¸ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.";
+$l_userpass	= "ì•„ì´ë””ì™€ ì•”í˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.";
+$l_banned 	= "ì´ í¬ëŸ¼ìœ¼ë¡œ ë¶€í„° ê±°ì ˆë‹¹í•˜ì˜€ìŠµë‹ˆë‹¤. ì´ì˜ìˆìœ¼ì‹œë©´ í¬ëŸ¼ê´€ë¦¬ìì—ê²Œ ì—°ë½ì£¼ì‹­ì‹œìš”.";
+$l_enterpassword= "ì•”í˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.";
 
-$l_nopost	= "ÀÌ Æ÷·³¿¡ ±ÛÀ» °Ô½ÃÇÒ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.";
-$l_noread	= "ÀÌ Æ÷·³ÀÇ ±ÛÀ» ÀĞÀ» ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.";
+$l_nopost	= "ì´ í¬ëŸ¼ì— ê¸€ì„ ê²Œì‹œí•  ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.";
+$l_noread	= "ì´ í¬ëŸ¼ì˜ ê¸€ì„ ì½ì„ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.";
 
-$l_lastpost 	= "¸¶Áö¸· $l_post";
-$l_sincelast	= "¸¶Áö¸· Á¢¼Ó ÀÌÈÄ";
-$l_newposts 	= "$l_sincelast »õ $l_posts ÀÖÀ½";
-$l_nonewposts 	= "$l_sincelast »õ $l_posts ¾øÀ½";
+$l_lastpost 	= "ë§ˆì§€ë§‰ $l_post";
+$l_sincelast	= "ë§ˆì§€ë§‰ ì ‘ì† ì´í›„";
+$l_newposts 	= "$l_sincelast ìƒˆ $l_posts ìˆìŒ";
+$l_nonewposts 	= "$l_sincelast ìƒˆ $l_posts ì—†ìŒ";
 
 // Index page
-$l_indextitle	= "Æ÷·³ Ã³À½";
+$l_indextitle	= "í¬ëŸ¼ ì²˜ìŒ";
 
 // Members and profile
-$l_profile	= "°³ÀÎÁ¤º¸";
-$l_register	= "È¸¿ø°¡ÀÔ";
-$l_onlyreq 	= "ºñ¹Ğ¹øÈ£¸¦ º¯°æÇÒ¶§¿¡´Â ÀÌ°÷¿¡µµ ½á ÁÖ¼¼¿ä.";
-$l_location 	= "¼Ò¼Ó";
+$l_profile	= "ê°œì¸ì •ë³´";
+$l_register	= "íšŒì›ê°€ì…";
+$l_onlyreq 	= "ë¹„ë°€ë²ˆí˜¸ë¥¼ ë³€ê²½í• ë•Œì—ëŠ” ì´ê³³ì—ë„ ì¨ ì£¼ì„¸ìš”.";
+$l_location 	= "ì†Œì†";
 $l_viewpostuser	= "View posts by this user";
 $l_perday       = "$l_messages per day";
 $l_oftotal      = "of total";
@@ -120,197 +118,197 @@ $l_yim 		= "YIM";
 $l_yahoo 	= "Yahoo Messenger";
 $l_msn 		= "MSN";
 $l_messenger 	= "MSN Messenger";
-$l_website 	= "È¨ÆäÀÌÁö";
-$l_occupation 	= "Á÷¾÷";
-$l_interests 	= "ºĞ¾ß";
-$l_signature 	= "¼­¸í";
-$l_sigexplain 	= "ÀÌ°ÍÀº ÅØ½ºÆ® ºí·°À¸·Î ´ç½ÅÀÌ ³²±â´Â °Ô½Ã¹°ÀÇ ÇÏ´ÜºÎ¿¡ »ğÀÔµË´Ï´Ù. <br> ÃÖ´ë ¿µ¹® 255ÀÚ ÇÑ±Û 127ÀÚ ±îÁö °¡´ÉÇÕ´Ï´Ù!";
+$l_website 	= "í™ˆí˜ì´ì§€";
+$l_occupation 	= "ì§ì—…";
+$l_interests 	= "ë¶„ì•¼";
+$l_signature 	= "ì„œëª…";
+$l_sigexplain 	= "ì´ê²ƒì€ í…ìŠ¤íŠ¸ ë¸”ëŸ­ìœ¼ë¡œ ë‹¹ì‹ ì´ ë‚¨ê¸°ëŠ” ê²Œì‹œë¬¼ì˜ í•˜ë‹¨ë¶€ì— ì‚½ì…ë©ë‹ˆë‹¤. <br> ìµœëŒ€ ì˜ë¬¸ 255ì í•œê¸€ 127ì ê¹Œì§€ ê°€ëŠ¥í•©ë‹ˆë‹¤!";
 $l_usertaken	= "The $l_username you picked has been taken.";
 $l_userdisallowed= "The $l_username you picked has been disallowed by the administrator. $l_tryagain";
-$l_infoupdated	= "´ç½ÅÀÇ Á¤º¸°¡ ¾÷µ¥ÀÌÆ®(Update)µÇ¾ú½À´Ï´Ù.";
-$l_publicmail	= "´Ù¸¥ »ç¿ëÀÚ ¿¡°Ô ³ªÀÇ $l_emailaddress ¸¦ °ø°³ÇÕ´Ï´Ù.";
-$l_itemsreq	= "* Ç¥½Ã°¡ ÀÖ´Â ºÎºĞÀº ÇÊ¼öÀÔ·ÂºÎºĞ ÀÔ´Ï´Ù.";
+$l_infoupdated	= "ë‹¹ì‹ ì˜ ì •ë³´ê°€ ì—…ë°ì´íŠ¸(Update)ë˜ì—ˆìŠµë‹ˆë‹¤.";
+$l_publicmail	= "ë‹¤ë¥¸ ì‚¬ìš©ì ì—ê²Œ ë‚˜ì˜ $l_emailaddress ë¥¼ ê³µê°œí•©ë‹ˆë‹¤.";
+$l_itemsreq	= "* í‘œì‹œê°€ ìˆëŠ” ë¶€ë¶„ì€ í•„ìˆ˜ì…ë ¥ë¶€ë¶„ ì…ë‹ˆë‹¤.";
 
 // Viewforum
 $l_viewforum	= "View Forum";
-$l_notopics	= "ÀÌ ÁÖÁ¦¿¡´Â ±ÛÀÌ ¾ø½À´Ï´Ù. »õ·Î ±ÛÀ» ³²±æ¼ö ÀÖ½À´Ï´Ù.";
+$l_notopics	= "ì´ ì£¼ì œì—ëŠ” ê¸€ì´ ì—†ìŠµë‹ˆë‹¤. ìƒˆë¡œ ê¸€ì„ ë‚¨ê¸¸ìˆ˜ ìˆìŠµë‹ˆë‹¤.";
 $l_hotthres	= "More then $hot_threshold $l_posts";
 $l_islocked	= "$l_topic is Locked (No new $l_posts may be made in it)";
-$l_moderatedby	= "°ü¸®ÀÚ";
+$l_moderatedby	= "ê´€ë¦¬ì";
 
-// Private forums : Çã°¡Á¦ Æ÷·³
-$l_privateforum	= "ÀÌ°÷Àº <b>Çã°¡Á¦ Æ÷·³</b>.";
-$l_private 	= "$l_privateforum<br>Note : Çã°¡¸¦ À§ÇØ¼­ ÄíÅ° ±â´ÉÀ» ÄÑµÎ¾î¾ß ÇÕ´Ï´Ù.";
+// Private forums : í—ˆê°€ì œ í¬ëŸ¼
+$l_privateforum	= "ì´ê³³ì€ <b>í—ˆê°€ì œ í¬ëŸ¼</b>.";
+$l_private 	= "$l_privateforum<br>Note : í—ˆê°€ë¥¼ ìœ„í•´ì„œ ì¿ í‚¤ ê¸°ëŠ¥ì„ ì¼œë‘ì–´ì•¼ í•©ë‹ˆë‹¤.";
 $l_noprivatepost = "$l_privateforum You do not have access to post to this forum.";
 
 // Viewtopic
 $l_topictitle	= "View $l_topic";
-$l_unregistered	= "µî·ÏµÇÁö ¾ÊÀº »ç¿ëÀÚ";
-$l_posted	= "±Û¾´¶§";
-$l_profileof	= "»ç¿ëÀÚ Á¤º¸ º¸±â =>";
-$l_viewsite	= "»ç¿ëÀÚÀÇ È¨ÆäÀÌÁö·Î °¡±â =>";
+$l_unregistered	= "ë“±ë¡ë˜ì§€ ì•Šì€ ì‚¬ìš©ì";
+$l_posted	= "ê¸€ì“´ë•Œ";
+$l_profileof	= "ì‚¬ìš©ì ì •ë³´ ë³´ê¸° =>";
+$l_viewsite	= "ì‚¬ìš©ìì˜ í™ˆí˜ì´ì§€ë¡œ ê°€ê¸° =>";
 $l_icqstatus	= "$l_icq status";  // ICQ status
-$l_editdelete	= "$l_post ¼öÁ¤ÇÏ±â";
-$l_replyquote	= "ÀÌ±ÛÀ» ÀÎ¿ëÇÏ¿© ±Û¾²±â";
+$l_editdelete	= "$l_post ìˆ˜ì •í•˜ê¸°";
+$l_replyquote	= "ì´ê¸€ì„ ì¸ìš©í•˜ì—¬ ê¸€ì“°ê¸°";
 $l_viewip	= "View Posters IP (Moderators/Admins Only)";
 $l_locktopic	= "Lock this $l_topic";
 $l_unlocktopic	= "Unlock this $l_topic";
-$l_movetopic	= "ÀÌµ¿ÇÏ±â this $l_topic";
-$l_deletetopic	= "Áö¿ì±â this $l_topic";
+$l_movetopic	= "ì´ë™í•˜ê¸° this $l_topic";
+$l_deletetopic	= "ì§€ìš°ê¸° this $l_topic";
 
 // Functions
-$l_loggedinas	= "´ÙÀ½ ÀÌ¸§À¸·Î ·Î±×ÀÓ µÈ »óÅÂ : ";
-$l_notloggedin	= "·Î±×ÀÎ µÇÁö ¾ÊÀº»óÅÂ";
-$l_logout	= "·Î±×¾Æ¿ô[³ª°¡±â]";
-$l_login	= "·Î±×ÀÎ[µé¾î¿À±â]";
+$l_loggedinas	= "ë‹¤ìŒ ì´ë¦„ìœ¼ë¡œ ë¡œê·¸ì„ ëœ ìƒíƒœ : ";
+$l_notloggedin	= "ë¡œê·¸ì¸ ë˜ì§€ ì•Šì€ìƒíƒœ";
+$l_logout	= "ë¡œê·¸ì•„ì›ƒ[ë‚˜ê°€ê¸°]";
+$l_login	= "ë¡œê·¸ì¸[ë“¤ì–´ì˜¤ê¸°]";
 
 // Page_header
-$l_separator	= "» »";  // Included here because some languages have
+$l_separator	= "Â» Â»";  // Included here because some languages have
                   // problems with high ASCII (Big-5 and the like).
-$l_editprofile	= "°³ÀÎÁ¤º¸ ¼öÁ¤";
+$l_editprofile	= "ê°œì¸ì •ë³´ ìˆ˜ì •";
 $l_editprefs	= "Edit $l_preferences";
-$l_search	= "Ã£±â";
-$l_memberslist	= "È¸¿ø¸ñ·Ï";
+$l_search	= "ì°¾ê¸°";
+$l_memberslist	= "íšŒì›ëª©ë¡";
 $l_faq		= "FAQ";
-$l_privmsgs	= "ÂÊÁö";
-$l_sendpmsg	= "ÂÊÁöº¸³»±â";
-$l_statsblock   = '$statsblock = "ÃÑ$total_posts °³ÀÇ ±ÛÀÌ ÀÖ½À´Ï´Ù. <br>
-ÃÑ È¸¿ø¼ö -$total_users- Registered Users.<br>
-°¡Àå ÃÖ±Ù¿¡ µî·ÏÇÑ »ç¿ëÀÚ´Â -<a href=\"$profile_url\">$newest_user</a>-.<br>
--$users_online- ". ($users_online==1?"¸íÀÇ »ç¿ëÀÚ°¡":"¸íÀÇ »ç¿ëÀÚµéÀÌ") ." <a href=\"$online_url\">ÀÌ·±ÀÏÀ» ÇÏ°íÀÖÀ½</a><br>";';
+$l_privmsgs	= "ìª½ì§€";
+$l_sendpmsg	= "ìª½ì§€ë³´ë‚´ê¸°";
+$l_statsblock   = '$statsblock = "ì´$total_posts ê°œì˜ ê¸€ì´ ìˆìŠµë‹ˆë‹¤. <br>
+ì´ íšŒì›ìˆ˜ -$total_users- Registered Users.<br>
+ê°€ì¥ ìµœê·¼ì— ë“±ë¡í•œ ì‚¬ìš©ìëŠ” -<a href=\"$profile_url\">$newest_user</a>-.<br>
+-$users_online- ". ($users_online==1?"ëª…ì˜ ì‚¬ìš©ìê°€":"ëª…ì˜ ì‚¬ìš©ìë“¤ì´") ." <a href=\"$online_url\">ì´ëŸ°ì¼ì„ í•˜ê³ ìˆìŒ</a><br>";';
 $l_privnotify   = '$privnotify = "<br>You have $new_message <a href=\"$privmsg_url\">new private ".($new_message>1?"messages":"message")."</a>.";';
 
 // Page_tail
-$l_adminpanel	= "°ü¸®µµ±¸";
+$l_adminpanel	= "ê´€ë¦¬ë„êµ¬";
 $l_poweredby	= "Powered by";
 $l_version	= "Version";
 
 // Auth
 
 // Register
-$l_notfilledin	= "Error - ÇÊ¿äÇÑ ¸ğµç Ç×¸ñÀ» Ã¤¿öÁÖ¼¼¿ä.";
-$l_invalidname	= "¼±ÅÃÇÏ½Å ¾ÆÀÌµğ, \"$username\" ´Â ÀÌ¹Ì »ç¿ëµÇ°í ÀÖ½À´Ï´Ù.";
-$l_disallowname	= "¼±ÅÃÇÏ½Å ¾ÆÀÌµğ, \"$username\" ´Â °ü¸®ÀÚ°¡ Çã°¡ÇÏÁö ¾Ê´Â ¾ÆÀÌµğ ÀÔ´Ï´Ù.";
+$l_notfilledin	= "Error - í•„ìš”í•œ ëª¨ë“  í•­ëª©ì„ ì±„ì›Œì£¼ì„¸ìš”.";
+$l_invalidname	= "ì„ íƒí•˜ì‹  ì•„ì´ë””, \"$username\" ëŠ” ì´ë¯¸ ì‚¬ìš©ë˜ê³  ìˆìŠµë‹ˆë‹¤.";
+$l_disallowname	= "ì„ íƒí•˜ì‹  ì•„ì´ë””, \"$username\" ëŠ” ê´€ë¦¬ìê°€ í—ˆê°€í•˜ì§€ ì•ŠëŠ” ì•„ì´ë”” ì…ë‹ˆë‹¤.";
 
-$l_welcomesubj	= "$sitename ¿¡ ¿À½Å°ÍÀ» È¯¿µÇÕ´Ï´Ù.";
+$l_welcomesubj	= "$sitename ì— ì˜¤ì‹ ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤.";
 $l_welcomemail	=
 "
 $l_welcomesubj,
 
 WELCOME !!
 
-ÀÌ ÆíÁö¸¦ Áß¿äÇÏ°Ô °£Á÷ÇÏ½Ê½Ã¿ä.
-°¡´ÉÇÏ´Ù¸é Áö¿ìÁö ¾Ê´Â°ÍÀÌ ÁÁ½À´Ï´Ù.
+ì´ í¸ì§€ë¥¼ ì¤‘ìš”í•˜ê²Œ ê°„ì§í•˜ì‹­ì‹œìš”.
+ê°€ëŠ¥í•˜ë‹¤ë©´ ì§€ìš°ì§€ ì•ŠëŠ”ê²ƒì´ ì¢‹ìŠµë‹ˆë‹¤.
 
-[¸ğÀÓ ÀÌ¸§(forum name)] »ç¿ëÀÚ Á¤º¸´Â ´ÙÀ½°ú °°½À´Ï´Ù.
+[ëª¨ì„ ì´ë¦„(forum name)] ì‚¬ìš©ì ì •ë³´ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.
 
 ----------------------------
-¾ÆÀÌµğ: $username
-¾ÏÈ£: $password
+ì•„ì´ë””: $username
+ì•”í˜¸: $password
 ----------------------------
 
-ÀÌ ¾ÏÈ£¸¦ ÀØ¾î¹ö¸®Áö ¾Êµµ·Ï ÁÖÀÇÇÏ½Ê½Ã¿ä.
-ÀÌ°ÍÀº ¶ÇÇÑ¹ø ¾ÏÈ£È­ µÇ¾î µ¥ÀÌÅÍº£ÀÌ½º¿¡ ±â·ÏµË´Ï´Ù.
-µû¶ó¼­ °ü¸®ÀÚµµ ¿©·¯ºĞÀÇ ¾ÏÈ£¸¦ ¾Ë¾Æ³¾¼ö ¾ø½À´Ï´Ù.
+ì´ ì•”í˜¸ë¥¼ ìŠì–´ë²„ë¦¬ì§€ ì•Šë„ë¡ ì£¼ì˜í•˜ì‹­ì‹œìš”.
+ì´ê²ƒì€ ë˜í•œë²ˆ ì•”í˜¸í™” ë˜ì–´ ë°ì´í„°ë² ì´ìŠ¤ì— ê¸°ë¡ë©ë‹ˆë‹¤.
+ë”°ë¼ì„œ ê´€ë¦¬ìë„ ì—¬ëŸ¬ë¶„ì˜ ì•”í˜¸ë¥¼ ì•Œì•„ë‚¼ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 
-±×·¯³ª, ´ç½ÅÀÌ ¾ÏÈ£¸¦ ÀØ¾úÀ» °æ¿ì ¿ì¸®´Â ½¬¿î ½ºÅ©¸³Æ®¸¦
-ÅëÇØ ÀÓÀÇÀÇ ¾ÏÈ£¸¦ »ı¼º, ¸ŞÀÏ·Î º¸³»µå¸³´Ï´Ù.
+ê·¸ëŸ¬ë‚˜, ë‹¹ì‹ ì´ ì•”í˜¸ë¥¼ ìŠì—ˆì„ ê²½ìš° ìš°ë¦¬ëŠ” ì‰¬ìš´ ìŠ¤í¬ë¦½íŠ¸ë¥¼
+í†µí•´ ì„ì˜ì˜ ì•”í˜¸ë¥¼ ìƒì„±, ë©”ì¼ë¡œ ë³´ë‚´ë“œë¦½ë‹ˆë‹¤.
 
-µî·ÏÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.
-´ç½ÅÀÇ È°¹ßÇÑ È°µ¿ ±â´ëÇÏ°Ú½À´Ï´Ù.
+ë“±ë¡í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.
+ë‹¹ì‹ ì˜ í™œë°œí•œ í™œë™ ê¸°ëŒ€í•˜ê² ìŠµë‹ˆë‹¤.
 
-[¸ğÀÓ ÀÌ¸§(forum name)] °ü¸®ÀÚ µå¸²
+[ëª¨ì„ ì´ë¦„(forum name)] ê´€ë¦¬ì ë“œë¦¼
 
 $email_sig
 ";
-$l_beenadded	= "Á¤º¸°¡ µ¥ÀÌÅÍº£ÀÌ½º¿¡ Ãß°¡µÇ¾ú½À´Ï´Ù.";
-$l_thankregister= "µî·ÏÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù!";
-$l_useruniq	= "Áßº¹µÈ ¾ÆÀÌµğ¸¦ Çã¶ôÇÏÁö ¾Ê½À´Ï´Ù.";
-$l_storecookie	= "³ªÀÇ ¾ÆÀÌµğ¸¦ 1³â°£ ÄíÅ°¿¡ ±â·ÏÇÕ´Ï´Ù.";
+$l_beenadded	= "ì •ë³´ê°€ ë°ì´í„°ë² ì´ìŠ¤ì— ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.";
+$l_thankregister= "ë“±ë¡í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤!";
+$l_useruniq	= "ì¤‘ë³µëœ ì•„ì´ë””ë¥¼ í—ˆë½í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
+$l_storecookie	= "ë‚˜ì˜ ì•„ì´ë””ë¥¼ 1ë…„ê°„ ì¿ í‚¤ì— ê¸°ë¡í•©ë‹ˆë‹¤.";
 
 // Prefs
 $l_prefupdated	= "$l_preferences updated. $l_click <a href=\"index.$phpEx\">$l_here</a> $l_returnindex";
-$l_editprefs	= "»ç¿ëÀÚ Á¤º¸ $l_preferences";
-$l_themecookie	= "NOTE: ¾Æ·¡ÀÇ ¼³Á¤À» »ç¿ëÇÏ±â À§ÇØ¼­´Â <b>¹İµå½Ã</b> ÄíÅ°(Cookies)¸¦ Çã¿ëÇÏ¿©¾ß ÇÕ´Ï´Ù.";
-$l_alwayssig	= "¾ğÁ¦³ª ³»°¡ ¾²´Â ±Û¿¡ ¼­¸íÀ» Ãß°¡ÇÔ";
-$l_alwaysdisable= "»ç¿ëÇÏÁö ¾ÊÀ½"; // Only used for next three strings
+$l_editprefs	= "ì‚¬ìš©ì ì •ë³´ $l_preferences";
+$l_themecookie	= "NOTE: ì•„ë˜ì˜ ì„¤ì •ì„ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œëŠ” <b>ë°˜ë“œì‹œ</b> ì¿ í‚¤(Cookies)ë¥¼ í—ˆìš©í•˜ì—¬ì•¼ í•©ë‹ˆë‹¤.";
+$l_alwayssig	= "ì–¸ì œë‚˜ ë‚´ê°€ ì“°ëŠ” ê¸€ì— ì„œëª…ì„ ì¶”ê°€í•¨";
+$l_alwaysdisable= "ì‚¬ìš©í•˜ì§€ ì•ŠìŒ"; // Only used for next three strings
 $l_alwayssmile	= "$l_smilies $l_alwaysdisable";
 $l_alwayshtml	= "$l_html $l_alwaysdisable";
 $l_alwaysbbcode	= "$l_bbcode $l_alwaysdisable";
-$l_boardtheme	= "»çÀÌÆ® °³ÀÎ Å×¸¶";
-$l_boardlang    = "»çÀÌÆ® ¾ğ¾î";
-$l_nothemes	= "µ¥ÀÌÅÍº£ÀÌ½º¿¡ Å×¸¶°¡ ÇÏ³ªµµ ¾ø½À´Ï´Ù.";
-$l_saveprefs	= "$l_preferences ÀúÀåÇÏ±â";
+$l_boardtheme	= "ì‚¬ì´íŠ¸ ê°œì¸ í…Œë§ˆ";
+$l_boardlang    = "ì‚¬ì´íŠ¸ ì–¸ì–´";
+$l_nothemes	= "ë°ì´í„°ë² ì´ìŠ¤ì— í…Œë§ˆê°€ í•˜ë‚˜ë„ ì—†ìŠµë‹ˆë‹¤.";
+$l_saveprefs	= "$l_preferences ì €ì¥í•˜ê¸°";
 
 // Search
-$l_searchterms	= "Å°¿öµå";
-$l_searchany	= " ÁöÁ¤ÇÑ °Ë»ö¾î ÁßÀÇ ÇÏ³ª¶óµµ Æ÷ÇÔµÇ´Â °Ô½Ã¹°À» Ã£¾Æ¼­ º¸¿©Áİ´Ï´Ù. (OR°Ë»ö,±âº»°ª)";
-$l_searchall	= "ÁöÁ¤ÇÑ °Ë»ö¾î°¡ ¸ğµÎ Æ÷ÇÔµÇ´Â °Ô½Ã¹°À» °Ë»öÇØÁİ´Ï´Ù. (AND°Ë»ö)";
-$l_searchallfrm	= "¸ğµç ÁÖÁ¦¿¡¼­ Ã£±â";
-$l_sortby	= "Á¤·Ä";
-$l_searchin	= "Ã£±â";
+$l_searchterms	= "í‚¤ì›Œë“œ";
+$l_searchany	= " ì§€ì •í•œ ê²€ìƒ‰ì–´ ì¤‘ì˜ í•˜ë‚˜ë¼ë„ í¬í•¨ë˜ëŠ” ê²Œì‹œë¬¼ì„ ì°¾ì•„ì„œ ë³´ì—¬ì¤ë‹ˆë‹¤. (ORê²€ìƒ‰,ê¸°ë³¸ê°’)";
+$l_searchall	= "ì§€ì •í•œ ê²€ìƒ‰ì–´ê°€ ëª¨ë‘ í¬í•¨ë˜ëŠ” ê²Œì‹œë¬¼ì„ ê²€ìƒ‰í•´ì¤ë‹ˆë‹¤. (ANDê²€ìƒ‰)";
+$l_searchallfrm	= "ëª¨ë“  ì£¼ì œì—ì„œ ì°¾ê¸°";
+$l_sortby	= "ì •ë ¬";
+$l_searchin	= "ì°¾ê¸°";
 $l_titletext	= "Title & Text";
-$l_search	= "°Ë»ö";
-$l_nomatches	= "°Ë»ö°á°ú°¡ ¾ø½À´Ï´Ù. °Ë»ö Å°¿öµå¸¦ Á»´õ ³ĞÀº ¹üÀ§·Î È®ÀåÇÏ¼¼¿ä.";
+$l_search	= "ê²€ìƒ‰";
+$l_nomatches	= "ê²€ìƒ‰ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤. ê²€ìƒ‰ í‚¤ì›Œë“œë¥¼ ì¢€ë” ë„“ì€ ë²”ìœ„ë¡œ í™•ì¥í•˜ì„¸ìš”.";
 
 // Whosonline
-$l_whosonline	= "·Î±×ÀÎµÈ »ç¿ëÀÚ";
-$l_nousers	= "ÇöÀç ·Î±×ÀÎµÈ »ç¿ëÀÚ°¡ ¾ø½À´Ï´Ù.";
+$l_whosonline	= "ë¡œê·¸ì¸ëœ ì‚¬ìš©ì";
+$l_nousers	= "í˜„ì¬ ë¡œê·¸ì¸ëœ ì‚¬ìš©ìê°€ ì—†ìŠµë‹ˆë‹¤.";
 
 
 // Editpost
-$l_notedit	= "´Ù¸¥»ç¶÷ÀÌ ¾´ ±ÛÀº ¼öÁ¤ÇÒ¼ö ¾ø½À´Ï´Ù.";
-$l_permdeny	= "ÀÌÀü¿¡ ÀÔ·ÂÇÑ ¾ÏÈ£¿Í ÀÏÄ¡ÇÏÁö ¾Ê°Å³ª ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.  $l_tryagain";
-$l_editedby	= "ÀÌ $l_post ´Â(Àº) ¼öÁ¤µÊ by :";
-$l_stored	= "$l_post ÀÌ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀåµÇ¾ú½À´Ï´Ù.";
+$l_notedit	= "ë‹¤ë¥¸ì‚¬ëŒì´ ì“´ ê¸€ì€ ìˆ˜ì •í• ìˆ˜ ì—†ìŠµë‹ˆë‹¤.";
+$l_permdeny	= "ì´ì „ì— ì…ë ¥í•œ ì•”í˜¸ì™€ ì¼ì¹˜í•˜ì§€ ì•Šê±°ë‚˜ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.  $l_tryagain";
+$l_editedby	= "ì´ $l_post ëŠ”(ì€) ìˆ˜ì •ë¨ by :";
+$l_stored	= "$l_post ì´ ë°ì´í„°ë² ì´ìŠ¤ì— ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.";
 $l_viewmsg	= "to view your $l_post.";
-$l_deleted	= "´ç½ÅÀÌ ¾´ $l_post Àº ÀÌ¹ÌÁö¿öÁ³½À´Ï´Ù.";
-$l_nouser	= "±× $l_post ´Â(Àº) Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
-$l_passwdlost	= "¾ÏÈ£ ºĞ½Ç!";
-$l_delete	= "ÀÌ ±ÛÀ» »èÁ¦ÇÔ ";
+$l_deleted	= "ë‹¹ì‹ ì´ ì“´ $l_post ì€ ì´ë¯¸ì§€ì›Œì¡ŒìŠµë‹ˆë‹¤.";
+$l_nouser	= "ê·¸ $l_post ëŠ”(ì€) ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
+$l_passwdlost	= "ì•”í˜¸ ë¶„ì‹¤!";
+$l_delete	= "ì´ ê¸€ì„ ì‚­ì œí•¨ ";
 
-$l_disable	= "¸·À½";
-$l_onthispost	= "ÀÌ ±Û¿¡¼­";
+$l_disable	= "ë§‰ìŒ";
+$l_onthispost	= "ì´ ê¸€ì—ì„œ";
 
 $l_htmlis	= "$l_html is";
 $l_bbcodeis	= "$l_bbcode is";
 
-$l_notify	= "ÀÌ±Û¿¡ ´ëÇÑ ´äº¯±ÛÀ» ¸ŞÀÏ·Î ¹Ş¾Æº½";
+$l_notify	= "ì´ê¸€ì— ëŒ€í•œ ë‹µë³€ê¸€ì„ ë©”ì¼ë¡œ ë°›ì•„ë´„";
 
 // Newtopic
-$l_emptymsg	= "$l_post ¿¡ ³»¿ëÀÌ ¾ø½À´Ï´Ù. $l_post ¿¡ ³»¿ëÀ» Ã¤¿ö ÁÖ¼¼¿ä.";
-$l_aboutpost	= "±Û¾²±â¿¡ °üÇÏ¿©";
+$l_emptymsg	= "$l_post ì— ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤. $l_post ì— ë‚´ìš©ì„ ì±„ì›Œ ì£¼ì„¸ìš”.";
+$l_aboutpost	= "ê¸€ì“°ê¸°ì— ê´€í•˜ì—¬";
 $l_regusers	= "All <b>Registered</b> users";
 $l_anonusers	= "<b>Anonymous</b> users";
 $l_modusers	= "Only <B>Moderators and Administrators</b>";
-$l_anonhint	= "<br>(ÀÍ¸íÀ¸·Î »ç¿ëÇÏ±â À§ÇØ¼­´Â ¾ÆÀÌµğ¿Í ¾ÏÈ£¸¦ ÀÔ·ÂÇÏÁö ¸¶¼¼¿ä)";
+$l_anonhint	= "<br>(ìµëª…ìœ¼ë¡œ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œëŠ” ì•„ì´ë””ì™€ ì•”í˜¸ë¥¼ ì…ë ¥í•˜ì§€ ë§ˆì„¸ìš”)";
 $l_inthisforum	= "can post new topics and replies to this forum";
-$l_attachsig	= "¾ğÁ¦³ª ¼­¸í º¸ÀÓ";
+$l_attachsig	= "ì–¸ì œë‚˜ ì„œëª… ë³´ì„";
 $l_cancelpost	= "Cancel Post";
 
 // Reply
-$l_nopostlock	= "ÀÌ ÁÖÁ¦¿¡ ´ëÇØ ´äº¯À» ³²±æ¼ö ¾ø½À´Ï´Ù. ÀÌ ÁÖÁ¦´Â Àá°ÜÀÖ½À´Ï´Ù. You cannot post a reply to this topic, it has been locked.";
+$l_nopostlock	= "ì´ ì£¼ì œì— ëŒ€í•´ ë‹µë³€ì„ ë‚¨ê¸¸ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ì´ ì£¼ì œëŠ” ì ê²¨ìˆìŠµë‹ˆë‹¤. You cannot post a reply to this topic, it has been locked.";
 $l_topicreview  = "Topic Review";
 $l_notifysubj	= "A reply to your topic has been posted.";
 $l_notifybody	= 'Dear $m[username]\r\nYou are receiving this Email because a message
-´ç½ÅÀÌ $sitename ¿¡ ³²±ä °Ô½Ã¹°¿¡ ´äº¯ÀÌ ¿Ã¶ó¿Ô½À´Ï´Ù.
+ë‹¹ì‹ ì´ $sitename ì— ë‚¨ê¸´ ê²Œì‹œë¬¼ì— ë‹µë³€ì´ ì˜¬ë¼ì™”ìŠµë‹ˆë‹¤.
 you posted on $sitename forums has been replied to, and
 you selected to be notified on this event.
 
-ÀÌ ¸µÅ©¸¦ ´©¸£¸é °Ô½Ã¹°À» º¼¼ö ÀÖ½À´Ï´Ù.
+ì´ ë§í¬ë¥¼ ëˆ„ë¥´ë©´ ê²Œì‹œë¬¼ì„ ë³¼ìˆ˜ ìˆìŠµë‹ˆë‹¤.
 You may view the topic at:
 
 http://$SERVER_NAME$url_phpbb/viewtopic.$phpEx?topic=$topic&forum=$forum
 
-¶Ç´Â ÀÌ ¸µÅ©¸¦ ´©¸£¸é $sitename Æ÷·³ Ã³À½À¸·Î ÀÌµ¿ÇÕ´Ï´Ù.
+ë˜ëŠ” ì´ ë§í¬ë¥¼ ëˆ„ë¥´ë©´ $sitename í¬ëŸ¼ ì²˜ìŒìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.
 Or view the $sitename forum index at
 
 http://$SERVER_NAME$url_phpbb
 
-$sitename À»(¸¦)ÀÌ¿ëÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.
+$sitename ì„(ë¥¼)ì´ìš©í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.
 Thank you for using $sitename forums.
 
-ÁÁÀº ÇÏ·ç º¸³»¼¼¿ä~~ ; )
+ì¢‹ì€ í•˜ë£¨ ë³´ë‚´ì„¸ìš”~~ ; )
 Have a nice day.
 
 $email_sig';
@@ -319,21 +317,21 @@ $email_sig';
 $l_quotemsg	= '[quote]\nOn $m[post_time], $m[username] wrote:\n$text\n[/quote]';
 
 // Sendpmsg
-$l_norecipient	= "´ç½ÅÀÌ $l_message ¿¡°Ô ÂÊÁö¸¦ º¸³»·Á¸é ¹Ş´Â»ç¶÷ÀÇ ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØ¾ß ÇÕ´Ï´Ù.";
+$l_norecipient	= "ë‹¹ì‹ ì´ $l_message ì—ê²Œ ìª½ì§€ë¥¼ ë³´ë‚´ë ¤ë©´ ë°›ëŠ”ì‚¬ëŒì˜ ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì•¼ í•©ë‹ˆë‹¤.";
 $l_sendothermsg	= "Send another Private Message";
 $l_cansend	= "can send $l_privmsgs";  // All registered users can send PM's
-$l_yourname	= "´ç½ÅÀÇ $l_username";
-$l_recptname	= "¹Ş´Â»ç¶÷ÀÇ $l_username";
+$l_yourname	= "ë‹¹ì‹ ì˜ $l_username";
+$l_recptname	= "ë°›ëŠ”ì‚¬ëŒì˜ $l_username";
 
 // Replypmsg
 $l_pmposted	= "Reply Posted, you can click <a href=\"viewpmsg.$phpEx\">here</a> to view your $l_privmsgs";
 
 // Viewpmsg
-$l_nopmsgs	= "´ç½ÅÀº $l_privmsgs ¸¦ ÇÏ³ªµµ °¡Áö°í ÀÖÁö ¾Ê³×¿ä...";
-$l_reply	= "´äÀå";
+$l_nopmsgs	= "ë‹¹ì‹ ì€ $l_privmsgs ë¥¼ í•˜ë‚˜ë„ ê°€ì§€ê³  ìˆì§€ ì•Šë„¤ìš”...";
+$l_reply	= "ë‹µì¥";
 
 // Delpmsg
-$l_deletesucces	= "¼º°øÀûÀ¸·Î »èÁ¦µÊ.";
+$l_deletesucces	= "ì„±ê³µì ìœ¼ë¡œ ì‚­ì œë¨.";
 
 // Smilies
 $l_smilesym	= "What to type";
@@ -342,40 +340,40 @@ $l_smilepict	= "Picture";
 
 // Sendpasswd
 $l_wrongactiv	= "The activation key you provided is not correct. Please check email $l_message you recived and make sure you have copied the activation key exactly.";
-$l_passchange	= "´ç½ÅÀÇ ¾ÏÈ£°¡ ¼º°øÀûÀ¸·Î º¯°æµÇ¾ú½À´Ï´Ù.  <a href=\"bb_profile.$phpEx?mode=edit\">°³ÀÎÁ¤º¸ ¼öÁ¤</a>À¸·Î °¡¼Å¼­ ´ç½ÅÀÇ ¾ÏÈ£¸¦ º¯°æÇÏ¿© ÁÖ¼¼¿ä.";
-$l_wrongmail	= "ÀÔ·ÂÇÏ½Å ¸ŞÀÏ ÁÖ¼Ò´Â °¡ÀÔÇÏ½Ç¶§ ÀÔ·ÂÇÏ½Å ¸ŞÀÏ ÁÖ¼Ò¿Í Æ²¸³´Ï´Ù.";
+$l_passchange	= "ë‹¹ì‹ ì˜ ì•”í˜¸ê°€ ì„±ê³µì ìœ¼ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.  <a href=\"bb_profile.$phpEx?mode=edit\">ê°œì¸ì •ë³´ ìˆ˜ì •</a>ìœ¼ë¡œ ê°€ì…”ì„œ ë‹¹ì‹ ì˜ ì•”í˜¸ë¥¼ ë³€ê²½í•˜ì—¬ ì£¼ì„¸ìš”.";
+$l_wrongmail	= "ì…ë ¥í•˜ì‹  ë©”ì¼ ì£¼ì†ŒëŠ” ê°€ì…í•˜ì‹¤ë•Œ ì…ë ¥í•˜ì‹  ë©”ì¼ ì£¼ì†Œì™€ í‹€ë¦½ë‹ˆë‹¤.";
 
-$l_passsubj	= "$sitename Æ÷·³ ¾ÏÈ£°¡ º¯°æµÊ";
+$l_passsubj	= "$sitename í¬ëŸ¼ ì•”í˜¸ê°€ ë³€ê²½ë¨";
 
-$l_pwdmessage	= '$checkinfo[username] ´Ô ¾È³çÇÏ¼¼¿ä,
-$checkinfo[username] ´Ô(È¤Àº ´Ù¸¥ ´©±º°¡°¡) [Æ÷·³ÀÌ¸§(forum name)] ÀÇ ¾ÏÈ£ º¯°æÀ» ½ÅÃ»ÇÏ¿´½À´Ï´Ù.
-¸¸¾à $checkinfo[username] ´Ô²²¼­ ½ÅÃ»ÇÏÁö ¾Ê¾Ò´Ù¸é Áö±İ ´çÀå ÀÌ ÆíÁö¸¦ Áö¿ö¹ö¸®½Ê½Ã¿ä.
-±×·¯¸é ¾ÏÈ£´Â Á¾Àü°ú µ¿ÀÏÇÏ°Ô À¯ÁöµË´Ï´Ù.
+$l_pwdmessage	= '$checkinfo[username] ë‹˜ ì•ˆë…•í•˜ì„¸ìš”,
+$checkinfo[username] ë‹˜(í˜¹ì€ ë‹¤ë¥¸ ëˆ„êµ°ê°€ê°€) [í¬ëŸ¼ì´ë¦„(forum name)] ì˜ ì•”í˜¸ ë³€ê²½ì„ ì‹ ì²­í•˜ì˜€ìŠµë‹ˆë‹¤.
+ë§Œì•½ $checkinfo[username] ë‹˜ê»˜ì„œ ì‹ ì²­í•˜ì§€ ì•Šì•˜ë‹¤ë©´ ì§€ê¸ˆ ë‹¹ì¥ ì´ í¸ì§€ë¥¼ ì§€ì›Œë²„ë¦¬ì‹­ì‹œìš”.
+ê·¸ëŸ¬ë©´ ì•”í˜¸ëŠ” ì¢…ì „ê³¼ ë™ì¼í•˜ê²Œ ìœ ì§€ë©ë‹ˆë‹¤.
 
 You are receiving this email because you (or someone pretending to be you)
 has requested a passwordchange on $sitename forums. If you believe you have
 received this message in error simply delete it and your password will remain
 the same.
 
-¼­¹ö¿¡¼­ ÀÓÀÇ·Î »ı¼ºµÈ [Æ÷·³ ÀÌ¸§(forum name)]ÀÇ ¾ÏÈ£´Â $newpw ÀÔ´Ï´Ù.
+ì„œë²„ì—ì„œ ì„ì˜ë¡œ ìƒì„±ëœ [í¬ëŸ¼ ì´ë¦„(forum name)]ì˜ ì•”í˜¸ëŠ” $newpw ì…ë‹ˆë‹¤.
 Your new password as generated by the forums is: $newpw
 
-ÀÌ ¾ÏÈ£¸¦ »ç¿ëÇÏ½Ã·Á¸é ¾Æ·¡ÀÇ ¸µÅ©¸¦ ¹æ¹®ÇØ ÁÖ¼¼¿ä.
+ì´ ì•”í˜¸ë¥¼ ì‚¬ìš©í•˜ì‹œë ¤ë©´ ì•„ë˜ì˜ ë§í¬ë¥¼ ë°©ë¬¸í•´ ì£¼ì„¸ìš”.
 In order for this change to take effect you must visit this page:
 
    http://$SERVER_NAME$PHP_SELF?actkey=$key
 
-ÀÌ ÆäÀÌÁö¸¦ ¹æ¹®ÇÏ½Ã¸é ´ç½ÅÀÇ ¾ÏÈ£´Â ÀÚµ¿À¸·Î $newpw À¸·Î º¯°æµË´Ï´Ù.
-º¯°æÀÌ ¿Ï·áµÇ¸é [°³ÀÎÁ¤º¸¼öÁ¤]À¸·Î °¡¼Å¼­ »õ ¾ÏÈ£·Î º¯°æÇØ ÁÖ¼¼¿ä.
+ì´ í˜ì´ì§€ë¥¼ ë°©ë¬¸í•˜ì‹œë©´ ë‹¹ì‹ ì˜ ì•”í˜¸ëŠ” ìë™ìœ¼ë¡œ $newpw ìœ¼ë¡œ ë³€ê²½ë©ë‹ˆë‹¤.
+ë³€ê²½ì´ ì™„ë£Œë˜ë©´ [ê°œì¸ì •ë³´ìˆ˜ì •]ìœ¼ë¡œ ê°€ì…”ì„œ ìƒˆ ì•”í˜¸ë¡œ ë³€ê²½í•´ ì£¼ì„¸ìš”.
 Once you have visited the page your password will be changed in our database,
 and you may login to the profile section and change it as desired.
 
-$sitename À» ÀÌ¿ëÇÏ¿© ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.
+$sitename ì„ ì´ìš©í•˜ì—¬ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.
 Thank you for using $sitename Forums
 
 $email_sig';
 
-$l_passsent	= "´ç½ÅÀÇ ºñ¹Ğ¹øÈ£´Â ¼­¹ö¿¡¼­ ÀÓÀÇÀÇ ºñ¹Ğ¹øÈ£·Î º¯°æµÇ¾ú½À´Ï´Ù. º¯°æµÈ ºñ¹Ğ¹øÈ£¿¡ ´ëÇÑ Á¤º¸´Â, ¹ß¼ÛÇÑ ¸ŞÀÏÀ» Âü°íÇÏ¼¼¿ä.";
-$l_emailpass	= "ÀÌ¸ŞÀÏ·Î ºñ¹Ğ¹øÈ£ Àü¼Û";
-$l_passexplain	= "¾Æ·¡ÀÇ ¾ç½ÄÀ» Ã¤¿ì½Ã¸é, »õ·Î¿î ºñ¹Ğ¹øÈ£¿¡ ´ëÇÑ Á¤º¸°¡ ´ç½ÅÀÇ ¸ŞÀÏ·Î ¹ß¼ÛµË´Ï´Ù.";
-$l_sendpass	= "ºñ¹Ğ¹øÈ£ Àü¼Û";
+$l_passsent	= "ë‹¹ì‹ ì˜ ë¹„ë°€ë²ˆí˜¸ëŠ” ì„œë²„ì—ì„œ ì„ì˜ì˜ ë¹„ë°€ë²ˆí˜¸ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤. ë³€ê²½ëœ ë¹„ë°€ë²ˆí˜¸ì— ëŒ€í•œ ì •ë³´ëŠ”, ë°œì†¡í•œ ë©”ì¼ì„ ì°¸ê³ í•˜ì„¸ìš”.";
+$l_emailpass	= "ì´ë©”ì¼ë¡œ ë¹„ë°€ë²ˆí˜¸ ì „ì†¡";
+$l_passexplain	= "ì•„ë˜ì˜ ì–‘ì‹ì„ ì±„ìš°ì‹œë©´, ìƒˆë¡œìš´ ë¹„ë°€ë²ˆí˜¸ì— ëŒ€í•œ ì •ë³´ê°€ ë‹¹ì‹ ì˜ ë©”ì¼ë¡œ ë°œì†¡ë©ë‹ˆë‹¤.";
+$l_sendpass	= "ë¹„ë°€ë²ˆí˜¸ ì „ì†¡";

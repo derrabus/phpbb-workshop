@@ -24,19 +24,19 @@ $l_forums	= "Forumlar";
 $l_topic	= "Konu";
 $l_topics 	= "Konular";
 $l_replies	= "Cevaplar";
-$l_poster	= "Göndere";
+$l_poster	= "GÃ¶ndere";
 $l_author	= "Yazar";
-$l_views	= "İzleme";
-$l_post 	= "Gönder";
+$l_views	= "Ãzleme";
+$l_post 	= "GÃ¶nder";
 $l_posts 	= "Mesajlar";
 $l_message	= "Mesaj";
 $l_messages	= "Mesajlar";
-$l_subject	= "Başlık";
+$l_subject	= "BaÃ¾lÃ½k";
 $l_body		= "$l_message Body";
-$l_from		= "Gönderen";   // Message from
-$l_moderator 	= "Yönetici";
-$l_username 	= "Kullanıcı Adı";
-$l_password 	= "Şifre";
+$l_from		= "GÃ¶nderen";   // Message from
+$l_moderator 	= "YÃ¶netici";
+$l_username 	= "KullanÃ½cÃ½ AdÃ½";
+$l_password 	= "Ãifre";
 $l_email 	= "Email";
 $l_emailaddress	= "Email Adresiniz";
 $l_preferences	= "Ayarlar";
@@ -44,51 +44,51 @@ $l_preferences	= "Ayarlar";
 $l_anonymous	= "Anonim";  // Post
 $l_guest	= "Misafir"; // Whosonline
 $l_noposts	= "No $l_posts";
-$l_joined	= "Katıldığı Tarih";
+$l_joined	= "KatÃ½ldÃ½Ã°Ã½ Tarih";
 $l_gotopage	= "Git";
 $l_nextpage 	= "Sonraki Sayfa";
-$l_prevpage     = "Önceki Sayfa";
+$l_prevpage     = "Ã–nceki Sayfa";
 $l_go		= "Git";
 $l_selectforum	= "Bir $l_forum";
 
 $l_date		= "Tarih";
-$l_number	= "Sayı";
-$l_name		= "İsim";
+$l_number	= "SayÃ½";
+$l_name		= "Ãsim";
 $l_options 	= "Ayarlar";
-$l_submit	= "Gönder";
+$l_submit	= "GÃ¶nder";
 $l_confirm 	= "Onayla";
-$l_enter 	= "Giriş";
-$l_by		= "göndere"; // Posted by
+$l_enter 	= "GiriÃ¾";
+$l_by		= "gÃ¶ndere"; // Posted by
 $l_ondate	= ""; // This message is edited by: $username on $date
 $l_new          = "Yeni";
 
 $l_html		= "HTML";
 $l_bbcode	= "BBcode";
 $l_smilies	= "Smilies";
-$l_on		= "Açık";
-$l_off		= "Kapalı";
+$l_on		= "AÃ§Ã½k";
+$l_off		= "KapalÃ½";
 $l_yes		= "Evet";
-$l_no		= "Hayır";
+$l_no		= "HayÃ½r";
 
-$l_click 	= "Tıkla";
+$l_click 	= "TÃ½kla";
 $l_here 	= "burda";
-$l_toreturn	= "dönmek için";
-$l_returnindex	= "ana sayfaya dönebilirsiniz";
-$l_returntopic	= "Forum konularına $l_toreturn";
+$l_toreturn	= "dÃ¶nmek iÃ§in";
+$l_returnindex	= "ana sayfaya dÃ¶nebilirsiniz";
+$l_returntopic	= "Forum konularÃ½na $l_toreturn";
 
 $l_error	= "Hata";
-$l_tryagain	= "Lütfen geri dönüp tekrar deneyin.";
-$l_mismatch 	= "Şifreler birbirini tutmuyor.";
-$l_userremoved 	= "Bu kullanıcı veritabanından silindi.";
-$l_wrongpass	= "Yanlış şifre girdiniz.";
-$l_userpass	= "Lütfen kullanıcı adınızı ve şifrenizi yazınız.";
-$l_banned 	= "Bu forumdan banlandınız. Eğer herhangi bir sorunuz varsa yönetici ile irtibat kurun..";
-$l_enterpassword= "Şifrenizi yazmalısınız.";
+$l_tryagain	= "LÃ¼tfen geri dÃ¶nÃ¼p tekrar deneyin.";
+$l_mismatch 	= "Ãifreler birbirini tutmuyor.";
+$l_userremoved 	= "Bu kullanÃ½cÃ½ veritabanÃ½ndan silindi.";
+$l_wrongpass	= "YanlÃ½Ã¾ Ã¾ifre girdiniz.";
+$l_userpass	= "LÃ¼tfen kullanÃ½cÃ½ adÃ½nÃ½zÃ½ ve Ã¾ifrenizi yazÃ½nÃ½z.";
+$l_banned 	= "Bu forumdan banlandÃ½nÃ½z. EÃ°er herhangi bir sorunuz varsa yÃ¶netici ile irtibat kurun..";
+$l_enterpassword= "Ãifrenizi yazmalÃ½sÃ½nÃ½z.";
 
-$l_nopost	= "Bu foruma mesaj göndermeye izniniz yok.";
+$l_nopost	= "Bu foruma mesaj gÃ¶ndermeye izniniz yok.";
 $l_noread	= "Bu forumu okumaya izniniz yok.";
 
-$l_lastpost 	= "Son Gönderen";
+$l_lastpost 	= "Son GÃ¶nderen";
 $l_sincelast	= "son ziyaretinizden beri";
 $l_newposts 	= "$l_sincelast yeni $l_posts";
 $l_nonewposts 	= "$l_sincelast yeni mesaj yok.";
@@ -98,15 +98,15 @@ $l_indextitle	= "Forum Index";
 
 // Members and profile
 $l_profile	= "Profil";
-$l_register	= "Kayıt";
-$l_onlyreq 	= "Eğer değiştirilecekse gerekli";
+$l_register	= "KayÃ½t";
+$l_onlyreq 	= "EÃ°er deÃ°iÃ¾tirilecekse gerekli";
 $l_location 	= "Yer";
-$l_viewpostuser	= "Bu kullanıcının mesjalarını gör";
-$l_perday       = "Günlük $l_messages";
+$l_viewpostuser	= "Bu kullanÃ½cÃ½nÃ½n mesjalarÃ½nÃ½ gÃ¶r";
+$l_perday       = "GÃ¼nlÃ¼k $l_messages";
 $l_oftotal      = "toplam";
 $l_url 		= "URL";
 $l_icq 		= "ICQ";
-$l_icqnumber	= "ICQ Numarası";
+$l_icqnumber	= "ICQ NumarasÃ½";
 $l_icqadd	= "Ekle";
 $l_icqpager	= "Pager";
 $l_aim 		= "AIM";
@@ -117,178 +117,178 @@ $l_messenger 	= "MSN Messenger";
 $l_website 	= "Web Site Adresi";
 $l_occupation 	= "Meslek";
 $l_interests 	= "Hobileri";
-$l_signature 	= "İmza";
-$l_sigexplain 	= "Buraya yazacağınız metin gönderdiğiniz bütün mesajların sonuna eklenecek.<BR>Maksimum 255 karakter!";
-$l_usertaken	= "Yazdığınız kullanıcı adı $l_username başkası tarafından alınmış.";
-$l_userdisallowed= "Yazdığınız kullanıcı adı $l_username yönetici tarafından kullanıma yasaklanmış. $l_tryagain";
+$l_signature 	= "Ãmza";
+$l_sigexplain 	= "Buraya yazacaÃ°Ã½nÃ½z metin gÃ¶nderdiÃ°iniz bÃ¼tÃ¼n mesajlarÃ½n sonuna eklenecek.<BR>Maksimum 255 karakter!";
+$l_usertaken	= "YazdÃ½Ã°Ã½nÃ½z kullanÃ½cÃ½ adÃ½ $l_username baÃ¾kasÃ½ tarafÃ½ndan alÃ½nmÃ½Ã¾.";
+$l_userdisallowed= "YazdÃ½Ã°Ã½nÃ½z kullanÃ½cÃ½ adÃ½ $l_username yÃ¶netici tarafÃ½ndan kullanÃ½ma yasaklanmÃ½Ã¾. $l_tryagain";
 $l_infoupdated	= "Bilgileriniz yenilendi";
-$l_publicmail	= "Diğer kullanıcıların email adresimi görebilmelerini sağla";
-$l_itemsreq	= "* ile işaretlenmiş alanların doldurulması zorunludur";
+$l_publicmail	= "DiÃ°er kullanÃ½cÃ½larÃ½n email adresimi gÃ¶rebilmelerini saÃ°la";
+$l_itemsreq	= "* ile iÃ¾aretlenmiÃ¾ alanlarÃ½n doldurulmasÃ½ zorunludur";
 
 // Viewforum
-$l_viewforum	= "Forumu Gör";
-$l_notopics	= "Bu forumda herhangi bir konu yok. Siz bir tane gönderebilirsiniz.";
+$l_viewforum	= "Forumu GÃ¶r";
+$l_notopics	= "Bu forumda herhangi bir konu yok. Siz bir tane gÃ¶nderebilirsiniz.";
 $l_hotthres	= "$hot_threshold $l_posts den fazla";
-$l_islocked	= "$l_topic forumu kilitlenmiş (Yeni $l_posts gönderilemez)";
-$l_moderatedby	= "Yönetici";
+$l_islocked	= "$l_topic forumu kilitlenmiÃ¾ (Yeni $l_posts gÃ¶nderilemez)";
+$l_moderatedby	= "YÃ¶netici";
 
 // Private forums
-$l_privateforum	= "Bu <b>Özel Bir Forum</b>.";
-$l_private 	= "$l_privateforum<br>Not: Özel forumları kullanmak için cookieleriniz aktif olmalı.";
-$l_noprivatepost = "$l_privateforum .Bu foruma mesaj gönderme hakkınız yok.";
+$l_privateforum	= "Bu <b>Ã–zel Bir Forum</b>.";
+$l_private 	= "$l_privateforum<br>Not: Ã–zel forumlarÃ½ kullanmak iÃ§in cookieleriniz aktif olmalÃ½.";
+$l_noprivatepost = "$l_privateforum .Bu foruma mesaj gÃ¶nderme hakkÃ½nÃ½z yok.";
 
 // Viewtopic
 $l_topictitle	= "View $l_topic";
-$l_unregistered	= "Kayıtlı Kullanıcı Değil";
-$l_posted	= "Gönderildi";
-$l_profileof	= "Profilini Gör:";
+$l_unregistered	= "KayÃ½tlÃ½ KullanÃ½cÃ½ DeÃ°il";
+$l_posted	= "GÃ¶nderildi";
+$l_profileof	= "Profilini GÃ¶r:";
 $l_viewsite	= "Web Sitesine Gir:";
 $l_icqstatus	= "$l_icq durumu";  // ICQ status
-$l_editdelete	= "Bu $l_post Düzenle/Sil";
-$l_replyquote	= "Alıntı ile Cevapla";
-$l_viewip	= "Gönderinin IP Numarasını Gör (Sadece Moderatorler/Yöneticiler İçin)";
+$l_editdelete	= "Bu $l_post DÃ¼zenle/Sil";
+$l_replyquote	= "AlÃ½ntÃ½ ile Cevapla";
+$l_viewip	= "GÃ¶nderinin IP NumarasÃ½nÃ½ GÃ¶r (Sadece Moderatorler/YÃ¶neticiler ÃÃ§in)";
 $l_locktopic	= "$l_topic'i kilitle";
-$l_unlocktopic	= "$l_topic'teki kilidi kaldır ";
-$l_movetopic	= "$l_topic'i taşı";
+$l_unlocktopic	= "$l_topic'teki kilidi kaldÃ½r ";
+$l_movetopic	= "$l_topic'i taÃ¾Ã½";
 $l_deletetopic	= "$l_topic'i sil";
 
 // Functions
-$l_loggedinas	= "Kayıtlı kullanıcı olarak girildi:";
-$l_notloggedin	= "Login olmadınız";
-$l_logout	= "Çıkış";
-$l_login	= "Giriş";
+$l_loggedinas	= "KayÃ½tlÃ½ kullanÃ½cÃ½ olarak girildi:";
+$l_notloggedin	= "Login olmadÃ½nÃ½z";
+$l_logout	= "Ã‡Ã½kÃ½Ã¾";
+$l_login	= "GiriÃ¾";
 
 // Page_header
-$l_separator	= "» »";  // Included here because some languages have
+$l_separator	= "Â» Â»";  // Included here because some languages have
                   // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Profil";
 $l_editprefs	= "$l_preferences";
 $l_search	= "Arama";
-$l_memberslist	= "Kullanıcı Listesi";
+$l_memberslist	= "KullanÃ½cÃ½ Listesi";
 $l_faq		= "FAQ";
-$l_privmsgs	= "Özel $l_messages";
-$l_sendpmsg	= "Özel Mesaj Gönder";
-$l_statsblock   = '$statsblock = "$total_users kayıtlı kullanıcı, toplam $total_posts adet mesaj göndermiş.<br>
-Yeni kullanıcı <a href=\"$profile_url\">$newest_user</a>.<br>
-Online kullanıcı sayısı $users_online".
+$l_privmsgs	= "Ã–zel $l_messages";
+$l_sendpmsg	= "Ã–zel Mesaj GÃ¶nder";
+$l_statsblock   = '$statsblock = "$total_users kayÃ½tlÃ½ kullanÃ½cÃ½, toplam $total_posts adet mesaj gÃ¶ndermiÃ¾.<br>
+Yeni kullanÃ½cÃ½ <a href=\"$profile_url\">$newest_user</a>.<br>
+Online kullanÃ½cÃ½ sayÃ½sÃ½ $users_online".
 "<br>Gezilen <a href=\"$online_url\">forumlar</a><br>";';
-$l_privnotify   = '$privnotify = "<br>Yeni mesaj sayınız $new_message <a href=\"$privmsg_url\">Mesajlar"</a>.";';
+$l_privnotify   = '$privnotify = "<br>Yeni mesaj sayÃ½nÃ½z $new_message <a href=\"$privmsg_url\">Mesajlar"</a>.";';
 
 // Page_tail
-$l_adminpanel	= "Yönetici Paneli";
+$l_adminpanel	= "YÃ¶netici Paneli";
 $l_poweredby	= "Powered by";
 $l_version	= "Version";
 
 // Auth
 
 // Register
-$l_notfilledin	= "Hata - bütün gerekli alanları doldurmadınız.";
-$l_invalidname	= "Seçtiğiniz kullanıcı adı \"$username\" daha önceden alınmış.";
-$l_disallowname	= "Seçtiğiniz kullanıcı adı \"$username\" yönetici tarafından kullanıma yasaklanmış.";
+$l_notfilledin	= "Hata - bÃ¼tÃ¼n gerekli alanlarÃ½ doldurmadÃ½nÃ½z.";
+$l_invalidname	= "SeÃ§tiÃ°iniz kullanÃ½cÃ½ adÃ½ \"$username\" daha Ã¶nceden alÃ½nmÃ½Ã¾.";
+$l_disallowname	= "SeÃ§tiÃ°iniz kullanÃ½cÃ½ adÃ½ \"$username\" yÃ¶netici tarafÃ½ndan kullanÃ½ma yasaklanmÃ½Ã¾.";
 
-$l_welcomesubj	= "$sitename Forumlarına Hoşgeldiniz";
+$l_welcomesubj	= "$sitename ForumlarÃ½na HoÃ¾geldiniz";
 $l_welcomemail	=
 "
 $l_welcomesubj,
 
-Lütfen bu maili saklayınız.
+LÃ¼tfen bu maili saklayÃ½nÃ½z.
 
 
-Hesap bilgileriniz aşağıdaki gibidir:
+Hesap bilgileriniz aÃ¾aÃ°Ã½daki gibidir:
 
 ----------------------------
-Kullanıcı Adı: $username
-Şifre: $password
+KullanÃ½cÃ½ AdÃ½: $username
+Ãifre: $password
 ----------------------------
 
-Şifrenizi kaybettiğiniz taktirde size rastgele oluşturulmuş bir şifre gönderebiliriz.
+Ãifrenizi kaybettiÃ°iniz taktirde size rastgele oluÃ¾turulmuÃ¾ bir Ã¾ifre gÃ¶nderebiliriz.
 
-Kayıtlı kullanıcı olduğunuz için teşekkür ederiz.
+KayÃ½tlÃ½ kullanÃ½cÃ½ olduÃ°unuz iÃ§in teÃ¾ekkÃ¼r ederiz.
 
 $email_sig
 ";
-$l_beenadded	= "Veritabanına eklendiniz.";
-$l_thankregister= "Kayıtlı kullanıcı olduğunuz için teşekkür ederiz!";
-$l_useruniq	= "Tekil olmalı. İki kullanıcı aynı ismi kullanamaz.";
-$l_storecookie	= "Kullanıcı adımı bir yıl boyunca cookilerde sakla.";
+$l_beenadded	= "VeritabanÃ½na eklendiniz.";
+$l_thankregister= "KayÃ½tlÃ½ kullanÃ½cÃ½ olduÃ°unuz iÃ§in teÃ¾ekkÃ¼r ederiz!";
+$l_useruniq	= "Tekil olmalÃ½. Ãki kullanÃ½cÃ½ aynÃ½ ismi kullanamaz.";
+$l_storecookie	= "KullanÃ½cÃ½ adÃ½mÃ½ bir yÃ½l boyunca cookilerde sakla.";
 
 // Prefs
-$l_prefupdated	= "$l_preferences yenilendi. <a href=\"index.$phpEx\">Buraya</a> tıklayarak $l_returnindex'ya dönebilirsiniz.";
+$l_prefupdated	= "$l_preferences yenilendi. <a href=\"index.$phpEx\">Buraya</a> tÃ½klayarak $l_returnindex'ya dÃ¶nebilirsiniz.";
 $l_editprefs	= "$l_preferences";
-$l_themecookie	= "NOT: Themeleri kullanmak için cookieleriniz aktif olmalı.";
-$l_alwayssig	= "Daima imzamı ekle";
+$l_themecookie	= "NOT: Themeleri kullanmak iÃ§in cookieleriniz aktif olmalÃ½.";
+$l_alwayssig	= "Daima imzamÃ½ ekle";
 $l_alwaysdisable= "Daima iptal et"; // Only used for next three strings
 $l_alwayssmile	= "$l_alwaysdisable $l_smilies";
 $l_alwayshtml	= "$l_alwaysdisable $l_html";
 $l_alwaysbbcode	= "$l_alwaysdisable $l_bbcode";
 $l_boardtheme	= "Board Theme";
 $l_boardlang    = "Board Dili";
-$l_nothemes	= "Veritabanında theme yok";
+$l_nothemes	= "VeritabanÃ½nda theme yok";
 $l_saveprefs	= "$l_preferences Kaydet";
 
 // Search
 $l_searchterms	= "Anahtar Kelimeler";
-$l_searchany	= "Herhangi biri için ara (Varsayılan)";
-$l_searchall	= "Tümü için ara";
-$l_searchallfrm	= "Tüm forumları ara";
-$l_sortby	= "Sıralama:";
-$l_searchin	= "İçinde Ara:";
-$l_titletext	= "Başlık & Metin";
+$l_searchany	= "Herhangi biri iÃ§in ara (VarsayÃ½lan)";
+$l_searchall	= "TÃ¼mÃ¼ iÃ§in ara";
+$l_searchallfrm	= "TÃ¼m forumlarÃ½ ara";
+$l_sortby	= "SÃ½ralama:";
+$l_searchin	= "ÃÃ§inde Ara:";
+$l_titletext	= "BaÃ¾lÃ½k & Metin";
 $l_search	= "Arama";
-$l_nomatches	= "Aramanızda bir sonuç bulunamadı. Lütfen aramanızı genişletin.";
+$l_nomatches	= "AramanÃ½zda bir sonuÃ§ bulunamadÃ½. LÃ¼tfen aramanÃ½zÃ½ geniÃ¾letin.";
 
 // Whosonline
-$l_whosonline	= "Online Kullanıcılar?";
-$l_nousers	= "Forumları gezen bir kullanıcı yok";
+$l_whosonline	= "Online KullanÃ½cÃ½lar?";
+$l_nousers	= "ForumlarÃ½ gezen bir kullanÃ½cÃ½ yok";
 
 
 // Editpost
-$l_notedit	= "Sizin olmayan bir mesajı düzenleyemezsiniz.";
-$l_permdeny	= "Doğru bir $l_password girmediniz ya da bu mesajı düzenleme yetkiniz yok. $l_tryagain";
-$l_editedby	= "Bu $l_message'ı düzenleyen:";
-$l_stored	= "$l_message'ınız veritabanımıza eklendi.";
-$l_viewmsg	= "$l_message'ınızı görmek için.";
+$l_notedit	= "Sizin olmayan bir mesajÃ½ dÃ¼zenleyemezsiniz.";
+$l_permdeny	= "DoÃ°ru bir $l_password girmediniz ya da bu mesajÃ½ dÃ¼zenleme yetkiniz yok. $l_tryagain";
+$l_editedby	= "Bu $l_message'Ã½ dÃ¼zenleyen:";
+$l_stored	= "$l_message'Ã½nÃ½z veritabanÃ½mÃ½za eklendi.";
+$l_viewmsg	= "$l_message'Ã½nÃ½zÃ½ gÃ¶rmek iÃ§in.";
 $l_deleted	= "$l_post silindi.";
-$l_nouser	= "$l_username isimli bir kullanıcı adı yok.";
-$l_passwdlost	= "Şifremi unuttum!";
-$l_delete	= "Bu Mesajı Sil";
+$l_nouser	= "$l_username isimli bir kullanÃ½cÃ½ adÃ½ yok.";
+$l_passwdlost	= "Ãifremi unuttum!";
+$l_delete	= "Bu MesajÃ½ Sil";
 
-$l_disable	= "İptal Et";
+$l_disable	= "Ãptal Et";
 $l_onthispost	= "Bu Mesajda";
 
 $l_htmlis	= "$l_html ";
 $l_bbcodeis	= "$l_bbcode ";
 
-$l_notify	= "Cevap gönderildiğinde mail ile uyar";
+$l_notify	= "Cevap gÃ¶nderildiÃ°inde mail ile uyar";
 
 // Newtopic
-$l_emptymsg	= "$l_message göndermek için birşeyler yazmalısınız. Boş bir $l_message gönderemezsiniz.";
-$l_aboutpost	= "Mesaj Gönderme";
-$l_regusers	= "Bütün <b>Kayıtlı</b> kullanıcılar";
-$l_anonusers	= "<b>Anonim</b> kullanıcılar";
-$l_modusers	= "Sadece <B>Moderator ve Yöneticiler</b>";
-$l_anonhint	= "<br>(anonim olarak göndermek için kullanıcı adınızı ve şifrenizi yazmayın)";
+$l_emptymsg	= "$l_message gÃ¶ndermek iÃ§in birÃ¾eyler yazmalÃ½sÃ½nÃ½z. BoÃ¾ bir $l_message gÃ¶nderemezsiniz.";
+$l_aboutpost	= "Mesaj GÃ¶nderme";
+$l_regusers	= "BÃ¼tÃ¼n <b>KayÃ½tlÃ½</b> kullanÃ½cÃ½lar";
+$l_anonusers	= "<b>Anonim</b> kullanÃ½cÃ½lar";
+$l_modusers	= "Sadece <B>Moderator ve YÃ¶neticiler</b>";
+$l_anonhint	= "<br>(anonim olarak gÃ¶ndermek iÃ§in kullanÃ½cÃ½ adÃ½nÃ½zÃ½ ve Ã¾ifrenizi yazmayÃ½n)";
 $l_inthisforum	= "yeni konu ve mesajlar yollayabilir";
-$l_attachsig	= "İmzayı göster <font size=-2>(Bu sizin profilinizden eklenebilir ve değiştirilebilir)</font>";
-$l_cancelpost	= "Göndermeyi İptal Et";
+$l_attachsig	= "ÃmzayÃ½ gÃ¶ster <font size=-2>(Bu sizin profilinizden eklenebilir ve deÃ°iÃ¾tirilebilir)</font>";
+$l_cancelpost	= "GÃ¶ndermeyi Ãptal Et";
 
 // Reply
-$l_nopostlock	= "Bu konu kilitlendiği için yeni bir mesaj gönderemezsiniz.";
-$l_topicreview  = "Konu İnceleme";
-$l_notifysubj	= "Mesajınıza bir cevap gönderildi.";
-$l_notifybody	= 'Sayın $m[username]\r\n$sitenameda gönderdiğiniz mesaja bir cevap gönderildi.
+$l_nopostlock	= "Bu konu kilitlendiÃ°i iÃ§in yeni bir mesaj gÃ¶nderemezsiniz.";
+$l_topicreview  = "Konu Ãnceleme";
+$l_notifysubj	= "MesajÃ½nÃ½za bir cevap gÃ¶nderildi.";
+$l_notifybody	= 'SayÃ½n $m[username]\r\n$sitenameda gÃ¶nderdiÃ°iniz mesaja bir cevap gÃ¶nderildi.
 
-Mesajınızı görmek için adres:
+MesajÃ½nÃ½zÃ½ gÃ¶rmek iÃ§in adres:
 		                
 http://$SERVER_NAME$url_phpbb/viewtopic.$phpEx?topic=$topic&forum=$forum
 
-Yada $sitename görmek için adres:
+Yada $sitename gÃ¶rmek iÃ§in adres:
 
 http://$SERVER_NAME$url_phpbb
 
-$sitename kullandığınız için teşekkür ederiz.
+$sitename kullandÃ½Ã°Ã½nÃ½z iÃ§in teÃ¾ekkÃ¼r ederiz.
 
-İyi günler.
+Ãyi gÃ¼nler.
 
 $email_sig';
 
@@ -296,52 +296,52 @@ $email_sig';
 $l_quotemsg	= '[quote]\nOn $m[post_time], $m[username] wrote:\n$text\n[/quote]';
 
 // Sendpmsg
-$l_norecipient	= "$l_message göndermek istediğiniz kişinin kullanıcı adını girmeniz gerekiyor.";
-$l_sendothermsg	= "Başka Bir Özel Mesaj Gönder";
-$l_cansend	= "$l_privmsgs gönderebilir";  // All registered users can send PM's
-$l_yourname	= "$l_username'nız";
-$l_recptname	= "Alıcı $l_username";
+$l_norecipient	= "$l_message gÃ¶ndermek istediÃ°iniz kiÃ¾inin kullanÃ½cÃ½ adÃ½nÃ½ girmeniz gerekiyor.";
+$l_sendothermsg	= "BaÃ¾ka Bir Ã–zel Mesaj GÃ¶nder";
+$l_cansend	= "$l_privmsgs gÃ¶nderebilir";  // All registered users can send PM's
+$l_yourname	= "$l_username'nÃ½z";
+$l_recptname	= "AlÃ½cÃ½ $l_username";
 
 // Replypmsg
-$l_pmposted	= "Cevap Gönderildi, <a href=\"viewpmsg.$phpEx\">buraya</a> tıklayarak $l_privmsgs'ınızı görebilirsiniz.";
+$l_pmposted	= "Cevap GÃ¶nderildi, <a href=\"viewpmsg.$phpEx\">buraya</a> tÃ½klayarak $l_privmsgs'Ã½nÃ½zÃ½ gÃ¶rebilirsiniz.";
 
 // Viewpmsg
-$l_nopmsgs	= "Hiç $l_privmsgs'ınız yok.";
+$l_nopmsgs	= "HiÃ§ $l_privmsgs'Ã½nÃ½z yok.";
 $l_reply	= "Cevap";
 
 // Delpmsg
-$l_deletesucces	= "Silme işlemi başarılı.";
+$l_deletesucces	= "Silme iÃ¾lemi baÃ¾arÃ½lÃ½.";
 
 // Smilies
-$l_smilesym	= "Ne yazılacak";
+$l_smilesym	= "Ne yazÃ½lacak";
 $l_smileemotion	= "Duygu";
 $l_smilepict	= "Resim";
 
 // Sendpasswd
-$l_wrongactiv	= "Verdiğiniz onaylama numarası hatalı. Mailinize bakıp onaylama numarasını kontrol ediniz.";
-$l_passchange	= "Şifreniz başarıyla değiştirildi. Şimdi <a href=\"bb_profile.$phpEx?mode=edit\">profil düzenleme</a> bölümüne girip başka bir şifre yazabilirsiniz.";
-$l_wrongmail	= "Yazdığınız email adresi veritabanımızda bulunamadı.";
+$l_wrongactiv	= "VerdiÃ°iniz onaylama numarasÃ½ hatalÃ½. Mailinize bakÃ½p onaylama numarasÃ½nÃ½ kontrol ediniz.";
+$l_passchange	= "Ãifreniz baÃ¾arÃ½yla deÃ°iÃ¾tirildi. Ãimdi <a href=\"bb_profile.$phpEx?mode=edit\">profil dÃ¼zenleme</a> bÃ¶lÃ¼mÃ¼ne girip baÃ¾ka bir Ã¾ifre yazabilirsiniz.";
+$l_wrongmail	= "YazdÃ½Ã°Ã½nÃ½z email adresi veritabanÃ½mÃ½zda bulunamadÃ½.";
 
-$l_passsubj	= "$sitename Forumları Şifre Değiştirme";
+$l_passsubj	= "$sitename ForumlarÃ½ Ãifre DeÃ°iÃ¾tirme";
 
-$l_pwdmessage	= 'Sayın $checkinfo[username],
-Bu emaili alma sebebiniz $sitename forumlarında sizin yada birinin şifrenizi değiştirmek 
-için başvurudu bulunmuş olmasıdır. Eğer bu mesajın bir hata sonucunda geldiğini 
-düşünüyorsanız sadece bu maili silin ve eski şifreniz değişmeyecektir.
+$l_pwdmessage	= 'SayÃ½n $checkinfo[username],
+Bu emaili alma sebebiniz $sitename forumlarÃ½nda sizin yada birinin Ã¾ifrenizi deÃ°iÃ¾tirmek 
+iÃ§in baÃ¾vurudu bulunmuÃ¾ olmasÃ½dÃ½r. EÃ°er bu mesajÃ½n bir hata sonucunda geldiÃ°ini 
+dÃ¼Ã¾Ã¼nÃ¼yorsanÃ½z sadece bu maili silin ve eski Ã¾ifreniz deÃ°iÃ¾meyecektir.
 
-Otomatik olarak üretilmiş yeni şifreniz: $newpw
+Otomatik olarak Ã¼retilmiÃ¾ yeni Ã¾ifreniz: $newpw
 
-Yeni şifrenizin aktif olması için aşağıdaki adresi ziyaret ediniz: 
+Yeni Ã¾ifrenizin aktif olmasÃ½ iÃ§in aÃ¾aÃ°Ã½daki adresi ziyaret ediniz: 
 
    http://$SERVER_NAME$PHP_SELF?actkey=$key
 
-Sayfayı bir kere ziyaret ettiğinizde yeni şifreniz aktif olacak ve forumlarda kullanabileceksiniz.
+SayfayÃ½ bir kere ziyaret ettiÃ°inizde yeni Ã¾ifreniz aktif olacak ve forumlarda kullanabileceksiniz.
 
-$sitename Forumlarını kullandığınız için teşekkür ederiz.
+$sitename ForumlarÃ½nÃ½ kullandÃ½Ã°Ã½nÃ½z iÃ§in teÃ¾ekkÃ¼r ederiz.
 
 $email_sig';
 
-$l_passsent	= "Yeni şifreniz mailinize gönderildi. Emailinizi kontrol ederek yeni şifrenizi görebilir ve aktif hale getirebilirsiniz.";
-$l_emailpass	= "Kayıp Şifre";
-$l_passexplain	= "Lütfen formu doldurun, yeni şifreniz email adresinize gönderilecek";
-$l_sendpass	= "Şifreyi Gönder";
+$l_passsent	= "Yeni Ã¾ifreniz mailinize gÃ¶nderildi. Emailinizi kontrol ederek yeni Ã¾ifrenizi gÃ¶rebilir ve aktif hale getirebilirsiniz.";
+$l_emailpass	= "KayÃ½p Ãifre";
+$l_passexplain	= "LÃ¼tfen formu doldurun, yeni Ã¾ifreniz email adresinize gÃ¶nderilecek";
+$l_sendpass	= "Ãifreyi GÃ¶nder";

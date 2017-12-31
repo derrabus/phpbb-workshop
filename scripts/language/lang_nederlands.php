@@ -158,20 +158,20 @@ $l_logout	= "Uitloggen";
 $l_login	= "Inloggen";
 
 // Page_header
-$l_separator    = "» »";  // Included here because some languages have
+$l_separator    = "Â» Â»";  // Included here because some languages have
                           // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Bewerk profiel";
 $l_editprefs	= "Wijzig $l_preferences";
 $l_search	= "Zoeken";
 $l_memberslist	= "Lijst van Gebruikers";
 $l_faq		= "FAQ";
-$l_privmsgs	= "Privé $l_messages";
-$l_sendpmsg     = "Verstuur een Privé Bericht";
+$l_privmsgs	= "PrivÃ© $l_messages";
+$l_sendpmsg     = "Verstuur een PrivÃ© Bericht";
 $l_statsblock	= '$statsblock = "Er zijn in totaal -$total_posts- $l_messages Geplaatst.<br>
 We hebben -$total_users- Geregistreerde Gebruikers.<br>
 De nieuwste Gebruiker is -<a href=\"$profile_url\">$newest_user</a>-.<br>
 -$users_online- ". ($users_online==1?"Gebruiker is":"Gebruikers zijn") ." nu <a href=\"$online_url\">Online</a>.<br>";';
-$l_privnotify   = '$privnotify = "<br>Je hebt $new_message <a href=\"$privmsg_url\">".($new_message>1?"nieuwe Privé Berichten":"nieuw Privé Bericht")."</a>.";';
+$l_privnotify   = '$privnotify = "<br>Je hebt $new_message <a href=\"$privmsg_url\">".($new_message>1?"nieuwe PrivÃ© Berichten":"nieuw PrivÃ© Bericht")."</a>.";';
 
 // Page_tail
 $l_adminpanel	= "Administratie paneel";
@@ -302,7 +302,7 @@ $l_quotemsg	= '[quote]\nOp $m[post_time], schreef $m[username]:\n$text\n[/quote]
 
 // Sendpmsg
 $l_norecipient	= "Vul de naam in van de persoon die je een berichtje wil sturen.";
-$l_sendothermsg	= "Stuur nog een Privé Bericht.";
+$l_sendothermsg	= "Stuur nog een PrivÃ© Bericht.";
 $l_cansend	= "kunnen $l_privmsgs sturen";  // All registered users can send PM's
 $l_yourname	= "Jouw $l_username";
 $l_recptname	= "$l_username Ontvanger";

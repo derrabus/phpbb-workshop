@@ -393,7 +393,7 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
           <p>Wer nur Beitr&auml;ge schreibt, um seine / ihre Anzahl der Beitr&auml;ge zu erh&ouml;hen oder sich anders kontraproduktiv
           verh&auml;lt, kann vom Forum ausgeschlossen werden. Kritische Beitr&auml;ge sind willkommen, solange sie nicht
           pers&ouml;nlich verletzen.</p>
-          <p>†berlegen Sie sich, ob der Titel Ihres Themas passt: Titel wie "Unbedingt lesen!" usw. machen wenig Sinn.
+          <p>&Uuml;berlegen Sie sich, ob der Titel Ihres Themas passt: Titel wie "Unbedingt lesen!" usw. machen wenig Sinn.
           Sagen Sie gleich kurz und pr&auml;zise, worum es in Ihrem Beitrag geht.</font></p>
         </td>
     </tr>

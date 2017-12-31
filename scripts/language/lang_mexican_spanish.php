@@ -31,28 +31,28 @@ $l_post 	= "Mensaje";
 $l_posts 	= "Mensajes";
 $l_message	= "Mensaje";
 $l_messages	= "Mensajes";
-$l_subject	= "Título";
+$l_subject	= "TÃ­tulo";
 $l_body		= "$l_message";
 $l_from		= "de";   // Message from
 $l_moderator 	= "Moderador";
 $l_username 	= "Nombre de usuario";
-$l_password 	= "Contraseña";
-$l_email 	= "correo electrónico";
-$l_emailaddress	= "Dirección de correo electrónico";
+$l_password 	= "ContraseÃ±a";
+$l_email 	= "correo electrÃ³nico";
+$l_emailaddress	= "DirecciÃ³n de correo electrÃ³nico";
 $l_preferences	= "Preferencias";
 
-$l_anonymous	= "Anónimo";  // Post
+$l_anonymous	= "AnÃ³nimo";  // Post
 $l_guest	= "Visitante"; // Whosonline
 $l_noposts	= "No hay $l_posts";
 $l_joined	= "Registrados";
-$l_gotopage	= "Ir a la página";
-$l_nextpage 	= "Página Siguiente";
-$l_prevpage     = "Página Anterior";
+$l_gotopage	= "Ir a la pÃ¡gina";
+$l_nextpage 	= "PÃ¡gina Siguiente";
+$l_prevpage     = "PÃ¡gina Anterior";
 $l_go		= "Ir";
 $l_selectforum	= "Elegir un $l_forum";
 
 $l_date		= "Fecha";
-$l_number	= "Número";
+$l_number	= "NÃºmero";
 $l_name		= "Nombre";
 $l_options 	= "Opciones";
 $l_submit	= "Enviar";
@@ -71,25 +71,25 @@ $l_yes		= "Si";
 $l_no		= "No";
 
 $l_click 	= "Presione";
-$l_here 	= "aquí";
+$l_here 	= "aquÃ­";
 $l_toreturn	= "para regresar";
-$l_returnindex	= "$l_toreturn al índice de foros";
+$l_returnindex	= "$l_toreturn al Ã­ndice de foros";
 $l_returntopic	= "$l_toreturn a la lista de temas del foro.";
 
 $l_error	= "Error";
 $l_tryagain	= "Por favor regrese e intente de nuevo.";
-$l_mismatch 	= "Las contraseñas no coinciden.";
+$l_mismatch 	= "Las contraseÃ±as no coinciden.";
 $l_userremoved 	= "Este usario ha sido removido de la base de datos";
-$l_wrongpass	= "La contraseña es incorrecta.";
-$l_userpass	= "Por favor proporcione su usuario y contraseña.";
+$l_wrongpass	= "La contraseÃ±a es incorrecta.";
+$l_userpass	= "Por favor proporcione su usuario y contraseÃ±a.";
 $l_banned 	= "Se le ha bloqueado el acceso a este foro. Si tiene preguntas, contacte al administrador del sistema.";
-$l_enterpassword= "Debe proporcionar su contraseña.";
+$l_enterpassword= "Debe proporcionar su contraseÃ±a.";
 
-$l_nopost	= "Usted no está autorizado para poner mensajes en este foro.";
-$l_noread	= "Usted no está autorizado para leer los mensajes de este foro.";
+$l_nopost	= "Usted no estÃ¡ autorizado para poner mensajes en este foro.";
+$l_noread	= "Usted no estÃ¡ autorizado para leer los mensajes de este foro.";
 
 $l_lastpost 	= "Ultimo $l_post";
-$l_sincelast	= "desde su última visita";
+$l_sincelast	= "desde su Ãºltima visita";
 $l_newposts 	= "Nuevos $l_posts $l_sincelast";
 $l_nonewposts 	= "No hay nuevos $l_posts $l_sincelast";
 
@@ -99,14 +99,14 @@ $l_indextitle	= "Indice de Foros";
 // Members and profile
 $l_profile	= "Perfil";
 $l_register	= "Registrarse";
-$l_onlyreq 	= "Requerido únicamente si se desea cambiar.";
+$l_onlyreq 	= "Requerido Ãºnicamente si se desea cambiar.";
 $l_location 	= "De";
 $l_viewpostuser	= "Ver mensajes de este usuario";
-$l_perday       = "$l_messages por día";
+$l_perday       = "$l_messages por dÃ­a";
 $l_oftotal      = "del total";
 $l_url 		= "URL";
 $l_icq 		= "ICQ";
-$l_icqnumber	= "Número de ICQ";
+$l_icqnumber	= "NÃºmero de ICQ";
 $l_icqadd	= "Agregar";
 $l_icqpager	= "Pager";
 $l_aim 		= "AIM";
@@ -114,22 +114,22 @@ $l_yim 		= "YIM";
 $l_yahoo 	= "Yahoo Messenger";
 $l_msn 		= "MSN";
 $l_messenger 	= "MSN Messenger";
-$l_website 	= "Dirección de su Sitio Web";
-$l_occupation 	= "Ocupación";
+$l_website 	= "DirecciÃ³n de su Sitio Web";
+$l_occupation 	= "OcupaciÃ³n";
 $l_interests 	= "Intereses";
 $l_signature 	= "Firma";
-$l_sigexplain 	= "Este es un bloque de texto que puede agregarse a los mensajes que publique.<BR>Máx. 255 caracteres!";
-$l_usertaken	= "El $l_username que eligió ya está usado.";
-$l_userdisallowed= "El $l_username que eligió fue bloqueado por el administrador. $l_tryagain";
-$l_infoupdated	= "Su información ha sido actualizada";
+$l_sigexplain 	= "Este es un bloque de texto que puede agregarse a los mensajes que publique.<BR>MÃ¡x. 255 caracteres!";
+$l_usertaken	= "El $l_username que eligiÃ³ ya estÃ¡ usado.";
+$l_userdisallowed= "El $l_username que eligiÃ³ fue bloqueado por el administrador. $l_tryagain";
+$l_infoupdated	= "Su informaciÃ³n ha sido actualizada";
 $l_publicmail	= "Permitir que otros vean mi $l_emailaddress";
 $l_itemsreq	= "Los datos marcados con * son mandatorios";
 
 // Viewforum
 $l_viewforum	= "Ver Foro";
 $l_notopics	= "No hay temas en este foro. Puede iniciar uno.";
-$l_hotthres	= "Más de $hot_threshold $l_posts";
-$l_islocked	= "Este $l_topic está cerrado (Ya no se pueden publicar más $l_posts)";
+$l_hotthres	= "MÃ¡s de $hot_threshold $l_posts";
+$l_islocked	= "Este $l_topic estÃ¡ cerrado (Ya no se pueden publicar mÃ¡s $l_posts)";
 $l_moderatedby	= "Moderado por";
 
 // Private forums
@@ -146,7 +146,7 @@ $l_viewsite	= "Ir al sitio web de";
 $l_icqstatus	= "Status de $l_icq";  // ICQ status
 $l_editdelete	= "Editar/Borrar este $l_post";
 $l_replyquote	= "Responder citando";
-$l_viewip	= "Ver el IP del autor Sólo Moderadores/Adminstradores)";
+$l_viewip	= "Ver el IP del autor SÃ³lo Moderadores/Adminstradores)";
 $l_locktopic	= "Cerrar este $l_topic";
 $l_unlocktopic	= "Abrir este $l_topic";
 $l_movetopic	= "Mover este $l_topic";
@@ -159,7 +159,7 @@ $l_logout	= "Salir";
 $l_login	= "Ingresar";
 
 // Page_header
-$l_separator	= "» »";  // Included here because some languages have
+$l_separator	= "Â» Â»";  // Included here because some languages have
                   // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Editar Perfil";
 $l_editprefs	= "Editar $l_preferences";
@@ -170,20 +170,20 @@ $l_privmsgs	= "$l_messages Privados";
 $l_sendpmsg	= "Enviar un mensaje privado";
 $l_statsblock   = '$statsblock = "Nuestros usuarios han publicado un total de -$total_posts- $l_messages.<br>
 Tenemos -$total_users- Usuarios Registrados.<br>
-El más reciente usuario registrado es -<a href=\"$profile_url\">$newest_user</a>-.<br>
--$users_online- ". ($users_online==1?"usuario está":"usuarios están") ." <a href=\"$online_url\">visitando</a> los foros.<br>";';
+El mÃ¡s reciente usuario registrado es -<a href=\"$profile_url\">$newest_user</a>-.<br>
+-$users_online- ". ($users_online==1?"usuario estÃ¡":"usuarios estÃ¡n") ." <a href=\"$online_url\">visitando</a> los foros.<br>";';
 $l_privnotify   = '$privnotify = "<br>Tiene $new_message <a href=\"$privmsg_url\"> ".($new_message>1?"nuevos mensajes privados":"nuevo mensaje privado")."</a>.";';
 
 // Page_tail
-$l_adminpanel	= "Panel de Administración";
+$l_adminpanel	= "Panel de AdministraciÃ³n";
 $l_poweredby	= "Generados con";
 $l_version	= "Version";
 
 // Auth
 
 // Register
-$l_notfilledin	= "Error - No llenó todos los datos requeridos.";
-$l_invalidname	= "El nombre de usuario que eligió: \"$username\", ya está usado.";
+$l_notfilledin	= "Error - No llenÃ³ todos los datos requeridos.";
+$l_invalidname	= "El nombre de usuario que eligiÃ³: \"$username\", ya estÃ¡ usado.";
 $l_disallowname	= "El nombre de usuario, \"$username\" ha sido bloqueado por el administrador.";
 
 $l_welcomesubj	= "Bienvenido a los Foros en $sitename";
@@ -194,25 +194,25 @@ $l_welcomesubj,
 Por favor conserve este mensaje para futuras referencias.
 
 
-La información de su cuenta es la siguiente:
+La informaciÃ³n de su cuenta es la siguiente:
 
 ---------------------------------
 Nombre de usuario: $username
-Contraseña: $password
+ContraseÃ±a: $password
 ---------------------------------
 
-Por favor no olvide su contraseña ya que fue codificada en nuestra base de datos y nosotros
-no tenemos manera de recuperarla. Sin embargo, si olvida su contraseña, le podemos generar
-una nueva al azar y enviársela por correo electrónico.
+Por favor no olvide su contraseÃ±a ya que fue codificada en nuestra base de datos y nosotros
+no tenemos manera de recuperarla. Sin embargo, si olvida su contraseÃ±a, le podemos generar
+una nueva al azar y enviÃ¡rsela por correo electrÃ³nico.
 
 Gracias por registrarse.
 
 $email_sig
 ";
-$l_beenadded	= "Ya quedó actualizado su registro en nuestra base de datos.";
-$l_thankregister= "¡Gracias por registrarse!";
-$l_useruniq	= "Debe ser único. Dos usuarios no pueden tener el mismo nombre de usuario.";
-$l_storecookie	= "Guardar mi nombre de usuario por 1 año en un cookie.";
+$l_beenadded	= "Ya quedÃ³ actualizado su registro en nuestra base de datos.";
+$l_thankregister= "Â¡Gracias por registrarse!";
+$l_useruniq	= "Debe ser Ãºnico. Dos usuarios no pueden tener el mismo nombre de usuario.";
+$l_storecookie	= "Guardar mi nombre de usuario por 1 aÃ±o en un cookie.";
 
 // Prefs
 $l_prefupdated	= "$l_preferences actualizadas. $l_click <a href=\"index.$phpEx\">$l_here</a> $l_returnindex";
@@ -230,57 +230,57 @@ $l_saveprefs	= "Guardar $l_preferences";
 
 // Search
 $l_searchterms	= "Palabras claves";
-$l_searchany	= "Buscar CUALQUIERA de los términos (Valor por omisión)";
-$l_searchall	= "Buscar TODOS los términos";
+$l_searchany	= "Buscar CUALQUIERA de los tÃ©rminos (Valor por omisiÃ³n)";
+$l_searchall	= "Buscar TODOS los tÃ©rminos";
 $l_searchallfrm	= "Buscar en todos los foros";
 $l_sortby	= "Ordenar por";
 $l_searchin	= "Buscar en";
-$l_titletext	= "Título y Texto";
+$l_titletext	= "TÃ­tulo y Texto";
 $l_search	= "Buscar";
-$l_nomatches	= "No hubo registros que coincidieran con sus indicaciones. Amplíe los criterios de búsqueda";
+$l_nomatches	= "No hubo registros que coincidieran con sus indicaciones. AmplÃ­e los criterios de bÃºsqueda";
 
 // Whosonline
-$l_whosonline	= "¿Quién está conectado?";
+$l_whosonline	= "Â¿QuiÃ©n estÃ¡ conectado?";
 $l_nousers	= "No hay usuarios leyendo los foros";
 
 
 // Editpost
 $l_notedit	= "No puede editar un mensaje que no sea suyo.";
-$l_permdeny	= "No proporcionó la $l_password correcta o no tiene permiso para editar este mensaje. $l_tryagain";
+$l_permdeny	= "No proporcionÃ³ la $l_password correcta o no tiene permiso para editar este mensaje. $l_tryagain";
 $l_editedby	= "Este $l_message fue editado por:";
 $l_stored	= "Su $l_message ha sido almacenado en la base de datos.";
 $l_viewmsg	= "para ver su $l_message.";
 $l_deleted	= "Su $l_post ha sido borrado.";
 $l_nouser	= "No existe ese $l_username.";
-$l_passwdlost	= "¡Olvidé mi contraseña!";
+$l_passwdlost	= "Â¡OlvidÃ© mi contraseÃ±a!";
 $l_delete	= "Borrar este mensaje";
 
 $l_disable	= "Desactivar";
 $l_onthispost	= "en este mensaje";
 
-$l_htmlis	= "$l_html está";
-$l_bbcodeis	= "$l_bbcode está";
+$l_htmlis	= "$l_html estÃ¡";
+$l_bbcodeis	= "$l_bbcode estÃ¡";
 
-$l_notify	= "Notificar por correo electrónico cuando reciba respuestas a su mensaje";
+$l_notify	= "Notificar por correo electrÃ³nico cuando reciba respuestas a su mensaje";
 
 // Newtopic
-$l_emptymsg	= "Debe escribir un l_message para publicar. No puede publicar un $l_message vacío.";
-$l_aboutpost	= "Publicación";
+$l_emptymsg	= "Debe escribir un l_message para publicar. No puede publicar un $l_message vacÃ­o.";
+$l_aboutpost	= "PublicaciÃ³n";
 $l_regusers	= "Todos los usuarios <b>Registrados</b>";
-$l_anonusers	= "Usuarios <b>Anónimos</b>";
-$l_modusers	= "Sólo <B>Moderadores y Administradores</b>";
-$l_anonhint	= "<br>(Para publicar anónimamente simplemente no proporcione nombre de usuario ni contraseña)";
+$l_anonusers	= "Usuarios <b>AnÃ³nimos</b>";
+$l_modusers	= "SÃ³lo <B>Moderadores y Administradores</b>";
+$l_anonhint	= "<br>(Para publicar anÃ³nimamente simplemente no proporcione nombre de usuario ni contraseÃ±a)";
 $l_inthisforum	= "pueden publicar nuevos temas y respuestas en este foro.";
 $l_attachsig	= "Incluir firma <font size=-2>(Esto puede indicarse en su perfil)</font>";
-$l_cancelpost	= "Cancelar publicación";
+$l_cancelpost	= "Cancelar publicaciÃ³n";
 
 // Reply
 $l_nopostlock	= "No puede responder a este mensaje, el tema ha sido cerrado.";
 $l_topicreview  = "Revisar Tema Original";
 $l_notifysubj	= "Se ha publicado una respuesta a su mensaje.";
-$l_notifybody	= 'Estimado(a) $m[username]\r\nEstá recibiendo este mensaje porque su
+$l_notifybody	= 'Estimado(a) $m[username]\r\nEstÃ¡ recibiendo este mensaje porque su
 mensaje publicado en los foros de $sitename ha sido respondido, y
-en el sistema usted indicó que se le notificara cuando esto sucediera.
+en el sistema usted indicÃ³ que se le notificara cuando esto sucediera.
 
 Para ver el mensaje visite:
 
@@ -292,12 +292,12 @@ http://$SERVER_NAME$url_phpbb
 
 Gracias por usar los foros de $sitename.
 
-Que tenga un estupendo día.
+Que tenga un estupendo dÃ­a.
 
 $email_sig';
 
 
-$l_quotemsg	= '[quote]\nEl $m[post_time], $m[username] escribió:\n$text\n[/quote]';
+$l_quotemsg	= '[quote]\nEl $m[post_time], $m[username] escribiÃ³:\n$text\n[/quote]';
 
 // Sendpmsg
 $l_norecipient	= "Debe proporcionar el nombre de usuario a quien dirige este $l_message.";
@@ -307,47 +307,47 @@ $l_yourname	= "Su $l_username";
 $l_recptname	= "Dirigido a $l_username";
 
 // Replypmsg
-$l_pmposted	= "Respuesta publicada, puede presionar <a href=\"viewpmsg.$phpEx\">aquí</a> para ver sus $l_privmsgs";
+$l_pmposted	= "Respuesta publicada, puede presionar <a href=\"viewpmsg.$phpEx\">aquÃ­</a> para ver sus $l_privmsgs";
 
 // Viewpmsg
-$l_nopmsgs	= "No tiene ningún $l_privmsgs.";
+$l_nopmsgs	= "No tiene ningÃºn $l_privmsgs.";
 $l_reply	= "Responder";
 
 // Delpmsg
 $l_deletesucces	= "Borrado exitosamente.";
 
 // Smilies
-$l_smilesym	= "Qué teclear";
-$l_smileemotion	= "Emoción";
+$l_smilesym	= "QuÃ© teclear";
+$l_smileemotion	= "EmociÃ³n";
 $l_smilepict	= "Imagen";
 
 // Sendpasswd
-$l_wrongactiv	= "La clave de activación proporcionada es incorrecta. Por favor revise el $l_message de correo que recibió y asegúrese de haber copiado exactamente la clave de activación.";
-$l_passchange	= "Su contraseña ha sido cambiada exitosamente. Ahora puede ir a su <a href=\"bb_profile.$phpEx?mode=edit\">profile</a> y cambiarla por una más adecuada.";
-$l_wrongmail	= "La dirección de correo electrónia que proporcionó no coincide con la almacenada en su registro.";
+$l_wrongactiv	= "La clave de activaciÃ³n proporcionada es incorrecta. Por favor revise el $l_message de correo que recibiÃ³ y asegÃºrese de haber copiado exactamente la clave de activaciÃ³n.";
+$l_passchange	= "Su contraseÃ±a ha sido cambiada exitosamente. Ahora puede ir a su <a href=\"bb_profile.$phpEx?mode=edit\">profile</a> y cambiarla por una mÃ¡s adecuada.";
+$l_wrongmail	= "La direcciÃ³n de correo electrÃ³nia que proporcionÃ³ no coincide con la almacenada en su registro.";
 
-$l_passsubj	= "Cambio de Contraseña de los Foros en $sitename";
+$l_passsubj	= "Cambio de ContraseÃ±a de los Foros en $sitename";
 
 $l_pwdmessage	= 'Estimado(a) $checkinfo[username],
-Esta recibiendo este mensaje de correo porque usted (o alguien que pretendió ser usted)
-solicitó un cambio de contraseña en los foros en $sitename. Si cree que este
-mensaje se debe a un error, simplemente ignórelo y bórrelo y su contraseña
-permanecerá sin cambio alguno.
+Esta recibiendo este mensaje de correo porque usted (o alguien que pretendiÃ³ ser usted)
+solicitÃ³ un cambio de contraseÃ±a en los foros en $sitename. Si cree que este
+mensaje se debe a un error, simplemente ignÃ³relo y bÃ³rrelo y su contraseÃ±a
+permanecerÃ¡ sin cambio alguno.
 
-Su nueva contraseña generada por los foros es: $newpw
+Su nueva contraseÃ±a generada por los foros es: $newpw
 
-Para que este cambio surja efecto, debe visitar esta página:
+Para que este cambio surja efecto, debe visitar esta pÃ¡gina:
 
    http://$SERVER_NAME$PHP_SELF?actkey=$key
 
-Una vez visitada la página su contraseña será cambiada en su registro,
-y si lo desea puede cambiarla en la sección correspondiente a su perfil.
+Una vez visitada la pÃ¡gina su contraseÃ±a serÃ¡ cambiada en su registro,
+y si lo desea puede cambiarla en la secciÃ³n correspondiente a su perfil.
 
 Gracias por usar los foros en $sitename
 
 $email_sig';
 
-$l_passsent	= "Su contraseña ha sido cambiada por una nueva generada al azar. Por favor revise la su correo electrónico para obtener la información de cómo completar el proceso de cambio".
-$l_emailpass	= "Enviar por correo nueva contraseña";
-$l_passexplain	= "Por favor proporcione su información. Su nueva contraseña le será enviada a su correo electrónico.";
-$l_sendpass	= "Enviar Contraseña";
+$l_passsent	= "Su contraseÃ±a ha sido cambiada por una nueva generada al azar. Por favor revise la su correo electrÃ³nico para obtener la informaciÃ³n de cÃ³mo completar el proceso de cambio".
+$l_emailpass	= "Enviar por correo nueva contraseÃ±a";
+$l_passexplain	= "Por favor proporcione su informaciÃ³n. Su nueva contraseÃ±a le serÃ¡ enviada a su correo electrÃ³nico.";
+$l_sendpass	= "Enviar ContraseÃ±a";

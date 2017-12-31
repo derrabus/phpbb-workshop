@@ -3,7 +3,7 @@
                           faq-spanish.php  -  description
                              -------------------
     begin                : Tue April 3, 2001
-    copyright            : (C) 2001 Fernando Nájera
+    copyright            : (C) 2001 Fernando NÃ¡jera
     email                : yo@fernandonajera.com
 
     $Id: faq-spanish.php,v 1.2 2001/04/25 04:23:20 thefinn Exp $
@@ -41,51 +41,51 @@ include('page_header.'.$phpEx);
     <tr bgcolor="<?php echo $color2?>">
         <td>
           <font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $linkcolor?>">
-          <a href="#register">¿Tengo que registrarme?</a><br>
-          <a href="#smilies">¿Puedo usar smilies?</a><br>
+          <a href="#register">Â¿Tengo que registrarme?</a><br>
+          <a href="#smilies">Â¿Puedo usar smilies?</a><br>
           <a href="#html">Usando HTML</a><br>
           <a href="#bbcode">Usando BB Code</a><br>
-          <a href="#mods">¿Qué son los moderadores?</a><br>
-	  <a href="#profile">¿Puedo cambiar mi perfil?</a><br>
-          <a href="#prefs">¿Puedo personalizar el panel de alguna forma?</a><br>
-          <a href="#cookies">¿Se usan cookies?</a><br>
-          <a href="#edit">¿Puedo editar mis propios mensajes?</a><br>
-          <a href="#attach">¿Puedo incluir ficheros?</a><br>
-          <a href="#search">¿Cómo puedo buscar?</a><br>
-          <a href="#signature">¿Puedo añadir una firma al final de mis mensajes?</a><br>
-	  <a href="#announce">¿Qué son los anuncios?</a><br>
-          <a href="#pw">¿Existe un sistema de recuperación de nombre de usuario/clave?</a><br>
-          <a href="#notify">¿Puedo ser notificado por email si alguien responde a mi tema?</a><br>
-          <a href="#searchprivate">¿Puedo buscar en los foros privados?</a><br>
-          <a href="#ranks">¿Qué son los ránkings en los Foros <?php echo $sitename?>?</a><br>
-          <a href="#rednumbers">¿Por qué hay iconos llameantes en la vista de temas?</a></p></font>
+          <a href="#mods">Â¿QuÃ© son los moderadores?</a><br>
+	  <a href="#profile">Â¿Puedo cambiar mi perfil?</a><br>
+          <a href="#prefs">Â¿Puedo personalizar el panel de alguna forma?</a><br>
+          <a href="#cookies">Â¿Se usan cookies?</a><br>
+          <a href="#edit">Â¿Puedo editar mis propios mensajes?</a><br>
+          <a href="#attach">Â¿Puedo incluir ficheros?</a><br>
+          <a href="#search">Â¿CÃ³mo puedo buscar?</a><br>
+          <a href="#signature">Â¿Puedo aÃ±adir una firma al final de mis mensajes?</a><br>
+	  <a href="#announce">Â¿QuÃ© son los anuncios?</a><br>
+          <a href="#pw">Â¿Existe un sistema de recuperaciÃ³n de nombre de usuario/clave?</a><br>
+          <a href="#notify">Â¿Puedo ser notificado por email si alguien responde a mi tema?</a><br>
+          <a href="#searchprivate">Â¿Puedo buscar en los foros privados?</a><br>
+          <a href="#ranks">Â¿QuÃ© son los rÃ¡nkings en los Foros <?php echo $sitename?>?</a><br>
+          <a href="#rednumbers">Â¿Por quÃ© hay iconos llameantes en la vista de temas?</a></p></font>
         </td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
         <td>
         <font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-        <a name="register"><b><br>Registrándose</b></font></a>
+        <a name="register"><b><br>RegistrÃ¡ndose</b></font></a>
         </td>
     </tr>
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	El registro sólo se necesita en base a cada foro. Dependiendo de cómo
+	El registro sÃ³lo se necesita en base a cada foro. Dependiendo de cÃ³mo
 	el administrador haya preparado sus foros, algunos pueden obligarte a
 	que te registres para poder escribir, mientras que otros pueden permitirte
-	escribir de forma anónima. Si se permite la escritura anónima, puedes
-	hacerlo símplemente no introduciendo un nombre de usuario y una clave
+	escribir de forma anÃ³nima. Si se permite la escritura anÃ³nima, puedes
+	hacerlo sÃ­mplemente no introduciendo un nombre de usuario y una clave
 	cuando se te pregunte.
-	El registro es gratuíto, y no es necesario poner el nombre real.
-	Tampoco es necesario poner tu dirección real de correo electrónico, sin embargo,
-	sólo se usará para enviarte por email una nueva clave si has perdido la tuya.
-	También tienes la opción de ocultar tu dirección de correo electrónico de todo
-	el mundo excepto del administración; esta opción está seleccionada por defecto,
-	pero puedes permitir a los demás ver tu dirección de correo electrónico
-	seleccionando la casilla 'Permitir que otros vean mi Dirección de correo
-	electrónico' en el formulario de registro.
+	El registro es gratuÃ­to, y no es necesario poner el nombre real.
+	Tampoco es necesario poner tu direcciÃ³n real de correo electrÃ³nico, sin embargo,
+	sÃ³lo se usarÃ¡ para enviarte por email una nueva clave si has perdido la tuya.
+	TambiÃ©n tienes la opciÃ³n de ocultar tu direcciÃ³n de correo electrÃ³nico de todo
+	el mundo excepto del administraciÃ³n; esta opciÃ³n estÃ¡ seleccionada por defecto,
+	pero puedes permitir a los demÃ¡s ver tu direcciÃ³n de correo electrÃ³nico
+	seleccionando la casilla 'Permitir que otros vean mi DirecciÃ³n de correo
+	electrÃ³nico' en el formulario de registro.
 	Puedes registrarte pulsando
-	<a href="<?php echo $url_phpbb?>/bb_register.<?php echo $phpEx?>?mode=agreement">aquí</a></font>
+	<a href="<?php echo $url_phpbb?>/bb_register.<?php echo $phpEx?>?mode=agreement">aquÃ­</a></font>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
@@ -98,13 +98,13 @@ include('page_header.'.$phpEx);
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Probablemente hayas visto a otros usar smilies antes en los mensajes de correo electrónico,
-	o en otros mensajes en algún sistema de foros. Los smilies son caracteres del teclado que se usan para
-	transmitir una emoción, como una sonrisa
+	Probablemente hayas visto a otros usar smilies antes en los mensajes de correo electrÃ³nico,
+	o en otros mensajes en algÃºn sistema de foros. Los smilies son caracteres del teclado que se usan para
+	transmitir una emociÃ³n, como una sonrisa
 	:)
 	o un enfado
 	:(.
-	Este sistema de foros automáticamente convierte ciertos smilies a una representación gráfica.
+	Este sistema de foros automÃ¡ticamente convierte ciertos smilies a una representaciÃ³n grÃ¡fica.
         Actualmente se traducen los siguientes smilies: </font><BR>
 	<table width="50%" ALIGN="CENTER" BGCOLOR="<?php echo $table_bgcolor?>" CELLSPACEING=1 BORDER="0">
 	  <TR><TD>
@@ -165,10 +165,10 @@ include('page_header.'.$phpEx);
 	<td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
 	Es posible que puedas usar HTML en tus mensajes, si los
-	administradores y los moderadores han activado esta opción.
-	Cada vez que escribes un mensaje nuevo, se te dirá si se permiten códigos HTML o BB Code.
-	Si HTML está activado, puedes usar cualquier tag HTML, pero por favor ten cuidado de
-	usar una sintaxis HTML correcta. Si no lo haces, tu moderador o administrador quizás
+	administradores y los moderadores han activado esta opciÃ³n.
+	Cada vez que escribes un mensaje nuevo, se te dirÃ¡ si se permiten cÃ³digos HTML o BB Code.
+	Si HTML estÃ¡ activado, puedes usar cualquier tag HTML, pero por favor ten cuidado de
+	usar una sintaxis HTML correcta. Si no lo haces, tu moderador o administrador quizÃ¡s
 	tengan que editar tu mensaje.
 	</td>
 	<tr bgcolor="<?php echo $color1?>">
@@ -181,7 +181,7 @@ include('page_header.'.$phpEx);
 	<tr bgcolor="<?php echo $color2?>">
 	<td>
 
-BBCode es una variación a los tags de HTML que quizás ya te resulten familiares. Básicamente, permite añadirle funcionalidad o estilo a tu mensaje, lo que normalmente requeriría HTML. Puedes usar BBCode incluso si el HTML no se permite en el foro que estás usando. Puede que desees usar BBCode en vez de HTML, incluso si el HTML se permite en tu foro, porque se necesita menos código y es más seguro de usar (la sintaxis de codificación incorrecta no lleva a tantos problemas).
+BBCode es una variaciÃ³n a los tags de HTML que quizÃ¡s ya te resulten familiares. BÃ¡sicamente, permite aÃ±adirle funcionalidad o estilo a tu mensaje, lo que normalmente requerirÃ­a HTML. Puedes usar BBCode incluso si el HTML no se permite en el foro que estÃ¡s usando. Puede que desees usar BBCode en vez de HTML, incluso si el HTML se permite en tu foro, porque se necesita menos cÃ³digo y es mÃ¡s seguro de usar (la sintaxis de codificaciÃ³n incorrecta no lleva a tantos problemas).
 <P>
 
 <table border=0 cellpadding=0 cellspacing=0 width="<?php echo $tablewidth?>" align="CENTER"><TR><td bgcolor="#FFFFFF">
@@ -189,41 +189,41 @@ BBCode es una variación a los tags de HTML que quizás ya te resulten familiares.
 <TR bgcolor="<?php echo $color1?>">
 <TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Hipervínculos URL</FONT></td></tr>
+HipervÃ­nculos URL</FONT></td></tr>
 <TR bgcolor="<?php echo $color2?>"><TD><FONT SIZE="2" FACE="Verdana, Arial">
-Si BBCode está permitido en un foro, no necesitas usar más el código [URL] para crear un hipervínculo. Simplemente escribe la dirección completa en cualquiera de las siguientes formas, y el hipervínculo se creará automáticamente:
+Si BBCode estÃ¡ permitido en un foro, no necesitas usar mÃ¡s el cÃ³digo [URL] para crear un hipervÃ­nculo. Simplemente escribe la direcciÃ³n completa en cualquiera de las siguientes formas, y el hipervÃ­nculo se crearÃ¡ automÃ¡ticamente:
 <UL><FONT SIZE="2" FACE="Verdana, Arial" color="silver">
 <LI> http://www.tuURL.com
 <LI> www.tuURL.com
 </font>
 
-Ten en cuenta que puedes o bien usar la dirección completa con http:// o acortarla al dominio www.  Si el vínculo no empieza con "www", entonces debes usar la dirección completa "http://". Por otra parte, puedes usar los prefijos de URL https y ftp en el modo auto-vínculo (cuando BBCode está ACTIVADO).
+Ten en cuenta que puedes o bien usar la direcciÃ³n completa con http:// o acortarla al dominio www.  Si el vÃ­nculo no empieza con "www", entonces debes usar la direcciÃ³n completa "http://". Por otra parte, puedes usar los prefijos de URL https y ftp en el modo auto-vÃ­nculo (cuando BBCode estÃ¡ ACTIVADO).
 <P>
-El viejo código [URL] todavía funciona, como se detalla a continuación.
+El viejo cÃ³digo [URL] todavÃ­a funciona, como se detalla a continuaciÃ³n.
 
-Basta con intercalar el vínculo como se muestra en el siguiente ejemplo (el BBCode está en <FONT COLOR="#FF0000">rojo</FONT>).
+Basta con intercalar el vÃ­nculo como se muestra en el siguiente ejemplo (el BBCode estÃ¡ en <FONT COLOR="#FF0000">rojo</FONT>).
 <P><center>
 <FONT COLOR="#FF0000">[url]</FONT>www.totalgeek.org<FONT COLOR="#FF0000">[/url]</FONT>
 <P></center>
-También puedes poner verdaderos hipervínculos usando el código [url].  Basta con usar el siguiente formato:
+TambiÃ©n puedes poner verdaderos hipervÃ­nculos usando el cÃ³digo [url].  Basta con usar el siguiente formato:
 <BR><center>
 <FONT COLOR="#FF0000">[url=http://www.totalgeek.org]</font>totalgeek.org<FONT COLOR="#FF0000">[/url]</font>
 </center><p>
-En los ejemplos anteriores, el BBCode automáticamente genera un hipervínculo a la dirección URL que se indica. También se asegura de que el vínculo se abre en una nueva ventana cuando el usuario pulse en ella. Fíjate que la parte "http://" del URL es completamente opcional. En el segundo ejemplo de arriba, el URL hará un enlace a cualquier URL que pongas después del signo igual. Por otra parte, NO debería usar comillas dentro del tag URL.
+En los ejemplos anteriores, el BBCode automÃ¡ticamente genera un hipervÃ­nculo a la direcciÃ³n URL que se indica. TambiÃ©n se asegura de que el vÃ­nculo se abre en una nueva ventana cuando el usuario pulse en ella. FÃ­jate que la parte "http://" del URL es completamente opcional. En el segundo ejemplo de arriba, el URL harÃ¡ un enlace a cualquier URL que pongas despuÃ©s del signo igual. Por otra parte, NO deberÃ­a usar comillas dentro del tag URL.
 </font>
 </td>
 <tr bgcolor="<?php echo $color1?>"><td>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Vínculos de Email</FONT></td></tr>
+VÃ­nculos de Email</FONT></td></tr>
 <TR bgcolor="<?php echo $color2?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Para añadir un vínculo a una dirección email dentro de un mensaje, basta intercalarlo como muestra el siguiente ejemplo (el BBCode está en <FONT COLOR="#FF0000">rojo</FONT>).
+Para aÃ±adir un vÃ­nculo a una direcciÃ³n email dentro de un mensaje, basta intercalarlo como muestra el siguiente ejemplo (el BBCode estÃ¡ en <FONT COLOR="#FF0000">rojo</FONT>).
 <P>
 <CENTER>
 <FONT COLOR="#FF0000">[email]</FONT>james@totalgeek.org<FONT COLOR="#FF0000">[/email]</FONT>
 </CENTER>
 <P>
-En el ejemplo anterior, el BBCode automáticamente genera un hipervínculo a la dirección email que está intercalada.
+En el ejemplo anterior, el BBCode automÃ¡ticamente genera un hipervÃ­nculo a la direcciÃ³n email que estÃ¡ intercalada.
 </FONT>
 </td></tr>
 <tr bgcolor="<?php echo $color1?>"><td>
@@ -235,48 +235,48 @@ Puedes hacer texto en cursiva o en negrita al intercalar las secciones apropiada
 <P>
 <CENTER>
 Hola, <FONT COLOR="#FF0000">[b]</FONT><B>Juan</B><FONT COLOR="#FF0000">[/b]</FONT><BR>
-Hola, <FONT COLOR="#FF0000">[i]</FONT><I>María</I><FONT COLOR="#FF0000">[/i]</FONT>
+Hola, <FONT COLOR="#FF0000">[i]</FONT><I>MarÃ­a</I><FONT COLOR="#FF0000">[/i]</FONT>
 </CENTER>
 </FONT>
 </td></tr>
 <tr bgcolor="<?php echo $color1?>"><td>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Viñetas/Listas</FONT></td></tr>
+ViÃ±etas/Listas</FONT></td></tr>
 <TR bgcolor="<?php echo $color2?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Puedes hacer listas con viñetas o listas ordenadas (por letras o números).
+Puedes hacer listas con viÃ±etas o listas ordenadas (por letras o nÃºmeros).
 <P>
-Las listas no ordenadas y con viñetas:
+Las listas no ordenadas y con viÃ±etas:
 <P>
 <FONT COLOR="#FF0000">[list]</FONT>
 <BR>
-<FONT COLOR="#FF0000">[*]</font> Este es el primer ítem en la lista.<BR>
-<FONT COLOR="#FF0000">[*]</font> Este es el segundo ítem en la lista.<BR>
+<FONT COLOR="#FF0000">[*]</font> Este es el primer Ã­tem en la lista.<BR>
+<FONT COLOR="#FF0000">[*]</font> Este es el segundo Ã­tem en la lista.<BR>
 <FONT COLOR="#FF0000">[/list]</font>
 <P>
 This produces:
 <ul>
-<LI> Este es el primer ítem en la lista.
-<LI> Este es el segundo ítem en la lista.
+<LI> Este es el primer Ã­tem en la lista.
+<LI> Este es el segundo Ã­tem en la lista.
 </ul>
 Observa que debes incluir un [/list] cuando termines cada lista.
 
 <P>
-Hacer listas ordenadas es igual de fácil. Basta añadir o [LIST=A] o [LIST=1].  Escribiendo [List=A] producirá una lista de la A a la Z.  Usando [List=1] producirá listas numeradas.
+Hacer listas ordenadas es igual de fÃ¡cil. Basta aÃ±adir o [LIST=A] o [LIST=1].  Escribiendo [List=A] producirÃ¡ una lista de la A a la Z.  Usando [List=1] producirÃ¡ listas numeradas.
 <P>
-Aquí hay un ejemplo:
+AquÃ­ hay un ejemplo:
 <P>
 
 <FONT COLOR="#FF0000">[list=A]</FONT>
 <BR>
-<FONT COLOR="#FF0000">[*]</font> Este es el primer ítem en la lista.<BR>
-<FONT COLOR="#FF0000">[*]</font> Este es el segundo ítem en la lista.<BR>
+<FONT COLOR="#FF0000">[*]</font> Este es el primer Ã­tem en la lista.<BR>
+<FONT COLOR="#FF0000">[*]</font> Este es el segundo Ã­tem en la lista.<BR>
 <FONT COLOR="#FF0000">[/list]</font>
 <P>
 Esto produce:
 <ol type=A>
-<LI> Este es el primer ítem en la lista.
-<LI> Este es el segundo ítem en la lista.
+<LI> Este es el primer Ã­tem en la lista.
+<LI> Este es el segundo Ã­tem en la lista.
 </ul>
 
 
@@ -284,16 +284,16 @@ Esto produce:
 </td></tr>
 <TR bgcolor="<?php echo $color1?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Añadiendo imágenes</font></td></tr>
+AÃ±adiendo imÃ¡genes</font></td></tr>
 <TR bgcolor="<?php echo $color2?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Para añadir un gráfico en tu mensaje, basta poner el URL de la imagen gráfica como se muestra en el siguiente ejemplo (el BBCode está en <FONT COLOR="#FF0000">rojo</FONT>).
+Para aÃ±adir un grÃ¡fico en tu mensaje, basta poner el URL de la imagen grÃ¡fica como se muestra en el siguiente ejemplo (el BBCode estÃ¡ en <FONT COLOR="#FF0000">rojo</FONT>).
 <P>
 <CENTER>
 <FONT COLOR="#FF0000">[img]</FONT>http://www.totalgeek.org/images/tline.gif<FONT COLOR="#FF0000">[/img]</FONT>
 </CENTER>
 <P>
-En el ejemplo anterior, el BBCode automáticamente hace visible el gráfico en tu mensaje. Nota: la parte "http://" de la URL es NECESARIA para el código <FONT COLOR="#FF0000">[img]</FONT>.
+En el ejemplo anterior, el BBCode automÃ¡ticamente hace visible el grÃ¡fico en tu mensaje. Nota: la parte "http://" de la URL es NECESARIA para el cÃ³digo <FONT COLOR="#FF0000">[img]</FONT>.
 </FONT>
 </td></tr>
 <TR bgcolor="<?php echo $color1?>"><TD>
@@ -301,43 +301,43 @@ En el ejemplo anterior, el BBCode automáticamente hace visible el gráfico en tu 
 Citando otros mensajes</font></td></tr>
 <TR bgcolor="<?php echo $color2?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Para referirse a algo específico que otro ha escrito, basta cortar y pegar el texto adecuado y encerrarlo como se muestra a continuación (el BBCode está en <FONT COLOR="#FF0000">rojo</FONT>).
+Para referirse a algo especÃ­fico que otro ha escrito, basta cortar y pegar el texto adecuado y encerrarlo como se muestra a continuaciÃ³n (el BBCode estÃ¡ en <FONT COLOR="#FF0000">rojo</FONT>).
 <P>
 <CENTER>
-<FONT COLOR="#FF0000">[QUOTE]</FONT>No preguntes lo que tu país puede hacer por tí....<BR>pregúntate qué puedes hacer por tu país.<FONT COLOR="#FF0000">[/QUOTE]</FONT>
+<FONT COLOR="#FF0000">[QUOTE]</FONT>No preguntes lo que tu paÃ­s puede hacer por tÃ­....<BR>pregÃºntate quÃ© puedes hacer por tu paÃ­s.<FONT COLOR="#FF0000">[/QUOTE]</FONT>
 </CENTER>
 <P>
-En el ejemplo anterior, el BBCode automáticamente prepara el texto que se indica.</FONT>
+En el ejemplo anterior, el BBCode automÃ¡ticamente prepara el texto que se indica.</FONT>
 </td>
 </tr>
 <TR bgcolor="<?php echo $color1?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Tag de código</FONT></td></tr>
+Tag de cÃ³digo</FONT></td></tr>
 <TR bgcolor="<?php echo $color2?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
-Similar al tag de Cita, el tag de Código añade algunos tags &lt;PRE&gt; para preservar el formato. Esto es útil para mostrar código de programación, por ejemplo.
+Similar al tag de Cita, el tag de CÃ³digo aÃ±ade algunos tags &lt;PRE&gt; para preservar el formato. Esto es Ãºtil para mostrar cÃ³digo de programaciÃ³n, por ejemplo.
 <P>
 
 <FONT COLOR="#FF0000">[CODE]</FONT>#!/usr/bin/perl
 <P>
 print "Content-type: text/html\n\n";
 <BR>
-print "¡Hola mundo!";
+print "Â¡Hola mundo!";
 <FONT COLOR="#FF0000">[/CODE]</FONT>
 
 <P>
-En el ejemplo anterior, el BBCode automáticamente prepara el texto que se indica y preserva el formato del texto de código.</FONT>
+En el ejemplo anterior, el BBCode automÃ¡ticamente prepara el texto que se indica y preserva el formato del texto de cÃ³digo.</FONT>
 </td>
 </tr>
 </table>
 </td></tr></table>
 </blockquote>
 <BR>
-No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíjate que los BBCode no distinguen mayúsculas y minúsculas (por tanto, puedes usar <FONT COLOR="#FF0000">[URL]</FONT> o <FONT COLOR="#FF0000">[url]</FONT>).
+No debes usar los dos sistemas (HTML y BBCode) para hacer la misma funciÃ³n. FÃ­jate que los BBCode no distinguen mayÃºsculas y minÃºsculas (por tanto, puedes usar <FONT COLOR="#FF0000">[URL]</FONT> o <FONT COLOR="#FF0000">[url]</FONT>).
 <P>
 <FONT COLOR="silver">Uso Incorrecto de BBCode:</FONT>
 <P>
-<FONT COLOR="#FF0000">[url]</FONT> www.totalgeek.org <FONT COLOR="#FF0000">[/url]</FONT> - no pongas ningún espacio entre el código entre corchetes y el texto al que se aplica el código.
+<FONT COLOR="#FF0000">[url]</FONT> www.totalgeek.org <FONT COLOR="#FF0000">[/url]</FONT> - no pongas ningÃºn espacio entre el cÃ³digo entre corchetes y el texto al que se aplica el cÃ³digo.
 <P>
 <FONT COLOR="#FF0000">[email]</FONT>james@totalgeek.org<FONT COLOR="#FF0000">[email]</FONT> - los corchetes del final deben incluir una barra hacia adelante (/) (<FONT COLOR="#FF0000">[/email]</FONT>)
 
@@ -361,13 +361,13 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
 	    <font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
 	    Los moderadores controlan los foros individuales.
             Ellos pueden editar, borrar o pasa cualquier escrito en su foro.
-            Si tienes alguna pregunta sobre un foro en particular, deberías dirigirte al moderador de tu foro.</p>
+            Si tienes alguna pregunta sobre un foro en particular, deberÃ­as dirigirte al moderador de tu foro.</p>
           <p>Los administradorse y los moderadores de foros se reservan el derecho de terminar o borrar cualquier escrito que no tengan un
-	    tema claro y acorde al topic. Hay muchos miembros que todavía usan
-	    módems de 28.8 y de 56k que no tienen tiempo para bucear a través
-	    de temas poco útiles y sin sentido. </p>
-          <p>Cualquiera que escriba para incrementar sus estadísticas en los Foros de <?php echo $sitename?> o escriba sobre temas fuera de lugar corren el riesgo de que se cierren sus temas, se eliminen y/o se cancele su pertenencia a los foros. </p>
-          <p>Intente hacer que el tema sea un reflejo de lo que hay dentro del hilo. Temas como "Comprueba esto!" y ""~~\\¡Tienes que ver esto!//~~" sólo atraen a los miembros a un tema que puede que no quieran leer.</font></p>
+	    tema claro y acorde al topic. Hay muchos miembros que todavÃ­a usan
+	    mÃ³dems de 28.8 y de 56k que no tienen tiempo para bucear a travÃ©s
+	    de temas poco Ãºtiles y sin sentido. </p>
+          <p>Cualquiera que escriba para incrementar sus estadÃ­sticas en los Foros de <?php echo $sitename?> o escriba sobre temas fuera de lugar corren el riesgo de que se cierren sus temas, se eliminen y/o se cancele su pertenencia a los foros. </p>
+          <p>Intente hacer que el tema sea un reflejo de lo que hay dentro del hilo. Temas como "Comprueba esto!" y ""~~\\Â¡Tienes que ver esto!//~~" sÃ³lo atraen a los miembros a un tema que puede que no quieran leer.</font></p>
         </td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
@@ -380,11 +380,11 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Puedes cambiar fácilmente cualquier información almacenada en tu perfil de registro, usando el vínculo
-        &quot;Editar Perfil&quot; en la parte superior de cada página.
-        Simplemente identifícate escribiendo tu nombre de usuario y tu clave,
-	o entrando en el sistema, y toda la información de tu perfil
-	aparecerá en pantalla.</font>
+	Puedes cambiar fÃ¡cilmente cualquier informaciÃ³n almacenada en tu perfil de registro, usando el vÃ­nculo
+        &quot;Editar Perfil&quot; en la parte superior de cada pÃ¡gina.
+        Simplemente identifÃ­cate escribiendo tu nombre de usuario y tu clave,
+	o entrando en el sistema, y toda la informaciÃ³n de tu perfil
+	aparecerÃ¡ en pantalla.</font>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
@@ -398,10 +398,10 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
 	Como usuario registrado del sistema de foros,
-	puedes almacenar tu nombre de usuario en la memoria durante un año como máximo.
-	Al hacer esto nosotros creamos una forma de seguir la pista de quién eres cuando visitas los foros, por tanto tú puedes personalizar la apariencia del foro
-	al seleccionar de entre los temas que la administración ha dispuesto. Además, si el administrador te lo permite, puedes tener la opción de crear nuevos temas para los foros. Al crear un nuevo tema podrás fijar los colores, fuentes y tamaños de letras del tablón, sin embargo,
-	por ahora sólo el administrador puede cambiar las imágenes de cada tema. Cuando un usuario crea un tema las imágenes del tema por defecto se seleccionarán.
+	puedes almacenar tu nombre de usuario en la memoria durante un aÃ±o como mÃ¡ximo.
+	Al hacer esto nosotros creamos una forma de seguir la pista de quiÃ©n eres cuando visitas los foros, por tanto tÃº puedes personalizar la apariencia del foro
+	al seleccionar de entre los temas que la administraciÃ³n ha dispuesto. AdemÃ¡s, si el administrador te lo permite, puedes tener la opciÃ³n de crear nuevos temas para los foros. Al crear un nuevo tema podrÃ¡s fijar los colores, fuentes y tamaÃ±os de letras del tablÃ³n, sin embargo,
+	por ahora sÃ³lo el administrador puede cambiar las imÃ¡genes de cada tema. Cuando un usuario crea un tema las imÃ¡genes del tema por defecto se seleccionarÃ¡n.
 	<br>*NOTA: Para poder usar temas DEBES tener las cookies habilitadas.</font>
 	</td>
     </tr>
@@ -413,12 +413,12 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Este sistema de foros usa cookies para almacenar la siguiente información:
-        la última vez que has visitado los foros, tu nombre de usuario,
-	y un número de ID de sesión único cuando entras al sistema. Estas cookies se guardan en tu navegador.
+	Este sistema de foros usa cookies para almacenar la siguiente informaciÃ³n:
+        la Ãºltima vez que has visitado los foros, tu nombre de usuario,
+	y un nÃºmero de ID de sesiÃ³n Ãºnico cuando entras al sistema. Estas cookies se guardan en tu navegador.
 	Si tu navegador no soporta cookies,
 	o has seleccionado no habilitar cookies en tu navegador, ninguna de estas
-	características que ahorran tiempo funcionarán correctamente. </font>
+	caracterÃ­sticas que ahorran tiempo funcionarÃ¡n correctamente. </font>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
@@ -430,31 +430,31 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Puedes editar tus propios mensajes en cualquier momento. Sólo hace falta ir al hilo donde está el mensaje a ser editado, y
-	verás un icono de edición en la linea debajo de tu mensaje.
-        Pulsa este icono y edita el mensaje. Nadie más puede editar tu mensaje,
-	excepto el moderador del foro o el administrador del sistema. Además, durante los 30 minutos siguientes a haber escrito el mensaje, la pantalla de edición te dará la opción de borrar ese mensaje.
-	Después de 30 minutos, sin embargo, sólo el moderador y/o el administrador podrán eliminar el mensaje.</font>
+	Puedes editar tus propios mensajes en cualquier momento. SÃ³lo hace falta ir al hilo donde estÃ¡ el mensaje a ser editado, y
+	verÃ¡s un icono de ediciÃ³n en la linea debajo de tu mensaje.
+        Pulsa este icono y edita el mensaje. Nadie mÃ¡s puede editar tu mensaje,
+	excepto el moderador del foro o el administrador del sistema. AdemÃ¡s, durante los 30 minutos siguientes a haber escrito el mensaje, la pantalla de ediciÃ³n te darÃ¡ la opciÃ³n de borrar ese mensaje.
+	DespuÃ©s de 30 minutos, sin embargo, sÃ³lo el moderador y/o el administrador podrÃ¡n eliminar el mensaje.</font>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
         <td><a name="signature">
 	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-	<b>Añadir firmas</b></font></a>
+	<b>AÃ±adir firmas</b></font></a>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
 	Puedes usar una firma en tus mensajes.
-	Si pulsas en el vínculo de perfil en la parte superior de la
-	mayoría de las páginas, podrás editar tu perfil,
-	incluyendo tu firma estándar. Una vez que
+	Si pulsas en el vÃ­nculo de perfil en la parte superior de la
+	mayorÃ­a de las pÃ¡ginas, podrÃ¡s editar tu perfil,
+	incluyendo tu firma estÃ¡ndar. Una vez que
 	hayas almacenado una firma, puedes elegir incluirla en cualquier
-	mensaje que crees pulsando la casilla de selección 'Incluir firma' cuando crees un mensaje.
+	mensaje que crees pulsando la casilla de selecciÃ³n 'Incluir firma' cuando crees un mensaje.
 	El administrador de este sistema de foros puede elegir deshabilitar la
 	firma en cualquier momento, sin embargo. Si este es el caso, la
-	opción 'Incluir firma' no aparecerá cuando se escribe un mensaje, incluso
+	opciÃ³n 'Incluir firma' no aparecerÃ¡ cuando se escribe un mensaje, incluso
 	si has guardado una firma. Puedes cambiar tu firma en cualquier momento
 	cambiando tu perfil.
 	<p>Nota: Puedes usar HTML o <a href="#bbcode">BB Code</a> si el administrador ha
@@ -473,27 +473,27 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Por razones de seguridad, no puedes adjuntar ficheros a ningún
+	Por razones de seguridad, no puedes adjuntar ficheros a ningÃºn
 	mensaje. Puedes cortar y pegar texto en tu mensaje, sin embargo,
-	o usar HTML y/o BB Code (si se permiten) para dar hipervínculos
-	a documentos externos. Los ficheros adjuntos se incluirán en una
-	versión futura de phpBB..</font>
+	o usar HTML y/o BB Code (si se permiten) para dar hipervÃ­nculos
+	a documentos externos. Los ficheros adjuntos se incluirÃ¡n en una
+	versiÃ³n futura de phpBB..</font>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
         <td>
 	<a name="search">
 	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-	<b>Buscando un mensaje específico</b></font></a>
+	<b>Buscando un mensaje especÃ­fico</b></font></a>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Puedes buscar mensajes específicos basados en una o varias palabras presentes
+	Puedes buscar mensajes especÃ­ficos basados en una o varias palabras presentes
 	en el texto, un nombre de usuario, una fecha, y/o uno o varios foros.
-	Basta pulsar en el vínculo 'Buscar' en la parte superior de la mayoría de las
-	páginas.</font>
+	Basta pulsar en el vÃ­nculo 'Buscar' en la parte superior de la mayorÃ­a de las
+	pÃ¡ginas.</font>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
@@ -506,68 +506,68 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Los anuncios no se han implementado, pero están planeados para una versión futura.
-	Sin embargo, el administrador puede crear un foro donde sólo puedan escribir otros administradores y moderadores. Este tipo de foros pueden usarse fácilmente como un foro de anuncios.
+	Los anuncios no se han implementado, pero estÃ¡n planeados para una versiÃ³n futura.
+	Sin embargo, el administrador puede crear un foro donde sÃ³lo puedan escribir otros administradores y moderadores. Este tipo de foros pueden usarse fÃ¡cilmente como un foro de anuncios.
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
         <td>
 	<a name="pw">
 	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-	<b>Nombre de usuario y/o contraseña perdidos</b></font></a>
+	<b>Nombre de usuario y/o contraseÃ±a perdidos</b></font></a>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
- 	En el caso de que pierdas tu clave puedes pulsar en el vínculo &quot;¡Olvidé mi
-	contraseña!&quot; que se muestra en las pantallas donde se pide la clave, después de este campo. Este vínculo
-	te llevará a una página donde puedes rellenar tu nombre de usuario y tu email.
-	El sistema te enviará entonces una contraseña aleatoria nueva a la dirección email que se almacena en tu perfil,
-	suponiendo que has introducido la dirección de correo electrónica correcta.</FONT>
+ 	En el caso de que pierdas tu clave puedes pulsar en el vÃ­nculo &quot;Â¡OlvidÃ© mi
+	contraseÃ±a!&quot; que se muestra en las pantallas donde se pide la clave, despuÃ©s de este campo. Este vÃ­nculo
+	te llevarÃ¡ a una pÃ¡gina donde puedes rellenar tu nombre de usuario y tu email.
+	El sistema te enviarÃ¡ entonces una contraseÃ±a aleatoria nueva a la direcciÃ³n email que se almacena en tu perfil,
+	suponiendo que has introducido la direcciÃ³n de correo electrÃ³nica correcta.</FONT>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
         <td>
 	<a name="notify">
 	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-	<b>Notificación por email</b></font></a>
+	<b>NotificaciÃ³n por email</b></font></a>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Si creas un nuevo tema, tienes la opción de recibir una notificación por email cada vez que alguien escribe una respuesta en ese tema.
-	Basta con marcar la casilla de notificación por email en la pantalla de nuevo tema
-	(&quot;New Topic&quot;) cuando estás creando tu nuevo tema si quieres
-	usar esta característica. </font>
+	Si creas un nuevo tema, tienes la opciÃ³n de recibir una notificaciÃ³n por email cada vez que alguien escribe una respuesta en ese tema.
+	Basta con marcar la casilla de notificaciÃ³n por email en la pantalla de nuevo tema
+	(&quot;New Topic&quot;) cuando estÃ¡s creando tu nuevo tema si quieres
+	usar esta caracterÃ­stica. </font>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
         <td>
 	<a name="searchprivate">
 	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-	<b>¿Puedo buscar en foros privados?</b>
+	<b>Â¿Puedo buscar en foros privados?</b>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Sí, pero no podrás leer ninguno de los mensajes a menos que tengas la clave del foro privado. </font></p>
+	SÃ­, pero no podrÃ¡s leer ninguno de los mensajes a menos que tengas la clave del foro privado. </font></p>
         </td>
     </tr>
     <tr bgcolor="<?php echo $color1?>">
         <td>
 	<a name="ranks">
 	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-	<b>¿Qué son los rankings de los Foros de <?php echo $sitename?>?</b></font></a>
+	<b>Â¿QuÃ© son los rankings de los Foros de <?php echo $sitename?>?</b></font></a>
 	</td>
     </tr>
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Los foros de <?php echo $sitename?> han establecido métodos para
-	clasificar a sus usuarios a través del número de mensajes escritos.</p>
+	Los foros de <?php echo $sitename?> han establecido mÃ©todos para
+	clasificar a sus usuarios a travÃ©s del nÃºmero de mensajes escritos.</p>
 	<br>
 	El ranking actual es el siguiente:<br>
 
@@ -611,7 +611,7 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
 	</TABLE></TABLE></font>
 	<br>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	El administrador también tiene la opción de asignar rankings especiales a cualquier usuario que escoja. La tabla anterior no muestra estos rankings especiales.
+	El administrador tambiÃ©n tiene la opciÃ³n de asignar rankings especiales a cualquier usuario que escoja. La tabla anterior no muestra estos rankings especiales.
 	</font>
         </td>
     </tr>
@@ -619,10 +619,10 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
         <td>
 	<a name="rednumbers">
 	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-	<b>¿Por qué algunos iconos </b>
+	<b>Â¿Por quÃ© algunos iconos </b>
 	</font>
 	<font color="#FF0033" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-	<b>están ardiendo</b>
+	<b>estÃ¡n ardiendo</b>
 	</font>
 	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
 	<b> en la vista del foro?</b></font></a>
@@ -631,7 +631,7 @@ No debes usar los dos sistemas (HTML y BBCode) para hacer la misma función. Fíja
     <tr bgcolor="<?php echo $color2?>">
         <td>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Los iconos llameantes significan que hay <?php echo $hot_threshold?> o más mensajes en ese hilo.
+	Los iconos llameantes significan que hay <?php echo $hot_threshold?> o mÃ¡s mensajes en ese hilo.
 	Es una advertencia para las conexiones lentas de que el hilo
 	puede llevar cierto tiempo para cargarse.</font></p>
         </td>

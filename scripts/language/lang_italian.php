@@ -168,7 +168,7 @@ $l_logout	= "Esci";
 $l_login	= "Entra";
 
 // Page_header
-$l_separator	= "» »";  // Included here because some languages have
+$l_separator	= "Â» Â»";  // Included here because some languages have
                   // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Modifica profilo";
 $l_editprefs	= "Modifica $l_preferences";
