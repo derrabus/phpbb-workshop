@@ -4,7 +4,7 @@
    *                              -------------------
    *     begin                : Tuesday Oct 31 2000 (Happy Halloween :) )
    *     copyright            : (C) 2001 The phpBB Group
-	*	   email                : support@phpbb.com
+    *	   email                : support@phpbb.com
    *
    *     $Id: admin_themes.php,v 1.10 2001/06/16 06:05:50 thefinn Exp $
    *
@@ -23,44 +23,38 @@ include('../functions.'.$phpEx);
 include('../config.'.$phpEx);
 require('../auth.'.$phpEx);
 
-if($login) {
-   if ($username == '') {
-      die("You have to enter your username. Go back and do so.");
-   }
-   if ($password == '') {
-      die("You have to enter your password. Go back and do so.");
-   }
-   if (!check_username($username, $db)) {
-      die("Invalid username \"$username\". Go back and try again.");
-   }
-   if (!check_user_pw($username, $password, $db)) {
-      die("Invalid password. Go back and try again.");
-   }
+if ($login) {
+    if ($username == '') {
+        die("You have to enter your username. Go back and do so.");
+    }
+    if ($password == '') {
+        die("You have to enter your password. Go back and do so.");
+    }
+    if (!check_username($username, $db)) {
+        die("Invalid username \"$username\". Go back and try again.");
+    }
+    if (!check_user_pw($username, $password, $db)) {
+        die("Invalid password. Go back and try again.");
+    }
 
-   $userdata = get_userdata($username, $db);
-   $sessid = new_session($userdata[user_id], $REMOTE_ADDR, $sesscookietime, $db);
-   set_session_cookie($sessid, $sesscookietime, $sesscookiename, $cookiepath, $cookiedomain, $cookiesecure);
+    $userdata = get_userdata($username, $db);
+    $sessid = new_session($userdata[user_id], $REMOTE_ADDR, $sesscookietime, $db);
+    set_session_cookie($sessid, $sesscookietime, $sesscookiename, $cookiepath, $cookiedomain, $cookiesecure);
 
-   if (defined('USE_IIS_LOGIN_HACK') && USE_IIS_LOGIN_HACK)
-	{
-		echo "<META HTTP-EQUIV=\"refresh\" content=\"1;URL=$url_admin_index\">";
-	}
-	else
-	{
-		header("Location: $url_admin_index");
-	}
-}
-else if(!$user_logged_in) {
-   $pagetitle = "Forum Administration";
-   $pagetype = "admin";
-   include('../page_header.'.$phpEx);
-
-   ?>
+    if (defined('USE_IIS_LOGIN_HACK') && USE_IIS_LOGIN_HACK) {
+        echo "<META HTTP-EQUIV=\"refresh\" content=\"1;URL=$url_admin_index\">";
+    } else {
+        header("Location: $url_admin_index");
+    }
+} elseif (!$user_logged_in) {
+    $pagetitle = "Forum Administration";
+    $pagetype = "admin";
+    include('../page_header.'.$phpEx); ?>
      <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth?>">
      <TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
      <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
      <TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
-     <TD><P><BR><FONT FACE="<?php echo $FontFace?>" SIZE="<? echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
+     <TD><P><BR><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
      Please enter your username and password to login.<BR>
      <i>(NOTE: You MUST have cookies enabled in order to login to the administration section of this forum)</i><BR>
      <UL>
@@ -72,45 +66,41 @@ else if(!$user_logged_in) {
      </TD></TR></TABLE></TD></TR></TABLE>
      <?php
      include('../page_tail.'.$phpEx);
-   exit();
-}
-else if($user_logged_in && $userdata[user_level] == 4) {
+    exit();
+} elseif ($user_logged_in && $userdata[user_level] == 4) {
+    $pagetitle = "Theme Administration";
+    $pagetype = "admin";
 
-
-   $pagetitle = "Theme Administration";
-   $pagetype = "admin";
-
-   if($mode) {
-      include('../page_header.'.$phpEx);
-   switch($mode) {
+    if ($mode) {
+        include('../page_header.'.$phpEx);
+        switch ($mode) {
     case 'add':
-      if($HTTP_POST_VARS['submit']) {
-	 		while(list($field, $value) = each($HTTP_POST_VARS)) {
-	    		if($value == '') {
-	       		$field_list[] = $field;
-	       		$die = 1;
-	    		}
-	 		}
-	 if($die == 1) {
-	    echo "You did not fill out all parts of the form, please go back and do so, all fields are required.";
-	    include('../page_tail.'.$phpEx);
-	    exit();
-	 }
+      if ($HTTP_POST_VARS['submit']) {
+          while (list($field, $value) = each($HTTP_POST_VARS)) {
+              if ($value == '') {
+                  $field_list[] = $field;
+                  $die = 1;
+              }
+          }
+          if ($die == 1) {
+              echo "You did not fill out all parts of the form, please go back and do so, all fields are required.";
+              include('../page_tail.'.$phpEx);
+              exit();
+          }
 
-	 $theme_name = addslashes($theme_name);
-	 $image_header = "images/".$image_header;
-	 $image_reply = "images/".$image_reply;
-	 $image_newtopic = "images/".$image_newtopic;
-	 $image_replylocked = "images/".$image_replylocked;
+          $theme_name = addslashes($theme_name);
+          $image_header = "images/".$image_header;
+          $image_reply = "images/".$image_reply;
+          $image_newtopic = "images/".$image_newtopic;
+          $image_replylocked = "images/".$image_replylocked;
 
-	 $sql = "INSERT INTO themes (theme_name, bgcolor, textcolor, color1, color2, table_bgcolor, header_image, newtopic_image, reply_image, linkcolor, vlinkcolor, theme_default, fontface, fontsize1, fontsize2, fontsize3, fontsize4, tablewidth, replylocked_image)
+          $sql = "INSERT INTO themes (theme_name, bgcolor, textcolor, color1, color2, table_bgcolor, header_image, newtopic_image, reply_image, linkcolor, vlinkcolor, theme_default, fontface, fontsize1, fontsize2, fontsize3, fontsize4, tablewidth, replylocked_image)
 	         VALUES ('$theme_name', '$theme_bgcolor', '$theme_textcolor', '$theme_color1', '$theme_color2', '$theme_tablebg', '$image_header', '$image_newtopic', '$image_reply', '$theme_linkcolor', '$theme_vlinkcolor', '0', '$theme_fontface', '$theme_fontsize1', '$theme_fontsize2', '$theme_fontsize3', '$theme_fontsize4', '$theme_tablewidth', '$image_replylocked')";
-	 if(!$r = mysql_query($sql, $db)) {
-	    echo "Error inserting theme into the database.<BR>".mysql_error($db)."\n";
-	    include('../page_tail.'.$phpEx);
-	    exit();
-	 }
-?>
+          if (!$r = mysql_query($sql, $db)) {
+              echo "Error inserting theme into the database.<BR>".mysql_error($db)."\n";
+              include('../page_tail.'.$phpEx);
+              exit();
+          } ?>
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
 	   <TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
@@ -120,12 +110,8 @@ else if($user_logged_in && $userdata[user_level] == 4) {
 	   </TR>
 	   </TABLE></TABLE>
 <?php
-
-
-
-      }
-      else {
-?>
+      } else {
+          ?>
 	   <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -239,8 +225,9 @@ else if($user_logged_in && $userdata[user_level] == 4) {
       break;
     case 'remove':
       $sql = "DELETE FROM themes WHERE theme_id = 'theme_id'";
-      if(!$r = mysql_query($sql, $db))
-	die("Error updateing the databse. Go back and try again");
+      if (!$r = mysql_query($sql, $db)) {
+          die("Error updateing the databse. Go back and try again");
+      }
 ?>
 	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -254,26 +241,26 @@ else if($user_logged_in && $userdata[user_level] == 4) {
 
       break;
     case 'edit':
-      if($HTTP_POST_VARS['submit']) {
-         while(list($field, $value) = each($HTTP_POST_VARS)) {
-	    if($value == '') {
-	       $field_list[] = $field;
-	       $die = 1;
-	    }
-	 }
-	 if($die == 1) {
-	    echo "You did not fill out all parts of the form, please go back and do so, all fields are required.";
-	    include('../page_tail.'.$phpEx);
-	    exit();
-	 }
+      if ($HTTP_POST_VARS['submit']) {
+          while (list($field, $value) = each($HTTP_POST_VARS)) {
+              if ($value == '') {
+                  $field_list[] = $field;
+                  $die = 1;
+              }
+          }
+          if ($die == 1) {
+              echo "You did not fill out all parts of the form, please go back and do so, all fields are required.";
+              include('../page_tail.'.$phpEx);
+              exit();
+          }
 
-	 $theme_name = addslashes($theme_name);
-	 $image_header = "images/".$image_header;
-	 $image_reply = "images/".$image_reply;
-	 $image_newtopic = "images/".$image_newtopic;
-	 $image_replylocked = "images/".$image_replylocked;
+          $theme_name = addslashes($theme_name);
+          $image_header = "images/".$image_header;
+          $image_reply = "images/".$image_reply;
+          $image_newtopic = "images/".$image_newtopic;
+          $image_replylocked = "images/".$image_replylocked;
 
-	 $sql = "UPDATE themes SET
+          $sql = "UPDATE themes SET
 		  theme_name        = '$theme_name',
 		  bgcolor           = '$theme_bgcolor',
 		  textcolor         = '$theme_textcolor',
@@ -294,9 +281,9 @@ else if($user_logged_in && $userdata[user_level] == 4) {
 		  tablewidth        = '$theme_tablewidth',
 		  replylocked_image = '$image_replylocked'
 		  WHERE theme_id = '$theme_id'";
-	 if(!$r = mysql_query($sql, $db))
-	   die("Error updateing the database!");
-?>
+          if (!$r = mysql_query($sql, $db)) {
+              die("Error updateing the database!");
+          } ?>
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
 	   <TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
@@ -306,16 +293,14 @@ else if($user_logged_in && $userdata[user_level] == 4) {
 	   </TR>
 	   </TABLE></TABLE>
 <?php
-      }
-      else {
-	 $sql = "SELECT * FROM themes WHERE theme_id = '$theme_id'";
-	 if(!$r = mysql_query($sql, $db)) {
-	    echo "Error selecting theme from the database. Please go back and try again.<BR>";
-	    include('page_tail.'.$phpEx);
-	    exit();
-	 }
-	 $m = mysql_fetch_array($r);
-?>
+      } else {
+          $sql = "SELECT * FROM themes WHERE theme_id = '$theme_id'";
+          if (!$r = mysql_query($sql, $db)) {
+              echo "Error selecting theme from the database. Please go back and try again.<BR>";
+              include('page_tail.'.$phpEx);
+              exit();
+          }
+          $m = mysql_fetch_array($r); ?>
            <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -433,11 +418,13 @@ else if($user_logged_in && $userdata[user_level] == 4) {
       break;
     case 'setdefault':
       $sql = "UPDATE themes SET theme_default = 0";
-      if(!$r = mysql_query($sql, $db))
-	die("Error updateing the databse. Go back and try again");
+      if (!$r = mysql_query($sql, $db)) {
+          die("Error updateing the databse. Go back and try again");
+      }
       $sql = "UPDATE themes SET theme_default = 1 WHERE theme_id = '$theme_id'";
-      if(!$r = mysql_query($sql, $db))
-	        die("Error updateing the databse. Go back and try again");
+      if (!$r = mysql_query($sql, $db)) {
+          die("Error updateing the databse. Go back and try again");
+      }
       ?>
 	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -452,10 +439,8 @@ else if($user_logged_in && $userdata[user_level] == 4) {
     case 'view':
       break;
    }
-}
-else {
-   include('../page_header.'.$phpEx);
-?>
+    } else {
+        include('../page_header.'.$phpEx); ?>
      <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
      <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
      <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -469,27 +454,27 @@ else {
      </TR>
 <?php
      $sql = "SELECT theme_name, theme_id, theme_default FROM themes ORDER BY theme_name";
-   if(!$r = mysql_query($sql, $db)) {
-      echo "<TR BGCOLOR=$color2 ALIGN=CENTER><TD COLSPAN=3>Error: Could not query the database!<BR>".mysql_error($db)."</TD></TR></TABLE></TABLE>";
-      include('../page_tail.'.$phpEx);
-      exit();
-   }
-   echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD>Name</TD><TD>Default Theme?</TD><TD>Action</TD>";
-   if($row = mysql_fetch_array($r)) {
-      do {
-	 echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
-	 echo "<TD>".stripslashes($row[theme_name])."</TD>\n";
-	 if($row[theme_default] == 1)
-	   echo "<TD>Yes</TD>";
-	 else
-	   echo "<TD>No (<a href=\"$PHP_SELF?mode=setdefault&theme_id=$row[theme_id]\">Make Default</a>)</TD>";
-	 echo "<TD><a href=\"$PHP_SELF?mode=edit&theme_id=$row[theme_id]\">Edit</a>&nbsp;&nbsp;<a href=\"$PHP_SELF?mode=remove&theme_id=$row[theme_id]\">Delete</a></TD>";
-	 echo "</TR>";
-      } while($row = mysql_fetch_array($r));
-   }
-   else
-     echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\"><TD COLSPAN=\"3\">No Themes in the database. Click <a href=\"$PHP_SELF?mode=add\">here</a> to add one.</TD></TR>";
-?>
+        if (!$r = mysql_query($sql, $db)) {
+            echo "<TR BGCOLOR=$color2 ALIGN=CENTER><TD COLSPAN=3>Error: Could not query the database!<BR>".mysql_error($db)."</TD></TR></TABLE></TABLE>";
+            include('../page_tail.'.$phpEx);
+            exit();
+        }
+        echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD>Name</TD><TD>Default Theme?</TD><TD>Action</TD>";
+        if ($row = mysql_fetch_array($r)) {
+            do {
+                echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
+                echo "<TD>".stripslashes($row[theme_name])."</TD>\n";
+                if ($row[theme_default] == 1) {
+                    echo "<TD>Yes</TD>";
+                } else {
+                    echo "<TD>No (<a href=\"$PHP_SELF?mode=setdefault&theme_id=$row[theme_id]\">Make Default</a>)</TD>";
+                }
+                echo "<TD><a href=\"$PHP_SELF?mode=edit&theme_id=$row[theme_id]\">Edit</a>&nbsp;&nbsp;<a href=\"$PHP_SELF?mode=remove&theme_id=$row[theme_id]\">Delete</a></TD>";
+                echo "</TR>";
+            } while ($row = mysql_fetch_array($r));
+        } else {
+            echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\"><TD COLSPAN=\"3\">No Themes in the database. Click <a href=\"$PHP_SELF?mode=add\">here</a> to add one.</TD></TR>";
+        } ?>
      <TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
            <TD ALIGN="CENTER" COLSPAN="3"><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
            <a href="<?php echo $PHP_SELF?>?mode=add">Add a New Theme</a>
@@ -497,19 +482,17 @@ else {
      </TR>
      </TABLE></TABLE>
 <?php
-}
-}
-else {
-      $pagetype = "admin";
-      $pagetitle = "Access Denied!";
+    }
+} else {
+    $pagetype = "admin";
+    $pagetitle = "Access Denied!";
 
-      include('../page_header.'.$phpEx);
-   ?>
+    include('../page_header.'.$phpEx); ?>
           <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth?>">
           <TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
           <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
           <TR BGCOLOR="<?php echo $color1?>" ALIGN="center" VALIGN="TOP">
-          <TD><FONT FACE="<?php echo $FontFace?>" SIZE="<? echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
+          <TD><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
           <B>You do not have acess to this area!</b><BR>
           Go <a href="<?php echo $url_phpbb_index?>">Back</a>
           </TD></TR></TABLE></TD></TR></TABLE>

@@ -23,44 +23,38 @@ include('../functions.'.$phpEx);
 include('../config.'.$phpEx);
 require('../auth.'.$phpEx);
 
-if($login) {
-      if ($username == '') {
-	       die("You have to enter your username. Go back and do so.");
-      }
-      if ($password == '') {
-	       die("You have to enter your password. Go back and do so.");
-      }
-      if (!check_username($username, $db)) {
-	       die("Invalid username \"$username\". Go back and try again.");
-      }
-      if (!check_user_pw($username, $password, $db)) {
-	       die("Invalid password. Go back and try again.");
-      }
+if ($login) {
+    if ($username == '') {
+        die("You have to enter your username. Go back and do so.");
+    }
+    if ($password == '') {
+        die("You have to enter your password. Go back and do so.");
+    }
+    if (!check_username($username, $db)) {
+        die("Invalid username \"$username\". Go back and try again.");
+    }
+    if (!check_user_pw($username, $password, $db)) {
+        die("Invalid password. Go back and try again.");
+    }
 
-      $userdata = get_userdata($username, $db);
-      $sessid = new_session($userdata[user_id], $REMOTE_ADDR, $sesscookietime, $db);
-      set_session_cookie($sessid, $sesscookietime, $sesscookiename, $cookiepath, $cookiedomain, $cookiesecure);
+    $userdata = get_userdata($username, $db);
+    $sessid = new_session($userdata[user_id], $REMOTE_ADDR, $sesscookietime, $db);
+    set_session_cookie($sessid, $sesscookietime, $sesscookiename, $cookiepath, $cookiedomain, $cookiesecure);
 
-      if (defined('USE_IIS_LOGIN_HACK') && USE_IIS_LOGIN_HACK)
-		{
-			echo "<META HTTP-EQUIV=\"refresh\" content=\"1;URL=$url_admin_index\">";
-		}
-		else
-		{
-			header("Location: $url_admin_index");
-		}
-}
-else if(!$user_logged_in) {
-   $pagetitle = "Forum Administration";
-      $pagetype = "admin";
-      include('../page_header.'.$phpEx);
-
-   ?>
+    if (defined('USE_IIS_LOGIN_HACK') && USE_IIS_LOGIN_HACK) {
+        echo "<META HTTP-EQUIV=\"refresh\" content=\"1;URL=$url_admin_index\">";
+    } else {
+        header("Location: $url_admin_index");
+    }
+} elseif (!$user_logged_in) {
+    $pagetitle = "Forum Administration";
+    $pagetype = "admin";
+    include('../page_header.'.$phpEx); ?>
      <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth?>">
      <TR><TD BGCOLOR="<?php echo $table_bgcolor?>">
      <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
      <TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
-     <TD><P><BR><FONT FACE="<?php echo $FontFace?>" SIZE="<? echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
+     <TD><P><BR><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
      Please enter your username and password to login.<BR>
      <i>(NOTE: You MUST have cookies enabled in order to login to the administration section of this forum)</i><BR>
      <UL>
@@ -72,73 +66,73 @@ else if(!$user_logged_in) {
      </TD></TR></TABLE></TD></TR></TABLE>
      <?php
           include('../page_tail.'.$phpEx);
-        exit();
-}
-else if($user_logged_in && $userdata[user_level] == 4) {
+    exit();
+} elseif ($user_logged_in && $userdata[user_level] == 4) {
+    $pagetitle = "Forum Administration";
+    $pagetype = "admin";
+    include('../page_header.'.$phpEx);
 
-$pagetitle = "Forum Administration";
-$pagetype = "admin";
-include('../page_header.'.$phpEx);
+    switch ($mode) {
+    case 'setoptions':
+        if ($HTTP_POST_VARS['submit']) {
+            $name = addslashes($name);
+            $esig = addslashes($esig);
+            $sql = "SELECT count(*) AS total FROM config WHERE (selected = 1)";
+            $result = mysql_query($sql, $db);
+            if (!$result) {
+                die("Error doing DB query.");
+            }
+            $row = mysql_fetch_array($result);
+            if ($row[total] != 0) {
+                // settings exist, so we can just update.
+                $sql = "UPDATE config SET sitename = '$name', allow_html = '$html', allow_bbcode = '$bb', allow_sig = '$sig', hot_threshold = $hot, posts_per_page = $ppp, topics_per_page = $tpp, override_themes = $override_themes, allow_namechange = $allow_name_change, email_from = '$from', email_sig = '$esig', default_lang = '$selected_lang' WHERE selected = 1";
+                $result = mysql_query($sql, $db);
+            } else {
+                // have to do an insert..
+                $sql = "INSERT INTO config (sitename, allow_html, allow_bbcode, allow_sig, hot_threshold, posts_per_page, topics_per_page, override_themes, allow_namechange, email_from, email_sig, default_lang, selected) ";
+                $sql .= "VALUES ('$name', $html, $bb, $sig, $hot, $ppp, $tpp, $override_themes, $allow_name_change, '$from', '$esig', '$selected_lang', 1)";
+                $result = mysql_query($sql, $db);
+            }
+            if (!$result) {
+                echo mysql_error() . "<br>";
+                die("<FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error - Cannot update the database.</FONT");
+            }
+            echo "<TABLE width=\"95%\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bordercolor=\"$table_bgcolor\">";
+            echo "<tr><td align=\"center\" width=\"100%\" bgcolor=\"$color1\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><B>Forum Settings Updated.</B></font></td>";
+            echo "</tr><TR><TD><TABLE width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><TR>";
+            echo "<td align=\"center\" width=\"100%\" bgcolor=\"$color2\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><P><BR>&nbsp;&nbsp;Click <a href=\"$url_admin_index\">here</a> to return to the Administration Panel.<P>Click <a href=\"$url_phpbb_index\">here</a> to return to the forum index.</font><P><BR><P></TD>";
+            echo "</TR></table></TD></TR></TABLE>";
+        } else {
+            $html_yes = $html_no = $bb_yes = $bb_no = $sig_yes = $sig_no = "";
+            if ($allow_html == 1) {
+                $html_yes = "CHECKED";
+            } else {
+                $html_no = "CHECKED";
+            }
 
-switch($mode) {
-	case 'setoptions':
-		if($HTTP_POST_VARS['submit']) {
-		   $name = addslashes($name);
-		   $esig = addslashes($esig);
-		   $sql = "SELECT count(*) AS total FROM config WHERE (selected = 1)";
-		   $result = mysql_query($sql, $db);
-		   if (!$result) {
-		      die("Error doing DB query.");
-		   }
-		   $row = mysql_fetch_array($result);
-		   if ($row[total] != 0) {
-		      // settings exist, so we can just update.
-		      $sql = "UPDATE config SET sitename = '$name', allow_html = '$html', allow_bbcode = '$bb', allow_sig = '$sig', hot_threshold = $hot, posts_per_page = $ppp, topics_per_page = $tpp, override_themes = $override_themes, allow_namechange = $allow_name_change, email_from = '$from', email_sig = '$esig', default_lang = '$selected_lang' WHERE selected = 1";
-		      $result = mysql_query($sql, $db);
-		   } else {
-		      // have to do an insert..
-		      $sql = "INSERT INTO config (sitename, allow_html, allow_bbcode, allow_sig, hot_threshold, posts_per_page, topics_per_page, override_themes, allow_namechange, email_from, email_sig, default_lang, selected) ";
-		      $sql .= "VALUES ('$name', $html, $bb, $sig, $hot, $ppp, $tpp, $override_themes, $allow_name_change, '$from', '$esig', '$selected_lang', 1)";
-		      $result = mysql_query($sql, $db);
-		   }
-		   if (!$result) {
-		      echo mysql_error() . "<br>";
-		      die("<FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error - Cannot update the database.</FONT");
-		   }
-		   echo "<TABLE width=\"95%\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bordercolor=\"$table_bgcolor\">";
-		   echo "<tr><td align=\"center\" width=\"100%\" bgcolor=\"$color1\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><B>Forum Settings Updated.</B></font></td>";
-		   echo "</tr><TR><TD><TABLE width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><TR>";
-		   echo "<td align=\"center\" width=\"100%\" bgcolor=\"$color2\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><P><BR>&nbsp;&nbsp;Click <a href=\"$url_admin_index\">here</a> to return to the Administration Panel.<P>Click <a href=\"$url_phpbb_index\">here</a> to return to the forum index.</font><P><BR><P></TD>";
-		   echo "</TR></table></TD></TR></TABLE>";
+            if ($allow_bbcode == 1) {
+                $bb_yes = "CHECKED";
+            } else {
+                $bb_no = "CHECKED";
+            }
 
-		}
-		else {
-		$html_yes = $html_no = $bb_yes = $bb_no = $sig_yes = $sig_no = "";
-		if($allow_html == 1)
-		     $html_yes = "CHECKED";
-		   else
-		     $html_no = "CHECKED";
+            if ($allow_sig == 1) {
+                $sig_yes = "CHECKED";
+            } else {
+                $sig_no = "CHECKED";
+            }
 
-		   if($allow_bbcode == 1)
-		     $bb_yes = "CHECKED";
-		   else
-		     $bb_no = "CHECKED";
+            if ($override_user_themes == 1) {
+                $override_yes = "CHECKED";
+            } else {
+                $override_no = "CHECKED";
+            }
 
-		   if($allow_sig == 1)
-		     $sig_yes = "CHECKED";
-		   else
-		     $sig_no = "CHECKED";
-
-		   if($override_user_themes == 1)
-		     $override_yes = "CHECKED";
-		   else
-		     $override_no = "CHECKED";
-
-		   if($allow_namechange == 1)
-		     $namechange_yes = "CHECKED";
-		   else
-		     $namechange_no = "CHECKED";
-?>
+            if ($allow_namechange == 1) {
+                $namechange_yes = "CHECKED";
+            } else {
+                $namechange_no = "CHECKED";
+            } ?>
 <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -169,8 +163,7 @@ switch($mode) {
 	</TD>
 	<TD>
 	<?php
-	  print language_select($sys_lang, "selected_lang", "../language/");
-        ?>
+      print language_select($sys_lang, "selected_lang", "../language/"); ?>
         </td>
 <TR BGCOLOR="<?php echo $color2?>" ALIGN="LEFT">
 	<TD><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">Allow HTML:</FONT></TD>
@@ -214,44 +207,42 @@ switch($mode) {
 </TR>
 </TABLE></TD></TR></TABLE>
 <?php
-		}
-	break;
-	case 'headermetafooter':
+        }
+    break;
+    case 'headermetafooter':
 
-		if($HTTP_POST_VARS['submit']) {
-			$header = addslashes($header);
-			$metacode = addslashes($metacode);
-			$footer = addslashes($footer);
-			$sql = "DELETE FROM headermetafooter WHERE (1=1)";
-			$result = mysql_query($sql, $db);
-			if (!$result) {
-				echo mysql_error() . "<br>\n";
-				die("Error doing deletion in admin_board.$phpEx");
-			}
-			$sql = "INSERT INTO headermetafooter (header, meta, footer) VALUES ('$header', '$metacode', '$footer')";
-			$result = mysql_query($sql, $db);
-			if(!$result) {
-				echo mysql_error() . "<br>\n";
-				die("<FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error doing insertion in board_admin.$phpEx</FONT>");
-			}
-		echo "<TABLE width=\"95%\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bordercolor=\"$table_bgcolor\">";
-		echo "<tr><td align=\"center\" width=\"100%\" bgcolor=\"$color1\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><B>Data Added.</B></font></td>";
-		echo "</tr><TR><TD><TABLE width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><TR>";
-		echo "<td align=\"center\" width=\"100%\" bgcolor=\"$color2\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><P><BR>&nbsp;&nbsp;Click <a href=\"$url_admin_index\">here</a> to return to the Administration Panel.<P>Click <a href=\"$url_phpbb_index\">here</a> to return to the forum index.</font><P><BR><P></TD>";
-		echo "</TR></table></TD></TR></TABLE>";
-
-		} else {
-			$sql = "SELECT * FROM headermetafooter WHERE (1=1)";
-			$result = mysql_query($sql, $db);
-			if (!$result) {
-				echo mysql_error() . "<br>\n";
-				die("Error doing DB query in admin_board.$phpEx");
-			}
-			$row = mysql_fetch_array($result);
-			$currHeader = stripslashes($row[header]);
-			$currMeta = stripslashes($row[meta]);
-			$currFooter = stripslashes($row[footer]);
-?>
+        if ($HTTP_POST_VARS['submit']) {
+            $header = addslashes($header);
+            $metacode = addslashes($metacode);
+            $footer = addslashes($footer);
+            $sql = "DELETE FROM headermetafooter WHERE (1=1)";
+            $result = mysql_query($sql, $db);
+            if (!$result) {
+                echo mysql_error() . "<br>\n";
+                die("Error doing deletion in admin_board.$phpEx");
+            }
+            $sql = "INSERT INTO headermetafooter (header, meta, footer) VALUES ('$header', '$metacode', '$footer')";
+            $result = mysql_query($sql, $db);
+            if (!$result) {
+                echo mysql_error() . "<br>\n";
+                die("<FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error doing insertion in board_admin.$phpEx</FONT>");
+            }
+            echo "<TABLE width=\"95%\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bordercolor=\"$table_bgcolor\">";
+            echo "<tr><td align=\"center\" width=\"100%\" bgcolor=\"$color1\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><B>Data Added.</B></font></td>";
+            echo "</tr><TR><TD><TABLE width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><TR>";
+            echo "<td align=\"center\" width=\"100%\" bgcolor=\"$color2\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><P><BR>&nbsp;&nbsp;Click <a href=\"$url_admin_index\">here</a> to return to the Administration Panel.<P>Click <a href=\"$url_phpbb_index\">here</a> to return to the forum index.</font><P><BR><P></TD>";
+            echo "</TR></table></TD></TR></TABLE>";
+        } else {
+            $sql = "SELECT * FROM headermetafooter WHERE (1=1)";
+            $result = mysql_query($sql, $db);
+            if (!$result) {
+                echo mysql_error() . "<br>\n";
+                die("Error doing DB query in admin_board.$phpEx");
+            }
+            $row = mysql_fetch_array($result);
+            $currHeader = stripslashes($row[header]);
+            $currMeta = stripslashes($row[meta]);
+            $currFooter = stripslashes($row[footer]); ?>
 <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -283,45 +274,47 @@ switch($mode) {
 </TABLE></TD></TR></TABLE>
 </FORM>
 <?php
-		}
-	break;
-	case 'rankadmin':
-		if($HTTP_POST_VARS['edit'] || $HTTP_POST_VARS['delete'] || $HTTP_POST_VARS['add']) {
-			$add = $HTTP_POST_VARS['add'];
-			$edit = $HTTP_POST_VARS['edit'];
-			$delete = $HTTP_POST_VARS['delete'];
+        }
+    break;
+    case 'rankadmin':
+        if ($HTTP_POST_VARS['edit'] || $HTTP_POST_VARS['delete'] || $HTTP_POST_VARS['add']) {
+            $add = $HTTP_POST_VARS['add'];
+            $edit = $HTTP_POST_VARS['edit'];
+            $delete = $HTTP_POST_VARS['delete'];
 
-			if($add) {
-				$title = addslashes($title);
-				if($special)
-					$sql = "INSERT INTO ranks (rank_title, rank_min, rank_max, rank_special, rank_image) VALUES ('$title', '-1', '-1', '1', '$image')";
-				else
-					$sql = "INSERT INTO ranks (rank_title, rank_min, rank_max, rank_special, rank_image) VALUES ('$title', '$min_posts', '$max_posts', '0', '$image')";
-				if($r = mysql_query($sql, $db))
-					echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Rank added to the database.</FONT></DIV>";
-				else
-					echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error. Could not add rank to the database.</FONT></DIV>";
-
-			}
-			else if($edit) {
-				$title = addslashes($title);
-				if($selected)
-					$sql = "UPDATE ranks SET rank_title = '$title', rank_image = '$image' WHERE rank_id = '$id'";
-				else
-					$sql = "UPDATE ranks SET rank_title = '$title', rank_max = '$max_posts', rank_min = '$min_posts', rank_image = '$image' WHERE rank_id = '$id'";
-				if($r = mysql_query($sql, $db))
-					echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Rank Updated</FONT></DIV>";
-				else
-					echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error. Could not modify the database.</FONT></DIV>";
-			}
-			else if($delete) {
-				$sql = "DELETE FROM ranks WHERE rank_id = '$id'";
-				if($r = mysql_query($sql, $db))
-                                        echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Rank Removed</FONT></DIV>";
-                                else
-                                        echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error. Could not modify the database.</FONT></DIV>";
-			}
-		}
+            if ($add) {
+                $title = addslashes($title);
+                if ($special) {
+                    $sql = "INSERT INTO ranks (rank_title, rank_min, rank_max, rank_special, rank_image) VALUES ('$title', '-1', '-1', '1', '$image')";
+                } else {
+                    $sql = "INSERT INTO ranks (rank_title, rank_min, rank_max, rank_special, rank_image) VALUES ('$title', '$min_posts', '$max_posts', '0', '$image')";
+                }
+                if ($r = mysql_query($sql, $db)) {
+                    echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Rank added to the database.</FONT></DIV>";
+                } else {
+                    echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error. Could not add rank to the database.</FONT></DIV>";
+                }
+            } elseif ($edit) {
+                $title = addslashes($title);
+                if ($selected) {
+                    $sql = "UPDATE ranks SET rank_title = '$title', rank_image = '$image' WHERE rank_id = '$id'";
+                } else {
+                    $sql = "UPDATE ranks SET rank_title = '$title', rank_max = '$max_posts', rank_min = '$min_posts', rank_image = '$image' WHERE rank_id = '$id'";
+                }
+                if ($r = mysql_query($sql, $db)) {
+                    echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Rank Updated</FONT></DIV>";
+                } else {
+                    echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error. Could not modify the database.</FONT></DIV>";
+                }
+            } elseif ($delete) {
+                $sql = "DELETE FROM ranks WHERE rank_id = '$id'";
+                if ($r = mysql_query($sql, $db)) {
+                    echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Rank Removed</FONT></DIV>";
+                } else {
+                    echo "<DIV ALIGN=\"CENTER\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error. Could not modify the database.</FONT></DIV>";
+                }
+            }
+        }
 ?>
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -339,30 +332,29 @@ switch($mode) {
 </TR>
 
 <?php
-	$sql = "SELECT * FROM ranks WHERE rank_special = 0";
-	if(!$r = mysql_query($sql, $db)) {
-		echo "<TD ALIGN=\"CENTER\" COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error connecting to the database.</FONT></TD></TR></TABLE></TABLE>";
-		include('../page_tail.'.$phpEx);
-		exit();
-	}
-	if($m = mysql_fetch_array($r)) {
-		do {
-			echo "<FORM ACTION=\"$PHP_SELF\" METHOD=\"POST\">\n";
-			echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
-			echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"title\" VALUE=\"" . stripslashes($m[rank_title]) . "\" MAXLENGTH=\"50\" SIZE=\"25\"></TD>\n";
-			echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"min_posts\" VALUE=\"$m[rank_min]\" MAXLENGTH=\"5\" SIZE=\"4\"></TD>\n";
-			echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"max_posts\" VALUE=\"$m[rank_max]\" MAXLENGTH=\"5\" SIZE=\"4\"></TD>\n";
-		        echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"image\" VALUE=\"$m[rank_image]\"  MAXLENGTH=\"50\" SIZE=\"25\"></TD>\n";
-			echo "<TD><INPUT TYPE=\"HIDDEN\" NAME=\"id\" VALUE=\"$m[rank_id]\">\n";
-			echo "<INPUT TYPE=\"HIDDEN\" NAME=\"mode\" VALUE=\"$mode\">\n";
-			echo "<INPUT TYPE=\"SUBMIT\" NAME=\"edit\" VALUE=\"Edit\"></TD>\n";
-			echo "<TD><BR><INPUT TYPE=\"SUBMIT\" NAME=\"delete\" VALUE=\"Delete\"></FORM></TD>\n";
-			echo "</TR>";
-		} while($m = mysql_fetch_array($r));
-	}
-	else {
-		echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">No Ranks in the Database. You can add one by entering into the form below</FONT></TD></TR>";
-	}
+    $sql = "SELECT * FROM ranks WHERE rank_special = 0";
+    if (!$r = mysql_query($sql, $db)) {
+        echo "<TD ALIGN=\"CENTER\" COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error connecting to the database.</FONT></TD></TR></TABLE></TABLE>";
+        include('../page_tail.'.$phpEx);
+        exit();
+    }
+    if ($m = mysql_fetch_array($r)) {
+        do {
+            echo "<FORM ACTION=\"$PHP_SELF\" METHOD=\"POST\">\n";
+            echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
+            echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"title\" VALUE=\"" . stripslashes($m[rank_title]) . "\" MAXLENGTH=\"50\" SIZE=\"25\"></TD>\n";
+            echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"min_posts\" VALUE=\"$m[rank_min]\" MAXLENGTH=\"5\" SIZE=\"4\"></TD>\n";
+            echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"max_posts\" VALUE=\"$m[rank_max]\" MAXLENGTH=\"5\" SIZE=\"4\"></TD>\n";
+            echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"image\" VALUE=\"$m[rank_image]\"  MAXLENGTH=\"50\" SIZE=\"25\"></TD>\n";
+            echo "<TD><INPUT TYPE=\"HIDDEN\" NAME=\"id\" VALUE=\"$m[rank_id]\">\n";
+            echo "<INPUT TYPE=\"HIDDEN\" NAME=\"mode\" VALUE=\"$mode\">\n";
+            echo "<INPUT TYPE=\"SUBMIT\" NAME=\"edit\" VALUE=\"Edit\"></TD>\n";
+            echo "<TD><BR><INPUT TYPE=\"SUBMIT\" NAME=\"delete\" VALUE=\"Delete\"></FORM></TD>\n";
+            echo "</TR>";
+        } while ($m = mysql_fetch_array($r));
+    } else {
+        echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">No Ranks in the Database. You can add one by entering into the form below</FONT></TD></TR>";
+    }
 ?>
 <TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
         <TD ALIGN="CENTER" COLSPAN="6"><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">Special Rankings<BR>These are ranks that can be individually assigned to specific users<BR>To assign a special rank to a user click <a href="admin_users.<?php echo $phpEx?>?mode=moduser">here</a>.
@@ -371,31 +363,30 @@ switch($mode) {
 </TR>
 
 <?php
-	$sql = "SELECT * FROM ranks WHERE rank_special != 0";
-	if(!$r = mysql_query($sql, $db)) {
-                echo "<TD ALIGN=\"CENTER\" COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error connecting to the database.</FONT></TD></TR></TABLE></TABLE>";
-                include('../page_tail.'.$phpEx);
-                exit();
-        }
-	if($m = mysql_fetch_array($r)) {
-                do {
-                        echo "<FORM ACTION=\"$PHP_SELF\" METHOD=\"POST\">\n";
-                        echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
-                        echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"title\" VALUE=\"$m[rank_title]\" MAXLENGTH=\"50\" SIZE=\"25\"></TD>\n";
-                        echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"min_posts\" VALUE=\"$m[rank_min]\" MAXLENGTH=\"5\" SIZE=\"4\"></TD>\n";
-                        echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"max_posts\" VALUE=\"$m[rank_max]\" MAXLENGTH=\"5\" SIZE=\"4\"></TD>\n";
-		        echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"image\" VALUE=\"$m[rank_image]\"  MAXLENGTH=\"50\" SIZE=\"25\"></TD>\n";
-                        echo "<TD><INPUT TYPE=\"HIDDEN\" NAME=\"id\" VALUE=\"$m[rank_id]\">\n";
-                        echo "<INPUT TYPE=\"HIDDEN\" NAME=\"mode\" VALUE=\"$mode\">\n";
-			echo "<INPUT TYPE=\"HIDDEN\" NAME=\"special\" VALUE=\"1\">\n";
-                        echo "<INPUT TYPE=\"SUBMIT\" NAME=\"edit\" VALUE=\"Edit\"></TD>\n";
-                        echo "<TD><BR><INPUT TYPE=\"SUBMIT\" NAME=\"delete\" VALUE=\"Delete\"></FORM></TD>\n";
-                        echo "</TR>";
-                } while($m = mysql_fetch_array($r));
-        }
-	else {
-                echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">No Special Ranks in the Database. You can add one by entering into the form below.</FONT></TD></TR>";
-        }
+    $sql = "SELECT * FROM ranks WHERE rank_special != 0";
+    if (!$r = mysql_query($sql, $db)) {
+        echo "<TD ALIGN=\"CENTER\" COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error connecting to the database.</FONT></TD></TR></TABLE></TABLE>";
+        include('../page_tail.'.$phpEx);
+        exit();
+    }
+    if ($m = mysql_fetch_array($r)) {
+        do {
+            echo "<FORM ACTION=\"$PHP_SELF\" METHOD=\"POST\">\n";
+            echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
+            echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"title\" VALUE=\"$m[rank_title]\" MAXLENGTH=\"50\" SIZE=\"25\"></TD>\n";
+            echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"min_posts\" VALUE=\"$m[rank_min]\" MAXLENGTH=\"5\" SIZE=\"4\"></TD>\n";
+            echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"max_posts\" VALUE=\"$m[rank_max]\" MAXLENGTH=\"5\" SIZE=\"4\"></TD>\n";
+            echo "<TD><INPUT TYPE=\"TEXT\" NAME=\"image\" VALUE=\"$m[rank_image]\"  MAXLENGTH=\"50\" SIZE=\"25\"></TD>\n";
+            echo "<TD><INPUT TYPE=\"HIDDEN\" NAME=\"id\" VALUE=\"$m[rank_id]\">\n";
+            echo "<INPUT TYPE=\"HIDDEN\" NAME=\"mode\" VALUE=\"$mode\">\n";
+            echo "<INPUT TYPE=\"HIDDEN\" NAME=\"special\" VALUE=\"1\">\n";
+            echo "<INPUT TYPE=\"SUBMIT\" NAME=\"edit\" VALUE=\"Edit\"></TD>\n";
+            echo "<TD><BR><INPUT TYPE=\"SUBMIT\" NAME=\"delete\" VALUE=\"Delete\"></FORM></TD>\n";
+            echo "</TR>";
+        } while ($m = mysql_fetch_array($r));
+    } else {
+        echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">No Special Ranks in the Database. You can add one by entering into the form below.</FONT></TD></TR>";
+    }
 ?>
 <TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
         <TD ALIGN="CENTER" COLSPAN="6"><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">Add a Ranking<BR>Use this form to add a ranking to the database.</FONT>
@@ -412,24 +403,21 @@ switch($mode) {
 	</FORM>
 </TR>
 <?php
-	echo "</TABLE></TABLE>\n";
-	break;
-	case 'sync':
-		if($submit)
-		{
-			echo "<div align=\"center\">Syncing forum index (This may take a while)<br>";
-			flush();
-			sync($db, NULL, "all forums");
-			echo "Forum index synced<br>";
-			echo "Syncing topics (This may take longer!)<br>";
-			flush();
-			sync($db, NULL, "all topics");
-			echo "Topics synced<br>";
-			echo "Done!</div>";
-		}
-		else
-		{
-?>
+    echo "</TABLE></TABLE>\n";
+    break;
+    case 'sync':
+        if ($submit) {
+            echo "<div align=\"center\">Syncing forum index (This may take a while)<br>";
+            flush();
+            sync($db, null, "all forums");
+            echo "Forum index synced<br>";
+            echo "Syncing topics (This may take longer!)<br>";
+            flush();
+            sync($db, null, "all topics");
+            echo "Topics synced<br>";
+            echo "Done!</div>";
+        } else {
+            ?>
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
 <TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
@@ -443,23 +431,21 @@ switch($mode) {
 </table>
 </td></tr></table>
 <?php
-		}
-	break;
+        }
+    break;
 
 
 }
-}
-else {
-      $pagetype = "admin";
-      $pagetitle = "Access Denied!";
+} else {
+    $pagetype = "admin";
+    $pagetitle = "Access Denied!";
 
-      include('../page_header.'.$phpEx);
-   ?>
+    include('../page_header.'.$phpEx); ?>
           <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth?>">
           <TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
           <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
           <TR BGCOLOR="<?php echo $color1?>" ALIGN="center" VALIGN="TOP">
-          <TD><FONT FACE="<?php echo $FontFace?>" SIZE="<? echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
+          <TD><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
           <B>You do not have acess to this area!</b><BR>
           Go <a href="<?php echo $url_phpbb_index?>">Back</a>
           </TD></TR></TABLE></TD></TR></TABLE>

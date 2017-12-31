@@ -160,7 +160,7 @@ $l_login	= "Вход";
 
 // Page_header
 $l_separator	= "» »";  // Included here because some languages have
-		          // problems with high ASCII (Big-5 and the like).
+                  // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Редактиране на лични данни";
 $l_editprefs	= "Редактирай $l_preferences";
 $l_search	= "Търси";
@@ -346,4 +346,3 @@ $l_passsent	= "Вашата парола беше променена. Проверете вашата поща и следвайте п
 $l_emailpass	= "Изпращане на изгубена парола";
 $l_passexplain	= "Моля попълнете това поле и новата парола ще Ви бъде изпратена по пощата";
 $l_sendpass	= "Изпрати парола";
-?>

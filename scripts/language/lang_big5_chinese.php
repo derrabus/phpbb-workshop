@@ -169,7 +169,7 @@ $l_login	= "登入";
 
 // Page_header
 $l_separator	= ">>";  // Included here because some languages have
-		          // problems with high ASCII (Big-5 and the like).
+                  // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "編輯個人資料";
 $l_editprefs	= "編輯 $l_preferences";
 $l_search	= "搜尋";
@@ -344,6 +344,3 @@ $l_passsent	= "請檢查您的 E-mail 信箱，以完成密碼變更手續。";
 $l_emailpass	= "寄回遺失密碼";
 $l_passexplain	= "請填寫以下欄位，我們將寄給您一個新密碼";
 $l_sendpass	= "寄送密碼";
-
-
-?>

@@ -4,7 +4,7 @@
                              -------------------
     begin                : Sat June 17 2000
     copyright            : (C) 2001 The phpBB Group
- 	 email                : support@phpbb.com
+     email                : support@phpbb.com
 
     $Id: config.php,v 1.70 2001/11/06 01:55:09 psotfx Exp $
 

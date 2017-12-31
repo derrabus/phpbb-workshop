@@ -160,7 +160,7 @@ $l_login	= "Connexion";
 
 // Page_header
 $l_separator	= "» »";  // Included here because some languages have
-		          // problems with high ASCII (Big-5 and the like).
+                  // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Editer Profil";
 $l_editprefs	= "Editer $l_preferences";
 $l_search	= "Rechercher";
@@ -350,6 +350,3 @@ $l_passsent	= "Votre mot de passe est changé pour un nouveau, généré au hasard. 
 $l_emailpass	= "Email Mot de Passe Perdu";
 $l_passexplain	= "Veuillez remplir ce formulaire, un nouveau mot de passe va être envoyé à votre adresse Email";
 $l_sendpass	= "Envoyer Mot de Passe";
-
-
-?>

@@ -5,9 +5,9 @@
     begin                : Thursday, July 20 2000
     copyright            : (C) 2001 The phpBB Group
     email                : support@phpbb.com
- 
+
     $Id: whosonline.php,v 1.13 2001/03/28 08:02:20 thefinn Exp $
- 
+
  ***************************************************************************/
 
 /***************************************************************************
@@ -41,30 +41,28 @@ include('page_header.'.$phpEx);
 <TR BGCOLOR="<?php echo $color2?>" ALIGN="LEFT">
 <?php
 $sql = "SELECT * FROM whosonline";
-if(!$result = mysql_query($sql, $db))
-	die("Error - Could not connect to the database</table></table></table>");
-if($myrow = mysql_fetch_array($result)) {
-	do {
-		echo "<TR BGCOLOR=$color2 ALIGN=LEFT>\n";
-		if(!stristr($myrow[username], get_syslang_string($sys_lang, "l_guest"))) {
-			$thisuser = get_userdata($myrow[username], $db);
-			echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"$url_phpbb/bb_profile.$phpEx?mode=view&user=$thisuser[user_id]\">$thisuser[username]</a></FONT></TD>\n";
-		}
-		else {
-			echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\">Guest</FONT></TD>\n";
-		}
-		if($myrow[forum] == 0) {
-			echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"$url_phpbb/index.$phpEx\">Forum Index</a></FONT></TD>\n";
-		}
-		else {
-			$forum = get_forum_name($myrow[forum], $db);
-			echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"$url_phpbb/viewforum.$phpEx?forum=$myrow[forum]\">$forum</a></FONT>";
-		}
-		echo "</TR>\n";
-	} while($myrow = mysql_fetch_array($result));
+if (!$result = mysql_query($sql, $db)) {
+    die("Error - Could not connect to the database</table></table></table>");
 }
-else {
-	echo "<TD COLSPAN=2><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><?php echo $l_nousers?></FONT></TD>";
+if ($myrow = mysql_fetch_array($result)) {
+    do {
+        echo "<TR BGCOLOR=$color2 ALIGN=LEFT>\n";
+        if (!stristr($myrow[username], get_syslang_string($sys_lang, "l_guest"))) {
+            $thisuser = get_userdata($myrow[username], $db);
+            echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"$url_phpbb/bb_profile.$phpEx?mode=view&user=$thisuser[user_id]\">$thisuser[username]</a></FONT></TD>\n";
+        } else {
+            echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\">Guest</FONT></TD>\n";
+        }
+        if ($myrow[forum] == 0) {
+            echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"$url_phpbb/index.$phpEx\">Forum Index</a></FONT></TD>\n";
+        } else {
+            $forum = get_forum_name($myrow[forum], $db);
+            echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"$url_phpbb/viewforum.$phpEx?forum=$myrow[forum]\">$forum</a></FONT>";
+        }
+        echo "</TR>\n";
+    } while ($myrow = mysql_fetch_array($result));
+} else {
+    echo "<TD COLSPAN=2><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><?php echo $l_nousers?></FONT></TD>";
 }
 ?>
 </TR></TABLE></TD></TR></TABLE>

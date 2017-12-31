@@ -1,24 +1,23 @@
 <?php
 /***************************************************************************
-  	                        page_tail.php  -  description
- 	                        -------------------    
-	begin                : Sat June 17 2000    
-	copyright            : (C) 2001 The phpBB Group
-	email                : support@phpbb.com
- 
+                            page_tail.php  -  description
+                            -------------------
+    begin                : Sat June 17 2000
+    copyright            : (C) 2001 The phpBB Group
+    email                : support@phpbb.com
+
     $Id: page_tail.php,v 1.29 2001/03/28 08:02:20 thefinn Exp $
- 
+
 ***************************************************************************/
 
-/*************************************************************************** *                                         				                                 
- *   This program is free software; you can redistribute it and/or modify  	 
- *   it under the terms of the GNU General Public License as published by   
- *   the Free Software Foundation; either version 2 of the License, or	    	 
- *   (at your option) any later version. * 
+/*************************************************************************** *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version. *
  ***************************************************************************/
-if($user_logged_in && $userdata[user_level] == 4) {
-	
-?>
+if ($user_logged_in && $userdata[user_level] == 4) {
+    ?>
      <FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize3?>" COLOR="<?php echo $textcolor?>">
      <CENTER><a href="<?php echo $url_admin_index?>"><?php echo $l_adminpanel?></a></CENTER><BR>
      </FONT>
@@ -45,7 +44,7 @@ Copyright &copy; 2000 - 2001 <a href="http://www.phpbb.com/credits.php" target="
 <?php
 showfooter($db);
 $mtime = microtime();
-$mtime = explode(" ",$mtime);
+$mtime = explode(" ", $mtime);
 $mtime = $mtime[1] + $mtime[0];
 $endtime = $mtime;
 $totaltime = ($endtime - $starttime);

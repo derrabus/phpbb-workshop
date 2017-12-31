@@ -11,10 +11,10 @@
  ***************************************************************************/
 
 /***************************************************************************
- *                                         				                                
- *   This program is free software; you can redistribute it and/or modify  	
- *   it under the terms of the GNU General Public License as published by  
- *   the Free Software Foundation; either version 2 of the License, or	    	
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
  *   (at your option) any later version.
  *
  ***************************************************************************/
@@ -33,9 +33,8 @@ $pagetype = "logout";
 /* Note: page_header.php is included later on, because this page needs to be able to send a cookie. */
 
 if ($user_logged_in) {
-	end_user_session($userdata[user_id], $db);
+    end_user_session($userdata[user_id], $db);
 }
 
-	header("Location: $url_phpbb/index.$phpEx");
+    header("Location: $url_phpbb/index.$phpEx");
 require('page_tail.'.$phpEx);
-?>

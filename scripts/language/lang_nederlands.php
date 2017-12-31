@@ -354,5 +354,3 @@ $l_passsent	= "Een nieuw, willekeurig, wachtwoord is gegenereerd. Controleer je 
 $l_emailpass	= "Mail het wachtwoord";
 $l_passexplain	= "Vul het formulier in om een nieuw wachtwoord toegestuurd te krijgen.";
 $l_sendpass	= "Verzend wachtwoord";
-
-?>

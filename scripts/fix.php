@@ -39,50 +39,42 @@
  * var-reset
  ***/
 $fix_vars = array('userdata', 'user_logged_in', 'user_lang', 'logged_in', 'l_statsblock', 'l_pwdmessage', 'l_privnotify', 'new_name');
-for ($n = 0; $n < sizeof($fix_vars); ++$n)
-{
-	unset($GLOBALS[$fix_vars[$n]]);
-	unset($HTTP_GET_VARS[$fix_vars[$n]]);
-	unset($HTTP_POST_VARS[$fix_vars[$n]]);
-	unset($HTTP_COOKIE_VARS[$fix_vars[$n]]);
+for ($n = 0; $n < sizeof($fix_vars); ++$n) {
+    unset($GLOBALS[$fix_vars[$n]]);
+    unset($HTTP_GET_VARS[$fix_vars[$n]]);
+    unset($HTTP_POST_VARS[$fix_vars[$n]]);
+    unset($HTTP_COOKIE_VARS[$fix_vars[$n]]);
 }
 
 /***
  * origin-validation
  ***/
 $fix_vars = array('submit', 'save');
-for ($n = 0; $n < sizeof($fix_vars); ++$n)
-{
-	if (!isset ($HTTP_POST_VARS[$fix_vars[$n]]) && !stristr($REQUEST_URI, "search.$phpEx"))
-	{
-		unset($GLOBALS[$fix_vars[$n]]);
-		unset($HTTP_GET_VARS[$fix_vars[$n]]);
-		unset($HTTP_COOKIE_VARS[$fix_vars[$n]]);
-	}
+for ($n = 0; $n < sizeof($fix_vars); ++$n) {
+    if (!isset($HTTP_POST_VARS[$fix_vars[$n]]) && !stristr($REQUEST_URI, "search.$phpEx")) {
+        unset($GLOBALS[$fix_vars[$n]]);
+        unset($HTTP_GET_VARS[$fix_vars[$n]]);
+        unset($HTTP_COOKIE_VARS[$fix_vars[$n]]);
+    }
 }
 
 /***
  * SQL-check
  ***/
 $fix_vars = array('HTTP_GET_VARS', 'HTTP_POST_VARS', 'HTTP_COOKIE_VARS');
-for ($n = 0; $n < sizeof($fix_vars); ++$n)
-{
-	if (is_array($GLOBALS[$fix_vars[$n]]))
-	{
-		while (list($k, $v) = each($GLOBALS[$fix_vars[$n]]))
-		{
-			if (($k != 'message') && ($k != 'subject') && ($k != 'username') && ($k != 'sig'))
-			{
-				while (preg_match("/(.*)'( *)((NOT)?( *))(((!|<|=|>)+)|IS( *)NOT( *)NULL|IN( *)\(|LIKE|BETWEEN(.*)AND|OR|((\|)+)|,(.*)=)(.*)['|\"]/i", $v, $matches))
-				{
-					$v = $matches[1];
-				}
-				$GLOBALS[$fix_vars[$n]][$k] = $v;
-				$GLOBALS[$k] = $v;
-			}
-		}
-		@reset($GLOBALS[$fix_vars[$n]]);
-	}
+for ($n = 0; $n < sizeof($fix_vars); ++$n) {
+    if (is_array($GLOBALS[$fix_vars[$n]])) {
+        while (list($k, $v) = each($GLOBALS[$fix_vars[$n]])) {
+            if (($k != 'message') && ($k != 'subject') && ($k != 'username') && ($k != 'sig')) {
+                while (preg_match("/(.*)'( *)((NOT)?( *))(((!|<|=|>)+)|IS( *)NOT( *)NULL|IN( *)\(|LIKE|BETWEEN(.*)AND|OR|((\|)+)|,(.*)=)(.*)['|\"]/i", $v, $matches)) {
+                    $v = $matches[1];
+                }
+                $GLOBALS[$fix_vars[$n]][$k] = $v;
+                $GLOBALS[$k] = $v;
+            }
+        }
+        @reset($GLOBALS[$fix_vars[$n]]);
+    }
 }
 
 /***
@@ -93,4 +85,3 @@ $tsig = $sig;
 $user_id = $HTTP_COOKIE_VARS['user_id'] = $HTTP_GET_VARS['user_id'] = $HTTP_POST_VARS['user_id'] = intval($user_id);
 $post_id = $HTTP_COOKIE_VARS['post_id'] = $HTTP_GET_VARS['post_id'] = $HTTP_POST_VARS['post_id'] = intval($post_id);
 $topic_id = $HTTP_COOKIE_VARS['topic_id'] = $HTTP_GET_VARS['topic_id'] = $HTTP_POST_VARS['topic_id'] = intval($topic_id);
-?>

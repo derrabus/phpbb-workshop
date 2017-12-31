@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  *                           lang_indonesian.php  -  description
  *                              -------------------
@@ -156,7 +156,7 @@ $l_login	= "Login";
 
 // Page_header
 $l_separator	= "» »";  // Included here because some languages have
-		          // problems with high ASCII (Big-5 and the like).
+                  // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Rubah Profile";
 $l_editprefs	= "Rubah $l_preferences";
 $l_search	= "Cari";
@@ -184,7 +184,7 @@ $l_invalidname	= "Username yg anda pilih, \"$username\" telah terambil.";
 $l_disallowname	= "Username yg anda pilih, \"$username\" tidak diperkenankan oleh administrator.";
 
 $l_welcomesubj	= "Selamat Datang di $sitename Forums";
-$l_welcomemail	= 
+$l_welcomemail	=
 "
 $l_welcomesubj,
 
@@ -213,7 +213,7 @@ $l_storecookie	= "Simpan username di cookies selama 1 tahun.";
 // Prefs
 $l_prefupdated	= "$l_preferences terupdated. $l_click <a href=\"index.$phpEx\">$l_here</a> $l_returnindex";
 $l_editprefs	= "Rubah $l_preferences";
-$l_themecookie	= "Catt: Utk dapat menggunakan themes anda HARUS mengaktifkan cookies."; 
+$l_themecookie	= "Catt: Utk dapat menggunakan themes anda HARUS mengaktifkan cookies.";
 $l_alwayssig	= "Sertakan selalu signature";
 $l_alwaysdisable= "Non aktifkan selalu"; // Only used for next three strings
 $l_alwayssmile	= "$l_alwaysdisable $l_smilies";
@@ -347,6 +347,3 @@ $l_passsent	= "Password anda telah berubah. Mohon utk melihat prosedur perubahan
 $l_emailpass	= "Email Password yang hilang";
 $l_passexplain	= "Mohon isi formulir, password baru akan dikirim ke alamat email anda";
 $l_sendpass	= "Kirim Password";
-
-
-?>

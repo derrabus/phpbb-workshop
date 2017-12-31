@@ -352,6 +352,3 @@ $l_passsent        = "A sua senha mudou para uma nova e aleatória. Por favor ver
 $l_emailpass        = "Email da Senha Perdida";
 $l_passexplain        = "Por favor preencha o formulário e uma nova senha será enviada para seu endereço de Email";
 $l_sendpass        = "Enviar Senha";
-
-
-?>

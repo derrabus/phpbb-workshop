@@ -123,9 +123,9 @@ include('page_header.'.$phpEx);
 		</td></tr>
  <?php
 
-	  if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
-	     while ($smile = mysql_fetch_array($getsmiles)) {
-?>
+      if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
+          while ($smile = mysql_fetch_array($getsmiles)) {
+              ?>
 		 <TR BGCOLOR="<?php echo $color2?>">
 		 <TD width="100">
 		 	<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
@@ -138,12 +138,13 @@ include('page_header.'.$phpEx);
 			</FONT>
 		</td>
 		<td width="55">
-			<IMG SRC="<?php echo "$url_smiles/$smile[smile_url]";?>">
+			<IMG SRC="<?php echo "$url_smiles/$smile[smile_url]"; ?>">
 		</td></tr>
 <?php
-	     }
-	  } else
-	     echo "Fehler 102: Konnte Smileys nicht in der Datenbank finden.";
+          }
+      } else {
+          echo "Fehler 102: Konnte Smileys nicht in der Datenbank finden.";
+      }
 ?>
     </TABLE></TABLE>
     </div>
@@ -609,13 +610,13 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
 	Die R&auml;nge lauten wie folgt:<br>
 
 	<?php
-	$sql = "SELECT * FROM ranks WHERE rank_special = 0";
-	if(!$r = mysql_query($sql, $db)) {
-	echo "Fehler 102 beim Zugriff auf Datenbank";
-	include('page_tail.'.$phpEx);
-	exit();
-	}
-	?>
+    $sql = "SELECT * FROM ranks WHERE rank_special = 0";
+    if (!$r = mysql_query($sql, $db)) {
+        echo "Fehler 102 beim Zugriff auf Datenbank";
+        include('page_tail.'.$phpEx);
+        exit();
+    }
+    ?>
 	<br><TABLE BORDER="0" WIDTH="<?php echo $TableWidth?>" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP"><TR><TD BGCOLOR="<?php echo $table_bgcolor?>">
 	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
 	<TR BGCOLOR="<?php echo $color1?>" ALIGN="CENTER">
@@ -625,26 +626,26 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
         <TD><font face="<?php echo $FontFace?>" size="<?php echo $FontSize2?>" color="<?php echo $textcolor?>">&nbsp;Bild zum Rang&nbsp;</font></TD>
 	</TR>
 	<?php
-	if($m = mysql_fetch_array($r)) {
-	do {
-	echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">";
-	echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_title]</font></TD>";
-	echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_min]</font></TD>";
-	echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_max]</font></TD>";
-	// The rank image has not been implemented at this time.
-        if($m[rank_image] != '')
-	   echo "<TD><img src=\"$url_images/$m[rank_image]\"></TD>";
-	else
-	   echo "<TD>&nbsp;</TD>";
-	echo "</TR>";
-	} while($m = mysql_fetch_array($r));
-	}
-	else {
-	echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">";
-	echo "<TD COLSPAN=\"4\"><font face=\"<?php echo $FontFace?>\" size=\"2\">Keine R&auml;nge gespeichert</font></TD>";
-	echo "</TR>";
-	}
-	?>
+    if ($m = mysql_fetch_array($r)) {
+        do {
+            echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">";
+            echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_title]</font></TD>";
+            echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_min]</font></TD>";
+            echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_max]</font></TD>";
+            // The rank image has not been implemented at this time.
+            if ($m[rank_image] != '') {
+                echo "<TD><img src=\"$url_images/$m[rank_image]\"></TD>";
+            } else {
+                echo "<TD>&nbsp;</TD>";
+            }
+            echo "</TR>";
+        } while ($m = mysql_fetch_array($r));
+    } else {
+        echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">";
+        echo "<TD COLSPAN=\"4\"><font face=\"<?php echo $FontFace?>\" size=\"2\">Keine R&auml;nge gespeichert</font></TD>";
+        echo "</TR>";
+    }
+    ?>
 	</TABLE></TABLE></font>
 	<br>
 	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">

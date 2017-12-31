@@ -162,7 +162,7 @@ $l_login	= "Entrar";
 
 // Cabeçalho da página
 $l_separator	= "» »";  // Included here because some languages have
-		          // problems with high ASCII (Big-5 and the like).
+                  // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Editar Perfil";
 $l_editprefs	= "Editar $l_preferences";
 $l_search	= "Procura";
@@ -352,6 +352,3 @@ $l_passsent	= "Sua senha mudou para uma nova e aleatória. Por favor cheque seu e
 $l_emailpass	= "Email de Senha Perdida";
 $l_passexplain	= "Por favor preencha o formulário, uma nova senha será enviada para seu endereço de Email";
 $l_sendpass	= "Enviar Senha";
-
-
-?>

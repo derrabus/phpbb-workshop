@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  *                           lang_english.php  -  description
  *                              -------------------
@@ -160,7 +160,7 @@ $l_login	= "Giriþ";
 
 // Page_header
 $l_separator	= "» »";  // Included here because some languages have
-		          // problems with high ASCII (Big-5 and the like).
+                  // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Profil";
 $l_editprefs	= "$l_preferences";
 $l_search	= "Arama";
@@ -187,7 +187,7 @@ $l_invalidname	= "Seçtiðiniz kullanýcý adý \"$username\" daha önceden alýnmýþ.";
 $l_disallowname	= "Seçtiðiniz kullanýcý adý \"$username\" yönetici tarafýndan kullanýma yasaklanmýþ.";
 
 $l_welcomesubj	= "$sitename Forumlarýna Hoþgeldiniz";
-$l_welcomemail	= 
+$l_welcomemail	=
 "
 $l_welcomesubj,
 
@@ -345,6 +345,3 @@ $l_passsent	= "Yeni þifreniz mailinize gönderildi. Emailinizi kontrol ederek yen
 $l_emailpass	= "Kayýp Þifre";
 $l_passexplain	= "Lütfen formu doldurun, yeni þifreniz email adresinize gönderilecek";
 $l_sendpass	= "Þifreyi Gönder";
-
-
-?>

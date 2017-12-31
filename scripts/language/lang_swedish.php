@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  *                           lang_english.php  -  description
  *                              -------------------
@@ -24,7 +24,7 @@
  *               v1.02 2001-04-22 @ 07:16                                  *
  ***************************************************************************/
 
-// Added variable in page_header.php instead of the english hardcoded one 
+// Added variable in page_header.php instead of the english hardcoded one
 //$l_postnewtopicin = "Post New Topic in:";
 $l_postnewtopicin = "Posta nytt inlägg i:";
 
@@ -170,7 +170,7 @@ $l_login	= "Logga in";
 
 // Page_header
 $l_separator	= "» »";  // Included here because some languages have
-		          // problems with high ASCII (Big-5 and the like).
+                  // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "Profil";
 $l_editprefs	= "$l_preferences";
 $l_search	= "Sök";
@@ -197,7 +197,7 @@ $l_invalidname	= "Det användarnnamn du valde, \"$username\" är redan taget.";
 $l_disallowname	= "Det användarnnamn du valde, \"$username\" är ej tillåtet av systemadministratören.";
 
 $l_welcomesubj	= "Välkommen till $sitename forums";
-$l_welcomemail	= 
+$l_welcomemail	=
 "
 $l_welcomesubj,
 
@@ -285,7 +285,7 @@ $l_cancelpost	= "Avbryt";
 
 // Reply
 $l_nopostlock	= "Du kan inte posta ett svar här eftersom det är låst.";
-$l_topicreview  = "Visa inlägg"; 
+$l_topicreview  = "Visa inlägg";
 $l_notifysubj	= "Ett svar på ditt inlägg har postats.";
 $l_notifybody	= 'Hej $m[username]\r\nDu får detta meddelande eftersom ett inlägg 
 du postade på $sitename forumet har besvarats och du har tidigare valt att
@@ -360,6 +360,3 @@ $l_passsent	= "Ditt lösenord har ändrats till ett nytt, slumpartat, lösenord. Lä
 $l_emailpass	= "Skicka glömt lösenord";
 $l_passexplain	= "Var vänlig och fyll i formuläret så kommer ett nytt lösenord skickas till din e-postadress";
 $l_sendpass	= "Skicka lösenord";
-
-
-?>

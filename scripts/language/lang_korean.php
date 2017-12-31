@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -166,7 +166,7 @@ $l_login	= "로그인[들어오기]";
 
 // Page_header
 $l_separator	= "� �";  // Included here because some languages have
-		          // problems with high ASCII (Big-5 and the like).
+                  // problems with high ASCII (Big-5 and the like).
 $l_editprofile	= "개인정보 수정";
 $l_editprefs	= "Edit $l_preferences";
 $l_search	= "찾기";
@@ -379,6 +379,3 @@ $l_passsent	= "당신의 비밀번호는 서버에서 임의의 비밀번호로 변경되었습니다. 변경
 $l_emailpass	= "이메일로 비밀번호 전송";
 $l_passexplain	= "아래의 양식을 채우시면, 새로운 비밀번호에 대한 정보가 당신의 메일로 발송됩니다.";
 $l_sendpass	= "비밀번호 전송";
-
-
-?>
