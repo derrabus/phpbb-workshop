@@ -58,4 +58,15 @@ class Kernel extends BaseKernel
         }
         $routes->import($confDir.'/routes'.self::CONFIG_EXTS, '/', 'glob');
     }
+
+    protected function build(ContainerBuilder $container)
+    {
+        require $this->getProjectDir().'/scripts/extention.inc';
+        require $this->getProjectDir().'/scripts/config.php';
+
+        $container->setParameter('database.host', $dbhost ?? null);
+        $container->setParameter('database.name', $dbname ?? null);
+        $container->setParameter('database.user', $dbuser ?? null);
+        $container->setParameter('database.password', $dbpasswd ?? null);
+    }
 }
