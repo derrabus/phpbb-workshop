@@ -8,5 +8,16 @@
             "name": "Alexander M. Turek",
             "email": "me@derrabus.de"
         }
-    ]
+    ],
+    "require": {
+        "derrabus/ereg-shim": "^1",
+        "dshafik/php7-mysql-shim": "^1@beta",
+        "symfony/http-foundation": "^2.8"
+    },
+    "config": {
+        "platform": {
+            "php": "5.3.10"
+        },
+        "sort-packages": true
+    }
 }

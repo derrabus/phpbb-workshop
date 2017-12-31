@@ -1,8 +1,17 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Request;
+
 require dirname(__DIR__).'/vendor/autoload.php';
 
-$targetFile = $_SERVER['REDIRECT_URL'];
+$request = Request::createFromGlobals();
+
+if (preg_match('/\.(?:png|jpg|jpeg|gif)$/', $request->getScriptName())) {
+    return false;
+}
+
+$targetFile = $request->getPathInfo();
+
 if ($targetFile === '/') {
     $targetFile = '/index.php';
 }
@@ -23,5 +32,8 @@ $HTTP_POST_VARS = $_POST;
 $HTTP_COOKIE_VARS = $_COOKIE;
 
 chdir(dirname($scriptsDir.$targetFile));
+
+ini_set('display_errors', false);
+ini_set('default_charset', 'iso-8859-15');
 
 require $scriptsDir.$targetFile;
