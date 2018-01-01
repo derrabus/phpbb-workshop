@@ -2,6 +2,7 @@
 
 namespace App\Tests\View;
 
+use App\View\BBEncoder;
 use PHPUnit\Framework\TestCase;
 
 class BBEncoderTest extends TestCase
@@ -11,7 +12,9 @@ class BBEncoderTest extends TestCase
      */
     public function testEncodeFaqExamples(string $source, string $expectedResult): void
     {
-        $this->assertSame($expectedResult, \bbencode($source, true));
+        $encoder = new BBEncoder();
+
+        $this->assertSame($expectedResult, $encoder->encode($source, true));
     }
 
     /**
@@ -19,7 +22,9 @@ class BBEncoderTest extends TestCase
      */
     public function testDecodeFaqExamples(string $expectedResult, string $encoded): void
     {
-        $this->assertSame($expectedResult, \bbdecode($encoded));
+        $encoder = new BBEncoder();
+
+        $this->assertSame($expectedResult, $encoder->decode($encoded));
     }
 
     public function provideFaqExamples(): iterable
