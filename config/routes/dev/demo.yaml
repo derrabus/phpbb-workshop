@@ -1,0 +1,3 @@
+demo:
+    path: /demo
+    controller: App\Controller\DemoController
