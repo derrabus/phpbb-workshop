@@ -688,6 +688,7 @@ function bbcode_array_pop(&$stack)
 {
     $arrSize = count($stack);
     $x = 1;
+    $tmpArr = array();
     while (list($key, $val) = each($stack)) {
         if ($x < count($stack)) {
             $tmpArr[] = $val;
@@ -913,8 +914,8 @@ function bbencode_code($message, $is_html_disabled)
 function bbencode_list($message)
 {
     $start_length = array();
-    $start_length[ordered] = 8;
-    $start_length[unordered] = 6;
+    $start_length['ordered'] = 8;
+    $start_length['unordered'] = 6;
     
     // First things first: If there aren't any "[list" strings in the message, we don't
     // need to process it at all.
@@ -932,8 +933,8 @@ function bbencode_list($message)
         if ($curr_pos) {
             // We found a [. It starts at $curr_pos.
             // check if it's a starting or ending list tag.
-            $possible_ordered_start = substr($message, $curr_pos, $start_length[ordered]);
-            $possible_unordered_start = substr($message, $curr_pos, $start_length[unordered]);
+            $possible_ordered_start = substr($message, $curr_pos, $start_length['ordered']);
+            $possible_unordered_start = substr($message, $curr_pos, $start_length['unordered']);
             $possible_end = substr($message, $curr_pos, 7);
             if (strcasecmp("[list]", $possible_unordered_start) == 0) {
                 // We have a starting unordered list tag.
@@ -956,7 +957,7 @@ function bbencode_list($message)
                     $start_index = $start[0];
                     $start_char = $start[1];
                     $is_ordered = ($start_char != "");
-                    $start_tag_length = ($is_ordered) ? $start_length[ordered] : $start_length[unordered];
+                    $start_tag_length = ($is_ordered) ? $start_length['ordered'] : $start_length['unordered'];
                     
                     // everything before the [list] tag.
                     $before_start_tag = substr($message, 0, $start_index);
@@ -1534,5 +1535,3 @@ function own_stripslashes($string)
    // preg_replace will throw a warning on PHP3 so we have to @ it.
     return @preg_replace($find, $replace, $string);
 }
-
-?>
