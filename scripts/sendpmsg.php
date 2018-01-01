@@ -24,7 +24,7 @@
  * - Used for sending private messages between users of the BB.
  */
 include('extention.inc');
-include('functions.'.$phpEx);
+
 include('config.'.$phpEx);
 require('auth.'.$phpEx);
 $pagetitle = "Send Private Message";

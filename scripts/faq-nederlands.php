@@ -23,7 +23,7 @@
  * Translated by: los3r
  * *************************************************************************/
 include('extention.inc');
-include('functions.'.$phpEx);
+
 include('config.'.$phpEx);
 require('auth.'.$phpEx);
 $pagetitle = "FAQ";

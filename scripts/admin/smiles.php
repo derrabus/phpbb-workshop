@@ -23,7 +23,7 @@
    * official phpBB distribution.
    */
 include('../extention.inc');
-include('../functions.'.$phpEx);
+
 include('../config.'.$phpEx);
 require('../auth.'.$phpEx);
 if ($login) {

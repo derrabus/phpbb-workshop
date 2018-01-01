@@ -24,7 +24,7 @@
  * Created by: Steven Cunningham (defender@webinfractions.com) for phpBB
  * *************************************************************************/
 include('extention.inc');
-include('functions.'.$phpEx);
+
 include('config.'.$phpEx);
 require('auth.'.$phpEx);
 $pagetitle = "FAQ";

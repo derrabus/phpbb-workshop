@@ -26,7 +26,7 @@
 * 	Added Some Cosmetic HTML Code, fixed a Hyperlink typo.
 */
 include('../extention.inc');
-include('../functions.'.$phpEx);
+
 include('../config.'.$phpEx);
 require('../auth.'.$phpEx);
 

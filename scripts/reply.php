@@ -23,7 +23,7 @@ if (isset($cancel) && $cancel) {
     header("Location: viewtopic.$phpEx?topic=$topic&forum=$forum");
 }
 
-include('functions.'.$phpEx);
+
 include('config.'.$phpEx);
 require('auth.'.$phpEx);
 $pagetitle = "Post Reply";

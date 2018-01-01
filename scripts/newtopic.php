@@ -25,7 +25,7 @@ if ($cancel) {
     header("Location: viewforum.$phpEx?forum=$forum");
 }
 
-include('functions.'.$phpEx);
+
 include('config.'.$phpEx);
 require('auth.'.$phpEx);
 $pagetitle = "New Topic";

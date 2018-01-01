@@ -24,7 +24,7 @@
  * - Used for deleting private messages by users of the BB.
  */
 include('extention.inc');
-include('functions.'.$phpEx);
+
 include('config.'.$phpEx);
 require('auth.'.$phpEx);
 $pagetitle = "Private Messages";
