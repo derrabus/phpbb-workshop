@@ -68,5 +68,8 @@ class Kernel extends BaseKernel
         $container->setParameter('database.name', $dbname ?? null);
         $container->setParameter('database.user', $dbuser ?? null);
         $container->setParameter('database.password', $dbpasswd ?? null);
+
+        $container->setParameter('session.cookie_name', $sesscookiename ?? null);
+        $container->setParameter('session.cookie_time', $sesscookietime ?? null);
     }
 }
