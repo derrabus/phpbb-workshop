@@ -19,10 +19,10 @@
 
 global $container;
 
-if ($user_logged_in && 4 == $userdata[user_level]) {
+if ($container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
     ?>
      <FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize3; ?>" COLOR="<?php echo $textcolor; ?>">
-     <CENTER><a href="<?php echo $url_admin_index; ?>"><?php echo $l_adminpanel; ?></a></CENTER><BR>
+     <CENTER><a href="<?php echo $container->get('router')->generate('legacy.admin__index'); ?>"><?php echo $l_adminpanel; ?></a></CENTER><BR>
      </FONT>
 <?php
 }
