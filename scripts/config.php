@@ -102,7 +102,7 @@ $images_msnm = "$url_images/msnm.gif";
 
 /* -- Other Settings -- */
 $phpbbversion = "1.4.4";
-$dbhost = "192.168.56.101";
+$dbhost = "46.101.249.214";
 $dbname = "phpBB";
-$dbuser = "bb";
-$dbpasswd = "";
+$dbuser = "phpbb";
+$dbpasswd = "phpbb";
