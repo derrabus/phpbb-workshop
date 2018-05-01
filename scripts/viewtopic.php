@@ -18,55 +18,55 @@
  *   (at your option) any later version.
  *
  ***************************************************************************/
-include('extention.inc');
+include 'extention.inc';
 
-include('config.'.$phpEx);
-require('auth.'.$phpEx);
+include 'config.'.$phpEx;
+require 'auth.'.$phpEx;
 $pagetitle = $l_topictitle;
-$pagetype = "viewtopic";
+$pagetype = 'viewtopic';
 
 $sql = "SELECT f.forum_type, f.forum_name FROM forums f, topics t WHERE (f.forum_id = '$forum') AND (t.topic_id = $topic) AND (t.forum_id = f.forum_id)";
 if (!$result = mysql_query($sql, $db)) {
-    error_die("<font size=+1>An Error Occured</font><hr>Could not connect to the forums database.");
+    error_die('<font size=+1>An Error Occured</font><hr>Could not connect to the forums database.');
 }
 if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-    error_die("Error - The forum/topic you selected does not exist. Please go back and try again.");
+    error_die('Error - The forum/topic you selected does not exist. Please go back and try again.');
 }
 $forum_name = own_stripslashes($myrow[forum_name]);
 
 // Note: page_header is included later on, because this page might need to send a cookie.
-if (($myrow[forum_type] == 1) && !$user_logged_in && !$logging_in) {
-    require('page_header.'.$phpEx); ?>
-<FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
-	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $tablewidth?>">
+if ((1 == $myrow[forum_type]) && !$user_logged_in && !$logging_in) {
+    require 'page_header.'.$phpEx; ?>
+<FORM ACTION="<?php echo $PHP_SELF; ?>" METHOD="POST">
+	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $tablewidth; ?>">
 		<TR>
-			<TD BGCOLOR="<?php echo $table_bgcolor?>">
+			<TD BGCOLOR="<?php echo $table_bgcolor; ?>">
 				<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
-					<TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
-						<TD ALIGN="CENTER"><?php echo $l_private?></TD>
+					<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="LEFT">
+						<TD ALIGN="CENTER"><?php echo $l_private; ?></TD>
 					</TR>
-					<TR BGCOLOR="<?php echo $color2?>" ALIGN="LEFT">
+					<TR BGCOLOR="<?php echo $color2; ?>" ALIGN="LEFT">
 						<TD ALIGN="CENTER">
 							<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0">
 							  <TR>
 							    <TD>
-							      <FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-							      <b>User Name: &nbsp;</b></font></TD><TD><INPUT TYPE="TEXT" NAME="username" SIZE="25" MAXLENGTH="40" VALUE="<?php echo $userdata[username]?>">
+							      <FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+							      <b>User Name: &nbsp;</b></font></TD><TD><INPUT TYPE="TEXT" NAME="username" SIZE="25" MAXLENGTH="40" VALUE="<?php echo $userdata[username]; ?>">
 							    </TD>
 							  </TR><TR>
 							    <TD>
-							      <FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
+							      <FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
 							      <b>Password: </b></TD><TD><INPUT TYPE="PASSWORD" NAME="password" SIZE="25" MAXLENGTH="25">
 							    </TD>
 							  </TR>
 							</TABLE>
 						</TD>
 					</TR>
-					<TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
+					<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="LEFT">
 						<TD ALIGN="CENTER">
-							<INPUT TYPE="HIDDEN" NAME="forum" VALUE="<?php echo $forum?>">
-							<INPUT TYPE="HIDDEN" NAME="topic" VALUE="<?php echo $topic?>">
-							<INPUT TYPE="SUBMIT" NAME="logging_in" VALUE="<?php echo $l_enter?>">
+							<INPUT TYPE="HIDDEN" NAME="forum" VALUE="<?php echo $forum; ?>">
+							<INPUT TYPE="HIDDEN" NAME="topic" VALUE="<?php echo $topic; ?>">
+							<INPUT TYPE="SUBMIT" NAME="logging_in" VALUE="<?php echo $l_enter; ?>">
 						</TD>
 					</TR>
 				</TABLE>
@@ -75,11 +75,11 @@ if (($myrow[forum_type] == 1) && !$user_logged_in && !$logging_in) {
 	</TABLE>
 </FORM>
 <?php
-require('page_tail.'.$phpEx);
+require 'page_tail.'.$phpEx;
     exit();
 } else {
     if ($logging_in) {
-        if ($username == '' || $password == '') {
+        if ('' == $username || '' == $password) {
             error_die("$l_userpass $l_tryagain");
         }
         if (!check_username($username, $db)) {
@@ -98,40 +98,36 @@ require('page_tail.'.$phpEx);
         set_session_cookie($sessid, $sesscookietime, $sesscookiename, $cookiepath, $cookiedomain, $cookiesecure);
     }
 
-
-
-    if ($myrow[forum_type] == 1) {
+    if (1 == $myrow[forum_type]) {
         // To get here, we have a logged-in user. So, check whether that user is allowed to view
         // this private forum.
 
         if (!check_priv_forum_auth($userdata[user_id], $forum, false, $db)) {
-            include('page_header.'.$phpEx);
+            include 'page_header.'.$phpEx;
             error_die("$l_privateforum $l_noread");
         }
 
         // Ok, looks like we're good.
     }
 
-
-
     $sql = "SELECT topic_title, topic_status FROM topics WHERE topic_id = '$topic'";
 
-    $total = get_total_posts($topic, $db, "topic");
+    $total = get_total_posts($topic, $db, 'topic');
     if ($total > $posts_per_page) {
         $times = 0;
         for ($x = 0; $x < $total; $x += $posts_per_page) {
-            $times++;
+            ++$times;
         }
         $pages = $times;
     }
 
     if (!$result = mysql_query($sql, $db)) {
-        error_die("<font size=+1>An Error Occured</font><hr>Could not connect to the forums database.");
+        error_die('<font size=+1>An Error Occured</font><hr>Could not connect to the forums database.');
     }
     $myrow = $result->fetch(\PDO::FETCH_BOTH);
     $topic_subject = own_stripslashes($myrow[topic_title]);
     $lock_state = $myrow[topic_status];
-    include('page_header.'.$phpEx); ?>
+    include 'page_header.'.$phpEx; ?>
 <?php
 if ($total > $posts_per_page) {
         echo "<TABLE BORDER=0 WIDTH=$TableWidth ALIGN=CENTER>";
@@ -142,17 +138,17 @@ if ($total > $posts_per_page) {
             echo "<a href=\"$PHP_SELF?topic=$topic&forum=$forum&start=$last_page\">$l_prevpage</a> ";
         }
         for ($x = 0; $x < $total; $x += $posts_per_page) {
-            if ($times != 1) {
-                echo " | ";
+            if (1 != $times) {
+                echo ' | ';
             }
             if ($start && ($start == $x)) {
                 echo $times;
-            } elseif ($start == 0 && $x == 0) {
-                echo "1";
+            } elseif (0 == $start && 0 == $x) {
+                echo '1';
             } else {
                 echo "<a href=\"$PHP_SELF?mode=viewtopic&topic=$topic&forum=$forum&start=$x\">$times</a>";
             }
-            $times++;
+            ++$times;
         }
         if (($start + $posts_per_page) < $total) {
             $next_page = $start + $posts_per_page;
@@ -161,11 +157,11 @@ if ($total > $posts_per_page) {
         echo " ) </FONT></TD></TR></TABLE>\n";
     } ?>
 
-<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth?>"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
+<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth; ?>"><TR><TD  BGCOLOR="<?php echo $table_bgcolor; ?>">
 <TABLE BORDER="0" CELLPADDING="3" CELLSPACING="1" WIDTH="100%">
-<TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
-	<TD WIDTH="20%"><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>"><?php echo $l_author?></FONT></TD>
-	<TD><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2 ?>"COLOR="<?php echo $textcolor?>"><?php echo $topic_subject?></FONT></TD>
+<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="LEFT">
+	<TD WIDTH="20%"><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>"><?php echo $l_author; ?></FONT></TD>
+	<TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>"COLOR="<?php echo $textcolor; ?>"><?php echo $topic_subject; ?></FONT></TD>
 </TR>
 <?php
 if (isset($start)) {
@@ -196,30 +192,30 @@ if (isset($start)) {
         if ($myrow[poster_id] != -1) {
             $posterdata = get_userdata_from_id($myrow[poster_id], $db);
         } else {
-            $posterdata = array("user_id" => -1, "username" => $l_anonymous, "user_posts" => "0", "user_rank" => -1);
+            $posterdata = ['user_id' => -1, 'username' => $l_anonymous, 'user_posts' => '0', 'user_rank' => -1];
         }
         echo "<TD valign=top><FONT FACE=\"$FontFace\" COLOR=\"$textcolor\"><b>$posterdata[username]</b></FONT>";
         $posts = $posterdata[user_posts];
         if ($posterdata[user_id] != -1) {
-            if ($posterdata[user_rank] != 0) {
+            if (0 != $posterdata[user_rank]) {
                 $sql = "SELECT rank_title, rank_image FROM ranks WHERE rank_id = '$posterdata[user_rank]'";
             } else {
-                $sql = "SELECT rank_title, rank_image  FROM ranks WHERE rank_min <= " . $posterdata[user_posts] . " AND rank_max >= " . $posterdata[user_posts] . " AND rank_special = 0";
+                $sql = 'SELECT rank_title, rank_image  FROM ranks WHERE rank_min <= '.$posterdata[user_posts].' AND rank_max >= '.$posterdata[user_posts].' AND rank_special = 0';
             }
             if (!$rank_result = mysql_query($sql, $db)) {
-                error_die("Error connecting to the database!");
+                error_die('Error connecting to the database!');
             }
             list($rank, $rank_image) = $rank_result->fetch(\PDO::FETCH_BOTH);
-            echo "<BR><FONT FACE=\"$FontFace\" SIZE=\"$FontSize1\" COLOR=\"$textcolor\"><B>" . own_stripslashes($rank) . "</B></font>";
-            if ($rank_image != '') {
+            echo "<BR><FONT FACE=\"$FontFace\" SIZE=\"$FontSize1\" COLOR=\"$textcolor\"><B>".own_stripslashes($rank).'</B></font>';
+            if ('' != $rank_image) {
                 echo "<BR><IMG SRC=\"$url_images/$rank_image\" BORDER=\"0\">";
             }
             echo "<BR><BR><FONT FACE=\"$FontFace\" SIZE=\"$FontSize1\" COLOR=\"$textcolor\">$l_joined: $posterdata[user_regdate]</FONT>";
             echo "<br><FONT FACE=\"$FontFace\" SIZE=\"$FontSize1\" COLOR=\"$textcolor\">$l_posts: $posts</FONT>";
-            if ($posterdata[user_from] != '') {
+            if ('' != $posterdata[user_from]) {
                 echo "<BR><FONT FACE=\"$FontFace\" SIZE=\"$FontSize1\" COLOR=\"$textcolor\">$l_location: $posterdata[user_from]<br></FONT>";
             }
-            echo "</td>";
+            echo '</td>';
         } else {
             echo "<BR><FONT FACE=\"$FontFace\" SIZE=\"$FontSize1\" COLOR=\"$textcolor\">$l_unregistered</font></TD>";
         }
@@ -232,38 +228,38 @@ if (isset($start)) {
         $sig = $posterdata[user_sig];
         if (!$allow_html) {
             $sig = htmlspecialchars($sig);
-            $sig = preg_replace("#&lt;br&gt;#is", "<BR>", $sig);
+            $sig = preg_replace('#&lt;br&gt;#is', '<BR>', $sig);
         }
 
-        $message = eregi_replace("\[addsig]$", "<BR>_________________<BR>" . own_stripslashes(bbencode($sig, $allow_html)), $message);
+        $message = eregi_replace("\[addsig]$", '<BR>_________________<BR>'.own_stripslashes(bbencode($sig, $allow_html)), $message);
 
-        echo "\n<FONT COLOR=\"$textcolor\" face=\"$FontFace\">" . $message . "</FONT><BR>";
+        echo "\n<FONT COLOR=\"$textcolor\" face=\"$FontFace\">".$message.'</FONT><BR>';
         echo "\n<HR>";
         if ($posterdata[user_id] != -1) {
             echo "&nbsp;&nbsp<a href=\"$url_phpbb/bb_profile.$phpEx?mode=view&user=$posterdata[user_id]\"><img src=\"$profile_image\" border=0 alt=\"$l_profileof $posterdata[username]\"></a>\n";
 
-            if ($posterdata["user_viewemail"] != 0) {
+            if (0 != $posterdata['user_viewemail']) {
                 echo "&nbsp;&nbsp;<a href=\"mailto:$posterdata[user_email]\"><IMG SRC=\"$email_image\" BORDER=0 ALT=\"$l_email $posterdata[username]\"></a>\n";
             }
-            if ($posterdata["user_website"] != '') {
-                if (strstr("http://", $posterdata["user_website"])) {
-                    $posterdata["user_website"] = "http://" . $posterdata["user_website"];
+            if ('' != $posterdata['user_website']) {
+                if (strstr('http://', $posterdata['user_website'])) {
+                    $posterdata['user_website'] = 'http://'.$posterdata['user_website'];
                 }
                 echo "&nbsp;&nbsp;<a href=\"$posterdata[user_website]\" TARGET=\"_blank\"><IMG SRC=\"$www_image\" BORDER=0 ALT=\"$l_viewsite $posterdata[username]\"></a>\n";
             }
-            if ($posterdata["user_icq"] != '') {
+            if ('' != $posterdata['user_icq']) {
                 echo "&nbsp;&nbsp;<a href=\"http://wwp.icq.com/$posterdata[user_icq]#pager\" target=\"_blank\"><img src=\"http://online.mirabilis.com/scripts/online.dll?icq=$posterdata[user_icq]&img=5\" alt=\"$l_icqstatus\" border=\"0\"></a>&nbsp;&nbsp;<a href=\"http://wwp.icq.com/scripts/search.dll?to=$posterdata[user_icq]\"><img src=\"$icq_add_image\" border=\"0\"></a>";
             }
 
-            if ($posterdata["user_aim"] != '') {
+            if ('' != $posterdata['user_aim']) {
                 echo "&nbsp;&nbsp;<a href=\"aim:goim?screenname=$posterdata[user_aim]&message=Hi+$posterdata[user_aim].+Are+you+there?\"><img src=\"$images_aim\" border=\"0\"></a>";
             }
 
-            if ($posterdata["user_yim"] != '') {
+            if ('' != $posterdata['user_yim']) {
                 echo "&nbsp;&nbsp;<a href=\"http://edit.yahoo.com/config/send_webmesg?.target=$posterdata[user_yim]&.src=pg\"><img src=\"$images_yim\" border=\"0\"></a>";
             }
 
-            if ($posterdata["user_msnm"] != '') {
+            if ('' != $posterdata['user_msnm']) {
                 echo "&nbsp;&nbsp;<a href=\"$url_phpbb/bb_profile.$phpEx?mode=view&user=$posterdata[user_id]\"><img src=\"$images_msnm\" border=\"0\"></a>";
             }
 
@@ -272,22 +268,21 @@ if (isset($start)) {
             echo "&nbsp;&nbsp\n";
         }
 
-
         echo "&nbsp;&nbsp;<a href=\"$url_phpbb/editpost.$phpEx?post_id=$myrow[post_id]&topic=$topic&forum=$forum\"><img src=\"$edit_image\" border=0 alt=\"$l_editdelete\"></a>\n";
 
         echo "&nbsp;&nbsp;<a href=\"$url_phpbb/reply.$phpEx?topic=$topic&forum=$forum&post=$myrow[post_id]&quote=1\"><IMG SRC=\"$reply_wquote_image\" BORDER=\"0\" alt=\"$l_replyquote\"></a>\n";
-        if (is_moderator($forum, $userdata["user_id"], $db) || $userdata[user_level] > 2) {
+        if (is_moderator($forum, $userdata['user_id'], $db) || $userdata[user_level] > 2) {
             echo "&nbsp;&nbsp;<IMG SRC=\"images/div.gif\">\n";
             echo "&nbsp;&nbsp;<a href=\"$url_phpbb/topicadmin.$phpEx?mode=viewip&post=$myrow[post_id]&forum=$forum\"><IMG SRC=\"$ip_image\" BORDER=0 ALT=\"$l_viewip\"></a>\n";
         }
-        echo "</TD></TR>";
-        $count++;
+        echo '</TD></TR>';
+        ++$count;
     } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
     $sql = "UPDATE topics SET topic_views = topic_views + 1 WHERE topic_id = '$topic'";
     @mysql_query($sql, $db); ?>
 
 </TABLE></TD></TR></TABLE>
-<TABLE ALIGN="CENTER" BORDER="0" WIDTH="<?php echo $TableWidth?>">
+<TABLE ALIGN="CENTER" BORDER="0" WIDTH="<?php echo $TableWidth; ?>">
 <?php
 if ($total > $posts_per_page) {
         $times = 1;
@@ -297,17 +292,17 @@ if ($total > $posts_per_page) {
             echo "<a href=\"$PHP_SELF?topic=$topic&forum=$forum&start=$last_page\">$l_prevpage</a> ";
         }
         for ($x = 0; $x < $total; $x += $posts_per_page) {
-            if ($times != 1) {
-                echo " | ";
+            if (1 != $times) {
+                echo ' | ';
             }
             if ($start && ($start == $x)) {
                 echo $times;
-            } elseif ($start == 0 && $x == 0) {
-                echo "1";
+            } elseif (0 == $start && 0 == $x) {
+                echo '1';
             } else {
                 echo "<a href=\"$PHP_SELF?mode=viewtopic&topic=$topic&forum=$forum&start=$x\">$times</a>";
             }
-            $times++;
+            ++$times;
         }
         if (($start + $posts_per_page) < $total) {
             $next_page = $start + $posts_per_page;
@@ -317,15 +312,15 @@ if ($total > $posts_per_page) {
     } ?>
 <TR>
 	<TD>
-		<a href="newtopic.<?php echo $phpEx?>?forum=<?php echo $forum?>"><IMG SRC="<?php echo $newtopic_image?>" BORDER="0"></a>&nbsp;&nbsp;
+		<a href="newtopic.<?php echo $phpEx; ?>?forum=<?php echo $forum; ?>"><IMG SRC="<?php echo $newtopic_image; ?>" BORDER="0"></a>&nbsp;&nbsp;
 <?php
-        if ($lock_state != 1) {
+        if (1 != $lock_state) {
             ?>
-			<a href="<?php echo $url_phpbb ?>/reply.<?php echo $phpEx?>?topic=<?php echo $topic ?>&forum=<?php echo $forum ?>"><IMG SRC="<?php echo $reply_image ?>" BORDER="0"></a></TD>
+			<a href="<?php echo $url_phpbb; ?>/reply.<?php echo $phpEx; ?>?topic=<?php echo $topic; ?>&forum=<?php echo $forum; ?>"><IMG SRC="<?php echo $reply_image; ?>" BORDER="0"></a></TD>
 <?php
         } else {
             ?>
-			<IMG SRC="<?php echo $reply_locked_image ?>" BORDER="0"></TD>
+			<IMG SRC="<?php echo $reply_locked_image; ?>" BORDER="0"></TD>
 <?php
         } ?>
 	</TD>
@@ -335,8 +330,8 @@ make_jumpbox(); ?>
 </TR></TABLE>
 
 <?php
-echo "<CENTER>";
-    if ($lock_state != 1) {
+echo '<CENTER>';
+    if (1 != $lock_state) {
         echo "<a href=\"$url_phpbb/topicadmin.$phpEx?mode=lock&topic=$topic&forum=$forum\"><IMG SRC=\"$locktopic_image\" ALT=\"$l_locktopic\" BORDER=0></a> ";
     } else {
         echo "<a href=\"$url_phpbb/topicadmin.$phpEx?mode=unlock&topic=$topic&forum=$forum\"><IMG SRC=\"$unlocktopic_image\" ALT=\"$l_unlocktopic\" BORDER=0></a> ";
@@ -346,6 +341,6 @@ echo "<CENTER>";
     echo "<a href=\"$url_phpbb/topicadmin.$phpEx?mode=del&topic=$topic&forum=$forum\"><IMG SRC=\"$deltopic_image\" ALT=\"$l_deletetopic\" BORDER=0></a></CENTER>\n";
 }
 
-require('page_tail.'.$phpEx);
+require 'page_tail.'.$phpEx;
 
 ?>

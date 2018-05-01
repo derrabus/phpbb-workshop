@@ -28,15 +28,15 @@
 // Change this to:
 // $url_phpbb = "/forums";
 // Once this is set you should not need to modify anything else in this file.
-$url_phpbb = "";
+$url_phpbb = '';
 
 // -- Edit the following ONLY if you cannot login and $url_phpbb is set correclty --
 // You shouldn't have to change any of these 5.
 $url_admin = "$url_phpbb/admin";
 $url_images = "$url_phpbb/images";
 $url_smiles = "$url_images/smiles";
-$url_phpbb_index = $url_phpbb . '/index.' . $phpEx;
-$url_admin_index = $url_admin . '/index.' . $phpEx;
+$url_phpbb_index = $url_phpbb.'/index.'.$phpEx;
+$url_admin_index = $url_admin.'/index.'.$phpEx;
 
 /* -- Cookie settings (lastvisit, userid) -- */
 // Most likely you can leave this be, however if you have problems
@@ -45,17 +45,17 @@ $url_admin_index = $url_admin . '/index.' . $phpEx;
 // For example, if your forum is at http://www.mysite.com/phpBB then
 // set this value to
 // $cookiedomain = "www.mysite.com";
-$cookiedomain = "";
+$cookiedomain = '';
 // It should be safe to leave this alone as well. But if you do change it
 // make sure you don't set it to a variable already in use such as 'forum'.
-$cookiename = "phpBB";
+$cookiename = 'phpBB';
 // It should be safe to leave these alone as well.
 $cookiepath = $url_phpbb;
 $cookiesecure = false;
 
 /* -- Cookie settings (sessions) -- */
 // This is the cookie name for the sessions cookie, you shouldn't have to change it
-$sesscookiename = "phpBBsession";
+$sesscookiename = 'phpBBsession';
 // This is the number of seconds that a session lasts for, 3600 == 1 hour.
 // The session will exprire if the user dosan't view a page on the forum within
 // this amount of time.
@@ -69,10 +69,10 @@ $allow_pmsg_html = 0;
 
 /* -- You shouldn't have to change anything after this point */
 /* -- Cosmetic Settings -- */
-$FontColor = "#FFFFFF";
-$textcolorMessage = "#FFFFFF";  // Message Font Text Color
-$FontSizeMessage = "1";  // Message Font Text Size
-$FontFaceMessage = "Arial";  // Message Font Text Face
+$FontColor = '#FFFFFF';
+$textcolorMessage = '#FFFFFF';  // Message Font Text Color
+$FontSizeMessage = '1';  // Message Font Text Size
+$FontFaceMessage = 'Arial';  // Message Font Text Face
 
 /* -- Images -- */
 $reply_wquote_image = "$url_images/quote.gif";
@@ -101,8 +101,8 @@ $images_yim = "$url_images/yim.gif";
 $images_msnm = "$url_images/msnm.gif";
 
 /* -- Other Settings -- */
-$phpbbversion = "1.4.4";
-$dbhost = "46.101.249.214";
-$dbname = "phpBB";
-$dbuser = "phpbb";
-$dbpasswd = "phpbb";
+$phpbbversion = '1.4.4';
+$dbhost = '46.101.249.214';
+$dbname = 'phpBB';
+$dbuser = 'phpbb';
+$dbpasswd = 'phpbb';

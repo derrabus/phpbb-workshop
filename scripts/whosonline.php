@@ -20,40 +20,40 @@
  ***************************************************************************/
 
 /**
-* Thursday, July 20, 2000 - Yokhannan: Fixed spelling on CELLSPACING &
-* CELLPADDING. I also added the [$url_phpbb/] settings to all the <a href
-* commands.
-*/
-include('extention.inc');
+ * Thursday, July 20, 2000 - Yokhannan: Fixed spelling on CELLSPACING &
+ * CELLPADDING. I also added the [$url_phpbb/] settings to all the <a href
+ * commands.
+ */
+include 'extention.inc';
 
-include('config.'.$phpEx);
-require('auth.'.$phpEx);
+include 'config.'.$phpEx;
+require 'auth.'.$phpEx;
 $pagetitle = $l_whosonline;
-$pagetype = "other";
-include('page_header.'.$phpEx);
+$pagetype = 'other';
+include 'page_header.'.$phpEx;
 ?>
-<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth?>"><TR><TD BGCOLOR="<?php echo $table_bgcolor?>">
+<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth; ?>"><TR><TD BGCOLOR="<?php echo $table_bgcolor; ?>">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
-<TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
-	<TD><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>"><?php echo $l_username?></FONT></TD>
-	<TD><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>"><?php echo $l_forum?></FONT></TD>
+<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="LEFT">
+	<TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>"><?php echo $l_username; ?></FONT></TD>
+	<TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>"><?php echo $l_forum; ?></FONT></TD>
 </TR>
-<TR BGCOLOR="<?php echo $color2?>" ALIGN="LEFT">
+<TR BGCOLOR="<?php echo $color2; ?>" ALIGN="LEFT">
 <?php
-$sql = "SELECT * FROM whosonline";
+$sql = 'SELECT * FROM whosonline';
 if (!$result = mysql_query($sql, $db)) {
-    die("Error - Could not connect to the database</table></table></table>");
+    die('Error - Could not connect to the database</table></table></table>');
 }
 if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
     do {
         echo "<TR BGCOLOR=$color2 ALIGN=LEFT>\n";
-        if (!stristr($myrow[username], get_syslang_string($sys_lang, "l_guest"))) {
+        if (!stristr($myrow[username], get_syslang_string($sys_lang, 'l_guest'))) {
             $thisuser = get_userdata($myrow[username], $db);
             echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"$url_phpbb/bb_profile.$phpEx?mode=view&user=$thisuser[user_id]\">$thisuser[username]</a></FONT></TD>\n";
         } else {
             echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\">Guest</FONT></TD>\n";
         }
-        if ($myrow[forum] == 0) {
+        if (0 == $myrow[forum]) {
             echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"$url_phpbb/index.$phpEx\">Forum Index</a></FONT></TD>\n";
         } else {
             $forum = get_forum_name($myrow[forum], $db);
@@ -68,5 +68,5 @@ if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
 </TR></TABLE></TD></TR></TABLE>
 
 <?php
-include('page_tail.'.$phpEx);
+include 'page_tail.'.$phpEx;
 ?>

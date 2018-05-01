@@ -23,21 +23,20 @@
  * login.php - Nathan Codding
  * - Used for logging in a user and setting up a session.
  */
-include('extention.inc');
+include 'extention.inc';
 
-include('config.'.$phpEx);
-require('auth.'.$phpEx);
-$pagetitle = "Login";
-$pagetype = "other";
+include 'config.'.$phpEx;
+require 'auth.'.$phpEx;
+$pagetitle = 'Login';
+$pagetype = 'other';
 
 /* Note: page_header.php is included later on, because this page needs to be able to send a cookie. */
 
-
 if (!$submit) {
-    include('page_header.'.$phpEx);
+    include 'page_header.'.$phpEx;
     login_form();
 } else { // Something has been submitted
-    if ($user == '' || $passwd == '') {
+    if ('' == $user || '' == $passwd) {
         error_die("$l_userpass $l_tryagain");
     }
     if (!check_username($user, $db)) {
@@ -64,5 +63,4 @@ if (!$submit) {
     }
 } // if/else (!$submit)
 
-
-require('page_tail.'.$phpEx);
+require 'page_tail.'.$phpEx;

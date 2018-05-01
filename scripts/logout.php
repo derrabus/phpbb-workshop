@@ -23,12 +23,12 @@
  * logout.php - Nathan Codding
  * - Used for logging out a user and deleting a session.
  */
-include('extention.inc');
+include 'extention.inc';
 
-include('config.'.$phpEx);
-require('auth.'.$phpEx);
+include 'config.'.$phpEx;
+require 'auth.'.$phpEx;
 $pagetitle = $l_logout;
-$pagetype = "logout";
+$pagetype = 'logout';
 
 /* Note: page_header.php is included later on, because this page needs to be able to send a cookie. */
 
@@ -37,4 +37,4 @@ if ($user_logged_in) {
 }
 
     header("Location: $url_phpbb/index.$phpEx");
-require('page_tail.'.$phpEx);
+require 'page_tail.'.$phpEx;

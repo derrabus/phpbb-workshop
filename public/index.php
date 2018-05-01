@@ -45,7 +45,7 @@ $response = $kernel->handle($request);
 if (404 === $response->getStatusCode()) {
     [$targetFile] = explode('?', $request->getRequestUri(), 2);
 
-    if ($targetFile === '/') {
+    if ('/' === $targetFile) {
         $targetFile = '/index.php';
     }
     $scriptsDir = dirname(__DIR__).'/scripts';

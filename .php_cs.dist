@@ -1,0 +1,15 @@
+<?php
+
+use PhpCsFixer\Finder;
+
+$finder = Finder::create()
+    ->in(['scripts', 'src', 'public'])
+;
+
+return PhpCsFixer\Config::create()
+    ->setFinder($finder)
+    ->setRules([
+        '@Symfony' => true,
+        'array_syntax' => ['syntax' => 'short'],
+    ])
+;

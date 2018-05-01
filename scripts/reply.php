@@ -18,35 +18,33 @@
  *   (at your option) any later version.
  *
  ***************************************************************************/
-include('extention.inc');
+include 'extention.inc';
 if (isset($cancel) && $cancel) {
     header("Location: viewtopic.$phpEx?topic=$topic&forum=$forum");
 }
 
-
-include('config.'.$phpEx);
-require('auth.'.$phpEx);
-$pagetitle = "Post Reply";
-$pagetype = "reply";
+include 'config.'.$phpEx;
+require 'auth.'.$phpEx;
+$pagetitle = 'Post Reply';
+$pagetype = 'reply';
 
 if ($post_id) {
     // We have a post id, so include that in the checks..
-    $sql = "SELECT f.forum_type, f.forum_name, f.forum_access ";
-    $sql .= "FROM forums f, topics t, posts p ";
+    $sql = 'SELECT f.forum_type, f.forum_name, f.forum_access ';
+    $sql .= 'FROM forums f, topics t, posts p ';
     $sql .= "WHERE (f.forum_id = '$forum') AND (t.topic_id = $topic) AND (p.post_id = $post_id) AND (t.forum_id = f.forum_id) AND (p.forum_id = f.forum_id) AND (p.topic_id = t.topic_id)";
 } else {
     // No post id, just check forum and topic.
-    $sql = "SELECT f.forum_type, f.forum_name, f.forum_access ";
-    $sql .= "FROM forums f, topics t ";
+    $sql = 'SELECT f.forum_type, f.forum_name, f.forum_access ';
+    $sql .= 'FROM forums f, topics t ';
     $sql .= "WHERE (f.forum_id = '$forum') AND (t.topic_id = $topic) AND (t.forum_id = f.forum_id)";
 }
 
-
 if (!$result = mysql_query($sql, $db)) {
-    error_die("Could not connect to the forums database.");
+    error_die('Could not connect to the forums database.');
 }
 if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-    error_die("The forum/topic you selected does not exist.");
+    error_die('The forum/topic you selected does not exist.');
 }
 
 $forum_name = $myrow[forum_name];
@@ -58,43 +56,43 @@ if (is_locked($topic, $db)) {
     error_die($l_nopostlock);
 }
 
-if (!does_exists($forum, $db, "forum") || !does_exists($topic, $db, "topic")) {
-    error_die("The forum or topic you are attempting to post to does not exist. Please try again.");
+if (!does_exists($forum, $db, 'forum') || !does_exists($topic, $db, 'topic')) {
+    error_die('The forum or topic you are attempting to post to does not exist. Please try again.');
 }
 
 if ($HTTP_POST_VARS['submit']) {
-    if (trim(message) == '') {
+    if ('' == trim(message)) {
         error_die($l_emptymsg);
     }
 
     if (!$user_logged_in) {
-        if ($username == '' && $password == '' && $forum_access == 2) {
+        if ('' == $username && '' == $password && 2 == $forum_access) {
             // Not logged in, and username and password are empty and forum_access is 2 (anon posting allowed)
-            $userdata = array("user_id" => -1);
-        } elseif ($username == '' || $password == '') {
+            $userdata = ['user_id' => -1];
+        } elseif ('' == $username || '' == $password) {
             // no valid session, need to check user/pass.
-            include('page_header.'.$phpEx);
+            include 'page_header.'.$phpEx;
             error_die($l_userpass);
         }
 
         if ($userdata[user_level] == -1) {
-            include('page_header.'.$phpEx);
+            include 'page_header.'.$phpEx;
             error_die($l_userremoved);
         }
         if ($userdata[user_id] != -1) {
             $md_pass = md5($password);
             $userdata = get_userdata($username, $db);
-            if ($md_pass != $userdata["user_password"]) {
-                include('page_header.'.$phpEx);
+            if ($md_pass != $userdata['user_password']) {
+                include 'page_header.'.$phpEx;
                 error_die($l_wrongpass);
             }
         }
-        if ($forum_access == 3 && $userdata[user_level] < 2) {
-            include('page_header.'.$phpEx);
+        if (3 == $forum_access && $userdata[user_level] < 2) {
+            include 'page_header.'.$phpEx;
             error_die($l_nopost);
         }
-        if (is_banned($userdata[user_id], "username", $db)) {
-            include('page_header.'.$phpEx);
+        if (is_banned($userdata[user_id], 'username', $db)) {
+            include 'page_header.'.$phpEx;
             error_die($l_banned);
         }
         if ($userdata[user_id] != -1) {
@@ -103,17 +101,17 @@ if ($HTTP_POST_VARS['submit']) {
             set_session_cookie($sessid, $sesscookietime, $sesscookiename, $cookiepath, $cookiedomain, $cookiesecure);
         }
     } else {
-        if ($forum_access == 3 && $userdata[user_level] < 2) {
-            include('page_header.'.$phpEx);
+        if (3 == $forum_access && $userdata[user_level] < 2) {
+            include 'page_header.'.$phpEx;
             error_die($l_nopost);
         }
     }
     // Either valid user/pass, or valid session. continue with post.. but first:
     // Check that, if this is a private forum, the current user can post here.
 
-    if ($forum_type == 1) {
+    if (1 == $forum_type) {
         if (!check_priv_forum_auth($userdata[user_id], $forum, true, $db)) {
-            include('page_header.'.$phpEx);
+            include 'page_header.'.$phpEx;
             error_die("$l_privateforum $l_nopost");
         }
     }
@@ -121,19 +119,19 @@ if ($HTTP_POST_VARS['submit']) {
     $poster_ip = $REMOTE_ADDR;
 
     $is_html_disabled = false;
-    if ($allow_html == 0 || isset($html)) {
+    if (0 == $allow_html || isset($html)) {
         $message = htmlspecialchars($message);
         $is_html_disabled = true;
 
         if (isset($quote) && $quote) {
-            $edit_by = get_syslang_string($sys_lang, "l_editedby");
+            $edit_by = get_syslang_string($sys_lang, 'l_editedby');
 
             // If it's been edited more than once, there might be old "edited by" strings with
             // escaped HTML code in them. We want to fix this up right here:
-            $message = preg_replace("#&lt;font\ size\=-1&gt;\[\ $edit_by(.*?)\ \]&lt;/font&gt;#si", '<font size=-1>[ ' . $edit_by . '\1 ]</font>', $message);
+            $message = preg_replace("#&lt;font\ size\=-1&gt;\[\ $edit_by(.*?)\ \]&lt;/font&gt;#si", '<font size=-1>[ '.$edit_by.'\1 ]</font>', $message);
         }
     }
-    if ($allow_bbcode == 1 && !isset($bbcode)) {
+    if (1 == $allow_bbcode && !isset($bbcode)) {
         $message = bbencode($message, $is_html_disabled);
     }
 
@@ -143,10 +141,10 @@ if ($HTTP_POST_VARS['submit']) {
         $message = smile($message);
     }
 
-    $message = str_replace("\n", "<BR>", $message);
+    $message = str_replace("\n", '<BR>', $message);
     $message = censor_string($message, $db);
     $message = addslashes($message);
-    $time = date("Y-m-d H:i");
+    $time = date('Y-m-d H:i');
 
     //to prevent [addsig] from getting in the way, let's put the sig insert down here.
     if ($sig && $userdata[user_id] != -1) {
@@ -155,96 +153,95 @@ if ($HTTP_POST_VARS['submit']) {
 
     $sql = "INSERT INTO posts (topic_id, forum_id, poster_id, post_time, poster_ip) VALUES ('$topic', '$forum', '$userdata[user_id]','$time', '$poster_ip')";
     if (!$result = mysql_query($sql, $db)) {
-        error_die("Error - Could not enter data into the database. Please go back and try again");
+        error_die('Error - Could not enter data into the database. Please go back and try again');
     }
     $this_post = mysql_insert_id();
     if ($this_post) {
         $sql = "INSERT INTO posts_text (post_id, post_text) VALUES ($this_post, '$message')";
         if (!$result = mysql_query($sql, $db)) {
-            error_die("Could not enter post text!<br>Reason:".mysql_error());
+            error_die('Could not enter post text!<br>Reason:'.mysql_error());
         }
     }
 
     $sql = "UPDATE topics SET topic_replies = topic_replies+1, topic_last_post_id = $this_post, topic_time = '$time' WHERE topic_id = '$topic'";
     if (!$result = mysql_query($sql, $db)) {
-        error_die("Error - Could not enter data into the database. Please go back and try again");
+        error_die('Error - Could not enter data into the database. Please go back and try again');
     }
-    if ($userdata["user_id"] != -1) {
+    if ($userdata['user_id'] != -1) {
         $sql = "UPDATE users SET user_posts=user_posts+1 WHERE (user_id = $userdata[user_id])";
         $result = mysql_query($sql, $db);
         if (!$result) {
-            error_die("Error updating user post count.");
+            error_die('Error updating user post count.');
         }
     }
     $sql = "UPDATE forums SET forum_posts = forum_posts+1, forum_last_post_id = '$this_post' WHERE forum_id = '$forum'";
     $result = mysql_query($sql, $db);
     if (!$result) {
-        error_die("Error updating forums post count.");
+        error_die('Error updating forums post count.');
     }
     $sql = "SELECT t.topic_notify, u.user_email, u.username, u.user_id FROM topics t, users u WHERE t.topic_id = '$topic' AND t.topic_poster = u.user_id";
     if (!$result = mysql_query($sql, $db)) {
         error_die("Couldn't get topic and user information from database.");
     }
     $m = $result->fetch(\PDO::FETCH_BOTH);
-    if ($m[topic_notify] == 1 && $m[user_id] != $userdata[user_id]) {
+    if (1 == $m[topic_notify] && $m[user_id] != $userdata[user_id]) {
         // We have to get the mail body and subject line in the board default language!
-        $subject = get_syslang_string($sys_lang, "l_notifysubj");
-        $message = get_syslang_string($sys_lang, "l_notifybody");
+        $subject = get_syslang_string($sys_lang, 'l_notifysubj');
+        $message = get_syslang_string($sys_lang, 'l_notifybody');
         eval("\$message =\"$message\";");
         mail($m[user_email], $subject, $message, "From: $email_from\r\nX-Mailer: phpBB $phpbbversion");
     }
 
-
     $total_forum = get_total_topics($forum, $db);
-    $total_topic = get_total_posts($topic, $db, "topic")-1;
+    $total_topic = get_total_posts($topic, $db, 'topic') - 1;
     // Subtract 1 because we want the nr of replies, not the nr of posts.
 
     $forward = 1;
-    include('page_header.'.$phpEx);
+    include 'page_header.'.$phpEx;
 
     echo "<br><TABLE BORDER=\"0\" CELLPADDING=\"1\" CELLSPACEING=\"0\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"$tablewidth\">";
     echo "<TR><TD  BGCOLOR=\"$table_bgcolor\"><TABLE BORDER=\"0\" CALLPADDING=\"1\" CELLSPACEING=\"1\" WIDTH=\"100%\">";
     echo "<TR BGCOLOR=\"$color1\" ALIGN=\"LEFT\"><TD><font face=\"Verdana\" size=\"2\"><P>";
     echo "<P><BR><center>$l_stored<ul>$l_click <a href=\"viewtopic.$phpEx?topic=$topic&forum=$forum&$total_topic\">$l_here</a> $l_viewmsg<P>";
     echo "$l_click <a href=\"viewforum.$phpEx?forum=$forum&$total_forum\">$l_here</a> $l_returntopic</ul></center><P></font>";
-    echo "</TD></TR></TABLE></TD></TR></TABLE><br>";
+    echo '</TD></TR></TABLE></TD></TR></TABLE><br>';
 } else {
     // Private forum logic here.
 
-    if (($forum_type == 1) && !$user_logged_in && !$logging_in) {
-        require('page_header.'.$phpEx); ?>
-	<FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
-		<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $tablewidth?>">
+    if ((1 == $forum_type) && !$user_logged_in && !$logging_in) {
+        require 'page_header.'.$phpEx; ?>
+	<FORM ACTION="<?php echo $PHP_SELF; ?>" METHOD="POST">
+		<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $tablewidth; ?>">
 			<TR>
-				<TD BGCOLOR="<?php echo $table_bgcolor?>">
+				<TD BGCOLOR="<?php echo $table_bgcolor; ?>">
 					<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
-						<TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
-							<TD ALIGN="CENTER"><?php echo $l_private?></TD>
+						<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="LEFT">
+							<TD ALIGN="CENTER"><?php echo $l_private; ?></TD>
 						</TR>
-						<TR BGCOLOR="<?php echo $color2?>" ALIGN="LEFT">
+						<TR BGCOLOR="<?php echo $color2; ?>" ALIGN="LEFT">
 							<TD ALIGN="CENTER">
 								<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0">
 								  <TR>
 								    <TD>
-								      <FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-								      <b><?php echo $l_username?>: &nbsp;</b></font></TD><TD><INPUT TYPE="TEXT" NAME="username" SIZE="25" MAXLENGTH="40" VALUE="<?php echo $userdata[username]?>">
+								      <FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+								      <b><?php echo $l_username; ?>: &nbsp;</b></font></TD><TD><INPUT TYPE="TEXT" NAME="username" SIZE="25" MAXLENGTH="40" VALUE="<?php echo $userdata[username]; ?>">
 								    </TD>
 								  </TR><TR>
 								    <TD>
-								      <FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-								      <b><?php echo $l_password?>: </b></TD><TD><INPUT TYPE="PASSWORD" NAME="password" SIZE="25" MAXLENGTH="25">
+								      <FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+								      <b><?php echo $l_password; ?>: </b></TD><TD><INPUT TYPE="PASSWORD" NAME="password" SIZE="25" MAXLENGTH="25">
 								    </TD>
 								  </TR>
 								</TABLE>
 							</TD>
 						</TR>
-						<TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
+						<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="LEFT">
 							<TD ALIGN="CENTER">
-								<INPUT TYPE="HIDDEN" NAME="forum" VALUE="<?php echo $forum?>">
-								<INPUT TYPE="HIDDEN" NAME="topic" VALUE="<?php echo $topic?>">
-								<INPUT TYPE="HIDDEN" NAME="post" VALUE="<?php echo $post?>">
-								<INPUT TYPE="HIDDEN" NAME="quote" VALUE="<?php echo $quote?>">
-								<INPUT TYPE="SUBMIT" NAME="logging_in" VALUE="<?php echo $l_enter?>">
+								<INPUT TYPE="HIDDEN" NAME="forum" VALUE="<?php echo $forum; ?>">
+								<INPUT TYPE="HIDDEN" NAME="topic" VALUE="<?php echo $topic; ?>">
+								<INPUT TYPE="HIDDEN" NAME="post" VALUE="<?php echo $post; ?>">
+								<INPUT TYPE="HIDDEN" NAME="quote" VALUE="<?php echo $quote; ?>">
+								<INPUT TYPE="SUBMIT" NAME="logging_in" VALUE="<?php echo $l_enter; ?>">
 							</TD>
 						</TR>
 					</TABLE>
@@ -253,11 +250,11 @@ if ($HTTP_POST_VARS['submit']) {
 		</TABLE>
 	</FORM>
 	<?php
-        require('page_tail.'.$phpEx);
+        require 'page_tail.'.$phpEx;
         exit();
     } else {
         if ($logging_in) {
-            if ($username == '' || $password == '') {
+            if ('' == $username || '' == $password) {
                 error_die($l_userpass);
             }
             if (!check_username($username, $db)) {
@@ -273,9 +270,9 @@ if ($HTTP_POST_VARS['submit']) {
             set_session_cookie($sessid, $sesscookietime, $sesscookiename, $cookiepath, $cookiedomain, $cookiesecure);
         }
 
-        require('page_header.'.$phpEx);
+        require 'page_header.'.$phpEx;
 
-        if ($forum_type == 1) {
+        if (1 == $forum_type) {
             // To get here, we have a logged-in user. So, check whether that user is allowed to view
             // this private forum.
             if (!check_priv_forum_auth($userdata[user_id], $forum, true, $db)) {
@@ -285,33 +282,33 @@ if ($HTTP_POST_VARS['submit']) {
             // Ok, looks like we're good.
         }
     } ?>
-	<FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
-	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $tablewidth?>"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
+	<FORM ACTION="<?php echo $PHP_SELF; ?>" METHOD="POST">
+	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $tablewidth; ?>"><TR><TD  BGCOLOR="<?php echo $table_bgcolor; ?>">
 	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
-	<TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
-		<TD width=25%><font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>"><b><?php echo $l_aboutpost?></b></TD>
+	<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="LEFT">
+		<TD width=25%><font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>"><b><?php echo $l_aboutpost; ?></b></TD>
 <?php
-     if ($forum_access == 1) {
+     if (1 == $forum_access) {
          ?>
-			<TD><font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>"><?php echo "$l_regusers $l_inthisforum"?></TD>
+			<TD><font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>"><?php echo "$l_regusers $l_inthisforum"; ?></TD>
 <?php
-     } elseif ($forum_access == 2) {
+     } elseif (2 == $forum_access) {
          ?>
-				<TD><font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>"><?php echo "$l_anonusers $l_inthisforum $l_anonhint"?></TD>
+				<TD><font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>"><?php echo "$l_anonusers $l_inthisforum $l_anonhint"; ?></TD>
 <?php
-     } elseif ($forum_access == 3) {
+     } elseif (3 == $forum_access) {
          ?>
-				<TD><font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>"><?php echo "$l_modusers $l_inthisforum"?></TD>
+				<TD><font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>"><?php echo "$l_modusers $l_inthisforum"; ?></TD>
 <?php
      } ?>
 	</TR>
 	<TR ALIGN="LEFT">
-		<TD  BGCOLOR="<?php echo $color1?>"  width=25%><font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>"><b><?php echo $l_username?>:<b></TD>
-		<TD  BGCOLOR="<?php echo $color2?>"><font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+		<TD  BGCOLOR="<?php echo $color1; ?>"  width=25%><font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>"><b><?php echo $l_username; ?>:<b></TD>
+		<TD  BGCOLOR="<?php echo $color2; ?>"><font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 
 <?php
      if ($user_logged_in) {
-         echo $userdata[username] . " \n";
+         echo $userdata[username]." \n";
      } else {
          echo "<INPUT TYPE=\"TEXT\" NAME=\"username\" SIZE=\"25\" MAXLENGTH=\"40\" VALUE=\"$userdata[username]\"> \n";
      } ?>
@@ -330,16 +327,16 @@ if ($HTTP_POST_VARS['submit']) {
     } ?>
 
 	<TR ALIGN="LEFT">
-		<TD  BGCOLOR="<?php echo $color1?>" width=25%><font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>"><b><?php echo $l_body?>:</b><br><br>
+		<TD  BGCOLOR="<?php echo $color1; ?>" width=25%><font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>"><b><?php echo $l_body; ?>:</b><br><br>
 		<?php
         echo "$l_htmlis: ";
-    if ($allow_html == 1) {
+    if (1 == $allow_html) {
         echo "$l_on<BR>\n";
     } else {
         echo "$l_off<BR>\n";
     }
     echo "$l_bbcodeis: ";
-    if ($allow_bbcode == 1) {
+    if (1 == $allow_bbcode) {
         echo "$l_on<br>\n";
     } else {
         echo "$l_off<BR>\n";
@@ -350,62 +347,62 @@ if ($HTTP_POST_VARS['submit']) {
         if ($r = mysql_query($sql, $db)) {
             $m = $r->fetch(\PDO::FETCH_BOTH);
             $text = desmile($m[post_text]);
-            $text = str_replace("<BR>", "\n", $text);
+            $text = str_replace('<BR>', "\n", $text);
             $text = stripslashes($text);
             $text = bbdecode($text);
             $text = undo_make_clickable($text);
-            $text = str_replace("[addsig]", "", $text);
-            $syslang_quotemsg = get_syslang_string($sys_lang, "l_quotemsg");
+            $text = str_replace('[addsig]', '', $text);
+            $syslang_quotemsg = get_syslang_string($sys_lang, 'l_quotemsg');
             eval("\$reply = \"$syslang_quotemsg\";");
         } else {
             error_die("Error Contacting database. Please try again.\n<br>$sql");
         }
     } ?>
 		</font></TD>
-		<TD  BGCOLOR="<?php echo $color2?>">
-			<TEXTAREA NAME="message" ROWS=10 COLS=45 WRAP="VIRTUAL"><?php echo $reply?></TEXTAREA>
+		<TD  BGCOLOR="<?php echo $color2; ?>">
+			<TEXTAREA NAME="message" ROWS=10 COLS=45 WRAP="VIRTUAL"><?php echo $reply; ?></TEXTAREA>
 		</TD>
 	</TR>
 	<TR ALIGN="LEFT">
-		<TD  BGCOLOR="<?php echo $color1?>" width=25%><font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>"><b><?php echo $l_options?>:</b></TD>
-		<TD  BGCOLOR="<?php echo $color2?>" ><font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+		<TD  BGCOLOR="<?php echo $color1; ?>" width=25%><font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>"><b><?php echo $l_options; ?>:</b></TD>
+		<TD  BGCOLOR="<?php echo $color2; ?>" ><font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 		<?php
-            if ($allow_html == 1) {
-                if ($userdata[user_html] == 1) {
-                    $h = "CHECKED";
+            if (1 == $allow_html) {
+                if (1 == $userdata[user_html]) {
+                    $h = 'CHECKED';
                 } ?>
-				<INPUT TYPE="CHECKBOX" NAME="html" <?php echo $h?>><?php echo "$l_disable $l_html $l_onthispost"?><BR>
+				<INPUT TYPE="CHECKBOX" NAME="html" <?php echo $h; ?>><?php echo "$l_disable $l_html $l_onthispost"; ?><BR>
 		<?php
             } ?>
 		<?php
-            if ($allow_bbcode == 1) {
-                if ($userdata[user_bbcode] == 1) {
-                    $b = "CHECKED";
+            if (1 == $allow_bbcode) {
+                if (1 == $userdata[user_bbcode]) {
+                    $b = 'CHECKED';
                 } ?>
-				<INPUT TYPE="CHECKBOX" NAME="bbcode" <?php echo $b?>><?php echo "$l_disable <a href=\"$bbref_url\" target=\"_blank\"><i>$l_bbcode</i></a> $l_onthispost<BR>";
+				<INPUT TYPE="CHECKBOX" NAME="bbcode" <?php echo $b; ?>><?php echo "$l_disable <a href=\"$bbref_url\" target=\"_blank\"><i>$l_bbcode</i></a> $l_onthispost<BR>";
             }
-    if ($userdata[user_desmile] == 1) {
-        $ds = "CHECKED";
+    if (1 == $userdata[user_desmile]) {
+        $ds = 'CHECKED';
     } ?>
 
-		<INPUT TYPE="CHECKBOX" NAME="smile" <?php echo $ds?>><?php echo "$l_disable <a href=\"$smileref_url\" target=\"_blank\"><i>$l_smilies</i></a> $l_onthispost<BR>";
-    if ($allow_sig == 1) {
-        if ($userdata[user_attachsig] == 1) {
-            $s = "CHECKED";
+		<INPUT TYPE="CHECKBOX" NAME="smile" <?php echo $ds; ?>><?php echo "$l_disable <a href=\"$smileref_url\" target=\"_blank\"><i>$l_smilies</i></a> $l_onthispost<BR>";
+    if (1 == $allow_sig) {
+        if (1 == $userdata[user_attachsig]) {
+            $s = 'CHECKED';
         } ?>
-				<INPUT TYPE="CHECKBOX" NAME="sig" <?php echo $s?>><?php echo $l_attachsig?><BR>
+				<INPUT TYPE="CHECKBOX" NAME="sig" <?php echo $s; ?>><?php echo $l_attachsig; ?><BR>
 		<?php
     } ?>
 		</TD>
 	</TR>
 	<TR>
-		<TD  BGCOLOR="<?php echo $color1?>" colspan=2 ALIGN="CENTER">
-                <font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
-		<INPUT TYPE="HIDDEN" NAME="forum" VALUE="<?php echo $forum?>">
-		<INPUT TYPE="HIDDEN" NAME="topic" VALUE="<?php echo $topic?>">
-		<INPUT TYPE="HIDDEN" NAME="quote" VALUE="<?php echo $quote?>">
-		<INPUT TYPE="SUBMIT" NAME="submit" VALUE="<?php echo $l_submit?>">
-		&nbsp;<INPUT TYPE="SUBMIT" NAME="cancel" VALUE="<?php echo $l_cancelpost?>">
+		<TD  BGCOLOR="<?php echo $color1; ?>" colspan=2 ALIGN="CENTER">
+                <font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
+		<INPUT TYPE="HIDDEN" NAME="forum" VALUE="<?php echo $forum; ?>">
+		<INPUT TYPE="HIDDEN" NAME="topic" VALUE="<?php echo $topic; ?>">
+		<INPUT TYPE="HIDDEN" NAME="quote" VALUE="<?php echo $quote; ?>">
+		<INPUT TYPE="SUBMIT" NAME="submit" VALUE="<?php echo $l_submit; ?>">
+		&nbsp;<INPUT TYPE="SUBMIT" NAME="cancel" VALUE="<?php echo $l_cancelpost; ?>">
 		</TD>
 	</TR>
 	</TABLE></TD></TR></TABLE>
@@ -413,9 +410,9 @@ if ($HTTP_POST_VARS['submit']) {
 <?php
     // Topic review
     echo "<font size=\"$FontSize2\" face=\"$FontFace\">";
-    echo "<BR><CENTER>";
+    echo '<BR><CENTER>';
     echo "<a href=\"viewtopic.$phpEx?topic=$topic&forum=$forum\" target=\"_blank\"><b>$l_topicreview</b></a>";
-    echo "</CENTER><BR>";
+    echo '</CENTER><BR>';
 }
-require('page_tail.'.$phpEx);
+require 'page_tail.'.$phpEx;
 ?>

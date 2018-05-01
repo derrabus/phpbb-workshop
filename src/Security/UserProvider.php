@@ -14,7 +14,7 @@ class UserProvider implements UserProviderInterface
         4 => 'ROLE_ADMIN',
         3 => 'ROLE_SUPER_MODERATOR',
         2 => 'ROLE_MODERATOR',
-        1 => 'ROLE_USER'
+        1 => 'ROLE_USER',
     ];
 
     private $userRepository;

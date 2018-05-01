@@ -19,24 +19,24 @@
  *
  ***************************************************************************/
 
-include('extention.inc');
+include 'extention.inc';
 
-include('config.'.$phpEx);
-require('auth.'.$phpEx);
-$pagetitle = "FAQ";
-$pagetype = "other";
-include('page_header.'.$phpEx);
+include 'config.'.$phpEx;
+require 'auth.'.$phpEx;
+$pagetitle = 'FAQ';
+$pagetype = 'other';
+include 'page_header.'.$phpEx;
 ?>
 
 <div align="center"><center>
 <table border="0" width="100%" cellpadding="6" bgcolor=>
-    <tr bgcolor="<?php echo $color1?>">
-        <td><font size="<?php echo $FontSize4?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>"><b>Frequently
+    <tr bgcolor="<?php echo $color1; ?>">
+        <td><font size="<?php echo $FontSize4; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>"><b>Frequently
           Asked Questions / Oft gestellte Fragen und Antworten</font></b></td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-          <font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $linkcolor?>">
+          <font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $linkcolor; ?>">
           <a href="#register">Muss ich mich registrieren?</a><br>
           <a href="#smilies">Kann ich Smileys benutzen?</a><br>
           <a href="#html">Kann ich HTML verwenden?</a><br>
@@ -53,19 +53,19 @@ include('page_header.'.$phpEx);
           <a href="#pw">Ich habe mein Passwort vergessen. Was kann ich tun?</a><br>
           <a href="#notify">Kann ich per email benachrichtigt werden, sobald jemand auf mein Thema antwortet?</a><br>
           <a href="#searchprivate">Kann ich private Foren durchsuchen?</a><br>
-          <a href="#ranks">Was sind R&auml;nge in den <?php echo $sitename?> Foren?</a><br>
+          <a href="#ranks">Was sind R&auml;nge in den <?php echo $sitename; ?> Foren?</a><br>
           <a href="#rednumbers">Warum brennen die Ordner in der Liste der Themen?</a></p></font>
         </td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
-        <font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+        <font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
         <a name="register"><b><br>Registrieren</b></font></a>
         </td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Registration ist nur f&uuml;r bestimmte Foren notwendig. Abh&auml;ngig davon, wie der
 	Administrator die Foren eingerichtet hat, m&uuml;ssen Sie bei einigen Foren als Benutzer
 	registriert und angemeldet sein, in anderen Foren k&ouml;nnen Sie schreiben, ohne registriert zu sein.
@@ -79,19 +79,19 @@ include('page_header.'.$phpEx);
 	Ihre email-Adresse zu sehen, wenn Sie bei der Registrierung oder sp&auml;ter in Ihrem Benutzerprofil die
 	entsprechende Option anklicken.
 	Wenn Sie jetzt registrieren m&ouml;chten, klicken Sie
-	<a href="<?php echo $url_phpbb?>/bb_register.<?php echo $phpEx?>?mode=agreement">hier...</a></font>
+	<a href="<?php echo $url_phpbb; ?>/bb_register.<?php echo $phpEx; ?>?mode=agreement">hier...</a></font>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="smilies">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
         <b><br>Smilies</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Vielleicht kennen Sie Smileys schon von emails oder anderen Forumsystemen.
 	Smileys sind kleine Gesichter, die Sie im Text Ihrer Beitr&auml;ge verwenden k&ouml;nnen, um zum Beispiel
 	Ironie oder Entt&auml;uschung anzudeuten, oder einfach um die Nachrichten aufzulockern, zum Beispiel ein
@@ -102,39 +102,39 @@ include('page_header.'.$phpEx);
 	Dieses Forumsystem verwandelt im Text der Beitr&auml;ge angegebene Smileys automatisch zu den entsprechenden kleinen
 	Bildchen.
 	Sie k&ouml;nnen zwischen den folgenden Smileys w&auml;hlen:</font><BR>
-	<table width="50%" ALIGN="CENTER" BGCOLOR="<?php echo $table_bgcolor?>" CELLSPACEING=1 BORDER="0">
+	<table width="50%" ALIGN="CENTER" BGCOLOR="<?php echo $table_bgcolor; ?>" CELLSPACEING=1 BORDER="0">
 	  <TR><TD>
 	  <TABLE WIDTH="100%" BORDER="0">
-		 <TR BGCOLOR="<?php echo $color1?>">
+		 <TR BGCOLOR="<?php echo $color1; ?>">
 		 <TD width="100">
-		 	<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-		 		<?php echo $l_smilesym?>
+		 	<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+		 		<?php echo $l_smilesym; ?>
 		 	</FONT>
 		 </td>
 		 <td width="50%">
-		 	<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-				<?php echo $l_smileemotion?>
+		 	<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+				<?php echo $l_smileemotion; ?>
 			</FONT>
 		</td>
 		<td width="55">
-		 	<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-				<?php echo $l_smilepict?>
+		 	<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+				<?php echo $l_smilepict; ?>
 			</FONT>
 		</td></tr>
  <?php
 
-      if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
+      if ($getsmiles = mysql_query('SELECT * FROM smiles')) {
           while ($smile = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
               ?>
-		 <TR BGCOLOR="<?php echo $color2?>">
+		 <TR BGCOLOR="<?php echo $color2; ?>">
 		 <TD width="100">
-		 	<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-		 		<?php echo stripslashes($smile[code])?>
+		 	<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+		 		<?php echo stripslashes($smile[code]); ?>
 		 	</FONT>
 		 </td>
 		 <td width="50%">
-		 	<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-				<?php echo stripslashes($smile[emotion])?>&nbsp;
+		 	<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+				<?php echo stripslashes($smile[emotion]); ?>&nbsp;
 			</FONT>
 		</td>
 		<td width="55">
@@ -143,23 +143,23 @@ include('page_header.'.$phpEx);
 <?php
           }
       } else {
-          echo "Fehler 102: Konnte Smileys nicht in der Datenbank finden.";
+          echo 'Fehler 102: Konnte Smileys nicht in der Datenbank finden.';
       }
 ?>
     </TABLE></TABLE>
     </div>
 	</td>
     </tr>
-	<tr bgcolor="<?php echo $color1?>">
+	<tr bgcolor="<?php echo $color1; ?>">
 	<td>
 		<p align="left"><a name="html">
-		<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+		<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 		<b><br>Verwendung von HTML</b></font></a></p>
 	</td>
 	</tr>
-	<tr bgcolor="<?php echo $color2?>">
+	<tr bgcolor="<?php echo $color2; ?>">
 	<td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Sie k&ouml;nnen HTML-Codes in Ihren Beitr&auml;gen nutzen, wenn der Administrator oder die Moderatorin das in
 	Ihrem Forum aktiviert haben.
 	Bei jedem Beitrag, den Sie schreiben, wird Ihnen angezeigt, ob Sie BBCode und/oder HTML verwenden k&ouml;nnen.
@@ -167,16 +167,16 @@ include('page_header.'.$phpEx);
 	Syntax. Falls nicht, muss die Administratorin oder der moderator des Forums Ihren Beitrag nachtr&auml;glich &auml;ndern.
 	Vergessen Sie das Gesagte gleich wieder, wenn Sie nicht wissen, was HTML oder BBCode ist.
 	</td>
-	<tr bgcolor="<?php echo $color1?>">
+	<tr bgcolor="<?php echo $color1; ?>">
 	<td>
 		<p align="left"><a name="bbcode">
-		<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+		<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 		<b><br>Verwendung von BBCode / Was ist BBCode?</b></font></a></p>
 	</td>
 	</tr>
-	<tr bgcolor="<?php echo $color2?>">
+	<tr bgcolor="<?php echo $color2; ?>">
 	<td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 BBCode ist eine Variante von HTML-Tags, die Sie vielleicht schon kennen. Grunds&auml;tzlich k&ouml;nnen Sie mit BBCode
 Formatierungen in Ihren Text einbringen, die normalerweise HTML erfordern w&uuml;rden, so zum Beispiel <b>Fettdruck</b>.
 Selbst wenn HTML f&uuml;r das Forum deaktiviert ist, k&ouml;nnen Sie BBCode verwenden.
@@ -184,13 +184,13 @@ BBCode ist eine Alternative zu HTML-Code, weil BBCode weniger Fachwissen ben&oum
 Eventuell falsche Syntax wird Ihre Seite nicht unleserlich machen.
 <P>
 
-<table border=0 cellpadding=0 cellspacing=0 width="<?php echo $tablewidth?>" align="CENTER"><TR><td bgcolor="#FFFFFF">
+<table border=0 cellpadding=0 cellspacing=0 width="<?php echo $tablewidth; ?>" align="CENTER"><TR><td bgcolor="#FFFFFF">
 <table border=0 cellpadding=4 border=0 cellspacing=1 width=100%>
-<TR bgcolor="<?php echo $color1?>">
+<TR bgcolor="<?php echo $color1; ?>">
 <TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Verweise auf Internetadressen (URLs) einbinden</FONT></td></tr>
-<TR bgcolor="<?php echo $color2?>"><TD><FONT SIZE="2" FACE="Verdana, Arial">
+<TR bgcolor="<?php echo $color2; ?>"><TD><FONT SIZE="2" FACE="Verdana, Arial">
 Falls BBCode in Ihrem Forum aktiviert ist, brauchen Sie nicht mehr den [URL] -Code, um einen Hyperlink zu erzeugen.
 Schreiben Sie einfach den kompletten Link auf eine der folgenden Wege und der Hyperlink wird automatisch erstellt.
 Sie k&ouml;nnen so in Ihrem Beitrag ganz einfach auf eine beliebige andere Internetseite verweisen, die dann durch einen
@@ -222,10 +222,10 @@ beliebigen Seite lenken, die nach dem Gleichheitszeichen steht.
 Bitte beachten Sie, dass Sie innerhalb der URL-Adresse KEINE Anf&uuml;hrungszeichen verwenden.
 </font>
 </td>
-<tr bgcolor="<?php echo $color1?>"><td>
+<tr bgcolor="<?php echo $color1; ?>"><td>
 <FONT SIZE="2" FACE="Verdana, Arial">
 email-Adressen einbinden</FONT></td></tr>
-<TR bgcolor="<?php echo $color2?>"><TD>
+<TR bgcolor="<?php echo $color2; ?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Um eine email-Adresse innerhalb Ihrer Nachricht anzugeben, umklammern Sie die Adresse wie im folgenden Beispiel:
 (BBCode ist <FONT COLOR="#FF0000">rot</FONT> markiert).
@@ -238,10 +238,10 @@ In diesem Beispiel erzeugt BBCode daraus einen Link, der automatisch das email-P
 an help@dellekom.de eine email schreiben zu k&ouml;nnen.
 </FONT>
 </td></tr>
-<tr bgcolor="<?php echo $color1?>"><td>
+<tr bgcolor="<?php echo $color1; ?>"><td>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Fettdruck und Kursivschrift</FONT></td></tr>
-<TR bgcolor="<?php echo $color2?>"><TD>
+<TR bgcolor="<?php echo $color2; ?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Sie k&ouml;nnen Text mit den [b] [/b] oder [i] [/i] - Markierungen (Tags) <b>fettdrucken</b> oder <i>schr&auml;gstellen</i>
 <P>
@@ -251,10 +251,10 @@ Hello, <FONT COLOR="#FF0000">[i]</FONT><I>Jerry</I><FONT COLOR="#FF0000">[/i]</F
 </CENTER>
 </FONT>
 </td></tr>
-<tr bgcolor="<?php echo $color1?>"><td>
+<tr bgcolor="<?php echo $color1; ?>"><td>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Aufz&auml;hlungen und Listen</FONT></td></tr>
-<TR bgcolor="<?php echo $color2?>"><TD>
+<TR bgcolor="<?php echo $color2; ?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Sie k&ouml;nnen auch Listen mit Aufz&auml;hlungspunkten (Punkt oder Zahl) erzeugen:
 <P>
@@ -296,10 +296,10 @@ This produces:
 
 </FONT>
 </td></tr>
-<TR bgcolor="<?php echo $color1?>"><TD>
+<TR bgcolor="<?php echo $color1; ?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Bilder hinzuf&uuml;gen</font></td></tr>
-<TR bgcolor="<?php echo $color2?>"><TD>
+<TR bgcolor="<?php echo $color2; ?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Verwenden Sie einfach den [URL] - Code wie im folgenden Beispiel, um ein Bild in Ihren Text einzubinden.
  (BBCode ist <FONT COLOR="#FF0000">rot</FONT> dargestellt).
@@ -312,10 +312,10 @@ In diesem Beispiel bindet BBCode das Bild automatisch in Ihren Beitrag ein. Beac
 "http://" -Teil der URL f&uuml;r den  <FONT COLOR="#FF0000">[img]</FONT> -Code unverzichtbar ist.
 </FONT>
 </td></tr>
-<TR bgcolor="<?php echo $color1?>"><TD>
+<TR bgcolor="<?php echo $color1; ?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Zitieren anderer Beitr&auml;ge</font></td></tr>
-<TR bgcolor="<?php echo $color2?>"><TD>
+<TR bgcolor="<?php echo $color2; ?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Um eine bestimmte Stelle aus einem anderen Beitrag zu zitieren oder kommentieren, ben&uuml;tzen Sie einfach
 "Kopieren" und "Einf&uuml;gen" in Ihrem Browser und umklammern Sie das Zitat wie folgt:
@@ -328,10 +328,10 @@ Um eine bestimmte Stelle aus einem anderen Beitrag zu zitieren oder kommentieren
 In diesem Beispiel r&uuml;ckt BBCode diesen Text als Zitat ein.</FONT>
 </td>
 </tr>
-<TR bgcolor="<?php echo $color1?>"><TD>
+<TR bgcolor="<?php echo $color1; ?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 Code Tag</FONT></td></tr>
-<TR bgcolor="<?php echo $color2?>"><TD>
+<TR bgcolor="<?php echo $color2; ?>"><TD>
 <FONT SIZE="2" FACE="Verdana, Arial">
 &Auml;hnlich wie beim "Quote"-Tag [QUOTE] k&ouml;nnen Sie mit dem &lt;PRE&gt; Tag den Zeilenumbruch erhalten.
 Das ist bei der Wiedergabe von Gedichten oder von Programmcode sinnvoll.
@@ -354,7 +354,7 @@ Zeilenumbruch.
 </td></tr></table>
 </blockquote>
 <BR>
-<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 Sie m&uuml;ssen nicht HTML <b>und</b> BBCode verwenden, um dasselbe zu erreichen.
 BBCode beachtet nicht die Gross-/Kleinschreibung (Sie k&ouml;nnen <FONT COLOR="#FF0000">[URL]</FONT> oder
 <FONT COLOR="#FF0000">[url]</FONT> gleichermassen verwenden).
@@ -370,17 +370,17 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
 </FONT>
 </B>
 	</td>
-	    <tr bgcolor="<?php echo $color1?>">
+	    <tr bgcolor="<?php echo $color1; ?>">
         <td nowrap>
 	<p align="left"><a name="mods">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Moderatoren</b></font></a></p>
         </td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
           <p>
-	    <font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	    <font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	    Moderatoren pflegen die Foren.
 	    Sie k&ouml;nnen jeden Beitrag im Forum &auml;ndern oder l&ouml;schen.
 	    Wenn Sie eine Frage zu einem bestimmten Forum haben, wenden Sie sich am besten direkt an den
@@ -397,32 +397,32 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
           Sagen Sie gleich kurz und pr&auml;zise, worum es in Ihrem Beitrag geht.</font></p>
         </td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<p align="left"><a name="profile">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>&Auml;ndern Ihrer Einstellungen / Benutzerprofil</b></font></a></p>
         </td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Sie k&ouml;nnen einfach die Einstellungen &auml;ndern, mit denen Sie das Forum besuchen:
 	klicken Sie auf den Link &quot;Benutzerprofil&quot; in der Auswahl oben auf jeder Seite.
 	Identifizieren Sie sich durch Ihren Benutzernamen und Ihr Passwort, und schon k&ouml;nnen Sie
 	alle Einstellungen lesen und &auml;ndern.</font>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="prefs">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Anpassen Ihrer Einstellungen</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Als registrierter Benutzer k&ouml;nnen Sie Ihren Benutzernamen f&uuml;r ein Jahr speichern lassen.
 	Dadurch kann die Forumsoftware Sie erkennen, sobald Sie wieder das Forum betreten.
 	Sie k&ouml;nnen sogar die Voreinstellung der Farben und Schriftgr&ouml;ssen, mit denen Sie das Forum sehen,
@@ -434,14 +434,14 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
 	<br><b>ACHTUNG: Um diese Schablonen zu nutzen, m&uuml;ssen Sie in Ihrem Browser Cookies aktiviert haben.<b></font>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td><a name="cookies">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Cookies</b></font></a></td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Dieses Forum nutzt Cookies um folgende Informationen in Ihrem Browser abzuspeichern:
 	Das Datum Ihres letzten Besuches (um Ihnen anzuzeigen, wo seither neue Beitr&auml;ge entstanden sind),
 	Ihren Benutzername (um sich Ihnen mit Ihren pers&ouml;nlichen Einstellungen begr&uuml;ssen zu k&ouml;nnen)
@@ -457,15 +457,15 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
 	sollten Sie von Zeit zu Zeit Ihnen unbekannte Cookies l&ouml;schen.</font>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td><a name="edit">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>&Auml;ndern Ihrer Beitr&auml;ge</b></font></a>
         </td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Die von Ihnen erstellten Beitr&auml;ge k&ouml;nnen Sie jederzeit &auml;ndern.
 	Gehen Sie einfach zu Ihrem Beitrag. Unter dem Beitrag befindet sich ein &quot;&auml;ndern&qout; - Link.
 	Klicken Sie darauf, es &ouml;ffnet sich ein Fenster, in dem Sie Ihren Beitrag nachtr&auml;glich &auml;ndern k&ouml;nnen.
@@ -474,15 +474,15 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
 	Sp&auml;ter kann nur noch der Administrator oder die Moderatorin den Beitrag l&ouml;schen.</font>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td><a name="signature">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Signaturen / Unterschriftzeilen</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Sie k&ouml;nnen eine Signatur (ein oder zwei Zeilen, in denen z.B. Ihre Adresse oder telefonnummer oder ein
 	netter Spruch stehen kann) an jede Ihrer Beitr&auml;ge automatisch anf&uuml;gen lassen.
 	In Ihrer Benutzerprofil-Seite k&ouml;nnen Sie diese Signatur einstellen.
@@ -496,16 +496,16 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
         </p>
         </td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="attach">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Dateien anh&auml;ngen</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Aus Sicherheitsgr&uuml;nden k&ouml;nnen Sie keine Anh&auml;nge verschicken.
 	Verwennden Sie f&uuml;r Texte einfach die "Kopieren" und "Einf&uuml;gen"- Funktin Ihres Browsers und &uuml;bernehmen
 	Sie den Text direkt in Ihren Beitrag. Word-Dateien zu verschicken ist ohnehin keine gute Idee, da Sie
@@ -515,45 +515,45 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
 	gefunden haben.</font>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="search">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Suchen nach bestimmten Beitr&auml;gen</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Sie k&ouml;nnen nach bestimmten W&ouml;rtern in den Beitr&auml;gen, im Benutzername oder einem bestimmten Forum
 	suchen. Verwenden Sie dazu den Link  &quot;Suchen&quot; oben auf fast allen Seites.</font>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="announce">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Ank&uuml;ndigungen</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Forum-weite Ank&uuml;ndigungen sind noch nicht eingebaut, aber f&uuml;r zuk&uuml;nftige Versionen des Forums geplant.
 	Der Administrator kann jedoch ein Forum einrichten, in welchem nur moderatoren oder Administratorinnen
 	schreiben d&uuml;rfen. Ein solches Forum kann f&uuml;r Ank&uuml;ndigungen verwendet werden.
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="pw">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Sie haben Ihren Benutzernamen und / oder Ihr Passwort vergessen</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
  	Das kommt vor... In diesem Fall klicken sie bitte auf &quot;Passwort vergessen?&quot; in der N&auml;he des
  	Passwortfeldes der Eingabemaske f&uuml;r neue Beitr&auml;ge.
  	Dieser Link f&uuml;hrt Sie auf eine Seite, auf der Sie Ihre email-Adresse und einen Benutzernamen
@@ -564,45 +564,45 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
  	</FONT>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="notify">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>email-Benachrichtigung</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Wenn Sie ein neues Thema beginnen, k&ouml;nnen Sie sich die nachfolgenden Antworten dazu automatisch
 	per email zuschicken lassen. Kreuzen Sie dazu die &quot;email-Benachrichtigung&quot; auf der Seite an,
 	mit der Sie ein neues Thema er&ouml;ffnen.</font>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="searchprivate">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Kann ich private Foren durchsuchen?</b>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Ja, aber Sie k&ouml;nnen keinen der beitr&auml;ge lesen, wenn Sie nicht das jeweilige Passwort zu dem Forum
 	kennen. Wenden Sie sich an den Moderator des Forums, vielleicht gibt er Ihnen das Passwort.</font></p>
         </td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="ranks">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Was bedeuten die R&auml;nge im Forum?</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Dieses Forum teilt die Benutzer in Gruppen ein, die nach der Anzahl der bisherigen Beitr&auml;ge
 	benannt werden. So k&ouml;nnen Sie sehen, ob es sich um einen erfahrenen Nutzer des Forums oder einen
 	Neuling handelt. Dies ist hilfreich, wenn Sie Fragen haben.</p>
@@ -610,20 +610,20 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
 	Die R&auml;nge lauten wie folgt:<br>
 
 	<?php
-    $sql = "SELECT * FROM ranks WHERE rank_special = 0";
+    $sql = 'SELECT * FROM ranks WHERE rank_special = 0';
     if (!$r = mysql_query($sql, $db)) {
-        echo "Fehler 102 beim Zugriff auf Datenbank";
-        include('page_tail.'.$phpEx);
+        echo 'Fehler 102 beim Zugriff auf Datenbank';
+        include 'page_tail.'.$phpEx;
         exit();
     }
     ?>
-	<br><TABLE BORDER="0" WIDTH="<?php echo $TableWidth?>" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP"><TR><TD BGCOLOR="<?php echo $table_bgcolor?>">
+	<br><TABLE BORDER="0" WIDTH="<?php echo $TableWidth; ?>" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP"><TR><TD BGCOLOR="<?php echo $table_bgcolor; ?>">
 	<TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
-	<TR BGCOLOR="<?php echo $color1?>" ALIGN="CENTER">
-	<TD><font face="<?php echo $FontFace?>" size="<?php echo $FontSize2?>" color="<?php echo $textcolor?>">&nbsp;Rang&nbsp;</font></TD>
-	<TD><font face="<?php echo $FontFace?>" size="<?php echo $FontSize2?>" color="<?php echo $textcolor?>">&nbsp;Minimum Beitr&auml;ge&nbsp;</font></TD>
-	<TD><font face="<?php echo $FontFace?>" size="<?php echo $FontSize2?>" color="<?php echo $textcolor?>">&nbsp;Maximum Beitr&auml;ge&nbsp;</font></TD>
-        <TD><font face="<?php echo $FontFace?>" size="<?php echo $FontSize2?>" color="<?php echo $textcolor?>">&nbsp;Bild zum Rang&nbsp;</font></TD>
+	<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="CENTER">
+	<TD><font face="<?php echo $FontFace; ?>" size="<?php echo $FontSize2; ?>" color="<?php echo $textcolor; ?>">&nbsp;Rang&nbsp;</font></TD>
+	<TD><font face="<?php echo $FontFace; ?>" size="<?php echo $FontSize2; ?>" color="<?php echo $textcolor; ?>">&nbsp;Minimum Beitr&auml;ge&nbsp;</font></TD>
+	<TD><font face="<?php echo $FontFace; ?>" size="<?php echo $FontSize2; ?>" color="<?php echo $textcolor; ?>">&nbsp;Maximum Beitr&auml;ge&nbsp;</font></TD>
+        <TD><font face="<?php echo $FontFace; ?>" size="<?php echo $FontSize2; ?>" color="<?php echo $textcolor; ?>">&nbsp;Bild zum Rang&nbsp;</font></TD>
 	</TR>
 	<?php
     if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
@@ -633,43 +633,43 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
             echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_min]</font></TD>";
             echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_max]</font></TD>";
             // The rank image has not been implemented at this time.
-            if ($m[rank_image] != '') {
+            if ('' != $m[rank_image]) {
                 echo "<TD><img src=\"$url_images/$m[rank_image]\"></TD>";
             } else {
-                echo "<TD>&nbsp;</TD>";
+                echo '<TD>&nbsp;</TD>';
             }
-            echo "</TR>";
+            echo '</TR>';
         } while ($m = $r->fetch(\PDO::FETCH_BOTH));
     } else {
         echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">";
         echo "<TD COLSPAN=\"4\"><font face=\"<?php echo $FontFace?>\" size=\"2\">Keine R&auml;nge gespeichert</font></TD>";
-        echo "</TR>";
+        echo '</TR>';
     }
     ?>
 	</TABLE></TABLE></font>
 	<br>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
 	Der Administrator hat auch die M&ouml;glichkeit, an einzelne Benutzer bestimmte R&auml;nge zu vergeben. Die Tabelle
 	enth&auml;lt nicht diese speziellen R&auml;nge.</font>
         </td>
     </tr>
-    <tr bgcolor="<?php echo $color1?>">
+    <tr bgcolor="<?php echo $color1; ?>">
         <td>
 	<a name="rednumbers">
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b><br>Warum </b>
 	</font>
-	<font color="#FF0033" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="#FF0033" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b>brennen</b>
 	</font>
-	<font color="<?php echo $textcolor?>" size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>">
+	<font color="<?php echo $textcolor; ?>" size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>">
 	<b> manche Ordner in der Forenliste?</b></font></a>
 	</td>
     </tr>
-    <tr bgcolor="<?php echo $color2?>">
+    <tr bgcolor="<?php echo $color2; ?>">
         <td>
-	<font size="<?php echo $FontSize2?>" face="<?php echo $FontFace?>" color="<?php echo $textcolor?>">
-	Brennde Ordnersymbole zeigen an, dass in diesem Forum mehr als <?php echo $hot_threshold?> sind.
+	<font size="<?php echo $FontSize2; ?>" face="<?php echo $FontFace; ?>" color="<?php echo $textcolor; ?>">
+	Brennde Ordnersymbole zeigen an, dass in diesem Forum mehr als <?php echo $hot_threshold; ?> sind.
 	Dies ist ein Hinweis an Personen mit langsamer Internetverbindung, dass der Aufbau der
 	Seite etwas l&auml;nger dauern k&ouml;nnte.</font></p>
         </td>
@@ -679,5 +679,5 @@ Schr&auml;gstrich / enthalten: (<FONT COLOR="#FF0000">[/email]</FONT>)
 </div>
 
 <?php
-include('page_tail.'.$phpEx);
+include 'page_tail.'.$phpEx;
 ?>

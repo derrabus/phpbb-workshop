@@ -23,20 +23,19 @@
  * delpmsg.php - Nathan Codding
  * - Used for deleting private messages by users of the BB.
  */
-include('extention.inc');
+include 'extention.inc';
 
-include('config.'.$phpEx);
-require('auth.'.$phpEx);
-$pagetitle = "Private Messages";
-$pagetype = "privmsgs";
-include('page_header.'.$phpEx);
-
+include 'config.'.$phpEx;
+require 'auth.'.$phpEx;
+$pagetitle = 'Private Messages';
+$pagetype = 'privmsgs';
+include 'page_header.'.$phpEx;
 
 if (!$submit && !$user_logged_in) {
     login_form();
 } else {
     if (!$user_logged_in) {
-        if ($user == '' || $passwd == '') {
+        if ('' == $user || '' == $passwd) {
             error_die($l_userpass);
         }
         if (!check_username($user, $db)) {
@@ -45,7 +44,7 @@ if (!$submit && !$user_logged_in) {
         if (!check_user_pw($user, $passwd, $db)) {
             error_die("$l_wrongpass");
         }
-    
+
         /* throw away user data from the cookie, use username from the form to get new data */
         $userdata = get_userdata($user, $db);
     }
@@ -53,8 +52,8 @@ if (!$submit && !$user_logged_in) {
     $sql = "SELECT to_userid FROM priv_msgs WHERE (msg_id = $msgid)";
     $resultID = mysql_query($sql);
     if (!$resultID) {
-        echo mysql_error() . "<br>\n";
-        error_die("Error during DB query (checking msg ownership)");
+        echo mysql_error()."<br>\n";
+        error_die('Error during DB query (checking msg ownership)');
     }
     $row = $resultID->fetch(\PDO::FETCH_BOTH);
     if ($userdata[user_id] != $row[to_userid]) {
@@ -64,13 +63,13 @@ if (!$submit && !$user_logged_in) {
     $deleteSQL = "DELETE FROM priv_msgs WHERE (msg_id = $msgid)";
     $success = mysql_query($deleteSQL);
     if (!$success) {
-        error_die("Error deleting from DB.");
+        error_die('Error deleting from DB.');
     }
     echo "<br><TABLE BORDER=\"0\" CELLPADDING=\"1\" CELLSPACING=\"0\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"$tablewidth\">";
     echo "<TR><TD  BGCOLOR=\"$table_bgcolor\"><TABLE BORDER=\"0\" CALLPADDING=\"1\" CELLSPACING=\"1\" WIDTH=\"100%\">";
     echo "<TR BGCOLOR=\"$color1\" ALIGN=\"LEFT\"><TD><font face=\"Verdana\" size=\"2\"><P>";
     echo "<P><BR><center>$l_deletesucces $l_click <a href=\"$url_phpbb/viewpmsg.$phpEx\">$l_here</a> $l_toreturn<p></center></font>";
-    echo "</TD></TR></TABLE></TD></TR></TABLE><br>";
+    echo '</TD></TR></TABLE></TD></TR></TABLE><br>';
 } // if/else (if submit)
 
-require('page_tail.'.$phpEx);
+require 'page_tail.'.$phpEx;

@@ -16,16 +16,16 @@
  *   the Free Software Foundation; either version 2 of the License, or
  *   (at your option) any later version. *
  ***************************************************************************/
-if ($user_logged_in && $userdata[user_level] == 4) {
+if ($user_logged_in && 4 == $userdata[user_level]) {
     ?>
-     <FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize3?>" COLOR="<?php echo $textcolor?>">
-     <CENTER><a href="<?php echo $url_admin_index?>"><?php echo $l_adminpanel?></a></CENTER><BR>
+     <FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize3; ?>" COLOR="<?php echo $textcolor; ?>">
+     <CENTER><a href="<?php echo $url_admin_index; ?>"><?php echo $l_adminpanel; ?></a></CENTER><BR>
      </FONT>
 <?php
 }
 ?>
-<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize3?>" COLOR="<?php echo $textcolor?>">
-<CENTER><?php echo $l_poweredby?> <a href="http://www.phpbb.com/" target="_blank">phpBB</a> <?php echo "$l_version $phpbbversion"?><BR>
+<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize3; ?>" COLOR="<?php echo $textcolor; ?>">
+<CENTER><?php echo $l_poweredby; ?> <a href="http://www.phpbb.com/" target="_blank">phpBB</a> <?php echo "$l_version $phpbbversion"; ?><BR>
 <?php
   /* Please Note!
    * This is a notice to anyone who is using phpBB and altering this file.
@@ -44,11 +44,11 @@ Copyright &copy; 2000 - 2001 <a href="http://www.phpbb.com/credits.php" target="
 <?php
 showfooter($db);
 $mtime = microtime();
-$mtime = explode(" ", $mtime);
+$mtime = explode(' ', $mtime);
 $mtime = $mtime[1] + $mtime[0];
 $endtime = $mtime;
 $totaltime = ($endtime - $starttime);
-printf("<center><font size=-2>phpBB Created this page in %f seconds.</font></center>", $totaltime);
+printf('<center><font size=-2>phpBB Created this page in %f seconds.</font></center>', $totaltime);
 
 ?>
 

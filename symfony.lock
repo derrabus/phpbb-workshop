@@ -1,4 +1,7 @@
 {
+    "composer/semver": {
+        "version": "1.4.2"
+    },
     "derrabus/ereg-shim": {
         "version": "v1.0"
     },
@@ -47,8 +50,20 @@
     "doctrine/orm": {
         "version": "v2.6.0"
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "81dee417d2cc60cd1c9d6208dff2ec22a1103e93"
+        }
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "php-cs-fixer/diff": {
+        "version": "v1.3.0"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -128,6 +143,9 @@
     "symfony/lts": {
         "version": "4-dev"
     },
+    "symfony/options-resolver": {
+        "version": "v4.0.9"
+    },
     "symfony/phpunit-bridge": {
         "version": "3.3",
         "recipe": {
@@ -139,6 +157,9 @@
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.6.0"
+    },
+    "symfony/process": {
+        "version": "v4.0.9"
     },
     "symfony/profiler-pack": {
         "version": "v1.0.3"

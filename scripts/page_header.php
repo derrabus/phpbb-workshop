@@ -20,25 +20,22 @@
  ***************************************************************************/
 
 $mtime = microtime();
-$mtime = explode(" ", $mtime);
+$mtime = explode(' ', $mtime);
 $mtime = $mtime[1] + $mtime[0];
 $starttime = $mtime;
 
-
-
 /* Who's Online Hack */
-$IP=$REMOTE_ADDR;
+$IP = $REMOTE_ADDR;
 
-if ($pagetype == "index") {
+if ('index' == $pagetype) {
     $users_online = get_whosonline($IP, $userdata[username], 0, $db);
 }
-if ($pagetype == "viewforum" || $pagetype == "viewtopic") {
+if ('viewforum' == $pagetype || 'viewtopic' == $pagetype) {
     $users_online = get_whosonline($IP, $userdata[username], $forum, $db);
 }
-if ($pagetype == "admin") {
+if ('admin' == $pagetype) {
     $header_image = "../$header_image";
 }
-
 
 $login_logout_link = make_login_logout_link($user_logged_in, $url_phpbb);
 
@@ -48,17 +45,17 @@ header('Content-Type: text/html; charset=UTF8');
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
-<TITLE><?php echo "$sitename $l_forums - $pagetitle" ?></TITLE>
+<TITLE><?php echo "$sitename $l_forums - $pagetitle"; ?></TITLE>
 <?php
 if ($forward) {
     echo "<META HTTP-EQUIV=\"refresh\" content=\"3;URL=$url_phpbb/viewtopic.$phpEx?topic=$topic&forum=$forum&$total_topic\">";
 }
 $meta = showmeta($db);
 ?>
-<?php echo $meta?>
+<?php echo $meta; ?>
 </HEAD>
-<BODY BGCOLOR="<?php echo $bgcolor?>" TEXT="<?php echo $textcolor?>" LINK="<?php echo $linkcolor?>" VLINK="<?php echo $vlinkcolor?>">
-<font face="<?php echo $FontFace?>">
+<BODY BGCOLOR="<?php echo $bgcolor; ?>" TEXT="<?php echo $textcolor; ?>" LINK="<?php echo $linkcolor; ?>" VLINK="<?php echo $vlinkcolor; ?>">
+<font face="<?php echo $FontFace; ?>">
 <?php
 
 showheader($db);
@@ -70,9 +67,9 @@ showheader($db);
 
 // cell one and three in the first TD with rowspan (logo)
 ?>
-<TABLE BORDER=0 WIDTH="<?php echo $TableWidth?>" CELLPADDING="5" ALIGN="CENTER">
+<TABLE BORDER=0 WIDTH="<?php echo $TableWidth; ?>" CELLPADDING="5" ALIGN="CENTER">
 <TR>                    
-        <TD ALIGN="CENTER" WIDTH="50%" ROWSPAN="2"><a href="<?php echo $url_phpbb?>/index.<?php echo $phpEx ?>"><IMG SRC="<?php echo $header_image?>" border="0"></a><br>
+        <TD ALIGN="CENTER" WIDTH="50%" ROWSPAN="2"><a href="<?php echo $url_phpbb; ?>/index.<?php echo $phpEx; ?>"><IMG SRC="<?php echo $header_image; ?>" border="0"></a><br>
 			</TD>
 <?php
 // Switch for cell two  (posts buttons)
@@ -81,8 +78,8 @@ switch ($pagetype) {
     case 'newtopic':
 ?>
 	<TD ALIGN="CENTER">
-		<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>"><b>Post New Topic in:<BR>
-		<a href="<?php echo $url_phpbb?>/viewforum.<?php echo $phpEx ?>?forum=<?php echo $forum?>"><?php echo $forum_name?></a></b>
+		<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>"><b>Post New Topic in:<BR>
+		<a href="<?php echo $url_phpbb; ?>/viewforum.<?php echo $phpEx; ?>?forum=<?php echo $forum; ?>"><?php echo $forum_name; ?></a></b>
 		</font>
 	</TD>
 <?php
@@ -90,20 +87,20 @@ switch ($pagetype) {
     case 'viewforum':
 ?>
 	<TD ALIGN="CENTER">
-		<a href="<?php echo $url_phpbb?>/newtopic.<?php echo $phpEx ?>?forum=<?php echo $forum?>"><IMG SRC="<?php echo $newtopic_image?>" BORDER="0"></a>
+		<a href="<?php echo $url_phpbb; ?>/newtopic.<?php echo $phpEx; ?>?forum=<?php echo $forum; ?>"><IMG SRC="<?php echo $newtopic_image; ?>" BORDER="0"></a>
 	</TD>
 <?php
     break;
     case 'viewtopic':
 ?>
 	<TD ALIGN="CENTER">
-		<a href="<?php echo $url_phpbb?>/newtopic.<?php echo $phpEx ?>?forum=<?php echo $forum?>">
-			<IMG SRC="<?php echo $newtopic_image?>" BORDER="0"></a>&nbsp;&nbsp;
+		<a href="<?php echo $url_phpbb; ?>/newtopic.<?php echo $phpEx; ?>?forum=<?php echo $forum; ?>">
+			<IMG SRC="<?php echo $newtopic_image; ?>" BORDER="0"></a>&nbsp;&nbsp;
 <?php
-    if ($lock_state != 1) {
+    if (1 != $lock_state) {
         ?>
-		<a href="<?php echo $url_phpbb?>/reply.<?php echo $phpEx ?>?topic=<?php echo $topic?>&forum=<?php echo $forum?>">
-			<IMG SRC="<?php echo $reply_image?>" BORDER="0"></a></TD>
+		<a href="<?php echo $url_phpbb; ?>/reply.<?php echo $phpEx; ?>?topic=<?php echo $topic; ?>&forum=<?php echo $forum; ?>">
+			<IMG SRC="<?php echo $reply_image; ?>" BORDER="0"></a></TD>
 <?php
     } else {
         echo "<img src=\"$reply_locked_image\" BORDER=0>\n";
@@ -120,7 +117,7 @@ switch ($pagetype) {
         default:
 ?>
 	<TD ALIGN="CENTER">
-		<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize4?>" COLOR="<?php echo $textcolor?>"><?php echo "$sitename $l_forums"?></font>
+		<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize4; ?>" COLOR="<?php echo $textcolor; ?>"><?php echo "$sitename $l_forums"; ?></font>
 	</TD>
 <?php
     break;
@@ -130,37 +127,37 @@ switch ($pagetype) {
 </TR>
 <TR>
 	<TD ALIGN="CENTER">
-		<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>">
-		[<a href="<?php echo $url_phpbb?>/bb_register.<?php echo $phpEx ?>?mode=agreement"><?php echo $l_register?></a>]&nbsp;
-		[<a href="<?php echo $url_phpbb?>/bb_profile.<?php echo $phpEx ?>?mode=edit"><?php echo $l_editprofile?></a>]&nbsp;
-		[<a href="<?php echo $url_phpbb?>/prefs.<?php echo $phpEx ?>"><?php echo $l_editprefs?></a>]&nbsp;
-		[<a href="<?php echo $url_phpbb?>/search.<?php echo $phpEx ?>"><?php echo $l_search?></a>]<br>
+		<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>">
+		[<a href="<?php echo $url_phpbb; ?>/bb_register.<?php echo $phpEx; ?>?mode=agreement"><?php echo $l_register; ?></a>]&nbsp;
+		[<a href="<?php echo $url_phpbb; ?>/bb_profile.<?php echo $phpEx; ?>?mode=edit"><?php echo $l_editprofile; ?></a>]&nbsp;
+		[<a href="<?php echo $url_phpbb; ?>/prefs.<?php echo $phpEx; ?>"><?php echo $l_editprefs; ?></a>]&nbsp;
+		[<a href="<?php echo $url_phpbb; ?>/search.<?php echo $phpEx; ?>"><?php echo $l_search; ?></a>]<br>
 		
-		[<a href="<?php echo $url_phpbb?>/viewpmsg.<?php echo $phpEx ?>"><?php echo $l_privmsgs?></a>]&nbsp;
-		[<a href="<?php echo $url_phpbb?>/bb_memberlist.<?php echo $phpEx ?>"><?php echo $l_memberslist?></a>]&nbsp;
-		[<a href="<?php echo $url_phpbb?>/<?php echo $faq_url ?>"><?php echo $l_faq?></a>]&nbsp;
-		[<?php echo $login_logout_link?>]
+		[<a href="<?php echo $url_phpbb; ?>/viewpmsg.<?php echo $phpEx; ?>"><?php echo $l_privmsgs; ?></a>]&nbsp;
+		[<a href="<?php echo $url_phpbb; ?>/bb_memberlist.<?php echo $phpEx; ?>"><?php echo $l_memberslist; ?></a>]&nbsp;
+		[<a href="<?php echo $url_phpbb; ?>/<?php echo $faq_url; ?>"><?php echo $l_faq; ?></a>]&nbsp;
+		[<?php echo $login_logout_link; ?>]
 <?php	
         if ($user_logged_in) {
             // do PM notification.
-            $last_visit_date = date("Y-m-d h:i", $last_visit);
-            
+            $last_visit_date = date('Y-m-d h:i', $last_visit);
+
             $username = addslashes($userdata[username]);
-            
+
             $sql = "SELECT count(*) AS count FROM priv_msgs WHERE msg_status = '0' and to_userid = '$userdata[user_id]'";
-             
+
             if (!$result = mysql_query($sql, $db)) {
-                error_die("phpBB was unable to check private messages because " .mysql_error($db));
+                error_die('phpBB was unable to check private messages because '.mysql_error($db));
             }
-        
+
             $row = @$result->fetch(\PDO::FETCH_BOTH);
             $new_message = $row[count];
-            $word = ($new_message > 1) ? "messages" : "message";
+            $word = ($new_message > 1) ? 'messages' : 'message';
             $privmsg_url = "$url_phpbb/viewpmsg.$phpEx";
-            
-            if ($new_message != 0) {
+
+            if (0 != $new_message) {
                 eval($l_privnotify);
-                print $privnotify;
+                echo $privnotify;
             }
         }
 ?>		
@@ -172,23 +169,23 @@ switch ($pagetype) {
 //Third row with cell five and six (misc. information)
 switch ($pagetype) {
     case 'index':
-    $total_posts = get_total_posts("0", $db, "all");
-    $total_users = get_total_posts("0", $db, "users");
-    $sql = "SELECT username, user_id FROM users WHERE user_level != -1 ORDER BY user_id DESC LIMIT 1";
+    $total_posts = get_total_posts('0', $db, 'all');
+    $total_users = get_total_posts('0', $db, 'users');
+    $sql = 'SELECT username, user_id FROM users WHERE user_level != -1 ORDER BY user_id DESC LIMIT 1';
     $res = mysql_query($sql, $db);
     $row = $res->fetch(\PDO::FETCH_BOTH);
-    $newest_user = $row["username"];
-    $newest_user_id = $row["user_id"];
+    $newest_user = $row['username'];
+    $newest_user_id = $row['user_id'];
     $profile_url = "$url_phpbb/bb_profile.$phpEx?mode=view&user=$newest_user_id";
     $online_url = "$url_phpbb/whosonline.$phpEx";
 
 ?>
 <TR>
 	<TD COLSPAN="2" ALIGN="RIGHT">
-		<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>">
+		<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>">
 		<?php 
             eval($l_statsblock);
-            print $statsblock;
+            echo $statsblock;
             print_login_status($user_logged_in, $userdata[username], $url_phpbb);
         ?>
 		</font>
@@ -203,21 +200,21 @@ switch ($pagetype) {
 ?>
 <TR>
 	<TD COLSPAN="2" ALIGN="LEFT">
-	<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-		<b><?php echo $forum_name?></b>
+	<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+		<b><?php echo $forum_name; ?></b>
 		<BR>
-		<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>">
-			<?php echo $l_moderatedby?>:
+		<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>">
+			<?php echo $l_moderatedby; ?>:
 <?php
 $count = 0;
 $forum_moderators = get_moderators($forum, $db);
    while (list($null, $mods) = each($forum_moderators)) {
        while (list($mod_id, $mod_name) = each($mods)) {
            if ($count > 0) {
-               echo ", ";
+               echo ', ';
            }
-           echo "<a href=\"bb_profile.$phpEx?mode=view&user=$mod_id\">".trim($mod_name)."</a>";
-           $count++;
+           echo "<a href=\"bb_profile.$phpEx?mode=view&user=$mod_id\">".trim($mod_name).'</a>';
+           ++$count;
        }
    }
 ?></font></TD>
@@ -230,16 +227,16 @@ $forum_moderators = get_moderators($forum, $db);
 ?>
 <TR>
 	<TD COLSPAN="2" ALIGN="LEFT">
-	<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>">
-		<a href="<?php echo $url_phpbb?>/index.<?php echo $phpEx ?>"><?php echo $sitename?> Forum Index</a>
-		<b><?php echo $l_separator?></b>
-		<a href="<?php echo "$url_phpbb/viewforum.$phpEx?forum=$forum&$total_forum"?>"><?php echo stripslashes($forum_name)?></a> 
+	<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>">
+		<a href="<?php echo $url_phpbb; ?>/index.<?php echo $phpEx; ?>"><?php echo $sitename; ?> Forum Index</a>
+		<b><?php echo $l_separator; ?></b>
+		<a href="<?php echo "$url_phpbb/viewforum.$phpEx?forum=$forum&$total_forum"; ?>"><?php echo stripslashes($forum_name); ?></a> 
 <?php
-        if ($pagetype != "viewforum") {
+        if ('viewforum' != $pagetype) {
             echo "<b>$l_separator</b>";
         }
 ?>
-		<?php echo $topic_subject?>
+		<?php echo $topic_subject; ?>
 	</TD>
 </TR>
 <?php
@@ -248,8 +245,8 @@ $forum_moderators = get_moderators($forum, $db);
 ?>
 <TR>
         <TD COLSPAN="2" ALIGN="CENTER">
-	<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-		[<a href="<?php echo $url_phpbb?>/sendpmsg.<?php echo $phpEx ?>"><?php echo $l_sendpmsg?></a>]
+	<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+		[<a href="<?php echo $url_phpbb; ?>/sendpmsg.<?php echo $phpEx; ?>"><?php echo $l_sendpmsg; ?></a>]
 	<br>
         </TD>
 </TR>

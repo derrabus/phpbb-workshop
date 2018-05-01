@@ -20,7 +20,6 @@
  ***************************************************************************/
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Driver\Statement;
 
 /**
  * Start session-management functions - Nathan Codding, July 21, 2000.
@@ -34,9 +33,9 @@ use Doctrine\DBAL\Driver\Statement;
  */
 function new_session($userid, $remote_ip, $lifespan, $db)
 {
-    mt_srand((double)microtime()*1000000);
+    mt_srand((float) microtime() * 1000000);
     $sessid = mt_rand();
-      
+
     $currtime = (string) (time());
     $expirytime = (string) (time() - $lifespan);
 
@@ -44,18 +43,18 @@ function new_session($userid, $remote_ip, $lifespan, $db)
     $delresult = mysql_query($deleteSQL, $db);
 
     if (!$delresult) {
-        die("Delete failed in new_session()");
+        die('Delete failed in new_session()');
     }
 
     $sql = "INSERT INTO sessions (sess_id, user_id, start_time, remote_ip) VALUES ($sessid, $userid, $currtime, '$remote_ip')";
-    
+
     $result = mysql_query($sql, $db);
-    
+
     if ($result) {
         return $sessid;
     } else {
-        echo mysql_errno().": ".mysql_error()."<BR>";
-        die("Insert failed in new_session()");
+        echo mysql_errno().': '.mysql_error().'<BR>';
+        die('Insert failed in new_session()');
     } // if/else
 } // new_session()
 
@@ -65,16 +64,14 @@ function new_session($userid, $remote_ip, $lifespan, $db)
  * (just login) that call this code when it gets removed.
  * Sets a cookie with no specified expiry time. This makes the cookie last until the
  * user's browser is closed. (at last that's the case in IE5 and NS4.7.. Haven't tried
- * it with anything else.)
+ * it with anything else.).
  */
 function set_session_cookie($sessid, $cookietime, $cookiename, $cookiepath, $cookiedomain, $cookiesecure)
 {
-
     // This sets a cookie that will persist until the user closes their browser window.
     // since session expiry is handled on the server-side, cookie expiry time isn't a big deal.
     setcookie($cookiename, $sessid, 0, $cookiepath, $cookiedomain, $cookiesecure);
 } // set_session_cookie()
-
 
 /**
  * Returns the userID associated with the given session, based on
@@ -87,11 +84,11 @@ function get_userid_from_session($sessid, $cookietime, $remote_ip, $db)
     $sql = "SELECT user_id FROM sessions WHERE (sess_id = $sessid) AND (start_time > $mintime) AND (remote_ip = '$remote_ip')";
     $result = mysql_query($sql, $db);
     if (!$result) {
-        echo mysql_error() . "<br>\n";
-        die("Error doing DB query in get_userid_from_session()");
+        echo mysql_error()."<br>\n";
+        die('Error doing DB query in get_userid_from_session()');
     }
     $row = $result->fetch(\PDO::FETCH_BOTH);
-    
+
     if (!$row) {
         return 0;
     } else {
@@ -109,9 +106,10 @@ function update_session_time($sessid, $db)
     $sql = "UPDATE sessions SET start_time=$newtime WHERE (sess_id = $sessid)";
     $result = mysql_query($sql, $db);
     if (!$result) {
-        echo mysql_error() . "<br>\n";
-        die("Error doing DB update in update_session_time()");
+        echo mysql_error()."<br>\n";
+        die('Error doing DB update in update_session_time()');
     }
+
     return 1;
 } // update_session_time()
 
@@ -123,9 +121,10 @@ function end_user_session($userid, $db)
     $sql = "DELETE FROM sessions WHERE (user_id = $userid)";
     $result = mysql_query($sql, $db);
     if (!$result) {
-        echo mysql_error() . "<br>\n";
-        die("Delete failed in end_user_session()");
+        echo mysql_error()."<br>\n";
+        die('Delete failed in end_user_session()');
     }
+
     return 1;
 } // end_session()
 
@@ -138,7 +137,7 @@ function print_login_status($user_logged_in, $username, $url_phpbb)
 {
     global $phpEx;
     global $l_loggedinas, $l_notloggedin, $l_logout, $l_login;
-    
+
     if ($user_logged_in) {
         echo "<b>$l_loggedinas $username. <a href=\"$url_phpbb/logout.$phpEx\">$l_logout.</a></b><br>\n";
     } else {
@@ -159,11 +158,12 @@ function make_login_logout_link($user_logged_in, $url_phpbb)
     } else {
         $link = "<a href=\"$url_phpbb/login.$phpEx\">$l_login</a>";
     }
+
     return $link;
 } // make_login_logout_link()
 
 /**
- * End session-management functions
+ * End session-management functions.
  */
 
 /*
@@ -174,20 +174,20 @@ function get_total_topics($forum_id, $db)
     global $l_error;
     $sql = "SELECT count(*) AS total FROM topics WHERE forum_id = '$forum_id'";
     if (!$result = mysql_query($sql, $db)) {
-        return($l_error);
+        return $l_error;
     }
     if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-        return($l_error);
+        return $l_error;
     }
-    
-    return($myrow[total]);
+
+    return $myrow[total];
 }
 /*
  * Shows the 'header' data from the header/meta/footer table
  */
 function showheader($db)
 {
-    $sql = "SELECT header FROM headermetafooter";
+    $sql = 'SELECT header FROM headermetafooter';
     if ($result = mysql_query($sql, $db)) {
         if ($header = $result->fetch(\PDO::FETCH_BOTH)) {
             echo stripslashes($header[header]);
@@ -199,7 +199,7 @@ function showheader($db)
  */
 function showmeta($db)
 {
-    $sql = "SELECT meta FROM headermetafooter";
+    $sql = 'SELECT meta FROM headermetafooter';
     if ($result = mysql_query($sql, $db)) {
         if ($meta = $result->fetch(\PDO::FETCH_BOTH)) {
             echo stripslashes($meta[meta]);
@@ -211,7 +211,7 @@ function showmeta($db)
  */
 function showfooter($db)
 {
-    $sql = "SELECT footer FROM headermetafooter";
+    $sql = 'SELECT footer FROM headermetafooter';
     if ($result = mysql_query($sql, $db)) {
         if ($footer = $result->fetch(\PDO::FETCH_BOTH)) {
             echo stripslashes($footer[footer]);
@@ -227,22 +227,23 @@ function showfooter($db)
 function get_whosonline($IP, $username, $forum, Connection $db)
 {
     global $sys_lang;
-    if ($username == '') {
-        $username = get_syslang_string($sys_lang, "l_guest");
+    if ('' == $username) {
+        $username = get_syslang_string($sys_lang, 'l_guest');
     }
 
-    $time= explode(" ", microtime());
-    $userusec= (double)$time[0];
-    $usersec= (double)$time[1];
-    $username= addslashes($username);
-    $deleteuser= mysql_query("delete from whosonline where date < $usersec - 300", $db);
-    $userlog= $db->fetchArray("SELECT * FROM whosonline where IP = '$IP'");
-    if ($userlog == false) {
-        $ok= mysql_query("insert INTO whosonline (IP,DATE,username,forum) VALUES('$IP','$usersec', '$username', '$forum')", $db)or die("Unable to query db!");
+    $time = explode(' ', microtime());
+    $userusec = (float) $time[0];
+    $usersec = (float) $time[1];
+    $username = addslashes($username);
+    $deleteuser = mysql_query("delete from whosonline where date < $usersec - 300", $db);
+    $userlog = $db->fetchArray("SELECT * FROM whosonline where IP = '$IP'");
+    if (false == $userlog) {
+        $ok = mysql_query("insert INTO whosonline (IP,DATE,username,forum) VALUES('$IP','$usersec', '$username', '$forum')", $db) or die('Unable to query db!');
     }
-    $resultlogtab   = mysql_query("SELECT Count(*) as total FROM whosonline", $db);
-    $numberlogtab   = $resultlogtab->fetch(\PDO::FETCH_BOTH);
-    return($numberlogtab[total]);
+    $resultlogtab = mysql_query('SELECT Count(*) as total FROM whosonline', $db);
+    $numberlogtab = $resultlogtab->fetch(\PDO::FETCH_BOTH);
+
+    return $numberlogtab[total];
 }
 
 /*
@@ -253,10 +254,10 @@ function get_total_posts($id, $db, $type)
 {
     switch ($type) {
     case 'users':
-      $sql = "SELECT count(*) AS total FROM users WHERE (user_id != -1) AND (user_level != -1)";
+      $sql = 'SELECT count(*) AS total FROM users WHERE (user_id != -1) AND (user_level != -1)';
       break;
     case 'all':
-      $sql = "SELECT count(*) AS total FROM posts";
+      $sql = 'SELECT count(*) AS total FROM posts';
       break;
     case 'forum':
       $sql = "SELECT count(*) AS total FROM posts WHERE forum_id = '$id'";
@@ -266,16 +267,16 @@ function get_total_posts($id, $db, $type)
       break;
    // Old, we should never get this.
     case 'user':
-      die("Should be using the users.user_posts column for this.");
+      die('Should be using the users.user_posts column for this.');
    }
     if (!$result = mysql_query($sql, $db)) {
-        return("ERROR");
+        return 'ERROR';
     }
     if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-        return("0");
+        return '0';
     }
-   
-    return($myrow[total]);
+
+    return $myrow[total];
 }
 
 /*
@@ -299,19 +300,19 @@ function get_last_post($id, $db, $type)
       break;
    }
     if (!$result = mysql_query($sql, $db)) {
-        return($l_error);
+        return $l_error;
     }
-   
+
     if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-        return($l_noposts);
+        return $l_noposts;
     }
-    if (($type != 'user') && ($type != 'time_fix')) {
-        $val = sprintf("%s <br> %s %s", $myrow[post_time], $l_by, $myrow[username]);
+    if (('user' != $type) && ('time_fix' != $type)) {
+        $val = sprintf('%s <br> %s %s', $myrow[post_time], $l_by, $myrow[username]);
     } else {
         $val = $myrow[post_time];
     }
-   
-    return($val);
+
+    return $val;
 }
 
 /*
@@ -321,15 +322,16 @@ function get_moderators($forum_id, $db)
 {
     $sql = "SELECT u.user_id, u.username FROM users u, forum_mods f WHERE f.forum_id = '$forum_id' and f.user_id = u.user_id";
     if (!$result = mysql_query($sql, $db)) {
-        return(array());
+        return [];
     }
     if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-        return(array());
+        return [];
     }
     do {
-        $array[] = array("$myrow[user_id]" => "$myrow[username]");
+        $array[] = ["$myrow[user_id]" => "$myrow[username]"];
     } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
-    return($array);
+
+    return $array;
 }
 
 /*
@@ -340,15 +342,15 @@ function is_moderator($forum_id, $user_id, $db)
 {
     $sql = "SELECT user_id FROM forum_mods WHERE forum_id = '$forum_id' AND user_id = '$user_id'";
     if (!$result = mysql_query($sql, $db)) {
-        return("0");
+        return '0';
     }
     if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-        return("0");
+        return '0';
     }
-    if ($myrow[user_id] != '') {
-        return("1");
+    if ('' != $myrow[user_id]) {
+        return '1';
     } else {
-        return("0");
+        return '0';
     }
 }
 
@@ -363,12 +365,12 @@ function check_user_pw($username, $password, $db)
     $sql = "SELECT user_id FROM users WHERE (username = '$username') AND (user_password = '$password')";
     $resultID = mysql_query($sql, $db);
     if (!$resultID) {
-        echo mysql_error() . "<br>";
-        die("Error doing DB query in check_user_pw()");
+        echo mysql_error().'<br>';
+        die('Error doing DB query in check_user_pw()');
     }
+
     return $resultID->rowCount();
 } // check_user_pw()
-
 
 /**
  * Nathan Codding - July 19, 2000
@@ -379,12 +381,12 @@ function get_pmsg_count($user_id, $db)
     $sql = "SELECT msg_id FROM priv_msgs WHERE (to_userid = $user_id)";
     $resultID = mysql_query($sql);
     if (!$resultID) {
-        echo mysql_error() . "<br>";
-        die("Error doing DB query in get_pmsg_count");
+        echo mysql_error().'<br>';
+        die('Error doing DB query in get_pmsg_count');
     }
+
     return $resultID->rowCount();
 } // get_pmsg_count()
-
 
 /**
  * Nathan Codding - July 19, 2000
@@ -396,31 +398,32 @@ function check_username($username, $db)
     $sql = "SELECT user_id FROM users WHERE (username = '$username') AND (user_level != '-1')";
     $resultID = mysql_query($sql);
     if (!$resultID) {
-        echo mysql_error() . "<br>";
-        die("Error doing DB query in check_username()");
+        echo mysql_error().'<br>';
+        die('Error doing DB query in check_username()');
     }
+
     return $resultID->rowCount();
 } // check_username()
-
 
 /**
  * Nathan Codding, July 19/2000
  * Get a user's data, given their user ID.
  */
-
 function get_userdata_from_id($userid, $db)
 {
     $sql = "SELECT * FROM users WHERE user_id = $userid";
     if (!$result = mysql_query($sql, $db)) {
-        $userdata = array("error" => "1");
-        return ($userdata);
+        $userdata = ['error' => '1'];
+
+        return $userdata;
     }
     if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-        $userdata = array("error" => "1");
-        return ($userdata);
+        $userdata = ['error' => '1'];
+
+        return $userdata;
     }
-    
-    return($myrow);
+
+    return $myrow;
 }
 
 /*
@@ -431,13 +434,13 @@ function get_userdata($username, $db)
     $username = addslashes($username);
     $sql = "SELECT * FROM users WHERE username = '$username' AND user_level != -1";
     if (!$result = mysql_query($sql, $db)) {
-        $userdata = array("error" => "1");
+        $userdata = ['error' => '1'];
     }
     if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-        $userdata = array("error" => "1");
+        $userdata = ['error' => '1'];
     }
-    
-    return($myrow);
+
+    return $myrow;
 }
 
 /*
@@ -447,12 +450,13 @@ function setuptheme($theme, $db)
 {
     $sql = "SELECT * FROM themes WHERE theme_id = '$theme'";
     if (!$result = mysql_query($sql, $db)) {
-        return(0);
+        return 0;
     }
     if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-        return(0);
+        return 0;
     }
-    return($myrow);
+
+    return $myrow;
 }
 
 /*
@@ -470,12 +474,13 @@ function does_exists($id, $db, $type)
         break;
     }
     if (!$result = mysql_query($sql, $db)) {
-        return(0);
+        return 0;
     }
     if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
-        return(0);
+        return 0;
     }
-    return(1);
+
+    return 1;
 }
 
 /*
@@ -485,15 +490,15 @@ function is_locked($topic, $db)
 {
     $sql = "SELECT topic_status FROM topics WHERE topic_id = '$topic'";
     if (!$r = mysql_query($sql, $db)) {
-        return(false);
+        return false;
     }
     if (!$m = $r->fetch(\PDO::FETCH_BOTH)) {
-        return(false);
+        return false;
     }
-    if ($m[topic_status] == 1) {
-        return(true);
+    if (1 == $m[topic_status]) {
+        return true;
     } else {
-        return(false);
+        return false;
     }
 }
 
@@ -510,21 +515,22 @@ function is_locked($topic, $db)
 function smile($message)
 {
     global $db, $url_smiles;
-   
+
     // Pad it with a space so the regexp can match.
-    $message = ' ' . $message;
-   
-    if ($getsmiles = mysql_query("SELECT *, length(code) as length FROM smiles ORDER BY length DESC")) {
+    $message = ' '.$message;
+
+    if ($getsmiles = mysql_query('SELECT *, length(code) as length FROM smiles ORDER BY length DESC')) {
         while ($smiles = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
             $smile_code = preg_quote($smiles[code]);
             $smile_code = str_replace('/', '//', $smile_code);
-            $message = preg_replace("/([\n\\ \\.])$smile_code/si", '\1<IMG SRC="' . $url_smiles . '/' . $smiles[smile_url] . '">', $message);
+            $message = preg_replace("/([\n\\ \\.])$smile_code/si", '\1<IMG SRC="'.$url_smiles.'/'.$smiles[smile_url].'">', $message);
         }
     }
-   
+
     // Remove padding, return the new string.
     $message = substr($message, 1);
-    return($message);
+
+    return $message;
 }
 
 /*
@@ -535,13 +541,14 @@ function desmile($message)
 {
     // Ick Ick Global variables...remind me to fix these! - theFinn
     global $db, $url_smiles;
-   
-    if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
+
+    if ($getsmiles = mysql_query('SELECT * FROM smiles')) {
         while ($smiles = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
             $message = str_replace("<IMG SRC=\"$url_smiles/$smiles[smile_url]\">", $smiles[code], $message);
         }
     }
-    return($message);
+
+    return $message;
 }
 
 /**
@@ -557,7 +564,7 @@ function desmile($message)
  */
 
 /**
-* @deprecated
+ * @deprecated
  */
 function bbencode($message, $is_html_disabled)
 {
@@ -566,9 +573,8 @@ function bbencode($message, $is_html_disabled)
     return $container->get('bb_encoder')->encode($message, $is_html_disabled);
 } // bbencode()
 
-
 /**
-* @deprecated
+ * @deprecated
  */
 function bbdecode($message)
 {
@@ -584,14 +590,14 @@ function get_forum_name($forum_id, $db)
 {
     $sql = "SELECT forum_name FROM forums WHERE forum_id = '$forum_id'";
     if (!$r = mysql_query($sql, $db)) {
-        return("ERROR");
+        return 'ERROR';
     }
     if (!$m = $r->fetch(\PDO::FETCH_BOTH)) {
-        return("None");
+        return 'None';
     }
-    return($m[forum_name]);
-}
 
+    return $m[forum_name];
+}
 
 /**
  * Rewritten by Nathan Codding - Feb 6, 2001.
@@ -601,59 +607,52 @@ function get_forum_name($forum_id, $db)
  * 	to http://www.xxxx.yyyy[/zzzz]
  * - Goes through the given string, and replaces xxxx@yyyy with an HTML mailto: tag linking
  *		to that email address
- * - Only matches these 2 patterns either after a space, or at the beginning of a line
+ * - Only matches these 2 patterns either after a space, or at the beginning of a line.
  *
  * Notes: the email one might get annoying - it's easy to make it more restrictive, though.. maybe
  * have it require something like xxxx@yyyy.zzzz or such. We'll see.
  */
-
 function make_clickable($text)
 {
-    
     // pad it with a space so we can match things at the start of the 1st line.
-    $ret = " " . $text;
-    
+    $ret = ' '.$text;
+
     // matches an "xxxx://yyyy" URL at the start of a line, or after a space.
     // xxxx can only be alpha characters.
     // yyyy is anything up to the first space, newline, or comma.
-    $ret = preg_replace("#([\n ])([a-z]+?)://([^, \n\r]+)#i", "\\1<!-- BBCode auto-link start --><a href=\"\\2://\\3\" target=\"_blank\">\\2://\\3</a><!-- BBCode auto-link end -->", $ret);
-    
+    $ret = preg_replace("#([\n ])([a-z]+?)://([^, \n\r]+)#i", '\\1<!-- BBCode auto-link start --><a href="\\2://\\3" target="_blank">\\2://\\3</a><!-- BBCode auto-link end -->', $ret);
+
     // matches a "www.xxxx.yyyy[/zzzz]" kinda lazy URL thing
     // Must contain at least 2 dots. xxxx contains either alphanum, or "-"
     // yyyy contains either alphanum, "-", or "."
     // zzzz is optional.. will contain everything up to the first space, newline, or comma.
     // This is slightly restrictive - it's not going to match stuff like "forums.foo.com"
     // This is to keep it from getting annoying and matching stuff that's not meant to be a link.
-    $ret = preg_replace("#([\n ])www\.([a-z0-9\-]+)\.([a-z0-9\-.\~]+)((?:/[^, \n\r]*)?)#i", "\\1<!-- BBCode auto-link start --><a href=\"http://www.\\2.\\3\\4\" target=\"_blank\">www.\\2.\\3\\4</a><!-- BBCode auto-link end -->", $ret);
-    
+    $ret = preg_replace("#([\n ])www\.([a-z0-9\-]+)\.([a-z0-9\-.\~]+)((?:/[^, \n\r]*)?)#i", '\\1<!-- BBCode auto-link start --><a href="http://www.\\2.\\3\\4" target="_blank">www.\\2.\\3\\4</a><!-- BBCode auto-link end -->', $ret);
+
     // matches an email@domain type address at the start of a line, or after a space.
     // Note: before the @ sign, the only valid characters are the alphanums and "-", "_", or ".".
     // After the @ sign, we accept anything up to the first space, linebreak, or comma.
-    $ret = preg_replace("#([\n ])([a-z0-9\-_.]+?)@([^, \n\r]+)#i", "\\1<!-- BBcode auto-mailto start --><a href=\"mailto:\\2@\\3\">\\2@\\3</a><!-- BBCode auto-mailto end -->", $ret);
-    
+    $ret = preg_replace("#([\n ])([a-z0-9\-_.]+?)@([^, \n\r]+)#i", '\\1<!-- BBcode auto-mailto start --><a href="mailto:\\2@\\3">\\2@\\3</a><!-- BBCode auto-mailto end -->', $ret);
+
     // Remove our padding..
     $ret = substr($ret, 1);
-    
-    return($ret);
-}
 
+    return $ret;
+}
 
 /**
  * Nathan Codding - Feb 6, 2001
  * Reverses the effects of make_clickable(), for use in editpost.
  * - Does not distinguish between "www.xxxx.yyyy" and "http://aaaa.bbbb" type URLs.
- *
  */
- 
 function undo_make_clickable($text)
 {
-    $text = preg_replace("#<!-- BBCode auto-link start --><a href=\"(.*?)\" target=\"_blank\">.*?</a><!-- BBCode auto-link end -->#i", "\\1", $text);
-    $text = preg_replace("#<!-- BBcode auto-mailto start --><a href=\"mailto:(.*?)\">.*?</a><!-- BBCode auto-mailto end -->#i", "\\1", $text);
-    
+    $text = preg_replace('#<!-- BBCode auto-link start --><a href="(.*?)" target="_blank">.*?</a><!-- BBCode auto-link end -->#i', '\\1', $text);
+    $text = preg_replace('#<!-- BBcode auto-mailto start --><a href="mailto:(.*?)">.*?</a><!-- BBCode auto-mailto end -->#i', '\\1', $text);
+
     return $text;
 }
-
-
 
 /**
  * Nathan Codding - August 24, 2000.
@@ -662,11 +661,11 @@ function undo_make_clickable($text)
  */
 function undo_htmlspecialchars($input)
 {
-    $input = preg_replace("/&gt;/i", ">", $input);
-    $input = preg_replace("/&lt;/i", "<", $input);
-    $input = preg_replace("/&quot;/i", "\"", $input);
-    $input = preg_replace("/&amp;/i", "&", $input);
-    
+    $input = preg_replace('/&gt;/i', '>', $input);
+    $input = preg_replace('/&lt;/i', '<', $input);
+    $input = preg_replace('/&quot;/i', '"', $input);
+    $input = preg_replace('/&amp;/i', '&', $input);
+
     return $input;
 }
 /*
@@ -674,18 +673,19 @@ function undo_htmlspecialchars($input)
  */
 function validate_username($username, $db)
 {
-    $sql = "SELECT disallow_username FROM disallow WHERE disallow_username = '" . addslashes($username) . "'";
+    $sql = "SELECT disallow_username FROM disallow WHERE disallow_username = '".addslashes($username)."'";
     if (!$r = mysql_query($sql, $db)) {
-        return(0);
+        return 0;
     }
     if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
         if ($m[disallow_username] == $username) {
-            return(1);
+            return 1;
         } else {
-            return(0);
+            return 0;
         }
     }
-    return(0);
+
+    return 0;
 }
 /*
  * Check if this is the first post in a topic. Used in editpost.php
@@ -694,15 +694,15 @@ function is_first_post($topic_id, $post_id, $db)
 {
     $sql = "SELECT post_id FROM posts WHERE topic_id = '$topic_id' ORDER BY post_id LIMIT 1";
     if (!$r = mysql_query($sql, $db)) {
-        return(0);
+        return 0;
     }
     if (!$m = $r->fetch(\PDO::FETCH_BOTH)) {
-        return(0);
+        return 0;
     }
     if ($m[post_id] == $post_id) {
-        return(1);
+        return 1;
     } else {
-        return(0);
+        return 0;
     }
 }
 
@@ -711,7 +711,7 @@ function is_first_post($topic_id, $post_id, $db)
  */
 function censor_string($string, $db)
 {
-    $sql = "SELECT word, replacement FROM words";
+    $sql = 'SELECT word, replacement FROM words';
     if (!$r = mysql_query($sql, $db)) {
         die("Error, could not contact the database! Please check your database settings in config.$phpEx");
     }
@@ -722,54 +722,54 @@ function censor_string($string, $db)
         $string = eregi_replace("^$word", "$replacement", $string);
         $string = eregi_replace("<BR>$word", "<BR>$replacement", $string);
     }
-    return($string);
+
+    return $string;
 }
 
 function is_banned($ipuser, $type, $db)
 {
-   
-   // Remove old bans
-    $sql = "DELETE FROM banlist WHERE (ban_end < ". mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y")).") AND (ban_end > 0)";
+    // Remove old bans
+    $sql = 'DELETE FROM banlist WHERE (ban_end < '.mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')).') AND (ban_end > 0)';
     @mysql_query($sql, $db);
-   
+
     switch ($type) {
-    case "ip":
-      $sql = "SELECT ban_ip FROM banlist";
+    case 'ip':
+      $sql = 'SELECT ban_ip FROM banlist';
       if ($r = mysql_query($sql, $db)) {
           while ($iprow = $r->fetch(\PDO::FETCH_BOTH)) {
               $ip = $iprow[ban_ip];
-              if ($ip[strlen($ip) - 1] == ".") {
-                  $db_ip = explode(".", $ip);
-                  $this_ip = explode(".", $ipuser);
-           
-                  for ($x = 0; $x < count($db_ip) - 1; $x++) {
-                      $my_ip .= $this_ip[$x] . ".";
+              if ('.' == $ip[strlen($ip) - 1]) {
+                  $db_ip = explode('.', $ip);
+                  $this_ip = explode('.', $ipuser);
+
+                  for ($x = 0; $x < count($db_ip) - 1; ++$x) {
+                      $my_ip .= $this_ip[$x].'.';
                   }
 
                   if ($my_ip == $ip) {
-                      return(true);
+                      return true;
                   }
               } else {
                   if ($ipuser == $ip) {
-                      return(true);
+                      return true;
                   }
               }
           }
       } else {
-          return(false);
+          return false;
       }
       break;
-    case "username":
+    case 'username':
       $sql = "SELECT ban_userid FROM banlist WHERE ban_userid = '$ipuser'";
       if ($r = mysql_query($sql, $db)) {
           if ($r->rowCount() > 0) {
-              return(true);
+              return true;
           }
       }
       break;
    }
-   
-    return(false);
+
+    return false;
 }
 
 /**
@@ -779,24 +779,24 @@ function is_banned($ipuser, $type, $db)
 function check_priv_forum_auth($userid, $forumid, $is_posting, $db)
 {
     $sql = "SELECT count(*) AS user_count FROM forum_access WHERE (user_id = $userid) AND (forum_id = $forumid) ";
-    
+
     if ($is_posting) {
-        $sql .= "AND (can_post = 1)";
+        $sql .= 'AND (can_post = 1)';
     }
-    
+
     if (!$result = mysql_query($sql, $db)) {
         // no good..
         return false;
     }
-    
+
     if (!$row = $result->fetch(\PDO::FETCH_BOTH)) {
         return false;
     }
-   
+
     if ($row[user_count] <= 0) {
         return false;
     }
-    
+
     return true;
 }
 
@@ -810,7 +810,7 @@ function error_die($msg)
     global $db, $userdata, $user_logged_in;
     global $FontFace, $FontSize3, $textcolor, $phpbbversion;
     global $starttime;
-    print("<br>
+    echo "<br>
 		<TABLE BORDER=\"0\" CELLPADDING=\"1\" CELLSPACING=\"0\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"$tablewidth\">
 		<TR><TD BGCOLOR=\"$table_bgcolor\">
 			<TABLE BORDER=\"0\" CALLPADDING=\"1\" CELLSPACEING=\"1\" WIDTH=\"100%\">
@@ -822,8 +822,8 @@ function error_die($msg)
 			</TABLE>
 		</TD></TR>
 	 	</TABLE>
-	 <br>");
-    include('page_tail.'.$phpEx);
+	 <br>";
+    include 'page_tail.'.$phpEx;
     exit;
 }
 
@@ -832,10 +832,10 @@ function make_jumpbox()
     global $phpEx, $db;
     global $FontFace, $FontSize2, $textcolor;
     global $l_jumpto, $l_selectforum, $l_go; ?>
-	<FORM ACTION="viewforum.<?php echo $phpEx?>" METHOD="GET">
-	<SELECT NAME="forum"><OPTION VALUE="-1"><?php echo $l_selectforum?></OPTION>
+	<FORM ACTION="viewforum.<?php echo $phpEx; ?>" METHOD="GET">
+	<SELECT NAME="forum"><OPTION VALUE="-1"><?php echo $l_selectforum; ?></OPTION>
 	<?php
-      $sql = "SELECT cat_id, cat_title FROM catagories ORDER BY cat_order";
+      $sql = 'SELECT cat_id, cat_title FROM catagories ORDER BY cat_order';
     if ($result = mysql_query($sql, $db)) {
         $myrow = $result->fetch(\PDO::FETCH_BOTH);
         do {
@@ -863,28 +863,29 @@ function make_jumpbox()
     echo "</SELECT>\n<INPUT TYPE=\"SUBMIT\" VALUE=\"$l_go\">\n</FORM>";
 }
 
-function language_select($default, $name="language", $dirname="language/")
+function language_select($default, $name = 'language', $dirname = 'language/')
 {
     global $phpEx;
     $dir = opendir($dirname);
     $lang_select = "<SELECT NAME=\"$name\">\n";
     while ($file = readdir($dir)) {
-        if (ereg("^lang_", $file)) {
-            $file = str_replace("lang_", "", $file);
-            $file = str_replace(".$phpEx", "", $file);
-            $file == $default ? $selected = " SELECTED" : $selected = "";
+        if (ereg('^lang_', $file)) {
+            $file = str_replace('lang_', '', $file);
+            $file = str_replace(".$phpEx", '', $file);
+            $file == $default ? $selected = ' SELECTED' : $selected = '';
             $lang_select .= "  <OPTION$selected>$file\n";
         }
     }
     $lang_select .= "</SELECT>\n";
     closedir($dir);
+
     return $lang_select;
 }
 
 function get_translated_file($file)
 {
     global $default_lang;
-    
+
     // Try adding -default_lang to the filename. i.e.:
     // reply.jpg  becomes something like  reply-nederlands.jpg
     $trans_file = preg_replace("/(.*)(\..*?)/", "\\1-$default_lang\\2", $file);
@@ -898,11 +899,11 @@ function get_translated_file($file)
 function get_syslang_string($sys_lang, $string)
 {
     global $phpEx;
-    include('language/lang_'.$sys_lang.'.'.$phpEx);
+    include 'language/lang_'.$sys_lang.'.'.$phpEx;
     $ret_string = $$string;
-    return($ret_string);
-}
 
+    return $ret_string;
+}
 
 /**
  * Translates any sequence of whitespace (\t, \r, \n, or space) in the given
@@ -911,16 +912,16 @@ function get_syslang_string($sys_lang, $string)
  */
 function normalize_whitespace($str)
 {
-    $output = "";
-    
+    $output = '';
+
     $tok = preg_split("/[ \t\r\n]+/", $str);
     $tok_count = sizeof($tok);
-    for ($i = 0; $i < ($tok_count - 1); $i++) {
-        $output .= $tok[$i] . " ";
+    for ($i = 0; $i < ($tok_count - 1); ++$i) {
+        $output .= $tok[$i].' ';
     }
-    
+
     $output .= $tok[$tok_count - 1];
-      
+
     return $output;
 }
 
@@ -930,28 +931,28 @@ function sync($db, $id, $type)
     case 'forum':
         $sql = "SELECT max(post_id) AS last_post FROM posts WHERE forum_id = $id";
         if (!$result = mysql_query($sql, $db)) {
-            die("Could not get post ID");
+            die('Could not get post ID');
         }
         if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
-            $last_post = $row["last_post"];
+            $last_post = $row['last_post'];
         }
-        
+
         $sql = "SELECT count(post_id) AS total FROM posts WHERE forum_id = $id";
         if (!$result = mysql_query($sql, $db)) {
-            die("Could not get post count");
+            die('Could not get post count');
         }
         if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
-            $total_posts = $row["total"];
+            $total_posts = $row['total'];
         }
-        
+
         $sql = "SELECT count(topic_id) AS total FROM topics WHERE forum_id = $id";
         if (!$result = mysql_query($sql, $db)) {
-            die("Could not get topic count");
+            die('Could not get topic count');
         }
         if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
-            $total_topics = $row["total"];
+            $total_topics = $row['total'];
         }
-        
+
         $sql = "UPDATE forums SET forum_last_post_id = '$last_post', forum_posts = $total_posts, forum_topics = $total_topics WHERE forum_id = $id";
         if (!$result = mysql_query($sql, $db)) {
             die("Could not update forum $id");
@@ -961,20 +962,20 @@ function sync($db, $id, $type)
     case 'topic':
         $sql = "SELECT max(post_id) AS last_post FROM posts WHERE topic_id = $id";
         if (!$result = mysql_query($sql, $db)) {
-            die("Could not get post ID");
+            die('Could not get post ID');
         }
         if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
-            $last_post = $row["last_post"];
+            $last_post = $row['last_post'];
         }
-        
+
         $sql = "SELECT count(post_id) AS total FROM posts WHERE topic_id = $id";
         if (!$result = mysql_query($sql, $db)) {
-            die("Could not get post count");
+            die('Could not get post count');
         }
         if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
-            $total_posts = $row["total"];
+            $total_posts = $row['total'];
         }
-        $total_posts -= 1;
+        --$total_posts;
         $sql = "UPDATE topics SET topic_replies = $total_posts, topic_last_post_id = $last_post WHERE topic_id = $id";
         if (!$result = mysql_query($sql, $db)) {
             die("Could not update topic $id");
@@ -982,27 +983,28 @@ function sync($db, $id, $type)
     break;
 
     case 'all forums':
-        $sql = "SELECT forum_id FROM forums";
+        $sql = 'SELECT forum_id FROM forums';
         if (!$result = mysql_query($sql, $db)) {
-            die("Could not get forum IDs");
+            die('Could not get forum IDs');
         }
         while ($row = $result->fetch(\PDO::FETCH_BOTH)) {
-            $id = $row["forum_id"];
-            sync($db, $id, "forum");
+            $id = $row['forum_id'];
+            sync($db, $id, 'forum');
         }
     break;
     case 'all topics':
-        $sql = "SELECT topic_id FROM topics";
+        $sql = 'SELECT topic_id FROM topics';
         if (!$result = mysql_query($sql, $db)) {
             die("Could not get topic ID's");
         }
         while ($row = $result->fetch(\PDO::FETCH_BOTH)) {
-            $id = $row["topic_id"];
-            sync($db, $id, "topic");
+            $id = $row['topic_id'];
+            sync($db, $id, 'topic');
         }
     break;
    }
-    return(true);
+
+    return true;
 }
 
 function login_form()
@@ -1012,53 +1014,53 @@ function login_form()
     global $phpEx, $userdata, $PHP_SELF;
     global $l_userpass, $l_username, $l_password, $l_passwdlost, $l_submit;
     global $mode, $msgid; ?>
-<FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
+<FORM ACTION="<?php echo $PHP_SELF; ?>" METHOD="POST">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP">
-<TR><TD BGCOLOR="<?php echo $table_bgcolor?>">
+<TR><TD BGCOLOR="<?php echo $table_bgcolor; ?>">
 <TABLE BORDER="0" CELLPADDING="10" CELLSPACING="1" WIDTH="100%">
-	<TR BGCOLOR="<?php echo $color1?>" ALIGN="CENTER">
+	<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="CENTER">
   		<TD COLSPAN="2">
-			<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-  			<b><?php echo $l_userpass?></b>
+			<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+  			<b><?php echo $l_userpass; ?></b>
 			</FONT>
 			<br>
 		</TD>
-	</TR><TR BGCOLOR="<?php echo $color2?>">
+	</TR><TR BGCOLOR="<?php echo $color2; ?>">
 		<TD>
-			<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-			<b><?php echo $l_username?>: &nbsp;</b></font>
+			<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+			<b><?php echo $l_username; ?>: &nbsp;</b></font>
 			</FONT>
 		</TD>
 		<TD>
-			<INPUT TYPE="TEXT" NAME="user" SIZE="25" MAXLENGTH="40" VALUE="<?php echo $userdata[username]?>">
+			<INPUT TYPE="TEXT" NAME="user" SIZE="25" MAXLENGTH="40" VALUE="<?php echo $userdata[username]; ?>">
 		</TD>
-	</TR><TR BGCOLOR="<?php echo $color2?>">
+	</TR><TR BGCOLOR="<?php echo $color2; ?>">
 		<TD>
-			<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-			<b><?php echo $l_password?>: </b>
+			<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+			<b><?php echo $l_password; ?>: </b>
 			</FONT>
 		</TD><TD>
 			<INPUT TYPE="PASSWORD" NAME="passwd" SIZE="25" MAXLENGTH="25">
 		</TD>
-	</TR><TR BGCOLOR="<?php echo $color2?>">
+	</TR><TR BGCOLOR="<?php echo $color2; ?>">
 		<TD COLSPAN="2" ALIGN="CENTER">
-			<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize2?>" COLOR="<?php echo $textcolor?>">
-			<a href="sendpassword.<?php echo $phpEx?>"><?php echo $l_passwdlost?></a><br><br>
+			<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
+			<a href="sendpassword.<?php echo $phpEx; ?>"><?php echo $l_passwdlost; ?></a><br><br>
 			</FONT>
 			<?php
             if (isset($mode)) {
                 ?>
-				<INPUT TYPE="HIDDEN" NAME="mode" VALUE="<?php echo $mode?>">
+				<INPUT TYPE="HIDDEN" NAME="mode" VALUE="<?php echo $mode; ?>">
 			<?php
             } ?>
 			<?php
             // Need to pass through the msgid for deleting private messages.
             if (isset($msgid)) {
                 ?>
-				<INPUT TYPE="HIDDEN" NAME="msgid" VALUE="<?php echo $msgid?>">
+				<INPUT TYPE="HIDDEN" NAME="msgid" VALUE="<?php echo $msgid; ?>">
 			<?php
             } ?>
-			<INPUT TYPE="SUBMIT" NAME="submit" VALUE="<?php echo $l_submit?>">
+			<INPUT TYPE="SUBMIT" NAME="submit" VALUE="<?php echo $l_submit; ?>">
 		</TD>
 	</TR>
 </TABLE>
@@ -1078,17 +1080,17 @@ function login_form()
  */
 function own_stripslashes($string)
 {
-    $find = array(
+    $find = [
             '/\\\\\'/',  // \\\'
             '/\\\\/',    // \\
                 '/\\\'/',    // \'
-            '/\\\"/');   // \"
-   $replace = array(
+            '/\\\"/', ];   // \"
+   $replace = [
             '\'',   // \
             '\\',   // \
             '\'',   // '
-            '"');   // "
-            
+            '"', ];   // "
+
    // preg_replace will throw a warning on PHP3 so we have to @ it.
     return @preg_replace($find, $replace, $string);
 }

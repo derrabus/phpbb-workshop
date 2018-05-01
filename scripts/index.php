@@ -18,18 +18,18 @@
  *   (at your option) any later version.
  *
  ***************************************************************************/
-include('extention.inc');
+include 'extention.inc';
 
-include('config.'.$phpEx);
-require("auth.$phpEx");
+include 'config.'.$phpEx;
+require "auth.$phpEx";
 $pagetitle = $l_indextitle;
-$pagetype = "index";
-include('page_header.'.$phpEx);
+$pagetype = 'index';
+include 'page_header.'.$phpEx;
 
-$sql = "SELECT c.* FROM catagories c, forums f
+$sql = 'SELECT c.* FROM catagories c, forums f
 	 WHERE f.cat_id=c.cat_id
 	 GROUP BY c.cat_id, c.cat_title, c.cat_order
-	 ORDER BY c.cat_order";
+	 ORDER BY c.cat_order';
 if (!$result = mysql_query($sql, $db)) {
     error_die("Unable to get categories from database<br>$sql");
 }
@@ -37,15 +37,15 @@ $total_categories = $result->rowCount();
 
 ?>
 
-<TABLE BORDER="0" WIDTH="<?php echo $TableWidth?>" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP"><TR><TD BGCOLOR="<?php echo $table_bgcolor?>">
+<TABLE BORDER="0" WIDTH="<?php echo $TableWidth; ?>" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP"><TR><TD BGCOLOR="<?php echo $table_bgcolor; ?>">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
-<TR BGCOLOR="<?php echo $color1?>" ALIGN="LEFT">
-	<TD BGCOLOR="<?php echo $color1?>" ALIGN="CENTER" VALIGN="MIDDLE">&nbsp;</TD>
-	<TD><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>"><B><?php echo $l_forum?></B></font></TD>
-	<TD ALIGN="CENTER"><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>"><B><?php echo $l_topics?></B></font></TD>
-	<TD ALIGN="CENTER"><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>"><B><?php echo $l_posts?></B></font></TD>
-	<TD ALIGN="CENTER"><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>"><B><?php echo $l_lastpost?></B></font></TD>
-	<TD ALIGN="CENTER"><FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>"><B><?php echo $l_moderator?></B></font></TD>
+<TR BGCOLOR="<?php echo $color1; ?>" ALIGN="LEFT">
+	<TD BGCOLOR="<?php echo $color1; ?>" ALIGN="CENTER" VALIGN="MIDDLE">&nbsp;</TD>
+	<TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>"><B><?php echo $l_forum; ?></B></font></TD>
+	<TD ALIGN="CENTER"><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>"><B><?php echo $l_topics; ?></B></font></TD>
+	<TD ALIGN="CENTER"><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>"><B><?php echo $l_posts; ?></B></font></TD>
+	<TD ALIGN="CENTER"><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>"><B><?php echo $l_lastpost; ?></B></font></TD>
+	<TD ALIGN="CENTER"><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>"><B><?php echo $l_moderator; ?></B></font></TD>
 </TR>
 
 <?php
@@ -57,7 +57,7 @@ if ($total_categories) {
         $categories[] = $cat_row;
     }
 
-    $limit_forums = "";
+    $limit_forums = '';
     if ($viewcat != -1) {
         $limit_forums = "WHERE f.cat_id = $viewcat";
     }
@@ -74,46 +74,46 @@ if ($total_categories) {
     while ($forum_data = $f_res->fetch(\PDO::FETCH_BOTH)) {
         $forum_row[] = $forum_data;
     }
-    for ($i = 0; $i < $total_categories; $i++) {
+    for ($i = 0; $i < $total_categories; ++$i) {
         if ($viewcat != -1) {
             if ($categories[$i][cat_id] != $viewcat) {
                 $title = stripslashes($categories[$i][cat_title]);
-                echo "<TR ALIGN=\"LEFT\" VALIGN=\"TOP\"><TD COLSPAN=6 BGCOLOR=\"$color1\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><B><a href=\"$PHP_SELF?viewcat=".$categories[$i]["cat_id"]."\">$title</a></B></FONT></TD></TR>";
+                echo "<TR ALIGN=\"LEFT\" VALIGN=\"TOP\"><TD COLSPAN=6 BGCOLOR=\"$color1\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><B><a href=\"$PHP_SELF?viewcat=".$categories[$i]['cat_id']."\">$title</a></B></FONT></TD></TR>";
                 continue;
             }
         }
         $title = stripslashes($categories[$i][cat_title]);
-        echo "<TR ALIGN=\"LEFT\" VALIGN=\"TOP\"><TD COLSPAN=6 BGCOLOR=\"$color1\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><B><a href=\"$PHP_SELF?viewcat=".$categories[$i]["cat_id"]."\">$title</a></B></FONT></TD></TR>";
+        echo "<TR ALIGN=\"LEFT\" VALIGN=\"TOP\"><TD COLSPAN=6 BGCOLOR=\"$color1\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><B><a href=\"$PHP_SELF?viewcat=".$categories[$i]['cat_id']."\">$title</a></B></FONT></TD></TR>";
         @reset($forum_row);
-        for ($x = 0; $x < count($forum_row); $x++) {
+        for ($x = 0; $x < count($forum_row); ++$x) {
             unset($last_post);
-            if ($forum_row[$x]["cat_id"] == $categories[$i]["cat_id"]) {
+            if ($forum_row[$x]['cat_id'] == $categories[$i]['cat_id']) {
                 //$last_post = $last_posts[$forum_row[$x]["forum_id"]];
-                if ($forum_row[$x]["post_time"]) {
-                    $last_post = $forum_row[$x]["post_time"] . "<br>$l_by " . $forum_row[$x]["username"];
+                if ($forum_row[$x]['post_time']) {
+                    $last_post = $forum_row[$x]['post_time']."<br>$l_by ".$forum_row[$x]['username'];
                 }
-                $last_post_datetime = $forum_row[$x]["post_time"];
+                $last_post_datetime = $forum_row[$x]['post_time'];
                 //list($last_post_datetime, $null) = split($l_by, $last_post);
-                list($last_post_date, $last_post_time) = split(" ", $last_post_datetime);
-                list($year, $month, $day) = explode("-", $last_post_date);
-                list($hour, $min) = explode(":", $last_post_time);
+                list($last_post_date, $last_post_time) = split(' ', $last_post_datetime);
+                list($year, $month, $day) = explode('-', $last_post_date);
+                list($hour, $min) = explode(':', $last_post_time);
                 $last_post_time = mktime($hour, $min, 0, $month, $day, $year);
                 if (empty($last_post)) {
-                    $last_post = "No Posts";
+                    $last_post = 'No Posts';
                 }
-                echo "<TR  ALIGN=\"LEFT\" VALIGN=\"TOP\">";
+                echo '<TR  ALIGN="LEFT" VALIGN="TOP">';
                 //if((($last_visit - $last_post_time) < 600) && $last_post != "No posts") {
-                if ($last_post_time > $last_visit && $last_post != "No posts") {
+                if ($last_post_time > $last_visit && 'No posts' != $last_post) {
                     echo "<TD BGCOLOR=\"$color1\" ALIGN=\"CENTER\" VALIGN=\"middle\" WIDTH=5%><IMG SRC=\"$newposts_image\"></TD>";
                 } else {
                     echo "<TD BGCOLOR=\"$color1\" ALIGN=\"CENTER\" VALIGN=\"middle\" WIDTH=5%><IMG SRC=\"$folder_image\"></TD>";
                 }
                 $name = stripslashes($forum_row[$x][forum_name]);
-                $total_posts = $forum_row[$x]["forum_posts"];
-                $total_topics = $forum_row[$x]["forum_topics"];
+                $total_posts = $forum_row[$x]['forum_posts'];
+                $total_topics = $forum_row[$x]['forum_topics'];
                 $desc = stripslashes($forum_row[$x][forum_desc]);
 
-                echo "<TD BGCOLOR=\"$color2\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"viewforum.$phpEx?forum=".$forum_row[$x]["forum_id"]."&$total_posts\">$name</a></font>\n";
+                echo "<TD BGCOLOR=\"$color2\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"viewforum.$phpEx?forum=".$forum_row[$x]['forum_id']."&$total_posts\">$name</a></font>\n";
                 echo "<br><FONT FACE=\"$FontFace\" SIZE=\"$FontSize1\" COLOR=\"$textcolor\">$desc</font></TD>\n";
                 echo "<TD BGCOLOR=\"$color1\" WIDTH=5% ALIGN=\"CENTER\" VALIGN=\"MIDDLE\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\">$total_topics</font></TD>\n";
                 echo "<TD BGCOLOR=\"$color2\" WIDTH=5% ALIGN=\"CENTER\" VALIGN=\"MIDDLE\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\">$total_posts</font></TD>\n";
@@ -125,13 +125,13 @@ if ($total_categories) {
                 while (list($null, $mods) = each($forum_moderators)) {
                     while (list($mod_id, $mod_name) = each($mods)) {
                         if ($count > 0) {
-                            echo ", ";
+                            echo ', ';
                         }
-                        if (!($count % 2) && $count != 0) {
-                            echo "<BR>";
+                        if (!($count % 2) && 0 != $count) {
+                            echo '<BR>';
                         }
                         echo "<a href=\"bb_profile.$phpEx?mode=view&user=$mod_id\">$mod_name</a>";
-                        $count++;
+                        ++$count;
                     }
                 }
                 echo "</font></td></tr>\n";
@@ -142,13 +142,13 @@ if ($total_categories) {
 
 ?>
      </TABLE></TD></TR></TABLE>
-<TABLE ALIGN="CENTER" BORDER="0" WIDTH="<?php echo $TableWidth?>"><TR><TD>
-<FONT FACE="<?php echo $FontFace?>" SIZE="<?php echo $FontSize1?>" COLOR="<?php echo $textcolor?>">
-<IMG SRC="<?php echo $newposts_image?>"> = <?php echo $l_newposts?>.
-<BR><IMG SRC="<?php echo $folder_image?>"> = <?php echo $l_nonewposts?>.
+<TABLE ALIGN="CENTER" BORDER="0" WIDTH="<?php echo $TableWidth; ?>"><TR><TD>
+<FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize1; ?>" COLOR="<?php echo $textcolor; ?>">
+<IMG SRC="<?php echo $newposts_image; ?>"> = <?php echo $l_newposts; ?>.
+<BR><IMG SRC="<?php echo $folder_image; ?>"> = <?php echo $l_nonewposts; ?>.
 </FONT></TD></TR></TABLE>
 
 <?php
-require('page_tail.'.$phpEx);
+require 'page_tail.'.$phpEx;
 ?>
 
