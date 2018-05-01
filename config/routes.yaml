@@ -1,3 +1,3 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+legacy:
+    resource: legacy_route_provider:getRouteCollection
+    type: service

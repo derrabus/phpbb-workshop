@@ -11,6 +11,7 @@ services:
                             # fetching services directly from the container via $container->get() won't work.
                             # The best practice is to be explicit about your dependencies anyway.
         bind:
+            $projectDir: '%kernel.project_dir%'
             $sessionCookieName: '%session.cookie_name%'
             $sessionCookieTime: '%session.cookie_time%'
 
@@ -31,4 +32,8 @@ services:
 
     bb_encoder:
         alias: App\View\BBEncoder
+        public: true
+
+    legacy_route_provider:
+        alias: App\Routing\LegacyRouteProvider
         public: true

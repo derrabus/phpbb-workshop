@@ -42,37 +42,26 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif)$/', $request->getScriptName())) {
 $kernel = new Kernel($env, $debug);
 $response = $kernel->handle($request);
 
-if (404 === $response->getStatusCode()) {
-    [$targetFile] = explode('?', $request->getRequestUri(), 2);
+if (404 === $response->getStatusCode() && $request->attributes->has('legacyScript')) {
+    $_SERVER['PHP_SELF'] = $request->attributes->get('PHP_SELF');
 
-    if ('/' === $targetFile) {
-        $targetFile = '/index.php';
-    }
-    $scriptsDir = dirname(__DIR__).'/scripts';
-    if (file_exists($scriptsDir.$targetFile)) {
-        $_SERVER['PHP_SELF'] = $targetFile;
+    extract($_REQUEST);
+    extract($_SERVER);
 
-        extract($_REQUEST);
-        extract($_SERVER);
+    $HTTP_GET_VARS = $_GET;
+    $HTTP_POST_VARS = $_POST;
+    $HTTP_COOKIE_VARS = $_COOKIE;
 
-        $HTTP_GET_VARS = $_GET;
-        $HTTP_POST_VARS = $_POST;
-        $HTTP_COOKIE_VARS = $_COOKIE;
+    chdir(dirname($request->attributes->get('legacyScript')));
 
-        chdir(dirname($scriptsDir.$targetFile));
+    ErrorHandler::register(null, true)->throwAt(0, true);
 
-        ErrorHandler::register(null, true)->throwAt(0, true);
+    global $container;
+    $container = $kernel->getContainer();
 
-        global $container;
-        $container = $kernel->getContainer();
-
-        require $scriptsDir.$targetFile;
-
-        $kernel->terminate($request, $response);
-
-        exit;
-    }
+    require $request->attributes->get('legacyScript');
+} else {
+    $response->send();
 }
 
-$response->send();
 $kernel->terminate($request, $response);
