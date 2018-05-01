@@ -18,6 +18,9 @@
  *   (at your option) any later version.
  *
  ***************************************************************************/
+
+global $container, $db;
+
 // Set the error reporting to a sane value:
 error_reporting(E_ERROR | E_WARNING | E_PARSE); // This will NOT report uninitialized variables
 
@@ -68,13 +71,7 @@ if (strstr($PHP_SELF, "admin")) {
 }
 
 // Make a database connection.
-if (!$db = @mysql_connect("$dbhost", "$dbuser", "$dbpasswd")) {
-    die('<font size=+1>An Error Occured</font><hr>phpBB was unable to connect to the database. <BR>Please check $dbhost, $dbuser, and $dbpasswd in config.php.');
-}
-mysql_query('SET NAMES utf8;', $db);
-if (!@mysql_select_db("$dbname", $db)) {
-    die("<font size=+1>An Error Occured</font><hr>phpBB was unable to find the database <b>$dbname</b> on your MySQL server. <br>Please make sure you ran the phpBB installation script.");
-}
+$db = $container->get('doctrine.dbal.default_connection');
 
 if (is_banned($REMOTE_ADDR, "ip", $db)) {
     die($l_banned);

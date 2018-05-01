@@ -47,9 +47,6 @@
     "doctrine/orm": {
         "version": "v2.6.0"
     },
-    "dshafik/php7-mysql-shim": {
-        "version": "1.0.0beta2"
-    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },

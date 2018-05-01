@@ -19,6 +19,9 @@
  *
  ***************************************************************************/
 
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Driver\Statement;
+
 /**
  * Start session-management functions - Nathan Codding, July 21, 2000.
  */
@@ -1088,4 +1091,52 @@ function own_stripslashes($string)
             
    // preg_replace will throw a warning on PHP3 so we have to @ it.
     return @preg_replace($find, $replace, $string);
+}
+
+function mysql_query(string $sql, Connection $connection = null)
+{
+    global $container;
+
+    $connection = $connection ?: $container->get('doctrine.dbal.default_connection');
+
+    return $connection->executeQuery($sql);
+}
+
+function mysql_fetch_array(Statement $stmt) {
+    return $stmt->fetch(PDO::FETCH_BOTH);
+}
+
+function mysql_fetch_row(Statement $stmt) {
+    return $stmt->fetch(PDO::FETCH_NUM);
+}
+
+function mysql_num_rows(Statement $stmt) {
+    return $stmt->rowCount();
+}
+
+function mysql_error(Connection $connection = null)
+{
+    global $container;
+
+    $connection = $connection ?: $container->get('doctrine.dbal.default_connection');
+
+    return join("\n", (array) $connection->errorInfo());
+}
+
+function mysql_errno(Connection $connection = null)
+{
+    global $container;
+
+    $connection = $connection ?: $container->get('doctrine.dbal.default_connection');
+
+    return join("\n", (array) $connection->errorCode());
+}
+
+function mysql_insert_id(Connection $connection = null)
+{
+    global $container;
+
+    $connection = $connection ?: $container->get('doctrine.dbal.default_connection');
+
+    return $connection->lastInsertId();
 }

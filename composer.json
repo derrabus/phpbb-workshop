@@ -15,7 +15,6 @@
         "derrabus/ereg-shim": "^1",
         "doctrine/doctrine-bundle": "^1.8",
         "doctrine/orm": "^2.6",
-        "dshafik/php7-mysql-shim": "^1@beta",
         "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
