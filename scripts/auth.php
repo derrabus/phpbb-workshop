@@ -76,43 +76,41 @@ $userdata = [];
 // If the cookie exists, build an array of the users info and setup the theme.
 
 // new code for the session ID cookie..
-if (isset($HTTP_COOKIE_VARS[$sesscookiename])) {
-    $sessid = $HTTP_COOKIE_VARS[$sesscookiename];
-    $userid = get_userid_from_session($sessid, $sesscookietime, $REMOTE_ADDR, $db);
+if ($container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+    /** @var User $user */
+    $user = $container->get('security.token_storage')->getToken()->getUser();
 
-    if ($userid) {
-        $user_logged_in = 1;
+    $user_logged_in = 1;
 
-        $userdata = get_userdata_from_id($userid, $db);
-        if (is_banned($userdata[user_id], 'username', $db)) {
-            die($l_banned);
-        }
-        $theme = setuptheme($userdata['user_theme'], $db);
-        if ($theme) {
-            $bgcolor = $theme['bgcolor'];
-            $table_bgcolor = $theme['table_bgcolor'];
-            $textcolor = $theme['textcolor'];
-            $color1 = $theme['color1'];
-            $color2 = $theme['color2'];
-            $header_image = $theme['header_image'];
-            $newtopic_image = $theme['newtopic_image'];
-            $reply_image = $theme['reply_image'];
-            $linkcolor = $theme['linkcolor'];
-            $vlinkcolor = $theme['vlinkcolor'];
-            $FontFace = $theme['fontface'];
-            $FontSize1 = $theme['fontsize1'];
-            $FontSize2 = $theme['fontsize2'];
-            $FontSize3 = $theme['fontsize3'];
-            $FontSize4 = $theme['fontsize4'];
-            $tablewidth = $theme['tablewidth'];
-            $TableWidth = $tablewidth;
-            $reply_locked_image = $theme['replylocked_image'];
-        }
-        // Use the language the user has choosen
-        if ('' != $userdata['user_lang']) {
-            $default_lang = $userdata['user_lang'];
-        }
-    } // if
+    $userdata = get_userdata_from_id($user->getId(), $db);
+    if (is_banned($userdata[$user->getId()], 'username', $db)) {
+        die($l_banned);
+    }
+    $theme = setuptheme($userdata['user_theme'], $db);
+    if ($theme) {
+        $bgcolor = $theme['bgcolor'];
+        $table_bgcolor = $theme['table_bgcolor'];
+        $textcolor = $theme['textcolor'];
+        $color1 = $theme['color1'];
+        $color2 = $theme['color2'];
+        $header_image = $theme['header_image'];
+        $newtopic_image = $theme['newtopic_image'];
+        $reply_image = $theme['reply_image'];
+        $linkcolor = $theme['linkcolor'];
+        $vlinkcolor = $theme['vlinkcolor'];
+        $FontFace = $theme['fontface'];
+        $FontSize1 = $theme['fontsize1'];
+        $FontSize2 = $theme['fontsize2'];
+        $FontSize3 = $theme['fontsize3'];
+        $FontSize4 = $theme['fontsize4'];
+        $tablewidth = $theme['tablewidth'];
+        $TableWidth = $tablewidth;
+        $reply_locked_image = $theme['replylocked_image'];
+    }
+    // Use the language the user has choosen
+    if ('' != $userdata['user_lang']) {
+        $default_lang = $userdata['user_lang'];
+    }
 }
 
 // Old code for the permanent userid cookie..

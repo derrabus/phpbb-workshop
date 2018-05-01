@@ -74,29 +74,6 @@ function set_session_cookie($sessid, $cookietime, $cookiename, $cookiepath, $coo
 } // set_session_cookie()
 
 /**
- * Returns the userID associated with the given session, based on
- * the given session lifespan $cookietime and the given remote IP
- * address. If no match found, returns 0.
- */
-function get_userid_from_session($sessid, $cookietime, $remote_ip, $db)
-{
-    $mintime = time() - $cookietime;
-    $sql = "SELECT user_id FROM sessions WHERE (sess_id = $sessid) AND (start_time > $mintime) AND (remote_ip = '$remote_ip')";
-    $result = mysql_query($sql, $db);
-    if (!$result) {
-        echo mysql_error()."<br>\n";
-        die('Error doing DB query in get_userid_from_session()');
-    }
-    $row = $result->fetch(\PDO::FETCH_BOTH);
-
-    if (!$row) {
-        return 0;
-    } else {
-        return $row[user_id];
-    }
-} // get_userid_from_session()
-
-/**
  * Delete the given session from the database. Used by the logout page.
  */
 function end_user_session($userid, $db)
