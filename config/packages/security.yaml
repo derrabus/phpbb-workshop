@@ -2,7 +2,9 @@ security:
     # https://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         bb:
-            id: App\Security\UserProvider
+            entity:
+                class: App\Entity\User
+                property: username
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_SUPER_MODERATOR
