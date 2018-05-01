@@ -10,6 +10,8 @@
 
  ***************************************************************************/
 
+use App\Entity\User;
+
 /***************************************************************************
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -80,7 +82,6 @@ if (isset($HTTP_COOKIE_VARS[$sesscookiename])) {
 
     if ($userid) {
         $user_logged_in = 1;
-        update_session_time($sessid, $db);
 
         $userdata = get_userdata_from_id($userid, $db);
         if (is_banned($userdata[user_id], 'username', $db)) {

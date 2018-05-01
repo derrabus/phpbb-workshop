@@ -4,6 +4,7 @@ namespace App\Security;
 
 use App\Entity\Session;
 use App\Repository\SessionRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -14,13 +15,16 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 
 class LegacyAuthenticator extends AbstractGuardAuthenticator
 {
-    private $sessionRepository;
+    private $em;
     private $sessionCookieName;
     private $sessionCookieTime;
 
-    public function __construct(SessionRepository $sessionRepository, string $sessionCookieName, int $sessionCookieTime)
-    {
-        $this->sessionRepository = $sessionRepository;
+    public function __construct(
+        EntityManagerInterface $em,
+        string $sessionCookieName,
+        int $sessionCookieTime
+    ) {
+        $this->em = $em;
         $this->sessionCookieName = $sessionCookieName;
         $this->sessionCookieTime = $sessionCookieTime;
     }
@@ -43,10 +47,13 @@ class LegacyAuthenticator extends AbstractGuardAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         /** @var Session $session */
-        $session = $this->sessionRepository->find($credentials);
+        $session = $this->em->find(Session::class, $credentials);
         if (null === $session) {
             throw new AuthenticationException();
         }
+
+        $session->setStartTime(time());
+        $this->em->flush();
 
         return $userProvider->loadUserByUsername($session->getUser()->getUsername());
     }

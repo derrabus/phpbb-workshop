@@ -97,23 +97,6 @@ function get_userid_from_session($sessid, $cookietime, $remote_ip, $db)
 } // get_userid_from_session()
 
 /**
- * Refresh the start_time of the given session in the database.
- * This is called whenever a page is hit by a user with a valid session.
- */
-function update_session_time($sessid, $db)
-{
-    $newtime = (string) time();
-    $sql = "UPDATE sessions SET start_time=$newtime WHERE (sess_id = $sessid)";
-    $result = mysql_query($sql, $db);
-    if (!$result) {
-        echo mysql_error()."<br>\n";
-        die('Error doing DB update in update_session_time()');
-    }
-
-    return 1;
-} // update_session_time()
-
-/**
  * Delete the given session from the database. Used by the logout page.
  */
 function end_user_session($userid, $db)
