@@ -68,6 +68,8 @@ if (404 === $response->getStatusCode()) {
 
         require $scriptsDir.$targetFile;
 
+        $kernel->terminate($request, $response);
+
         exit;
     }
 }
