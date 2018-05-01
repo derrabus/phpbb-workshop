@@ -235,7 +235,7 @@ function get_whosonline($IP, $username, $forum, $db)
     $deleteuser= mysql_query("delete from whosonline where date < $usersec - 300", $db);
     $userlog= mysql_fetch_row(MYSQL_QUERY("SELECT * FROM whosonline where IP = '$IP'", $db));
     if ($userlog == false) {
-        $ok= @mysql_query("insert INTO whosonline (ID,IP,DATE,username,forum) VALUES('$User_Id','$IP','$usersec', '$username', '$forum')", $db)or die("Unable to query db!");
+        $ok= mysql_query("insert INTO whosonline (IP,DATE,username,forum) VALUES('$IP','$usersec', '$username', '$forum')", $db)or die("Unable to query db!");
     }
     $resultlogtab   = mysql_query("SELECT Count(*) as total FROM whosonline", $db);
     $numberlogtab   = mysql_fetch_array($resultlogtab);
