@@ -30,38 +30,6 @@ if (strpos(' '.$PHP_SELF, $url_admin)) {
     include "fix.$phpEx";
 }
 
-// Disable Magic Quotes
-// Function is needed for removing quotes from arrays.
-function stripslashes_array($the_array_element, $the_array_element_key, $data)
-{
-    $the_array_element = stripslashes($the_array_element);
-}
-
-if (1 == get_magic_quotes_gpc()) {
-    switch ($REQUEST_METHOD) {
-   case 'POST':
-      while (list($key, $val) = each($HTTP_POST_VARS)) {
-          if (is_array($val)) {
-              array_walk($val, 'stripslashes_array', '');
-              $$key = $val;
-          } else {
-              $$key = stripslashes($val);
-          }
-      }
-   break;
-   case 'GET':
-      while (list($key, $val) = each($HTTP_GET_VARS)) {
-          if (is_array($val)) {
-              array_walk($val, 'stripslashes_array', '');
-              $$key = $val;
-          } else {
-              $$key = stripslashes($val);
-          }
-      }
-   break;
-   }
-}
-
 // Check if the config file is writable (shouldn't be!!)
 $config_file_name = "config.$phpEx";
 if (strstr($PHP_SELF, 'admin')) {
