@@ -23,116 +23,71 @@ include '../extention.inc';
 include '../config.'.$phpEx;
 require '../auth.'.$phpEx;
 
-if ($login) {
-    if ('' == $username) {
-        die('You have to enter your username. Go back and do so.');
-    }
-    if ('' == $password) {
-        die('You have to enter your password. Go back and do so.');
-    }
-    if (!check_username($username, $db)) {
-        die("Invalid username \"$username\". Go back and try again.");
-    }
-    if (!check_user_pw($username, $password, $db)) {
-        die('Invalid password. Go back and try again.');
-    }
+$pagetitle = 'Forum Administration';
+$pagetype = 'admin';
+include '../page_header.'.$phpEx;
 
-    $userdata = get_userdata($username, $db);
-    $sessid = new_session($userdata[user_id], $REMOTE_ADDR, $sesscookietime, $db);
-    set_session_cookie($sessid, $sesscookietime, $sesscookiename, $cookiepath, $cookiedomain, $cookiesecure);
-
-    if (defined('USE_IIS_LOGIN_HACK') && USE_IIS_LOGIN_HACK) {
-        echo "<META HTTP-EQUIV=\"refresh\" content=\"1;URL=$url_admin_index\">";
-    } else {
-        header("Location: $url_admin_index");
-    }
-} elseif (!$user_logged_in) {
-    $pagetitle = 'Forum Administration';
-    $pagetype = 'admin';
-    include '../page_header.'.$phpEx; ?>
-     <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth; ?>">
-     <TR><TD BGCOLOR="<?php echo $table_bgcolor; ?>">
-     <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
-     <TR BGCOLOR="<?php echo $color1; ?>" ALIGN="LEFT">
-     <TD><P><BR><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
-     Please enter your username and password to login.<BR>
-     <i>(NOTE: You MUST have cookies enabled in order to login to the administration section of this forum)</i><BR>
-     <UL>
-     <FORM ACTION="<?php echo $PHP_SELF; ?>" METHOD="POST">
-     <b>User Name: </b><INPUT TYPE="TEXT" NAME="username" SIZE="25" MAXLENGTH="40" VALUE="<?php echo $userdata[username]; ?>"><BR>
-     <b>Password: </b><INPUT TYPE="PASSWORD" NAME="password" SIZE="25" MAXLENGTH="25"><br><br>
-     <INPUT TYPE="SUBMIT" NAME="login" VALUE="Submit">&nbsp;&nbsp;&nbsp;<INPUT TYPE="RESET" VALUE="Clear"></ul>
-     </FORM>
-     </TD></TR></TABLE></TD></TR></TABLE>
-     <?php
-          include '../page_tail.'.$phpEx;
-    exit();
-} elseif ($user_logged_in && 4 == $userdata[user_level]) {
-    $pagetitle = 'Forum Administration';
-    $pagetype = 'admin';
-    include '../page_header.'.$phpEx;
-
-    switch ($mode) {
-    case 'setoptions':
-        if ($HTTP_POST_VARS['submit']) {
-            $name = addslashes($name);
-            $esig = addslashes($esig);
-            $sql = 'SELECT count(*) AS total FROM config WHERE (selected = 1)';
+switch ($mode) {
+case 'setoptions':
+    if ($HTTP_POST_VARS['submit']) {
+        $name = addslashes($name);
+        $esig = addslashes($esig);
+        $sql = 'SELECT count(*) AS total FROM config WHERE (selected = 1)';
+        $result = mysql_query($sql, $db);
+        if (!$result) {
+            die('Error doing DB query.');
+        }
+        $row = $result->fetch(\PDO::FETCH_BOTH);
+        if (0 != $row[total]) {
+            // settings exist, so we can just update.
+            $sql = "UPDATE config SET sitename = '$name', allow_html = '$html', allow_bbcode = '$bb', allow_sig = '$sig', hot_threshold = $hot, posts_per_page = $ppp, topics_per_page = $tpp, override_themes = $override_themes, allow_namechange = $allow_name_change, email_from = '$from', email_sig = '$esig', default_lang = '$selected_lang' WHERE selected = 1";
             $result = mysql_query($sql, $db);
-            if (!$result) {
-                die('Error doing DB query.');
-            }
-            $row = $result->fetch(\PDO::FETCH_BOTH);
-            if (0 != $row[total]) {
-                // settings exist, so we can just update.
-                $sql = "UPDATE config SET sitename = '$name', allow_html = '$html', allow_bbcode = '$bb', allow_sig = '$sig', hot_threshold = $hot, posts_per_page = $ppp, topics_per_page = $tpp, override_themes = $override_themes, allow_namechange = $allow_name_change, email_from = '$from', email_sig = '$esig', default_lang = '$selected_lang' WHERE selected = 1";
-                $result = mysql_query($sql, $db);
-            } else {
-                // have to do an insert..
-                $sql = 'INSERT INTO config (sitename, allow_html, allow_bbcode, allow_sig, hot_threshold, posts_per_page, topics_per_page, override_themes, allow_namechange, email_from, email_sig, default_lang, selected) ';
-                $sql .= "VALUES ('$name', $html, $bb, $sig, $hot, $ppp, $tpp, $override_themes, $allow_name_change, '$from', '$esig', '$selected_lang', 1)";
-                $result = mysql_query($sql, $db);
-            }
-            if (!$result) {
-                echo mysql_error().'<br>';
-                die("<FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error - Cannot update the database.</FONT");
-            }
-            echo "<TABLE width=\"95%\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bordercolor=\"$table_bgcolor\">";
-            echo "<tr><td align=\"center\" width=\"100%\" bgcolor=\"$color1\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><B>Forum Settings Updated.</B></font></td>";
-            echo '</tr><TR><TD><TABLE width="100%" cellspacing="0" cellpadding="0"><TR>';
-            echo "<td align=\"center\" width=\"100%\" bgcolor=\"$color2\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><P><BR>&nbsp;&nbsp;Click <a href=\"$url_admin_index\">here</a> to return to the Administration Panel.<P>Click <a href=\"$url_phpbb_index\">here</a> to return to the forum index.</font><P><BR><P></TD>";
-            echo '</TR></table></TD></TR></TABLE>';
         } else {
-            $html_yes = $html_no = $bb_yes = $bb_no = $sig_yes = $sig_no = '';
-            if (1 == $allow_html) {
-                $html_yes = 'CHECKED';
-            } else {
-                $html_no = 'CHECKED';
-            }
+            // have to do an insert..
+            $sql = 'INSERT INTO config (sitename, allow_html, allow_bbcode, allow_sig, hot_threshold, posts_per_page, topics_per_page, override_themes, allow_namechange, email_from, email_sig, default_lang, selected) ';
+            $sql .= "VALUES ('$name', $html, $bb, $sig, $hot, $ppp, $tpp, $override_themes, $allow_name_change, '$from', '$esig', '$selected_lang', 1)";
+            $result = mysql_query($sql, $db);
+        }
+        if (!$result) {
+            echo mysql_error().'<br>';
+            die("<FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">Error - Cannot update the database.</FONT");
+        }
+        echo "<TABLE width=\"95%\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bordercolor=\"$table_bgcolor\">";
+        echo "<tr><td align=\"center\" width=\"100%\" bgcolor=\"$color1\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><B>Forum Settings Updated.</B></font></td>";
+        echo '</tr><TR><TD><TABLE width="100%" cellspacing="0" cellpadding="0"><TR>';
+        echo "<td align=\"center\" width=\"100%\" bgcolor=\"$color2\"><font face=\"$FontFace\" size=\"$FontSize1\" color=\"$textcolor\"><P><BR>&nbsp;&nbsp;Click <a href=\"$url_admin_index\">here</a> to return to the Administration Panel.<P>Click <a href=\"$url_phpbb_index\">here</a> to return to the forum index.</font><P><BR><P></TD>";
+        echo '</TR></table></TD></TR></TABLE>';
+    } else {
+        $html_yes = $html_no = $bb_yes = $bb_no = $sig_yes = $sig_no = '';
+        if (1 == $allow_html) {
+            $html_yes = 'CHECKED';
+        } else {
+            $html_no = 'CHECKED';
+        }
 
-            if (1 == $allow_bbcode) {
-                $bb_yes = 'CHECKED';
-            } else {
-                $bb_no = 'CHECKED';
-            }
+        if (1 == $allow_bbcode) {
+            $bb_yes = 'CHECKED';
+        } else {
+            $bb_no = 'CHECKED';
+        }
 
-            if (1 == $allow_sig) {
-                $sig_yes = 'CHECKED';
-            } else {
-                $sig_no = 'CHECKED';
-            }
+        if (1 == $allow_sig) {
+            $sig_yes = 'CHECKED';
+        } else {
+            $sig_no = 'CHECKED';
+        }
 
-            if (1 == $override_user_themes) {
-                $override_yes = 'CHECKED';
-            } else {
-                $override_no = 'CHECKED';
-            }
+        if (1 == $override_user_themes) {
+            $override_yes = 'CHECKED';
+        } else {
+            $override_no = 'CHECKED';
+        }
 
-            if (1 == $allow_namechange) {
-                $namechange_yes = 'CHECKED';
-            } else {
-                $namechange_no = 'CHECKED';
-            } ?>
+        if (1 == $allow_namechange) {
+            $namechange_yes = 'CHECKED';
+        } else {
+            $namechange_no = 'CHECKED';
+        } ?>
 <FORM ACTION="<?php echo $PHP_SELF; ?>" METHOD="POST">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor; ?>">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -207,7 +162,7 @@ if ($login) {
 </TR>
 </TABLE></TD></TR></TABLE>
 <?php
-        }
+    }
     break;
     case 'headermetafooter':
 
@@ -434,21 +389,5 @@ if ($login) {
         }
     break;
 }
-} else {
-    $pagetype = 'admin';
-    $pagetitle = 'Access Denied!';
-
-    include '../page_header.'.$phpEx; ?>
-          <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth; ?>">
-          <TR><TD  BGCOLOR="<?php echo $table_bgcolor; ?>">
-          <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
-          <TR BGCOLOR="<?php echo $color1; ?>" ALIGN="center" VALIGN="TOP">
-          <TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">
-          <B>You do not have acess to this area!</b><BR>
-          Go <a href="<?php echo $url_phpbb_index; ?>">Back</a>
-          </TD></TR></TABLE></TD></TR></TABLE>
-     <?php
-}
 
 include '../page_tail.'.$phpEx;
-?>

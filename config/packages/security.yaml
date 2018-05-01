@@ -19,3 +19,6 @@ security:
                 authenticators:
                     - App\Security\LegacyAuthenticator
             stateless: true
+
+    access_control:
+        - { path: ^/admin, roles: [ROLE_ADMIN] }
