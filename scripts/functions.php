@@ -773,7 +773,7 @@ function error_die($msg)
     global $phpEx;
     global $db, $userdata, $user_logged_in;
     global $FontFace, $FontSize3, $textcolor, $phpbbversion;
-    global $starttime;
+
     echo "<br>
 		<TABLE BORDER=\"0\" CELLPADDING=\"1\" CELLSPACING=\"0\" ALIGN=\"CENTER\" VALIGN=\"TOP\" WIDTH=\"$tablewidth\">
 		<TR><TD BGCOLOR=\"$table_bgcolor\">

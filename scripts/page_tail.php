@@ -44,16 +44,6 @@ Copyright &copy; 2000 - 2001 <a href="http://www.phpbb.com/credits.php" target="
 </CENTER>
 </font><BR>
 
-<?php
-$mtime = microtime();
-$mtime = explode(' ', $mtime);
-$mtime = $mtime[1] + $mtime[0];
-$endtime = $mtime;
-$totaltime = ($endtime - $starttime);
-printf('<center><font size=-2>phpBB Created this page in %f seconds.</font></center>', $totaltime);
-
-?>
-
 </FONT>
 </BODY>
 </HTML>
