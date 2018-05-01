@@ -50,15 +50,11 @@ header('Content-Type: text/html; charset=UTF8');
 if ($forward) {
     echo "<META HTTP-EQUIV=\"refresh\" content=\"3;URL=$url_phpbb/viewtopic.$phpEx?topic=$topic&forum=$forum&$total_topic\">";
 }
-$meta = showmeta($db);
 ?>
-<?php echo $meta; ?>
 </HEAD>
 <BODY BGCOLOR="<?php echo $bgcolor; ?>" TEXT="<?php echo $textcolor; ?>" LINK="<?php echo $linkcolor; ?>" VLINK="<?php echo $vlinkcolor; ?>">
 <font face="<?php echo $FontFace; ?>">
 <?php
-
-showheader($db);
 
 //  Table layout (col and rowspans are marked with '*' and '-')
 //  *one*   | two

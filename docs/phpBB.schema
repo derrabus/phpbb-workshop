@@ -133,16 +133,6 @@ CREATE TABLE forums (
 );
 
 #
-# Table structure for table 'headermetafooter'
-#
-
-CREATE TABLE headermetafooter (
-  header text,
-  meta text,
-  footer text
-);
-
-#
 # Table structure for table 'posts'
 #
 

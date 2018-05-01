@@ -16,6 +16,9 @@
  *   the Free Software Foundation; either version 2 of the License, or
  *   (at your option) any later version. *
  ***************************************************************************/
+
+global $container;
+
 if ($user_logged_in && 4 == $userdata[user_level]) {
     ?>
      <FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize3; ?>" COLOR="<?php echo $textcolor; ?>">
@@ -42,7 +45,6 @@ Copyright &copy; 2000 - 2001 <a href="http://www.phpbb.com/credits.php" target="
 </font><BR>
 
 <?php
-showfooter($db);
 $mtime = microtime();
 $mtime = explode(' ', $mtime);
 $mtime = $mtime[1] + $mtime[0];

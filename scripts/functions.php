@@ -182,42 +182,6 @@ function get_total_topics($forum_id, $db)
 
     return $myrow[total];
 }
-/*
- * Shows the 'header' data from the header/meta/footer table
- */
-function showheader($db)
-{
-    $sql = 'SELECT header FROM headermetafooter';
-    if ($result = mysql_query($sql, $db)) {
-        if ($header = $result->fetch(\PDO::FETCH_BOTH)) {
-            echo stripslashes($header[header]);
-        }
-    }
-}
-/*
- * Shows the meta information from the header/meta/footer table
- */
-function showmeta($db)
-{
-    $sql = 'SELECT meta FROM headermetafooter';
-    if ($result = mysql_query($sql, $db)) {
-        if ($meta = $result->fetch(\PDO::FETCH_BOTH)) {
-            echo stripslashes($meta[meta]);
-        }
-    }
-}
-/*
- * Show the footer from the header/meta/footer table
- */
-function showfooter($db)
-{
-    $sql = 'SELECT footer FROM headermetafooter';
-    if ($result = mysql_query($sql, $db)) {
-        if ($footer = $result->fetch(\PDO::FETCH_BOTH)) {
-            echo stripslashes($footer[footer]);
-        }
-    }
-}
 
 /*
  * Used to keep track of all the people viewing the forum at this time

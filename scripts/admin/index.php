@@ -75,10 +75,6 @@ if ($mode) {
 	<TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">This link will allow you to add different user rankings. Ranks can be assigned to specific users in the modify user section.</FONT></TD>
 </TR>
 <TR BGCOLOR="<?php echo $color2; ?>" ALIGN="LEFT">
-	<TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>"><a href="<?php echo $url_admin; ?>/admin_board.<?php echo $phpEx; ?>?mode=headermetafooter">Set Header/Meta/Footer</a></FONT></TD>
-	<TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">This link will allow you to set both your Meta Commands and Header/Footer text.</FONT></TD>
-</TR>
-<TR BGCOLOR="<?php echo $color2; ?>" ALIGN="LEFT">
 	<TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>"><a href="<?php echo $url_admin; ?>/admin_users.<?php echo $phpEx; ?>?mode=moduser">Modify User</a></FONT></TD>
 	<TD><FONT FACE="<?php echo $FontFace; ?>" SIZE="<?php echo $FontSize2; ?>" COLOR="<?php echo $textcolor; ?>">This link will allow you to modify a user account, including username, level, and rank.</FONT></TD>
 </TR>
