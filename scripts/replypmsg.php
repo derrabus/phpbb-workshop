@@ -36,7 +36,7 @@ if ($submit) {
     if (!$result) {
         die("Error getting userinfo from database");
     }
-    $fromuserdata = mysql_fetch_array($result);
+    $fromuserdata = $result->fetch(\PDO::FETCH_BOTH);
     
 
     if (!$user_logged_in) { // don't check this stuff if we have a valid session..
@@ -95,7 +95,7 @@ if ($submit) {
         echo $sql . mysql_error();
         error_die("Error getting userid from message");
     }
-    $row = mysql_fetch_array($result);
+    $row = $result->fetch(\PDO::FETCH_BOTH);
     $touserid = $row[from_userid];
 
     $sql = "INSERT INTO priv_msgs (from_userid, to_userid, msg_time, msg_text, poster_ip) ";
@@ -115,7 +115,7 @@ if ($submit) {
     if (!$result) {
         error_die("Error doing DB query to get userid's from message.");
     }
-    $row = mysql_fetch_array($result);
+    $row = $result->fetch(\PDO::FETCH_BOTH);
     if (!$row) {
         error_die("Message not found");
     }
@@ -200,7 +200,7 @@ if ($submit) {
         $sql = "SELECT p.msg_text, p.msg_time, u.username FROM priv_msgs p, users u ";
         $sql .= "WHERE (p.msg_id = $msgid) AND (p.from_userid = u.user_id)";
         if ($result = mysql_query($sql, $db)) {
-            $m = mysql_fetch_array($result);
+            $m = $result->fetch(\PDO::FETCH_BOTH);
             $m[post_time] = $m[msg_time];
             $text = desmile($m[msg_text]);
             $text = str_replace("<BR>", "\n", $text);

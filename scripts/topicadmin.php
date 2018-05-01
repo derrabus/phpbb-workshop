@@ -51,7 +51,7 @@ if ($HTTP_POST_VARS['submit'] || ($user_logged_in==1 && $mode=='viewip')) {
       if (!$r = mysql_query($sql, $db)) {
           die("Error - Could not query the posts database!");
       }
-      while ($row = mysql_fetch_array($r)) {
+      while ($row = $r->fetch(\PDO::FETCH_BOTH)) {
           if ($row[poster_id] != -1) {
               $sql = "UPDATE users SET user_posts = user_posts - 1 WHERE user_id = '$row[poster_id]'";
               @mysql_query($sql, $db);
@@ -63,7 +63,7 @@ if ($HTTP_POST_VARS['submit'] || ($user_logged_in==1 && $mode=='viewip')) {
         if (!$r = mysql_query($sql, $db)) {
             die("Error - Could not query the posts database!");
         }
-      while ($row = mysql_fetch_array($r)) {
+      while ($row = $r->fetch(\PDO::FETCH_BOTH)) {
           $posts_to_remove[] = $row["post_id"];
       }
 
@@ -124,7 +124,7 @@ if ($HTTP_POST_VARS['submit'] || ($user_logged_in==1 && $mode=='viewip')) {
       if (!$r = mysql_query($sql, $db)) {
           die("Error - Could not query the database. <BR>Error: mysql_error()");
       }
-      if (!$m = mysql_fetch_array($r)) {
+      if (!$m = $r->fetch(\PDO::FETCH_BOTH)) {
           die("Error - No such user or post in the database.");
       }
       $poster_host = gethostbyaddr($m[poster_ip]);
@@ -148,7 +148,7 @@ if ($HTTP_POST_VARS['submit'] || ($user_logged_in==1 && $mode=='viewip')) {
         exit();
     }
 
-    while ($row = mysql_fetch_array($r)) {
+    while ($row = $r->fetch(\PDO::FETCH_BOTH)) {
         print "<TR BGCOLOR=\"$color2\" ALIGN=\"LEFT\">\n";
         print "	<TD><A HREF=\"bb_profile.php?mode=view&user=".$row[user_id]."\">".$row[username]."</A></TD>\n";
         print "	<TD>".$row[postcount]." posts</TD>\n";
@@ -216,10 +216,10 @@ if ($HTTP_POST_VARS['submit'] || ($user_logged_in==1 && $mode=='viewip')) {
 <?php
     $sql = "SELECT forum_id, forum_name FROM forums WHERE forum_id != '$forum' ORDER BY forum_id";
         if ($result = mysql_query($sql, $db)) {
-            if ($myrow = mysql_fetch_array($result)) {
+            if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
                 do {
                     echo "<OPTION VALUE=\"$myrow[forum_id]\">$myrow[forum_name]</OPTION>\n";
-                } while ($myrow = mysql_fetch_array($result));
+                } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
             } else {
                 echo "<OPTION VALUE=\"-1\">No Forums in DB</OPTION>\n";
             }

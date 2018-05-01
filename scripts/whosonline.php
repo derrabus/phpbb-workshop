@@ -44,7 +44,7 @@ $sql = "SELECT * FROM whosonline";
 if (!$result = mysql_query($sql, $db)) {
     die("Error - Could not connect to the database</table></table></table>");
 }
-if ($myrow = mysql_fetch_array($result)) {
+if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
     do {
         echo "<TR BGCOLOR=$color2 ALIGN=LEFT>\n";
         if (!stristr($myrow[username], get_syslang_string($sys_lang, "l_guest"))) {
@@ -60,7 +60,7 @@ if ($myrow = mysql_fetch_array($result)) {
             echo "<TD><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><a href=\"$url_phpbb/viewforum.$phpEx?forum=$myrow[forum]\">$forum</a></FONT>";
         }
         echo "</TR>\n";
-    } while ($myrow = mysql_fetch_array($result));
+    } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
 } else {
     echo "<TD COLSPAN=2><FONT FACE=\"$FontFace\" SIZE=\"$FontSize2\" COLOR=\"$textcolor\"><?php echo $l_nousers?></FONT></TD>";
 }

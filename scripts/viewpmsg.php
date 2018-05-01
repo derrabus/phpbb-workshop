@@ -65,11 +65,11 @@ if (!$submit && !$user_logged_in) {
 </TR>
 
 <?php
-    if (!mysql_num_rows($resultID)) {
+    if (!$resultID->rowCount()) {
         echo "<TD BGCOLOR=\"$color1\" colspan = 2 ALIGN=CENTER>$l_nopmsgs</TD></TR>\n";
     }
     
-    while ($myrow = mysql_fetch_array($resultID)) {
+    while ($myrow = $resultID->fetch(\PDO::FETCH_BOTH)) {
         echo "<TR BGCOLOR=\"$color2\" ALIGN=\"LEFT\">\n";
         $posterdata = get_userdata_from_id($myrow[from_userid], $db);
         echo "<TD valign=top><b>$posterdata[username]</b><br>\n";
@@ -112,7 +112,7 @@ if (!$submit && !$user_logged_in) {
         echo "&nbsp;&nbsp;<a href=\"$url_phpbb/delpmsg.$phpEx?msgid=$myrow[msg_id]\">$l_delete</a>\n";
     
         echo "</TD></TR>";
-    } //while ($myrow = mysql_fetch_array($resultID));
+    } //while ($myrow = $resultID->fetch(\PDO::FETCH_BOTH));
     
     $sql = "UPDATE priv_msgs SET msg_status='1' WHERE (to_userid = $userdata[user_id])";
     if (!mysql_query($sql, $db)) {

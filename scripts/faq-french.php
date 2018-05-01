@@ -121,7 +121,7 @@ include('page_header.'.$phpEx);
  <?php
 
       if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
-          while ($smile = mysql_fetch_array($getsmiles)) {
+          while ($smile = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
               ?>
 		 <TR BGCOLOR="<?php echo $color2?>">
 		 <TD width="200" align="center">
@@ -591,7 +591,7 @@ les crochets et le texte auquel vous appliquez le code.
         <TD><font face="<?php echo $FontFace?>" size="<?php echo $FontSize2?>" color="<?php echo $textcolor?>">&nbsp;Image associée au rang&nbsp;</font></TD>
 	</TR>
 	<?php
-    if ($m = mysql_fetch_array($r)) {
+    if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
         do {
             echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">";
             echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_title]</font></TD>";
@@ -603,7 +603,7 @@ les crochets et le texte auquel vous appliquez le code.
                 echo "<TD>&nbsp;</TD>";
             }
             echo "</TR>";
-        } while ($m = mysql_fetch_array($r));
+        } while ($m = $r->fetch(\PDO::FETCH_BOTH));
     } else {
         echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">";
         echo "<TD COLSPAN=\"4\">Pas de rangs dans la base de données</TD>";

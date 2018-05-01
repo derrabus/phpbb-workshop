@@ -82,7 +82,7 @@ if ($login) {
             if (!$result) {
                 die("Error doing DB query.");
             }
-            $row = mysql_fetch_array($result);
+            $row = $result->fetch(\PDO::FETCH_BOTH);
             if ($row[total] != 0) {
                 // settings exist, so we can just update.
                 $sql = "UPDATE config SET sitename = '$name', allow_html = '$html', allow_bbcode = '$bb', allow_sig = '$sig', hot_threshold = $hot, posts_per_page = $ppp, topics_per_page = $tpp, override_themes = $override_themes, allow_namechange = $allow_name_change, email_from = '$from', email_sig = '$esig', default_lang = '$selected_lang' WHERE selected = 1";
@@ -239,7 +239,7 @@ if ($login) {
                 echo mysql_error() . "<br>\n";
                 die("Error doing DB query in admin_board.$phpEx");
             }
-            $row = mysql_fetch_array($result);
+            $row = $result->fetch(\PDO::FETCH_BOTH);
             $currHeader = stripslashes($row[header]);
             $currMeta = stripslashes($row[meta]);
             $currFooter = stripslashes($row[footer]); ?>
@@ -338,7 +338,7 @@ if ($login) {
         include('../page_tail.'.$phpEx);
         exit();
     }
-    if ($m = mysql_fetch_array($r)) {
+    if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
         do {
             echo "<FORM ACTION=\"$PHP_SELF\" METHOD=\"POST\">\n";
             echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
@@ -351,7 +351,7 @@ if ($login) {
             echo "<INPUT TYPE=\"SUBMIT\" NAME=\"edit\" VALUE=\"Edit\"></TD>\n";
             echo "<TD><BR><INPUT TYPE=\"SUBMIT\" NAME=\"delete\" VALUE=\"Delete\"></FORM></TD>\n";
             echo "</TR>";
-        } while ($m = mysql_fetch_array($r));
+        } while ($m = $r->fetch(\PDO::FETCH_BOTH));
     } else {
         echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">No Ranks in the Database. You can add one by entering into the form below</FONT></TD></TR>";
     }
@@ -369,7 +369,7 @@ if ($login) {
         include('../page_tail.'.$phpEx);
         exit();
     }
-    if ($m = mysql_fetch_array($r)) {
+    if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
         do {
             echo "<FORM ACTION=\"$PHP_SELF\" METHOD=\"POST\">\n";
             echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
@@ -383,7 +383,7 @@ if ($login) {
             echo "<INPUT TYPE=\"SUBMIT\" NAME=\"edit\" VALUE=\"Edit\"></TD>\n";
             echo "<TD><BR><INPUT TYPE=\"SUBMIT\" NAME=\"delete\" VALUE=\"Delete\"></FORM></TD>\n";
             echo "</TR>";
-        } while ($m = mysql_fetch_array($r));
+        } while ($m = $r->fetch(\PDO::FETCH_BOTH));
     } else {
         echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD COLSPAN=\"6\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">No Special Ranks in the Database. You can add one by entering into the form below.</FONT></TD></TR>";
     }

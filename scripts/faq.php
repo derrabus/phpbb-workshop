@@ -123,7 +123,7 @@ include('page_header.'.$phpEx);
  <?php
 
       if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
-          while ($smile = mysql_fetch_array($getsmiles)) {
+          while ($smile = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
               ?>
 		 <TR BGCOLOR="<?php echo $color2?>">
 		 <TD width="100">
@@ -590,7 +590,7 @@ You must not use both HTML and BBCode to do the same function.  Also note that t
         <TD><font face="<?php echo $FontFace?>" size="<?php echo $FontSize2?>" color="<?php echo $textcolor?>">&nbsp;Rank Image&nbsp;</font></TD>
 	</TR>
 	<?php
-    if ($m = mysql_fetch_array($r)) {
+    if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
         do {
             echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">";
             echo "<TD><font face=\"<?php echo $FontFace?>\" size=\"2\" color=\"$textcolor\">$m[rank_title]</font></TD>";
@@ -602,7 +602,7 @@ You must not use both HTML and BBCode to do the same function.  Also note that t
                 echo "<TD>&nbsp;</TD>";
             }
             echo "</TR>";
-        } while ($m = mysql_fetch_array($r));
+        } while ($m = $r->fetch(\PDO::FETCH_BOTH));
     } else {
         echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">";
         echo "<TD COLSPAN=\"4\">No Ranks in the database</TD>";

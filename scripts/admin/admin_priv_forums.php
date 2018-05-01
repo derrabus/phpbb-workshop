@@ -106,11 +106,11 @@ if ($login) {
             die("Error getting forum list from database. \n");
         }
         
-        if ($myrow = mysql_fetch_array($result)) {
+        if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
             do {
                 $name = stripslashes($myrow[forum_name]);
                 echo "<OPTION VALUE=\"$myrow[forum_id]\">$name</OPTION>\n";
-            } while ($myrow = mysql_fetch_array($result));
+            } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
         } else {
             echo "<OPTION VALUE=\"-1\">No Forums in Database</OPTION>\n";
         } ?>
@@ -190,7 +190,7 @@ if ($login) {
                 die("Couldn't find forum.\n");
             }
             $forum_name = "";
-            if ($row = mysql_fetch_array($result)) {
+            if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
                 $forum_name = $row[forum_name];
             } ?>			
 	 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="<?php echo $TableWidth?>">
@@ -229,7 +229,7 @@ if ($login) {
             
             $current_users = array();
             
-            while ($row = mysql_fetch_array($result)) {
+            while ($row = $result->fetch(\PDO::FETCH_BOTH)) {
                 $current_users[] = $row[user_id];
             }
             
@@ -242,7 +242,7 @@ if ($login) {
             if (!$result = mysql_query($sql, $db)) {
                 die("Error getting user list from db.\n");
             }
-            while ($row = mysql_fetch_array($result)) {
+            while ($row = $result->fetch(\PDO::FETCH_BOTH)) {
                 ?>      	
 	     <OPTION VALUE="<?php echo $row[user_id] ?>"> <?php echo $row[username] ?> </OPTION>
 <?php
@@ -267,7 +267,7 @@ if ($login) {
 							<TABLE BORDER="0" CELLPADDING="10" CELLSPACING="0">
 								
 <?php	
-            while ($row = mysql_fetch_array($result)) {
+            while ($row = $result->fetch(\PDO::FETCH_BOTH)) {
                 $post_text = ($row[can_post]) ? "can" : "can't";
                 $post_text .= " post";
                 

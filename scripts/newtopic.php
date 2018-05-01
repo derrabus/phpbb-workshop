@@ -34,7 +34,7 @@ $sql = "SELECT forum_name, forum_access, forum_type FROM forums WHERE (forum_id 
 if (!$result = mysql_query($sql, $db)) {
     error_die("Can't get forum data.");
 }
-$myrow = mysql_fetch_array($result);
+$myrow = $result->fetch(\PDO::FETCH_BOTH);
 $forum_name = $myrow[forum_name];
 $forum_access = $myrow[forum_access];
 $forum_type = $myrow[forum_type];

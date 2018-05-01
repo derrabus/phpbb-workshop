@@ -30,10 +30,10 @@ if ($submit) {
     if (!$result = mysql_query($sql, $db)) {
         die($err_db_retrieve_data);
     }
-    if (mysql_num_rows($result) <= 0) {
+    if ($result->rowCount() <= 0) {
         die($err_db_retrieve_data);
     }
-    $myrow = mysql_fetch_array($result);
+    $myrow = $result->fetch(\PDO::FETCH_BOTH);
 
     $poster_id = $myrow[poster_id];
     $forum_id = $myrow[forum_id];
@@ -204,7 +204,7 @@ if ($submit) {
     if (!$result = mysql_query($sql, $db)) {
         error_die("Couldn't get forum and topic information from the database.");
     }
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         error_die("Error - The forum/topic you selected does not exist. Please go back and try again.");
     }
     
@@ -297,7 +297,7 @@ if ($submit) {
     if (!$result = mysql_query($sql, $db)) {
         error_die("Couldn't get user and topic information from the database.<br>$sql");
     }
-    $myrow = mysql_fetch_array($result);
+    $myrow = $result->fetch(\PDO::FETCH_BOTH);
     // Freekin' ugly but I couldn't get it to work right as 1 big if
     //          - James
     if ($user_logged_in) {

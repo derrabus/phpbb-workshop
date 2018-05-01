@@ -93,7 +93,7 @@ if ($submit) {
     if (!$r = mysql_query($sql, $db)) {
         die("Error connecting to the database.");
     }
-    list($total) = mysql_fetch_array($r);
+    list($total) = $r->fetch(\PDO::FETCH_BOTH);
     $total += 1;
     $sql = "INSERT INTO users (user_id, username, user_regdate, user_email, user_icq, user_password, user_occ, user_intrest, user_from, user_website, user_sig, user_aim, user_viewemail, user_yim, user_msnm) 
 				VALUES ('$total', '$username', '$regdate', '$email', '$icq', '$passwd', '$occ', '$intrest', '$from', '$website', '$sig', '$aim', '$sqlviewemail', '$yim', '$msnm')";

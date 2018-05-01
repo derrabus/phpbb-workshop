@@ -31,10 +31,10 @@ if ($actkey) {
     if (!$r = mysql_query($sql, $db)) {
         error_die("Error while attempting to query the database");
     }
-    if (mysql_num_rows($r) != 1) {
+    if ($r->rowCount() != 1) {
         error_die($l_wrongactiv);
     } else {
-        list($update_id) = mysql_fetch_array($r);
+        list($update_id) = $r->fetch(\PDO::FETCH_BOTH);
     }
     $sql = "UPDATE users SET user_password = user_newpasswd WHERE user_id = '$update_id'";
     if (!$r = mysql_query($sql, $db)) {

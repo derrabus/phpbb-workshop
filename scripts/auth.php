@@ -81,7 +81,7 @@ if (is_banned($REMOTE_ADDR, "ip", $db)) {
 // Setup forum Options.
 $sql = "SELECT * FROM config WHERE selected = 1";
 if ($result = mysql_query($sql, $db)) {
-    if ($myrow = mysql_fetch_array($result)) {
+    if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         $sitename = stripslashes($myrow["sitename"]);
         $allow_html = $myrow["allow_html"];
         $allow_bbcode = $myrow["allow_bbcode"];
@@ -192,7 +192,7 @@ if ($override_user_themes == 1 || !$theme) {
     if (!$r = mysql_query($sql, $db)) {
         die('<font size=+1>An Error Occured</font><hr>phpBB was unable to connect to the database. <BR>Please check $dbhost, $dbuser, and $dbpasswd in config.php.');
     }
-    if ($theme = mysql_fetch_array($r)) {
+    if ($theme = $r->fetch(\PDO::FETCH_BOTH)) {
         $bgcolor = $theme["bgcolor"];
         $table_bgcolor = $theme["table_bgcolor"];
         $textcolor = $theme["textcolor"];

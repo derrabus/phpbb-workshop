@@ -45,7 +45,7 @@ if ($post_id) {
 if (!$result = mysql_query($sql, $db)) {
     error_die("Could not connect to the forums database.");
 }
-if (!$myrow = mysql_fetch_array($result)) {
+if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
     error_die("The forum/topic you selected does not exist.");
 }
 
@@ -185,7 +185,7 @@ if ($HTTP_POST_VARS['submit']) {
     if (!$result = mysql_query($sql, $db)) {
         error_die("Couldn't get topic and user information from database.");
     }
-    $m = mysql_fetch_array($result);
+    $m = $result->fetch(\PDO::FETCH_BOTH);
     if ($m[topic_notify] == 1 && $m[user_id] != $userdata[user_id]) {
         // We have to get the mail body and subject line in the board default language!
         $subject = get_syslang_string($sys_lang, "l_notifysubj");
@@ -348,7 +348,7 @@ if ($HTTP_POST_VARS['submit']) {
     if ($quote) {
         $sql = "SELECT pt.post_text, p.post_time, u.username FROM posts p, users u, posts_text pt WHERE p.post_id = '$post' AND p.poster_id = u.user_id AND pt.post_id = p.post_id";
         if ($r = mysql_query($sql, $db)) {
-            $m = mysql_fetch_array($r);
+            $m = $r->fetch(\PDO::FETCH_BOTH);
             $text = desmile($m[post_text]);
             $text = str_replace("<BR>", "\n", $text);
             $text = stripslashes($text);

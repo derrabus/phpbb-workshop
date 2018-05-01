@@ -97,7 +97,7 @@ if ($login) {
                 if (!$r = mysql_query($sql, $db)) {
                     die("Error connecting to the database. Please check your config.$phpEx file.");
                 }
-                if (!$m = mysql_fetch_array($r)) {
+                if (!$m = $r->fetch(\PDO::FETCH_BOTH)) {
                     die("No users in the database.");
                 } ?>
 <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
@@ -112,7 +112,7 @@ if ($login) {
 <?php
                 do {
                     echo "<OPTION VALUE=\"$m[user_id]\">$m[username]</OPTION>\n";
-                } while ($m = mysql_fetch_array($r)); ?>
+                } while ($m = $r->fetch(\PDO::FETCH_BOTH)); ?>
 	</SELECT>
 	</TD>
 </TR>
@@ -133,13 +133,13 @@ if ($login) {
                     if (!$r = mysql_query($sql, $db)) {
                         die("Error connecting to the database. Please check your config.$phpEx file.");
                     }
-                    list($rank_id, $rank) = @mysql_fetch_array($r);
+                    list($rank_id, $rank) = @$r->fetch(\PDO::FETCH_BOTH);
                 } else {
                     $sql = "SELECT rank_title FROM ranks WHERE rank_id = '$moduserdata[user_rank]'";
                     if (!$r = mysql_query($sql, $db)) {
                         die("Error connecting to the database. Please check your config.$phpEx file.");
                     }
-                    list($rank) = @mysql_fetch_array($r);
+                    list($rank) = @$r->fetch(\PDO::FETCH_BOTH);
                 } ?>
 <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
@@ -161,7 +161,7 @@ if ($login) {
 <?php
                 $sql = "SELECT rank_id, rank_title FROM ranks WHERE rank_special = 1";
                 $r = mysql_query($sql, $db);
-                if ($m = mysql_fetch_array($r)) {
+                if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
                     echo "<OPTION VALUE=\"0\">No Special Rank Assigned</OPTION>";
                     echo "<OPTION VALUE=\"0\">------------------------</OPTION>";
                     do {
@@ -170,7 +170,7 @@ if ($login) {
                             $selected = "SELECTED";
                         }
                         echo "<OPTION VALUE=\"$m[rank_id]\" $selected>$m[rank_title]</OPTION>\n";
-                    } while ($m = mysql_fetch_array($r));
+                    } while ($m = $r->fetch(\PDO::FETCH_BOTH));
                     echo "</SELECT>\n";
                 } else {
                     echo "<OPTION VALUE=\"0\">No Special Ranks in Database</OPTION></SELECT>\n";
@@ -184,14 +184,14 @@ if ($login) {
 <?php
                 $sql = "SELECT access_id, access_title FROM access ORDER BY access_id";
                 $r = mysql_query($sql, $db);
-                if ($m = mysql_fetch_array($r)) {
+                if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
                     do {
                         unset($selected);
                         if ($moduserdata[user_level] == $m[access_id]) {
                             $selected = "SELECTED";
                         }
                         echo "<OPTION VALUE=\"$m[access_id]\" $selected>$m[access_title]</OPTION>\n";
-                    } while ($m = mysql_fetch_array($r));
+                    } while ($m = $r->fetch(\PDO::FETCH_BOTH));
                 } ?>
 		</SELECT>
 	</TD>
@@ -272,7 +272,7 @@ if ($login) {
        include('../page_tail.'.$phpEx);
        exit();
    }
-   if ($m = mysql_fetch_array($r)) {
+   if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
        do {
            echo "<FORM ACTION=\"$PHP_SELF\" METHOD=\"POST\">\n";
            echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
@@ -283,7 +283,7 @@ if ($login) {
            echo "<INPUT TYPE=\"SUBMIT\" NAME=\"action\" VALUE=\"Edit\"></TD>\n";
            echo "<TD><BR><INPUT TYPE=\"SUBMIT\" NAME=\"action\" VALUE=\"Delete\"></FORM></TD>\n";
            echo "</TR>";
-       } while ($m = mysql_fetch_array($r));
+       } while ($m = $r->fetch(\PDO::FETCH_BOTH));
    } else {
        echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD COLSPAN=\"4\"><FONT FACE=\"$FontFace\" SIZE=\"$FontSize\" COLOR=\"$textcolor\">No censored words in the database. You can enter one using the form below</FONT></TD></TR>";
    }
@@ -353,14 +353,14 @@ if ($login) {
         include('../page_tail.'.$phpEx);
         exit();
     }
-    if ($m = mysql_fetch_array($r)) {
+    if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
         do {
             echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
             echo "<TD><FORM ACTION=\"$PHP_SELF\" METHOD=\"POST\"><INPUT TYPE=\"TEXT\" NAME=\"dis_username\" VALUE=\"" . stripslashes($m[disallow_username]) . "\" MAXLENGTH=\"40\" SIZE=\"25\"></TD>\n";
             echo "<TD><INPUT TYPE=\"HIDDEN\" NAME=\"mode\" VALUE=\"$mode\"><INPUT TYPE=\"HIDDEN\" NAME=\"id\" VALUE=\"$m[disallow_id]\">";
             echo "<INPUT TYPE=\"SUBMIT\" NAME=\"edit\" VALUE=\"Edit\"></TD>\n";
             echo "<TD><INPUT TYPE=\"SUBMIT\" NAME=\"delete\" VALUE=\"Delete\"></FORM></TD></TR>\n";
-        } while ($m = mysql_fetch_array($r));
+        } while ($m = $r->fetch(\PDO::FETCH_BOTH));
     } else {
         echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\"><TD COLSPAN=\"3\">No Disallowed usernames in the database, use the form below to add one.</TD></TR>";
     }
@@ -416,7 +416,7 @@ if ($login) {
                     if (!$r = mysql_query($sql, $db)) {
                         die("Error connecting to the database. Please check your config.$phpEx file.");
                     }
-                    if (!$m = mysql_fetch_array($r)) {
+                    if (!$m = $r->fetch(\PDO::FETCH_BOTH)) {
                         die("No users in the database.");
                     } ?>
 <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
@@ -431,7 +431,7 @@ if ($login) {
 <?php
                                 do {
                                     echo "<OPTION VALUE=\"$m[user_id]\">$m[username]</OPTION>\n";
-                                } while ($m = mysql_fetch_array($r)); ?>
+                                } while ($m = $r->fetch(\PDO::FETCH_BOTH)); ?>
         </SELECT>
         </TD>
 </TR>
@@ -568,7 +568,7 @@ if ($login) {
    if (!$r = mysql_query($sql, $db)) {
        echo "<tr bgcolor=\"$color2\" align=\"center\"><td colspan=\"4\"><b>Error quering the database!</b></td></tr>";
    }
-   while ($banlist = mysql_fetch_array($r)) {
+   while ($banlist = $r->fetch(\PDO::FETCH_BOTH)) {
        unset($dur);
        unset($unit);
        echo "<tr bgcolor=\"$color2\" align=\"center\"><td><form action=\"$PHP_SELF\" method=\"POST\"><input type=\"text\" name=\"ipaddy\" value=\"$banlist[ban_ip]\" size=\"32\"></td>\n";
@@ -641,7 +641,7 @@ if ($login) {
    if (!$r = mysql_query($sql, $db)) {
        echo "<tr bgcolor=\"$color2\"><td colspan=\"4\"><b>Error quering the database!</b></td></tr>";
    }
-   while ($banlist = mysql_fetch_array($r)) {
+   while ($banlist = $r->fetch(\PDO::FETCH_BOTH)) {
        $banuserdata = get_userdata_from_id($banlist[ban_userid], $db);
        echo "<tr bgcolor=\"$color2\" align=\"center\"><td align=\"center\"><form action=\"$PHP_SELF\" method=\"POST\"><input type=\"text\" name=\"user_name\" value=\"$banuserdata[username]\" maxlenght=\"35\" size=\"25\"></td>\n";
        $type = $banlist[ban_time_type];

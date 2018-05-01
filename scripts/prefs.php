@@ -189,7 +189,7 @@ if ($HTTP_POST_VARS['submit'] || $user_logged_in) {
         if (!$result = mysql_query($sql, $db)) {
             error_die("Error: Couldn't get themes data");
         }
-        if ($myrow = mysql_fetch_array($result)) {
+        if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
             echo "<TD><SELECT NAME=\"themes\">\n";
             do {
                 unset($s);
@@ -197,7 +197,7 @@ if ($HTTP_POST_VARS['submit'] || $user_logged_in) {
                     $s = "SELECTED";
                 }
                 echo "<OPTION VALUE=\"$myrow[theme_id]\" $s>$myrow[theme_name]</OPTION>\n";
-            } while ($myrow = mysql_fetch_array($result));
+            } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
         } else {
             echo $l_nothemes;
         } ?>

@@ -32,7 +32,7 @@ $sql = "SELECT f.forum_type, f.forum_name FROM forums f WHERE forum_id = '$forum
 if (!$result = mysql_query($sql, $db)) {
     error_die("<font size=+1>An Error Occured</font><hr>Could not connect to the forums database.");
 }
-if (!$myrow = mysql_fetch_array($result)) {
+if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
     error_die("Error - The forum you selected does not exist. Please go back and try again.");
 }
 $forum_name = own_stripslashes($myrow[forum_name]);
@@ -140,7 +140,7 @@ if (!$start) {
     }
     $topics_start = $start;
    
-    if ($myrow = mysql_fetch_array($result)) {
+    if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         do {
             echo"<TR>\n";
             $replys = $myrow["topic_replies"];
@@ -218,7 +218,7 @@ if (!$start) {
             echo "<TD BGCOLOR=\"$color2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\"><font face=\"$FontFace\" size=\"$FontSize2\">$myrow[username]</font></TD>\n";
             echo "<TD BGCOLOR=\"$color1\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\"><font face=\"$FontFace\" size=\"$FontSize2\">$myrow[topic_views]</font></TD>\n";
             echo "<TD BGCOLOR=\"$color2\" ALIGN=\"CENTER\" VALIGN=\"MIDDLE\"><font face=\"$FontFace\" size=\"$FontSize1\">$last_post</font></TD></TR>\n";
-        } while ($myrow = mysql_fetch_array($result));
+        } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
     } else {
         echo "<TD BGCOLOR=\"$color1\" colspan = 6 ALIGN=CENTER>$l_notopics</TD></TR>\n";
     } ?>
@@ -235,7 +235,7 @@ $sql = "SELECT count(*) AS total FROM topics WHERE forum_id = '$forum'";
     if (!$r = mysql_query($sql, $db)) {
         error_die("Error could not contact the database!</TABLE></TABLE>");
     }
-    list($all_topics) = mysql_fetch_array($r);
+    list($all_topics) = $r->fetch(\PDO::FETCH_BOTH);
     $count = 1;
     $next = $topics_start + $topics_per_page;
     if ($all_topics > $topics_per_page) {

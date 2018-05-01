@@ -33,7 +33,7 @@ $sql = "SELECT c.* FROM catagories c, forums f
 if (!$result = mysql_query($sql, $db)) {
     error_die("Unable to get categories from database<br>$sql");
 }
-$total_categories = mysql_num_rows($result);
+$total_categories = $result->rowCount();
 
 ?>
 
@@ -53,7 +53,7 @@ if ($total_categories) {
     if (!$viewcat) {
         $viewcat = -1;
     }
-    while ($cat_row = mysql_fetch_array($result)) {
+    while ($cat_row = $result->fetch(\PDO::FETCH_BOTH)) {
         $categories[] = $cat_row;
     }
 
@@ -71,7 +71,7 @@ if ($total_categories) {
         die("Error getting forum data<br>$sql");
     }
 
-    while ($forum_data = mysql_fetch_array($f_res)) {
+    while ($forum_data = $f_res->fetch(\PDO::FETCH_BOTH)) {
         $forum_row[] = $forum_data;
     }
     for ($i = 0; $i < $total_categories; $i++) {

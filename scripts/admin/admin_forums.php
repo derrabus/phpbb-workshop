@@ -115,7 +115,7 @@ if ($login) {
            if (!isset($mods)) {
                $current_mods = "SELECT count(*) AS total FROM forum_mods WHERE forum_id = '$forum'";
                $r = @mysql_query($current_mods, $db);
-               list($total) = mysql_fetch_array($r);
+               list($total) = $r->fetch(\PDO::FETCH_BOTH);
            } else {
                $total = count($mods) + 1;
            }
@@ -154,7 +154,7 @@ if ($login) {
            }
            $sql = "DELETE FROM posts_text WHERE ";
            $looped = false;
-           while ($ids = mysql_fetch_array($r)) {
+           while ($ids = $r->fetch(\PDO::FETCH_BOTH)) {
                if ($looped == true) {
                    $sql .= " OR ";
                }
@@ -197,7 +197,7 @@ if ($login) {
        if (!$result = mysql_query($sql, $db)) {
            die("Error connecting to the database.");
        }
-       if (!$myrow = mysql_fetch_array($result)) {
+       if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
            echo "No such forum";
            include('page_tail.'.$phpEx);
        }
@@ -228,11 +228,11 @@ if ($login) {
        if (!$r = mysql_query($sql, $db)) {
            die("Error connecting to the database.");
        }
-       if ($row = mysql_fetch_array($r)) {
+       if ($row = $r->fetch(\PDO::FETCH_BOTH)) {
            do {
                echo "$row[username] (<input type=\"checkbox\" name=\"rem_mods[]\" value=\"$row[user_id]\"> Remove)<BR>";
                $current_mods[] = $row[user_id];
-           } while ($row = mysql_fetch_array($r));
+           } while ($row = $r->fetch(\PDO::FETCH_BOTH));
            echo "<BR>";
        } else {
            echo "No Moderators Assigned<BR><BR>\n";
@@ -248,14 +248,14 @@ if ($login) {
        if (!$r = mysql_query($sql, $db)) {
            die("An Error Occurred<HR>Could not connect to the database. Please check the config file.");
        }
-       if ($row = mysql_fetch_array($r)) {
+       if ($row = $r->fetch(\PDO::FETCH_BOTH)) {
            do {
                $s = "";
                if ($row[user_id] == $myrow[forum_moderator]) {
                    $s = "SELECTED";
                }
                echo "<OPTION VALUE=\"$row[user_id]\" $s>$row[username]</OPTION>\n";
-           } while ($row = mysql_fetch_array($r));
+           } while ($row = $r->fetch(\PDO::FETCH_BOTH));
        } else {
            echo "<OPTION VALUE=\"0\">None</OPTION>\n";
        } ?>
@@ -269,14 +269,14 @@ if ($login) {
        if (!$r = mysql_query($sql, $db)) {
            die("An Error Occurred<HR>Could not connect to the database. Please check the config file.");
        }
-       if ($row = mysql_fetch_array($r)) {
+       if ($row = $r->fetch(\PDO::FETCH_BOTH)) {
            do {
                $s = "";
                if ($row[cat_id] == $myrow[cat_id]) {
                    $s = "SELECTED";
                }
                echo "<OPTION VALUE=\"$row[cat_id]\" $s>$row[cat_title]</OPTION>\n";
-           } while ($row = mysql_fetch_array($r));
+           } while ($row = $r->fetch(\PDO::FETCH_BOTH));
        } else {
            echo "<OPTION VALUE=\"0\">None</OPTION>\n";
        } ?>
@@ -347,11 +347,11 @@ if ($myrow[forum_access] == 1) {
 
     $sql = "SELECT forum_name, forum_id FROM forums ORDER BY forum_id";
             if ($result = mysql_query($sql, $db)) {
-                if ($myrow = mysql_fetch_array($result)) {
+                if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
                     do {
                         $name = stripslashes($myrow[forum_name]);
                         echo "<OPTION VALUE=\"$myrow[forum_id]\">$name</OPTION>\n";
-                    } while ($myrow = mysql_fetch_array($result));
+                    } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
                 } else {
                     echo "<OPTION VALUE=\"-1\">No Forums in Database</OPTION>\n";
                 }
@@ -399,7 +399,7 @@ if ($myrow[forum_access] == 1) {
         if (!$result = mysql_query($sql, $db)) {
             die("Could not get catagory data!<br>$sql");
         }
-        $cat_data = mysql_fetch_array($result);
+        $cat_data = $result->fetch(\PDO::FETCH_BOTH);
         $cat_title = stripslashes($cat_data["cat_title"]); ?>
 <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
@@ -436,7 +436,7 @@ if ($myrow[forum_access] == 1) {
 <TR BGCOLOR="<?php echo $color2?>" ALIGN="LEFT">
 	<TD ALIGN="CENTER" COLSPAN="2"><SELECT NAME="cat" SIZE="0">
 <?php
-            while ($cat_data = mysql_fetch_array($result)) {
+            while ($cat_data = $result->fetch(\PDO::FETCH_BOTH)) {
                 echo "<option value=\"".$cat_data["cat_id"]."\">".stripslashes($cat_data["cat_title"])."</option>\n";
             } ?>
 </select></td>
@@ -482,7 +482,7 @@ if ($myrow[forum_access] == 1) {
        if (!$r = mysql_query($sql, $db)) {
            die("Error conencting to the database!");
        }
-       while ($m = mysql_fetch_array($r)) {
+       while ($m = $r->fetch(\PDO::FETCH_BOTH)) {
            echo "<OPTION VALUE=\"$m[cat_id]\">".stripslashes($m[cat_title])."</OPTION>\n";
        } ?>
 	</SELECT>
@@ -501,7 +501,7 @@ if ($myrow[forum_access] == 1) {
        if (!$r = mysql_query($sql, $db)) {
            die("Error - Could not query the DB");
        }
-       list($highest) = mysql_fetch_array($r);
+       list($highest) = $r->fetch(\PDO::FETCH_BOTH);
        $highest++;
        $title = addslashes($title);
        $sql = "INSERT INTO catagories (cat_title, cat_order) VALUES ('$title', '$highest')";
@@ -588,7 +588,7 @@ if ($myrow[forum_access] == 1) {
        if (!$r = mysql_query($sql, $db)) {
            die("Error querying the database!");
        }
-       list($total) = mysql_fetch_array($r);
+       list($total) = $r->fetch(\PDO::FETCH_BOTH);
        if ($total < 1 || !isset($total)) {
            die("Error, you must add a category before you add forums");
        } ?>
@@ -614,10 +614,10 @@ if ($myrow[forum_access] == 1) {
        if (!$result = mysql_query($sql, $db)) {
            die("An Error Occurred<HR>Could not connect to the database. Please check the config file.");
        }
-       if ($myrow = mysql_fetch_array($result)) {
+       if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
            do {
                echo "<OPTION VALUE=\"$myrow[user_id]\">$myrow[username]</OPTION>\n";
-           } while ($myrow = mysql_fetch_array($result));
+           } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
        } else {
            echo "<OPTION VALUE=\"0\">None</OPTION>\n";
        } ?>
@@ -631,10 +631,10 @@ if ($myrow[forum_access] == 1) {
        if (!$result = mysql_query($sql, $db)) {
            die("An Error Occurred<HR>Could not connect to the database. Please check the config file.");
        }
-       if ($myrow = mysql_fetch_array($result)) {
+       if ($myrow = $result->fetch(\PDO::FETCH_BOTH)) {
            do {
                echo "<OPTION VALUE=\"$myrow[cat_id]\">$myrow[cat_title]</OPTION>\n";
-           } while ($myrow = mysql_fetch_array($result));
+           } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
        } else {
            echo "<OPTION VALUE=\"0\">None</OPTION>\n";
        } ?>
@@ -693,7 +693,7 @@ if ($myrow[forum_access] == 1) {
           if (!$r  = mysql_query($sql, $db)) {
               die("Error quering the database");
           }
-          list($last_number) = mysql_fetch_array($r);
+          list($last_number) = $r->fetch(\PDO::FETCH_BOTH);
           if ($last_number != $current_order) {
               $order = $current_order + 1;
               $sql = "UPDATE catagories SET cat_order = $current_order WHERE cat_order = $order";
@@ -728,7 +728,7 @@ if ($myrow[forum_access] == 1) {
        echo "<TR><TD colspan=\"3\">Error Connecting to the database!</TD></TR>";
        exit();
    }
-   while ($m = mysql_fetch_array($r)) {
+   while ($m = $r->fetch(\PDO::FETCH_BOTH)) {
        echo "<!-- New Row -->\n";
        echo "<FORM ACTION=\"$PHP_SELF\" METHOD=\"POST\">\n";
        echo "<tr bgcolor=\"$color2\" align=\"center\">\n";

@@ -90,7 +90,7 @@ function get_userid_from_session($sessid, $cookietime, $remote_ip, $db)
         echo mysql_error() . "<br>\n";
         die("Error doing DB query in get_userid_from_session()");
     }
-    $row = mysql_fetch_array($result);
+    $row = $result->fetch(\PDO::FETCH_BOTH);
     
     if (!$row) {
         return 0;
@@ -176,7 +176,7 @@ function get_total_topics($forum_id, $db)
     if (!$result = mysql_query($sql, $db)) {
         return($l_error);
     }
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         return($l_error);
     }
     
@@ -189,7 +189,7 @@ function showheader($db)
 {
     $sql = "SELECT header FROM headermetafooter";
     if ($result = mysql_query($sql, $db)) {
-        if ($header = mysql_fetch_array($result)) {
+        if ($header = $result->fetch(\PDO::FETCH_BOTH)) {
             echo stripslashes($header[header]);
         }
     }
@@ -201,7 +201,7 @@ function showmeta($db)
 {
     $sql = "SELECT meta FROM headermetafooter";
     if ($result = mysql_query($sql, $db)) {
-        if ($meta = mysql_fetch_array($result)) {
+        if ($meta = $result->fetch(\PDO::FETCH_BOTH)) {
             echo stripslashes($meta[meta]);
         }
     }
@@ -213,7 +213,7 @@ function showfooter($db)
 {
     $sql = "SELECT footer FROM headermetafooter";
     if ($result = mysql_query($sql, $db)) {
-        if ($footer = mysql_fetch_array($result)) {
+        if ($footer = $result->fetch(\PDO::FETCH_BOTH)) {
             echo stripslashes($footer[footer]);
         }
     }
@@ -224,7 +224,7 @@ function showfooter($db)
  * Anyone who's been on the board within the last 300 seconds will be
  * returned. Any data older then 300 seconds will be removed
  */
-function get_whosonline($IP, $username, $forum, $db)
+function get_whosonline($IP, $username, $forum, Connection $db)
 {
     global $sys_lang;
     if ($username == '') {
@@ -236,12 +236,12 @@ function get_whosonline($IP, $username, $forum, $db)
     $usersec= (double)$time[1];
     $username= addslashes($username);
     $deleteuser= mysql_query("delete from whosonline where date < $usersec - 300", $db);
-    $userlog= mysql_fetch_row(MYSQL_QUERY("SELECT * FROM whosonline where IP = '$IP'", $db));
+    $userlog= $db->fetchArray("SELECT * FROM whosonline where IP = '$IP'");
     if ($userlog == false) {
         $ok= mysql_query("insert INTO whosonline (IP,DATE,username,forum) VALUES('$IP','$usersec', '$username', '$forum')", $db)or die("Unable to query db!");
     }
     $resultlogtab   = mysql_query("SELECT Count(*) as total FROM whosonline", $db);
-    $numberlogtab   = mysql_fetch_array($resultlogtab);
+    $numberlogtab   = $resultlogtab->fetch(\PDO::FETCH_BOTH);
     return($numberlogtab[total]);
 }
 
@@ -271,7 +271,7 @@ function get_total_posts($id, $db, $type)
     if (!$result = mysql_query($sql, $db)) {
         return("ERROR");
     }
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         return("0");
     }
    
@@ -302,7 +302,7 @@ function get_last_post($id, $db, $type)
         return($l_error);
     }
    
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         return($l_noposts);
     }
     if (($type != 'user') && ($type != 'time_fix')) {
@@ -323,12 +323,12 @@ function get_moderators($forum_id, $db)
     if (!$result = mysql_query($sql, $db)) {
         return(array());
     }
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         return(array());
     }
     do {
         $array[] = array("$myrow[user_id]" => "$myrow[username]");
-    } while ($myrow = mysql_fetch_array($result));
+    } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
     return($array);
 }
 
@@ -342,7 +342,7 @@ function is_moderator($forum_id, $user_id, $db)
     if (!$result = mysql_query($sql, $db)) {
         return("0");
     }
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         return("0");
     }
     if ($myrow[user_id] != '') {
@@ -366,7 +366,7 @@ function check_user_pw($username, $password, $db)
         echo mysql_error() . "<br>";
         die("Error doing DB query in check_user_pw()");
     }
-    return mysql_num_rows($resultID);
+    return $resultID->rowCount();
 } // check_user_pw()
 
 
@@ -382,7 +382,7 @@ function get_pmsg_count($user_id, $db)
         echo mysql_error() . "<br>";
         die("Error doing DB query in get_pmsg_count");
     }
-    return mysql_num_rows($resultID);
+    return $resultID->rowCount();
 } // get_pmsg_count()
 
 
@@ -399,7 +399,7 @@ function check_username($username, $db)
         echo mysql_error() . "<br>";
         die("Error doing DB query in check_username()");
     }
-    return mysql_num_rows($resultID);
+    return $resultID->rowCount();
 } // check_username()
 
 
@@ -415,7 +415,7 @@ function get_userdata_from_id($userid, $db)
         $userdata = array("error" => "1");
         return ($userdata);
     }
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         $userdata = array("error" => "1");
         return ($userdata);
     }
@@ -433,7 +433,7 @@ function get_userdata($username, $db)
     if (!$result = mysql_query($sql, $db)) {
         $userdata = array("error" => "1");
     }
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         $userdata = array("error" => "1");
     }
     
@@ -449,7 +449,7 @@ function setuptheme($theme, $db)
     if (!$result = mysql_query($sql, $db)) {
         return(0);
     }
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         return(0);
     }
     return($myrow);
@@ -472,7 +472,7 @@ function does_exists($id, $db, $type)
     if (!$result = mysql_query($sql, $db)) {
         return(0);
     }
-    if (!$myrow = mysql_fetch_array($result)) {
+    if (!$myrow = $result->fetch(\PDO::FETCH_BOTH)) {
         return(0);
     }
     return(1);
@@ -487,7 +487,7 @@ function is_locked($topic, $db)
     if (!$r = mysql_query($sql, $db)) {
         return(false);
     }
-    if (!$m = mysql_fetch_array($r)) {
+    if (!$m = $r->fetch(\PDO::FETCH_BOTH)) {
         return(false);
     }
     if ($m[topic_status] == 1) {
@@ -515,7 +515,7 @@ function smile($message)
     $message = ' ' . $message;
    
     if ($getsmiles = mysql_query("SELECT *, length(code) as length FROM smiles ORDER BY length DESC")) {
-        while ($smiles = mysql_fetch_array($getsmiles)) {
+        while ($smiles = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
             $smile_code = preg_quote($smiles[code]);
             $smile_code = str_replace('/', '//', $smile_code);
             $message = preg_replace("/([\n\\ \\.])$smile_code/si", '\1<IMG SRC="' . $url_smiles . '/' . $smiles[smile_url] . '">', $message);
@@ -537,7 +537,7 @@ function desmile($message)
     global $db, $url_smiles;
    
     if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
-        while ($smiles = mysql_fetch_array($getsmiles)) {
+        while ($smiles = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
             $message = str_replace("<IMG SRC=\"$url_smiles/$smiles[smile_url]\">", $smiles[code], $message);
         }
     }
@@ -586,7 +586,7 @@ function get_forum_name($forum_id, $db)
     if (!$r = mysql_query($sql, $db)) {
         return("ERROR");
     }
-    if (!$m = mysql_fetch_array($r)) {
+    if (!$m = $r->fetch(\PDO::FETCH_BOTH)) {
         return("None");
     }
     return($m[forum_name]);
@@ -678,7 +678,7 @@ function validate_username($username, $db)
     if (!$r = mysql_query($sql, $db)) {
         return(0);
     }
-    if ($m = mysql_fetch_array($r)) {
+    if ($m = $r->fetch(\PDO::FETCH_BOTH)) {
         if ($m[disallow_username] == $username) {
             return(1);
         } else {
@@ -696,7 +696,7 @@ function is_first_post($topic_id, $post_id, $db)
     if (!$r = mysql_query($sql, $db)) {
         return(0);
     }
-    if (!$m = mysql_fetch_array($r)) {
+    if (!$m = $r->fetch(\PDO::FETCH_BOTH)) {
         return(0);
     }
     if ($m[post_id] == $post_id) {
@@ -715,7 +715,7 @@ function censor_string($string, $db)
     if (!$r = mysql_query($sql, $db)) {
         die("Error, could not contact the database! Please check your database settings in config.$phpEx");
     }
-    while ($w = mysql_fetch_array($r)) {
+    while ($w = $r->fetch(\PDO::FETCH_BOTH)) {
         $word = quotemeta(stripslashes($w[word]));
         $replacement = stripslashes($w[replacement]);
         $string = eregi_replace(" $word", " $replacement", $string);
@@ -736,7 +736,7 @@ function is_banned($ipuser, $type, $db)
     case "ip":
       $sql = "SELECT ban_ip FROM banlist";
       if ($r = mysql_query($sql, $db)) {
-          while ($iprow = mysql_fetch_array($r)) {
+          while ($iprow = $r->fetch(\PDO::FETCH_BOTH)) {
               $ip = $iprow[ban_ip];
               if ($ip[strlen($ip) - 1] == ".") {
                   $db_ip = explode(".", $ip);
@@ -762,7 +762,7 @@ function is_banned($ipuser, $type, $db)
     case "username":
       $sql = "SELECT ban_userid FROM banlist WHERE ban_userid = '$ipuser'";
       if ($r = mysql_query($sql, $db)) {
-          if (mysql_num_rows($r) > 0) {
+          if ($r->rowCount() > 0) {
               return(true);
           }
       }
@@ -789,7 +789,7 @@ function check_priv_forum_auth($userid, $forumid, $is_posting, $db)
         return false;
     }
     
-    if (!$row = mysql_fetch_array($result)) {
+    if (!$row = $result->fetch(\PDO::FETCH_BOTH)) {
         return false;
     }
    
@@ -837,7 +837,7 @@ function make_jumpbox()
 	<?php
       $sql = "SELECT cat_id, cat_title FROM catagories ORDER BY cat_order";
     if ($result = mysql_query($sql, $db)) {
-        $myrow = mysql_fetch_array($result);
+        $myrow = $result->fetch(\PDO::FETCH_BOTH);
         do {
             echo "<OPTION VALUE=\"-1\">&nbsp;</OPTION>\n";
             echo "<OPTION VALUE=\"-1\">$myrow[cat_title]</OPTION>\n";
@@ -845,18 +845,18 @@ function make_jumpbox()
             $sub_sql = "SELECT forum_id, forum_name FROM forums WHERE cat_id =
 	'$myrow[cat_id]' ORDER BY forum_id";
             if ($res = mysql_query($sub_sql, $db)) {
-                if ($row = mysql_fetch_array($res)) {
+                if ($row = $res->fetch(\PDO::FETCH_BOTH)) {
                     do {
                         $name = stripslashes($row[forum_name]);
                         echo "<OPTION VALUE=\"$row[forum_id]\">$name</OPTION>\n";
-                    } while ($row = mysql_fetch_array($res));
+                    } while ($row = $res->fetch(\PDO::FETCH_BOTH));
                 } else {
                     echo "<OPTION VALUE=\"0\">No More Forums</OPTION>\n";
                 }
             } else {
                 echo "<OPTION VALUE=\"0\">Error Connecting to DB</OPTION>\n";
             }
-        } while ($myrow = mysql_fetch_array($result));
+        } while ($myrow = $result->fetch(\PDO::FETCH_BOTH));
     } else {
         echo "<OPTION VALUE=\"-1\">ERROR</OPTION>\n";
     }
@@ -932,7 +932,7 @@ function sync($db, $id, $type)
         if (!$result = mysql_query($sql, $db)) {
             die("Could not get post ID");
         }
-        if ($row = mysql_fetch_array($result)) {
+        if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
             $last_post = $row["last_post"];
         }
         
@@ -940,7 +940,7 @@ function sync($db, $id, $type)
         if (!$result = mysql_query($sql, $db)) {
             die("Could not get post count");
         }
-        if ($row = mysql_fetch_array($result)) {
+        if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
             $total_posts = $row["total"];
         }
         
@@ -948,7 +948,7 @@ function sync($db, $id, $type)
         if (!$result = mysql_query($sql, $db)) {
             die("Could not get topic count");
         }
-        if ($row = mysql_fetch_array($result)) {
+        if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
             $total_topics = $row["total"];
         }
         
@@ -963,7 +963,7 @@ function sync($db, $id, $type)
         if (!$result = mysql_query($sql, $db)) {
             die("Could not get post ID");
         }
-        if ($row = mysql_fetch_array($result)) {
+        if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
             $last_post = $row["last_post"];
         }
         
@@ -971,7 +971,7 @@ function sync($db, $id, $type)
         if (!$result = mysql_query($sql, $db)) {
             die("Could not get post count");
         }
-        if ($row = mysql_fetch_array($result)) {
+        if ($row = $result->fetch(\PDO::FETCH_BOTH)) {
             $total_posts = $row["total"];
         }
         $total_posts -= 1;
@@ -986,7 +986,7 @@ function sync($db, $id, $type)
         if (!$result = mysql_query($sql, $db)) {
             die("Could not get forum IDs");
         }
-        while ($row = mysql_fetch_array($result)) {
+        while ($row = $result->fetch(\PDO::FETCH_BOTH)) {
             $id = $row["forum_id"];
             sync($db, $id, "forum");
         }
@@ -996,7 +996,7 @@ function sync($db, $id, $type)
         if (!$result = mysql_query($sql, $db)) {
             die("Could not get topic ID's");
         }
-        while ($row = mysql_fetch_array($result)) {
+        while ($row = $result->fetch(\PDO::FETCH_BOTH)) {
             $id = $row["topic_id"];
             sync($db, $id, "topic");
         }
@@ -1100,18 +1100,6 @@ function mysql_query(string $sql, Connection $connection = null)
     $connection = $connection ?: $container->get('doctrine.dbal.default_connection');
 
     return $connection->executeQuery($sql);
-}
-
-function mysql_fetch_array(Statement $stmt) {
-    return $stmt->fetch(PDO::FETCH_BOTH);
-}
-
-function mysql_fetch_row(Statement $stmt) {
-    return $stmt->fetch(PDO::FETCH_NUM);
-}
-
-function mysql_num_rows(Statement $stmt) {
-    return $stmt->rowCount();
 }
 
 function mysql_error(Connection $connection = null)

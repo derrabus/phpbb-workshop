@@ -88,11 +88,11 @@ if ($login) {
     switch ($mode) {
  case 'view':
    if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
-       if (($numsmiles = mysql_num_rows($getsmiles)) == "0") {
+       if (($numsmiles = $getsmiles->rowCount()) == "0") {
            echo "<font face=\"$FontFace\" size=2>No smiles currently. <a href='$PHP_SELF?mode=add'>Click here</a> to add some.</font>";
        } else {
            echo "<table border=0 cellspacing=1 cellpadding=3><tr><td bgcolor=\"$color1\"><font face=\"$FontFace\" size=2>Code</font></td><td bgcolor='$color2'><font face=\"$FontFace\" size=2>Smile</font></td><td bgcolor='$color1'>&nbsp;</td><td bgcolor='$color2'>&nbsp;</td></tr>";
-           while ($smiles = mysql_fetch_array($getsmiles)) {
+           while ($smiles = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
                echo "<tr><td bgcolor='$color1'><font face=\"$FontFace\" size=2>$smiles[code]</font></td><td bgcolor='$color2'><img src=\"$url_smiles/$smiles[smile_url]\"></td><td bgcolor='$color1'><a href=\"$PHP_SELF?mode=edit&id=$smiles[id]\">Edit</a></td><td bgcolor='$color2'><a href=\"$PHP_SELF?mode=delete&id=$smiles[id]\">Delete</a></td></tr>";
            }
            echo "</table>";
@@ -153,7 +153,7 @@ echo "</font><P></TD>";
    
    if ($submit == "Let's Edit the Smile!") {
        if ($getsmiles = mysql_query("SELECT * FROM smiles WHERE id = '$smile'")) {
-           $smiles = mysql_fetch_array($getsmiles);
+           $smiles = $getsmiles->fetch(\PDO::FETCH_BOTH);
 
            echo "<TABLE width=\"45%\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" bordercolor=\"$table_bgcolor\">";
            echo "<tr><td align=\"center\" width=\"100%\" bgcolor=\"$color1\"><font face=\"$FontFace\" size=\"$FontSize2\" color=\"$textcolor\"><B>Edit Smilie.</B></font></td>";
@@ -199,11 +199,11 @@ echo "</font><P></TD>";
       
        if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
            echo "Please select a smile from the pile below.";
-           if (($numsmiles = mysql_num_rows($getsmiles)) == "0") {
+           if (($numsmiles = $getsmiles->rowCount()) == "0") {
                echo "<font face=\"$FontFace\" size=2>No smiles currently. <a href='$PHP_SELF?mode=add'>Click here</a> to add some.</font>";
            } else {
                echo "<form method=post action=\"$PHP_SELF\"><input type='hidden' name='mode' value='edit'>";
-               while ($smiles = mysql_fetch_array($getsmiles)) {
+               while ($smiles = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
                    echo "<input type=\"radio\" name=\"smile\" value=\"$smiles[id]\">&nbsp;&nbsp;<img src=\"$url_smiles/$smiles[smile_url]\">&nbsp;&nbsp;$smiles[code]&nbsp;&nbsp;&nbsp;&nbsp;\n";
            
                    if (($count % "7") == "0") {
@@ -229,12 +229,12 @@ echo "</font><P></TD>";
        if ($getsmiles = mysql_query("SELECT * FROM smiles")) {
            echo "Please select a smile from the pile below.";
      
-           if (($numsmiles = mysql_num_rows($getsmiles)) == "0") {
+           if (($numsmiles = $getsmiles->rowCount()) == "0") {
                echo "<font face=\"$FontFace\" size=2>No smiles currently. <a href='$PHP_SELF?mode=add'>Click here</a> to add some.</font>";
            } else {
                echo "<form method=post action=\"$PHP_SELF\"><input type='hidden' name='mode' value='delete'>";
                $count = 1;
-               while ($smiles = mysql_fetch_array($getsmiles)) {
+               while ($smiles = $getsmiles->fetch(\PDO::FETCH_BOTH)) {
                    echo "<input type=\"radio\" name=\"smile\" value=\"$smiles[id]\">&nbsp;&nbsp;<img src=\"$url_smiles/$smiles[smile_url]\">&nbsp;&nbsp;$smiles[code]&nbsp;&nbsp;&nbsp;&nbsp;\n";
                    echo "<input type='hidden' name='smile_id' value='$smiles[id]'>";
            

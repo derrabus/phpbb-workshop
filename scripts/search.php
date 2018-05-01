@@ -67,7 +67,7 @@ if (!$submit) {
     if (!$result = mysql_query($query, $db)) {
         die("<font size=+1>An Error Occured</font><hr>phpBB was unable to query the forums database");
     }
-    while ($row = @mysql_fetch_array($result)) {
+    while ($row = @$result->fetch(\PDO::FETCH_BOTH)) {
         echo "<option value=$row[forum_id]>$row[forum_name]</option>";
     } ?>
 		</select>
@@ -173,7 +173,7 @@ if (!$submit) {
         if (!$result = mysql_query("SELECT user_id FROM users WHERE username='$search_username'", $db)) {
             error_die("<font size=+1>An Error Occured</font><hr>phpBB was unable to query the forums database");
         }
-        $row = @mysql_fetch_array($result);
+        $row = @$result->fetch(\PDO::FETCH_BOTH);
         if (!$row) {
             error_die("That user does not exist.  Please go back and search again.");
         }
@@ -216,7 +216,7 @@ if (!$submit) {
         die("<font size=+1>An Error Occured</font><hr>phpBB was unable to query the forums database<BR>".mysql_error($db)."<BR>$query");
     }
 
-    if (!$row = @mysql_fetch_array($result)) {
+    if (!$row = @$result->fetch(\PDO::FETCH_BOTH)) {
         die($l_nomatches);
     } ?>
 <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor; ?>">
@@ -235,7 +235,7 @@ if (!$submit) {
         echo "<TD ALIGN=\"CENTER\" WIDTH=\"25%\"><a href=\"bb_profile.$phpEx?mode=view&user=$row[user_id]\">$row[username]</a></TD>";
         echo "<TD ALIGN=\"CENTER\" WIDTH=\"15%\">$row[post_time]</TD>";
         echo "</TR>";
-    } while ($row=@mysql_fetch_array($result)); ?>	
+    } while ($row=@$result->fetch(\PDO::FETCH_BOTH)); ?>
 
 </TABLE>
 </TR>

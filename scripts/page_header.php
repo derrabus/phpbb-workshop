@@ -153,7 +153,7 @@ switch ($pagetype) {
                 error_die("phpBB was unable to check private messages because " .mysql_error($db));
             }
         
-            $row = @mysql_fetch_array($result);
+            $row = @$result->fetch(\PDO::FETCH_BOTH);
             $new_message = $row[count];
             $word = ($new_message > 1) ? "messages" : "message";
             $privmsg_url = "$url_phpbb/viewpmsg.$phpEx";
@@ -176,7 +176,7 @@ switch ($pagetype) {
     $total_users = get_total_posts("0", $db, "users");
     $sql = "SELECT username, user_id FROM users WHERE user_level != -1 ORDER BY user_id DESC LIMIT 1";
     $res = mysql_query($sql, $db);
-    $row = mysql_fetch_array($res);
+    $row = $res->fetch(\PDO::FETCH_BOTH);
     $newest_user = $row["username"];
     $newest_user_id = $row["user_id"];
     $profile_url = "$url_phpbb/bb_profile.$phpEx?mode=view&user=$newest_user_id";

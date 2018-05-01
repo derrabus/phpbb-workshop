@@ -56,7 +56,7 @@ if (!$submit && !$user_logged_in) {
         echo mysql_error() . "<br>\n";
         error_die("Error during DB query (checking msg ownership)");
     }
-    $row = mysql_fetch_array($resultID);
+    $row = $resultID->fetch(\PDO::FETCH_BOTH);
     if ($userdata[user_id] != $row[to_userid]) {
         error_die("That's not your message. You can't delete it.");
     }

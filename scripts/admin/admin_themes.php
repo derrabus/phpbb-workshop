@@ -300,7 +300,7 @@ if ($login) {
               include('page_tail.'.$phpEx);
               exit();
           }
-          $m = mysql_fetch_array($r); ?>
+          $m = $r->fetch(\PDO::FETCH_BOTH); ?>
            <FORM ACTION="<?php echo $PHP_SELF?>" METHOD="POST">
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="0" ALIGN="CENTER" VALIGN="TOP" WIDTH="95%"><TR><TD  BGCOLOR="<?php echo $table_bgcolor?>">
 	   <TABLE BORDER="0" CELLPADDING="1" CELLSPACING="1" WIDTH="100%">
@@ -460,7 +460,7 @@ if ($login) {
             exit();
         }
         echo "<TR BGCOLOR=\"$color1\" ALIGN=\"CENTER\"><TD>Name</TD><TD>Default Theme?</TD><TD>Action</TD>";
-        if ($row = mysql_fetch_array($r)) {
+        if ($row = $r->fetch(\PDO::FETCH_BOTH)) {
             do {
                 echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\">\n";
                 echo "<TD>".stripslashes($row[theme_name])."</TD>\n";
@@ -471,7 +471,7 @@ if ($login) {
                 }
                 echo "<TD><a href=\"$PHP_SELF?mode=edit&theme_id=$row[theme_id]\">Edit</a>&nbsp;&nbsp;<a href=\"$PHP_SELF?mode=remove&theme_id=$row[theme_id]\">Delete</a></TD>";
                 echo "</TR>";
-            } while ($row = mysql_fetch_array($r));
+            } while ($row = $r->fetch(\PDO::FETCH_BOTH));
         } else {
             echo "<TR BGCOLOR=\"$color2\" ALIGN=\"CENTER\"><TD COLSPAN=\"3\">No Themes in the database. Click <a href=\"$PHP_SELF?mode=add\">here</a> to add one.</TD></TR>";
         } ?>
