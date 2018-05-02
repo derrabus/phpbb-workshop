@@ -89,40 +89,6 @@ function end_user_session($userid, $db)
 } // end_session()
 
 /**
- * Prints either "logged in as [username]. Log out." or
- * "Not logged in. Log in.", depending on the value of
- * $user_logged_in.
- */
-function print_login_status($user_logged_in, $username, $url_phpbb)
-{
-    global $phpEx;
-    global $l_loggedinas, $l_notloggedin, $l_logout, $l_login;
-
-    if ($user_logged_in) {
-        echo "<b>$l_loggedinas $username. <a href=\"$url_phpbb/logout.$phpEx\">$l_logout.</a></b><br>\n";
-    } else {
-        echo "<b>$l_notloggedin. <a href=\"$url_phpbb/login.$phpEx\">$l_login.</a></b><br>\n";
-    }
-} // print_login_status()
-
-/**
- * Prints a link to either login.php or logout.php, depending
- * on whether the user's logged in or not.
- */
-function make_login_logout_link($user_logged_in, $url_phpbb)
-{
-    global $phpEx;
-    global $l_logout, $l_login;
-    if ($user_logged_in) {
-        $link = "<a href=\"$url_phpbb/logout.$phpEx\">$l_logout</a>";
-    } else {
-        $link = "<a href=\"$url_phpbb/login.$phpEx\">$l_login</a>";
-    }
-
-    return $link;
-} // make_login_logout_link()
-
-/**
  * End session-management functions.
  */
 

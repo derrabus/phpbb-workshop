@@ -32,7 +32,7 @@ if ('admin' == $pagetype) {
     $header_image = "../$header_image";
 }
 
-$login_logout_link = make_login_logout_link($user_logged_in, $url_phpbb);
+$login_logout_link = $container->get('twig')->render('partial/login_logout.html.twig');
 
 header('Content-Type: text/html; charset=UTF8');
 
@@ -177,7 +177,7 @@ switch ($pagetype) {
 		<?php 
             eval($l_statsblock);
             echo $statsblock;
-            print_login_status($user_logged_in, $userdata[username], $url_phpbb);
+            echo $container->get('twig')->render('partial/login_status.html.twig');
         ?>
 		</font>
 	</TD>

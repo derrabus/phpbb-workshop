@@ -1,3 +1,6 @@
 legacy:
     resource: legacy_route_provider:getRouteCollection
     type: service
+
+logout:
+    path: /logout
