@@ -5,10 +5,7 @@ doctrine:
         server_version: '5.7'
         charset: utf8mb4
 
-        host: '%database.host%'
-        dbname: '%database.name%'
-        user: '%database.user%'
-        password: '%database.password%'
+        url: '%env(DATABASE_URL)%'
 
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
